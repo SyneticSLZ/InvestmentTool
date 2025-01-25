@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funding Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 12px;
+            animation: modalSlide 0.3s ease-out;
+        }
+
+        @keyframes modalSlide {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .template-card {
+            transition: all 0.3s ease;
+        }
+
+        .template-card:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+     
+<!-- Update header section -->
+<header class="bg-white shadow-sm">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <h1 class="text-2xl font-semibold text-gray-800">Funding Dashboard</h1>
+                <span id="refreshTimestamp" class="text-sm text-gray-500"></span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="refreshBtn" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg transition-colors">
+                    <i class="fas fa-sync-alt mr-2"></i>Refresh
+                </button>
+                <button id="viewDataBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors">
+                    <i class="fas fa-table mr-2"></i>View Data
+                </button>
+                <button id="sendEmailsBtn" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-colors">
+                    <i class="fas fa-envelope mr-2"></i>Send Emails
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8">
+        <!-- Tabs -->
+        <div class="mb-8">
+            <div class="border-b border-gray-200">
+                <nav class="flex space-x-8">
+                    <button class="tab-btn active px-4 py-2 border-b-2 border-blue-500 text-blue-600">
+                        All Rounds
+                    </button>
+                    <button class="tab-btn px-4 py-2 text-gray-500 hover:text-gray-700">
+                        Email Templates
+                    </button>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Content Sections -->
+        <div id="allRoundsSection" class="section active">
+            <!-- Table will be inserted here by JavaScript -->
+        </div>
+
+        <div id="recentActivitySection" class="section hidden">
+            <div class="bg-white rounded-lg shadow">
+                <div class="p-4 border-b">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-semibold text-gray-800">Recent Rounds (Last 10 Days)</h2>
+                        <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-paper-plane mr-2"></i>Send All
+                        </button>
+                    </div>
+                </div>
+                <!-- Recent rounds table will be inserted here -->
+            </div>
+        </div>
+
+        <div id="emailTemplatesSection" class="section hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Template cards -->
+            </div>
+            <button id="addTemplateBtn" class="mt-6 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors duration-200">
+                <i class="fas fa-plus mr-2"></i>Add Template
+            </button>
+        </div>
+    </main>
+
+    <!-- Modal Template -->
+    <div id="fundingModal" class="modal">
+        <div class="modal-content p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-semibold text-gray-800">Funding Details</h2>
+                <button class="close-modal text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Modal content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="output.js"></script>
+</body>
+</html>
