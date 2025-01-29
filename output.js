@@ -2,6 +2,39 @@ const outputdata = {
   "total": 421,
   "results": [
     {
+      "uuid": "efbf5105-d5ed-4475-81eb-6043934e1dbc",
+      "identifier": {
+        "uuid": "efbf5105-d5ed-4475-81eb-6043934e1dbc",
+        "value": "Angel Round - Lightweight Technology",
+        "permalink": "lightweight-technolog-angel--efbf5105",
+        "entity_def_id": "funding_round"
+      },
+      "announced_on": "2025-01-07",
+      "money_raised": {
+        "value": 20000000,
+        "currency": "CNY",
+        "value_usd": 2728960
+      },
+      "investment_type": "angel",
+      "investor_identifiers": [
+        {
+          "role": "investor",
+          "uuid": "0b8be24c-9de9-4611-aa6f-5c0d04e6091d",
+          "value": "Yuanyi Investment",
+          "permalink": "yuanyi-investment-091d",
+          "entity_def_id": "organization"
+        }
+      ],
+      "funded_organization_identifier": {
+        "role": "investee",
+        "uuid": "fe146e43-d58c-4a6b-8f6c-e61d15400c9d",
+        "value": "Lightweight Technology",
+        "permalink": "lightweight-technolog",
+        "entity_def_id": "organization"
+      }
+    },
+    
+    {
       "uuid": "354f542d-fbd6-4aaf-8868-ace325fa5516",
       "identifier": {
         "uuid": "354f542d-fbd6-4aaf-8868-ace325fa5516",
@@ -16,6 +49,7 @@ const outputdata = {
         "currency": "EUR",
         "value_usd": 4164385
       },
+
       "investment_type": "seed",
       "investor_identifiers": [
         {

@@ -1,0 +1,552 @@
+{
+  "total": 32,
+  "results": [
+    {
+      "uuid": "2ae9ed2f-21eb-419f-bc8e-d972d0100b26",
+      "identifier": {
+        "uuid": "2ae9ed2f-21eb-419f-bc8e-d972d0100b26",
+        "value": "Angel Round - Xtra Interface",
+        "image_id": "43c82c9065b34ec3b23748a153c4a693",
+        "permalink": "xtra-interface-angel--2ae9ed2f",
+        "entity_def_id": "funding_round"
+      },
+      "announced_on": "2025-01-18",
+      "money_raised":       {
+        "value": null,
+        "currency": "EUR",
+        "value_usd": 4164385
+      },
+      "investment_type": "angel",
+      "investor_identifiers": [
+        {
+          "role": "investor",
+          "uuid": "d9ddef82-deb6-4cb0-91ce-65bfdda201c4",
+          "value": "Shanghai Lingang Economic Development",
+          "image_id": "ewd8b6on0gzd8qchrtk7",
+          "permalink": "lingang-group",
+          "entity_def_id": "organization"
+        },
+        {
+          "role": "investor",
+          "uuid": "d0b0778a-0689-45e4-a469-d2f86cb073a6",
+          "value": "Shanghai Ruixia Investment",
+          "permalink": "shanghai-ruixia-investment",
+          "entity_def_id": "organization"
+        }
+      ],
+      "funded_organization_identifier": {
+        "role": "investee",
+        "uuid": "0e8ff600-844e-4d5a-b93d-bb8173a3e87e",
+        "value": "Xtra Interface",
+        "image_id": "43c82c9065b34ec3b23748a153c4a693",
+        "permalink": "xtra-interface",
+        "entity_def_id": "organization"
+      }
+    },
+    {
+      "uuid": "167d8204-dc7a-42b5-8c0b-7a5db0427b2b",
+      "identifier": {
+        "uuid": "167d8204-dc7a-42b5-8c0b-7a5db0427b2b",
+        "value": "Angel Round - Jinli Intelligence",
+        "image_id": "50e54bb2028b4cfdbccf56ce2e31ee10",
+        "permalink": "jinli-intelligence-angel--167d8204",
+        "entity_def_id": "funding_round"
+      },
+      "announced_on": "2025-01-09",
+      "money_raised": {
+        "value": 20000000,
+        "currency": "CNY",
+        "value_usd": 2728104
+      },
+      "investment_type": "angel",
+      "investor_identifiers": [],
+      "funded_organization_identifier": {
+        "role": "investee",
+        "uuid": "45eff392-9b91-4bc5-8ff1-4d0d67f9929d",
+        "value": "Jinli Intelligence",
+        "image_id": "50e54bb2028b4cfdbccf56ce2e31ee10",
+        "permalink": "jinli-intelligence",
+        "entity_def_id": "organization"
+      }
+    },
+    {
+      "uuid": "75452d65-5870-4812-907a-3639277851d5",
+      "identifier": {
+        "uuid": "75452d65-5870-4812-907a-3639277851d5",
+        "value": "Angel Round - Moheng Robotics",
+        "image_id": "05458d39f59641b4b59f1b633bcbc06c",
+        "permalink": "moheng-robotics-angel--75452d65",
+        "entity_def_id": "funding_round"
+      },
+      "announced_on": "2025-01-20",
+      "money_raised":       {
+        "value": null,
+        "currency": "EUR",
+        "value_usd": 4164385
+      },
+      "investment_type": "angel",
+      "investor_identifiers": [],
+      "funded_organization_identifier": {
+        "role": "investee",
+        "uuid": "985540e2-b47f-4e03-bdd1-27f2b715c04e",
+        "value": "Moheng Robotics",
+        "image_id": "05458d39f59641b4b59f1b633bcbc06c",
+        "permalink": "moheng-robotics",
+        "entity_def_id": "organization"
+      }
+    },
+    {
+      "uuid": "192353ba-2bab-4df6-8cf3-680432aa4eb4",
+      "identifier": {
+        "uuid": "192353ba-2bab-4df6-8cf3-680432aa4eb4",
+        "value": "Angel Round - CostCare AI",
+        "image_id": "1f912860870e442587969aeb0f806a22",
+        "permalink": "costcare-ai-angel--192353ba",
+        "entity_def_id": "funding_round"
+      },
+      "announced_on": "2025-01-14",
+      "money_raised": {
+        "value": 500000,
+        "currency": "USD",
+        "value_usd": 500000
+      },
+      "investment_type": "angel",
+      "investor_identifiers": [],
+      "funded_organization_identifier": {
+        "role": "investee",
+        "uuid": "9b08ab66-dc8d-46c9-92f9-d8613a71cf16",
+        "value": "CostCare AI",
+        "image_id": "1f912860870e442587969aeb0f806a22",
+        "permalink": "costcare-ai",
+        "entity_def_id": "organization"
+      }
+    },
+    {
+      "uuid": "efbf5105-d5ed-4475-81eb-6043934e1dbc",
+      "identifier": {
+        "uuid": "efbf5105-d5ed-4475-81eb-6043934e1dbc",
+        "value": "Angel Round - Lightweight Technology",
+        "permalink": "lightweight-technolog-angel--efbf5105",
+        "entity_def_id": "funding_round"
+      },
+      "announced_on": "2025-01-07",
+      "money_raised": {
+        "value": 20000000,
+        "currency": "CNY",
+        "value_usd": 2728960
+      },
+      "investment_type": "angel",
+      "investor_identifiers": [
+        {
+          "role": "investor",
+          "uuid": "0b8be24c-9de9-4611-aa6f-5c0d04e6091d",
+          "value": "Yuanyi Investment",
+          "permalink": "yuanyi-investment-091d",
+          "entity_def_id": "organization"
+        }
+      ],
+      "funded_organization_identifier": {
+        "role": "investee",
+        "uuid": "fe146e43-d58c-4a6b-8f6c-e61d15400c9d",
+        "value": "Lightweight Technology",
+        "permalink": "lightweight-technolog",
+        "entity_def_id": "organization"
+      }
+    },
+    {
+      "uuid": "2122cd4c-4b89-4087-8667-d489225c58e5",
+      "identifier": {
+        "uuid": "2122cd4c-4b89-4087-8667-d489225c58e5",
+        "value": "Angel Round - Chong Falcon Technology",
+        "image_id": "31142b8fb43942aaa17e5ac1f2a4804f",
+        "permalink": "chong-falcon-technology-angel--2122cd4c",
+        "entity_def_id": "funding_round"
+      },
+      "announced_on": "2025-01-25",
+      "money_raised": {
+        "value": 200000000,
+        "currency": "CNY",
+        "value_usd": 27580120
+      },
+      "investment_type": "angel",
+      "investor_identifiers": [],
+      "funded_organization_identifier": {
+        "role": "investee",
+        "uuid": "9a40fde4-a65f-4186-b39d-d31922bcbc1e",
+        "value": "Chong Falcon Technology",
+        "image_id": "31142b8fb43942aaa17e5ac1f2a4804f",
+        "permalink": "chong-falcon-technology",
+        "entity_def_id": "organization"
+      }
+    },
+    {
+      "uuid": "23b5d270-dfb1-43e6-86ca-5060cdaf15ea",
+      "identifier": {
+        "uuid": "23b5d270-dfb1-43e6-86ca-5060cdaf15ea",
+        "value": "Angel Round - Ver.iD",
+        "image_id": "r2btaz0ydbeajjvlgx08",
+        "permalink": "ver-id-angel--23b5d270",
+        "entity_def_id": "funding_round"
+      },
+      "announced_on": "2025-01-02",
+      "money_raised": {
+        "value": 2000000,
+        "currency": "EUR",
+        "value_usd": 2052720
+      },
+      "investment_type": "angel",
+      "investor_identifiers": [
+        {
+          "role": "investor",
+          "uuid": "6c6d456b-90e5-4b21-a3d3-26c7855ec0d1",
+          "value": "Coinvest Capital",
+          "image_id": "c7hdq5s7m1haobgexust",
+          "permalink": "coinvest-capital",
+          "entity_def_id": "organization"
+        },
+        {
+          "role": "investor",
+          "uuid": "c83798cc-54a5-48de-9b84-471c64985ac1",
+          "value": "Renaldas Zioma",
+          "image_id": "itq5dnlwobj3wcybnxjb",
+          "permalink": "renaldas-zioma",
+          "entity_def_id": "person"
+        },
+        {
+          "role": "investor",
+          "uuid": "6bc8d3c3-f3e3-4e30-b39d-41d18c2eebc2",
+          "value": "Rita Sakus",
+          "image_id": "es5ysluxbn63tap0v0os",
+          "permalink": "rita-sakus",
+          "entity_def_id": "person"
+        },
+        {
+          "role": "investor",
+          "uuid": "0c057896-b973-4d49-a409-c73556b7194c",
+          "value": "Vladas Lašas",
+          "image_id": "tabsu6o9bl4r2jupi6xv",
+          "permalink": "vladas-lašas",
+          "entity_def_id": "person"
+        },
+        {
+          "role": "investor",
+          "uuid": "99444eb4-f2cf-4ae2-b628-a4e247cb3f94",
+          "value": "Vytenis Benetis",
+          "permalink": "vytenis-benetis",
+          "entity_def_id": "person"
+        }
+      ],
+      "funded_organization_identifier": {
+        "role": "investee",
+        "uuid": "c157b83e-dec7-4650-9b2b-dc703e6ebdba",
+        "value": "Ver.iD",
+        "image_id": "r2btaz0ydbeajjvlgx08",
+        "permalink": "ver-id",
+        "entity_def_id": "organization"
+      }
+    },
+    {
+      "uuid": "5c1b87f0-c7e9-4975-a84c-b5fb85800f0c",
+      "identifier": {
+        "uuid": "5c1b87f0-c7e9-4975-a84c-b5fb85800f0c",
+        "value": "Angel Round - RZOLUT",
+        "image_id": "agftae1kyowgl3yoi1qk",
+        "permalink": "rzolut-angel--5c1b87f0",
+        "entity_def_id": "funding_round"
+      },
+      "announced_on": "2025-01-09",
+      "money_raised": {
+        "value": 1250000,
+        "currency": "USD",
+        "value_usd": 1250000
+      },
+      "investment_type": "angel",
+      "investor_identifiers": [
+        {
+          "role": "investor",
+          "uuid": "e133f9f2-ec52-4b5f-92a7-9aecbcf49a14",
+          "value": "Green Trunk Ventures",
+          "image_id": "4d44f7ba99134734a9d11fbccb455a34",
+          "permalink": "green-trunk-ventures",
+          "entity_def_id": "organization"
+        },
+        {
+          "role": "investor",
+          "uuid": "5817c104-3ab1-423b-9064-ed49b8236bac",
+          "value": "Stanley Stephen",
+          "permalink": "stanley-stephen-6bac",
+          "entity_def_id": "person"
+        }
+      ],
+      "funded_organization_identifier": {
+        "role": "investee",
+        "uuid": "57417530-5047-4b24-a24b-e3290bcf2169",
+        "value": "RZOLUT",
+        "image_id": "agftae1kyowgl3yoi1qk",
+        "permalink": "rzolut",
+        "entity_def_id": "organization"
+      }
+    },
+    {
+      "uuid": "74ec39cb-86d6-45d1-bdf8-e40efeee8c05",
+      "identifier": {
+        "uuid": "74ec39cb-86d6-45d1-bdf8-e40efeee8c05",
+        "value": "Angel Round - AciMicro",
+        "image_id": "09263078db974a7ab395cbff5ab8db0b",
+        "permalink": "acimicro-angel--74ec39cb",
+        "entity_def_id": "funding_round"
+      },
+      "announced_on": "2025-01-22",
+      "money_raised":       {
+        "value": null,
+        "currency": "EUR",
+        "value_usd": 4164385
+      },
+      "investment_type": "angel",
+      "investor_identifiers": [
+        {
+          "role": "investor",
+          "uuid": "32141615-0227-4ef6-a0ce-b4087c4fc2d1",
+          "value": "Guangdong-Hong Kong-Macao Greater Bay Area Collaborative Innovation Research Institute",
+          "image_id": "y3znl0nfijrt9r1oshln",
+          "permalink": "guangdong-hong-kong-macao-greater-bay-area-collaborative-innovation-research-institute",
+          "entity_def_id": "organization"
+        },
+        {
+          "role": "investor",
+          "uuid": "8d3d1368-a9b9-4487-8ac0-73499ecd5b75",
+          "value": "Guangzhou Tongxin Science and Technology Innovation Fund",
+          "permalink": "guangzhou-tongxin-science-and-technology-innovation-fund",
+          "entity_def_id": "organization"
+        },
+        {
+          "role": "investor",
+          "uuid": "8d1f031e-d91a-435f-aa43-554a03b7954c",
+          "value": "Jingjinji National Center of Technology Innovation",
+          "image_id": "nozc6nepkvanurmxvhe6",
+          "permalink": "jingjinji-national-center-of-technology-innovation",
+          "entity_def_id": "organization"
+        },
+        {
+          "role": "investor",
+          "uuid": "67ec861d-e3bc-446a-b871-00445b782f4c",
+          "value": "Origin Fund",
+          "image_id": "uvtpm6wimgy214zmpuwa",
+          "permalink": "origin-fund",
+          "entity_def_id": "organization"
+        },
+        {
+          "role": "investor",
+          "uuid": "d22da127-f77e-4abb-b152-802a69dcf9e0",
+          "value": "Shenzhen Capital Group",
+          "image_id": "99fa11bb817d4cbdb5b97c4a96925895",
+          "permalink": "shenzhen-capital-group",
+          "entity_def_id": "organization"
+        }
+      ],
+      "funded_organization_identifier": {
+        "role": "investee",
+        "uuid": "04ec33d6-79be-4425-8e98-165d3d159c9c",
+        "value": "AciMicro",
+        "image_id": "09263078db974a7ab395cbff5ab8db0b",
+        "permalink": "acimicro",
+        "entity_def_id": "organization"
+      }
+    },
+    {
+      "uuid": "d17c328e-fc2a-4679-a77b-b7d1646e4715",
+      "identifier": {
+        "uuid": "d17c328e-fc2a-4679-a77b-b7d1646e4715",
+        "value": "Angel Round - Guangzhou Wuyue Information Technology Co.,",
+        "image_id": "ff9eb1d41d6144e0a1e0e2a95752714a",
+        "permalink": "guangzhou-wuyue-information-technology-co-angel--d17c328e",
+        "entity_def_id": "funding_round"
+      },
+      "announced_on": "2025-01-20",
+      "money_raised":       {
+        "value": null,
+        "currency": "EUR",
+        "value_usd": 4164385
+      },
+      "investment_type": "angel",
+      "investor_identifiers": [],
+      "funded_organization_identifier": {
+        "role": "investee",
+        "uuid": "16d0526c-5484-4c41-8986-9641b4f8bcb8",
+        "value": "Guangzhou Wuyue Information Technology Co.,",
+        "image_id": "ff9eb1d41d6144e0a1e0e2a95752714a",
+        "permalink": "guangzhou-wuyue-information-technology-co",
+        "entity_def_id": "organization"
+      }
+    },
+    {
+      "uuid": "6ba8606e-0c4f-4e42-b335-95ad4fcdd0e3",
+      "identifier": {
+        "uuid": "6ba8606e-0c4f-4e42-b335-95ad4fcdd0e3",
+        "value": "Angel Round - Tuo Rui Jing",
+        "permalink": "tuo-rui-jing-angel--6ba8606e",
+        "entity_def_id": "funding_round"
+      },
+      "announced_on": "2025-01-13",
+      "money_raised": {
+        "value": 50000000,
+        "currency": "CNY",
+        "value_usd": 6819794
+      },
+      "investment_type": "angel",
+      "investor_identifiers": [
+        {
+          "role": "investor",
+          "uuid": "a5d470db-fa2e-448e-9ee6-1bced88b7e54",
+          "value": "Rivercity Investment",
+          "image_id": "yg6ys2rdolyaqx7dv5ll",
+          "permalink": "rivercity-investment",
+          "entity_def_id": "organization"
+        }
+      ],
+      "funded_organization_identifier": {
+        "role": "investee",
+        "uuid": "4f1db5cb-189c-40fe-ac78-4d77d1d8a16b",
+        "value": "Tuo Rui Jing",
+        "permalink": "tuo-rui-jing",
+        "entity_def_id": "organization"
+      }
+    },
+    {
+      "uuid": "6a9ac1f9-914f-4127-b1fa-ee384857d39f",
+      "identifier": {
+        "uuid": "6a9ac1f9-914f-4127-b1fa-ee384857d39f",
+        "value": "Angel Round - SuperDad",
+        "permalink": "superdad-angel--6a9ac1f9",
+        "entity_def_id": "funding_round"
+      },
+      "announced_on": "2025-01-02",
+      "money_raised":       {
+        "value": null,
+        "currency": "EUR",
+        "value_usd": 4164385
+      },
+      "investment_type": "angel",
+      "investor_identifiers": [],
+      "funded_organization_identifier": {
+        "role": "investee",
+        "uuid": "8b9a41cb-dc37-4ac7-8d41-0e07f26df2e6",
+        "value": "SuperDad",
+        "permalink": "superdad",
+        "entity_def_id": "organization"
+      }
+    },
+    {
+      "uuid": "b22648b9-300c-4319-aa74-a51251f5bb30",
+      "identifier": {
+        "uuid": "b22648b9-300c-4319-aa74-a51251f5bb30",
+        "value": "Angel Round - Evolving Therapeutics",
+        "image_id": "ef28eb865e45498fa4efdd019c494b7f",
+        "permalink": "evolving-therapeutics-angel--b22648b9",
+        "entity_def_id": "funding_round"
+      },
+      "announced_on": "2025-01-21",
+      "money_raised": {
+        "value": 100000,
+        "currency": "EUR",
+        "value_usd": 103947
+      },
+      "investment_type": "angel",
+      "investor_identifiers": [
+        {
+          "role": "investor",
+          "uuid": "74e85497-0b08-615d-82f5-a961636b6031",
+          "value": "Angels Capital",
+          "image_id": "v1423569766/pquqmbl0g0tjw8iwe281.jpg",
+          "permalink": "angels-capital",
+          "entity_def_id": "organization"
+        }
+      ],
+      "funded_organization_identifier": {
+        "role": "investee",
+        "uuid": "b11c239f-a75f-4c7a-8119-5c76131fd655",
+        "value": "Evolving Therapeutics",
+        "image_id": "ef28eb865e45498fa4efdd019c494b7f",
+        "permalink": "evolving-therapeutics",
+        "entity_def_id": "organization"
+      }
+    },
+    {
+      "uuid": "39994ba5-cbed-44ed-9408-2377ef3fdf88",
+      "identifier": {
+        "uuid": "39994ba5-cbed-44ed-9408-2377ef3fdf88",
+        "value": "Angel Round - Aura Fem Health",
+        "image_id": "cefdc9892cee479c820f08b3a4c95e4a",
+        "permalink": "aura-fem-health-angel--39994ba5",
+        "entity_def_id": "funding_round"
+      },
+      "announced_on": "2025-01-14",
+      "money_raised": {
+        "value": 200000,
+        "currency": "USD",
+        "value_usd": 200000
+      },
+      "investment_type": "angel",
+      "investor_identifiers": [
+        {
+          "role": "investor",
+          "uuid": "f1706dce-505f-469e-95ad-5853d6693aa7",
+          "value": "Amit Goel",
+          "image_id": "e0108943b8c047afadbc0b68396f54aa",
+          "permalink": "amit-goel-3aa7",
+          "entity_def_id": "person"
+        },
+        {
+          "role": "investor",
+          "uuid": "6505a231-ff45-47ac-841e-15ea1df4b0a9",
+          "value": "ANIL KUMAR GUPTA",
+          "permalink": "anil-kumar-gupta-b0a9",
+          "entity_def_id": "person"
+        }
+      ],
+      "funded_organization_identifier": {
+        "role": "investee",
+        "uuid": "bd9e0245-75b4-4476-896e-ffe47dcb0ab6",
+        "value": "Aura Fem Health",
+        "image_id": "cefdc9892cee479c820f08b3a4c95e4a",
+        "permalink": "aura-fem-health",
+        "entity_def_id": "organization"
+      }
+    },
+    {
+      "uuid": "69c6671f-f899-42a1-a938-04463aaae106",
+      "identifier": {
+        "uuid": "69c6671f-f899-42a1-a938-04463aaae106",
+        "value": "Angel Round - Interstate",
+        "image_id": "9326f98cc8bc4dedab8d92e3e608fadb",
+        "permalink": "interstate-2f9e-angel--69c6671f",
+        "entity_def_id": "funding_round"
+      },
+      "announced_on": "2025-01-16",
+      "money_raised":       {
+        "value": null,
+        "currency": "EUR",
+        "value_usd": 4164385
+      },
+      "investment_type": "angel",
+      "investor_identifiers": [
+        {
+          "role": "investor",
+          "uuid": "a7b8d4fb-948e-4d0f-beff-683263813447",
+          "value": "Sergey Gorbunov",
+          "image_id": "7d95799e32bc4cd3b0f79c0599bc2233",
+          "permalink": "sergey-gorbunov-3447",
+          "entity_def_id": "person"
+        }
+      ],
+      "funded_organization_identifier": {
+        "role": "investee",
+        "uuid": "f01511f2-4f9c-4b71-ad40-9023b3eb2f9e",
+        "value": "Interstate",
+        "image_id": "9326f98cc8bc4dedab8d92e3e608fadb",
+        "permalink": "interstate-2f9e",
+        "entity_def_id": "organization"
+      }
+    }
+  ]
+}
