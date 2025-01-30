@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StartupStage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: #000000;
+            font-family: system-ui, -apple-system, sans-serif;
+            color: white;
+        }
+
+        /* Improved Navbar Styles */
+        .nav-links-container {
+            background: rgba(17, 16, 28, 0.7);
+            border-radius: 9999px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0.75rem 2rem;
+        }
+
+        .sign-up-btn {
+            background: #8B5CF6;
+            transition: all 0.2s ease;
+            padding: 0.625rem 1.5rem;
+            border-radius: 0.75rem;
+        }
+
+        .sign-up-btn:hover {
+            background: #7C3AED;
+        }
+
+        /* Enhanced Hero Gradient Effects */
+        .hero-section {
+            background: radial-gradient(ellipse at 50% 0%, rgba(139, 92, 246, 0.15) 0%, transparent 70%),
+                        radial-gradient(ellipse at 50% 100%, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+            position: relative;
+            overflow: hidden;
+            min-height: calc(100vh - 5rem);
+            padding: 8rem 0 6rem;
+        }
+
+        .hero-glow {
+            position: absolute;
+            bottom: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140%;
+            height: 400px;
+            background: radial-gradient(ellipse at center bottom, rgba(139, 92, 246, 0.2), transparent 70%);
+            pointer-events: none;
+        }
+
+        .submit-button {
+            background: rgba(17, 16, 28, 0.8);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            position: relative;
+            isolation: isolate;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            font-weight: 500;
+        }
+
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(45deg, rgba(139, 92, 246, 0.5), transparent);
+            border-radius: 9999px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Updated Navbar Styles -->
+<style>
+    .mobile-menu-button {
+        display: none;
+        background: rgba(17, 16, 28, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+    }
+
+    .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: rgba(17, 16, 28, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .mobile-menu.active {
+        transform: translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+        .mobile-menu-button {
+            display: block;
+        }
+
+        .nav-links-container {
+            display: none;
+        }
+
+        .mobile-menu {
+            display: block;
+        }
+
+        .mobile-menu .nav-links {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .auth-buttons {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+
+    /* Timer Responsive Styles */
+    @media (max-width: 768px) {
+        .timer-circles {
+            gap: 1rem !important;
+        }
+
+        .timer-circle {
+            width: 60px !important;
+            height: 60px !important;
+        }
+
+        .timer-circle span {
+            font-size: 1.25rem !important;
+        }
+
+        .company-card {
+            flex-direction: column !important;
+            align-items: center;
+            text-align: center;
+            gap: 1.5rem !important;
+        }
+
+        .company-info {
+            align-items: center;
+        }
+
+        .company-tags {
+            justify-content: center;
+        }
+
+        .nav-arrows {
+            display: none;
+        }
+    }
+
+    /* Testimonials Responsive Styles */
+    @media (max-width: 768px) {
+        .testimonials-track {
+            gap: 1rem !important;
+        }
+
+        .testimonial-card {
+            flex: 0 0 100% !important;
+        }
+    }
+</style>
+<style>
+    .mobile-menu {
+        display: block;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: rgba(17, 16, 28, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        clip-path: circle(0% at calc(100% - 2.5rem) 0);
+        transition: clip-path 0.5s ease-out;
+        pointer-events: none;
+        opacity: 0;
+    }
+
+    .mobile-menu.active {
+        clip-path: circle(150% at calc(100% - 2.5rem) 0);
+        pointer-events: auto;
+        opacity: 1;
+    }
+
+    .mobile-menu-button {
+        background: transparent;
+        border: none;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        z-index: 50;
+    }
+
+    .nav-links-container {
+        background: rgba(17, 16, 28, 0.7);
+        border-radius: 9999px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    @media (max-width: 1024px) {
+        .nav-links-container {
+            display: none;
+        }
+    }
+    
+    /* Animation for menu items */
+    .mobile-menu .nav-links a,
+    .mobile-menu .auth-buttons button {
+        transform: translateY(20px);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        transition-delay: calc(var(--delay) * 0.1s);
+    }
+
+    .mobile-menu.active .nav-links a,
+    .mobile-menu.active .auth-buttons button {
+        transform: translateY(0);
+        opacity: 1;
+    }
+</style>
+    <!-- Enhanced Navbar -->
+<!-- Updated Navbar HTML -->
+<nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+            <svg class="w-8 h-8 text-purple-500" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+            <span class="text-purple-500 font-medium">StartupStage</span>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:block">
+            <div class="nav-links-container px-6 py-2">
+                <div class="flex items-center space-x-8">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Voting</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Startup Directory</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Solutions</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">About</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desktop Auth Buttons -->
+        <div class="hidden lg:flex items-center gap-4">
+            <button class="text-gray-300 hover:text-white transition-colors px-4 py-2">Log in</button>
+            <button class="sign-up-btn px-6 py-2 rounded-lg">Sign up</button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="lg:hidden mobile-menu-button" aria-label="Toggle menu" onclick="toggleMobileMenu()">
+            <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu lg:hidden">
+        <div class="nav-links flex flex-col gap-4">
+            <a href="#" style="--delay: 1" class="text-gray-400 hover:text-white transition-colors px-4 py-2">Voting</a>
+            <a href="#" style="--delay: 2" class="text-gray-400 hover:text-white transition-colors px-4 py-2">Startup Directory</a>
+            <a href="#" style="--delay: 3" class="text-gray-400 hover:text-white transition-colors px-4 py-2">Solutions</a>
+            <a href="#" style="--delay: 4" class="text-gray-400 hover:text-white transition-colors px-4 py-2">Blog</a>
+            <a href="#" style="--delay: 5" class="text-gray-400 hover:text-white transition-colors px-4 py-2">About</a>
+        </div>
+        <!-- Auth buttons with animation delay -->
+        <div class="border-t border-gray-800 mt-4 pt-4 auth-buttons">
+            <button style="--delay: 6" class="w-full text-gray-300 hover:text-white transition-colors px-4 py-2 mb-2">Log in</button>
+            <button style="--delay: 7" class="w-full sign-up-btn px-6 py-2 rounded-lg">Sign up</button>
+        </div>
+    </div>
+</nav>
+
+
+    <!-- Enhanced Hero Section -->
+    <section class="hero-section">
+        <div class="hero-glow"></div>
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h1 class="text-6xl font-bold mb-6 leading-tight tracking-tight">
+                Scaling Companies<br/>
+                from Launch to Legacy
+            </h1>
+            <p class="text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+                StartupStage is the ultimate platform to showcase your startup, compete for features across our networks, and not just grow—but soar!
+            </p>
+            <button class="submit-button hover:shadow-lg transition-all duration-300">
+                Submit Your Company
+            </button>
+        </div>
+        <section class="features-section">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-medium mb-4">Empowering Your Growth</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Leverage bespoke scaling solutions designed to accelerate your startup's growth and navigate the complexities of expansion. Our tailored approach ensures that your unique needs are met at every stage of your journey.
+                        </p>
+                    </div>
+    
+                    <!-- Feature 2 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-medium mb-4">Exclusive Community</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Join a valuable network of like-minded innovators, investors, and industry leaders. Gain access to exclusive connections that open doors to strategic partnerships, investment opportunities, and collaborative ventures.
+                        </p>
+                    </div>
+    
+                    <!-- Feature 3 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-medium mb-4">Optimized Operational Excellence</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Utilize our customized tools and resources to streamline your operations, enhance efficiency, and achieve measurable results. From mentorship to cutting-edge industry insights, we equip you with everything you need to scale smarter and faster.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        </section>
+
+    <!-- Enhanced Features Section -->
+    <style>
+        .features-section {
+            background: linear-gradient(180deg, 
+                transparent 0%, 
+                rgba(139, 92, 246, 0.03) 30%, 
+                transparent 100%
+            );
+            padding: 8rem 0;
+            margin-top: 15em;
+        }
+
+        .feature-card {
+            background: rgba(17, 16, 28, 0.95);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(139, 92, 246, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+
+
+
+    <!-- Enhanced Story Section -->
+    <style>
+        .story-section {
+            background: linear-gradient(to bottom, 
+                rgba(0,0,0,0) 0%,
+                rgba(139, 92, 246, 0.03) 50%,
+                rgba(0,0,0,0) 100%
+            );
+            padding: 8rem 0;
+        }
+
+        .platform-card {
+            background: rgba(17, 16, 28, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            border-radius: 0.75rem;
+        }
+
+        .platform-card:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            background: rgba(139, 92, 246, 0.1);
+        }
+    </style>
+
+    <section class="story-section">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h2 class="text-4xl font-bold mb-8 leading-tight">Our Story and How We Support<br/>Founders at Every Stage</h2>
+            <p class="text-gray-400 text-lg leading-relaxed mb-16">
+                Founders rely on us for a comprehensive go-to-market strategy, scalable sales teams, and tailored funding solutions. We focus on driving sustainable revenue growth with a coordinated approach—matching you with the right investors, optimizing your marketing and operations, and ensuring all pieces work together seamlessly. Our fractional experts work in sync to create lasting solutions, not quick fixes, so your business thrives at every stage.
+            </p>
+        </div>
+
+        <!-- Listen On Section -->
+        <div class="max-w-3xl mx-auto px-4">
+            <h3 class="text-2xl text-center mb-12 font-medium">Listen on</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="#" class="platform-card p-4 flex items-center gap-4">
+                    <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 3a1 1 0 00-1 1v8a1 1 0 002 0V6a1 1 0 00-1-1z"/>
+                    </svg>
+                    <span class="font-medium">Apple Podcasts</span>
+                </a>
+                <a href="#" class="platform-card p-4 flex items-center gap-4">
+                    <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    <span class="font-medium">YouTube</span>
+                </a>
+                <a href="#" class="platform-card p-4 flex items-center gap-4">
+                    <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                    </svg>
+                    <span class="font-medium">Spotify</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timer Section Styles -->
+    <style>
+        .timer-section {
+            background: radial-gradient(ellipse at 50% 0%, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .timer-circle {
+            background: rgba(17, 16, 28, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+    
+        .company-card {
+            background: rgba(17, 16, 28, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+    
+        .company-card:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            transform: translateY(-2px);
+        }
+    
+        .nav-arrow {
+            background: rgba(17, 16, 28, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            transition: all 0.2s ease;
+        }
+    
+        .nav-arrow:hover {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+    
+        .action-button {
+            background: rgba(17, 16, 28, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease;
+        }
+    
+        .action-button:hover {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+    </style>
+
+<!-- Timer Section -->
+<section class="timer-section">
+    <div class="max-w-4xl mx-auto text-center px-4">
+        <h2 class="text-4xl font-bold mb-4">Vote on Our Current Cohort</h2>
+        <p class="text-gray-400 mb-12">This Cohort Ends in</p>
+        
+        <!-- Timer Circles -->
+        <div class="flex justify-center gap-16 mb-20">
+            <div class="flex flex-col items-center">
+                <div class="timer-circle mb-2">
+                    <span id="days" class="text-3xl font-medium">00</span>
+                </div>
+                <span class="text-sm text-gray-400">Days</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="timer-circle mb-2">
+                    <span id="hours" class="text-3xl font-medium">00</span>
+                </div>
+                <span class="text-sm text-gray-400">Hrs</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="timer-circle mb-2">
+                    <span id="minutes" class="text-3xl font-medium">00</span>
+                </div>
+                <span class="text-sm text-gray-400">Mins</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="timer-circle mb-2">
+                    <span id="seconds" class="text-3xl font-medium">00</span>
+                </div>
+                <span class="text-sm text-gray-400">Sec</span>
+            </div>
+        </div>
+
+        <!-- Company Slider -->
+        <div class="relative">
+            <!-- Navigation Arrows -->
+            <button class="nav-arrow absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 w-12 h-12 rounded-xl flex items-center justify-center text-gray-400" onclick="previousSlide()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </button>
+            <button class="nav-arrow absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 w-12 h-12 rounded-xl flex items-center justify-center text-gray-400" onclick="nextSlide()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
+
+            <!-- Slides Container -->
+            <div id="slides-container" class="overflow-hidden">
+                <div id="slides" class="flex transition-transform duration-300">
+                    <!-- Company Cards - Will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex justify-center gap-4 mt-8">
+                <button class="action-button w-12 h-12 rounded-full flex items-center justify-center text-gray-400 hover:text-purple-500">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
+                </button>
+                <button class="action-button w-12 h-12 rounded-full flex items-center justify-center text-gray-400 hover:text-purple-500">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    </svg>
+                </button>
+                <button class="action-button w-12 h-12 rounded-full flex items-center justify-center text-gray-400 hover:text-purple-500">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Testimonials Section Styles -->
+<style>
+    .testimonials-section {
+        background: linear-gradient(to bottom, 
+            transparent,
+            rgba(139, 92, 246, 0.03) 50%,
+            transparent
+        );
+        padding: 8rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .testimonial-card {
+        background: rgba(17, 16, 28, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 1.5rem;
+        transition: all 0.3s ease;
+        flex: 0 0 calc(33.333% - 1.33rem);
+    }
+
+    .testimonial-nav-button {
+        background: rgba(17, 16, 28, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        transition: all 0.2s ease;
+    }
+
+    .testimonial-nav-button:hover {
+        border-color: rgba(139, 92, 246, 0.3);
+        background: rgba(139, 92, 246, 0.1);
+    }
+
+    .testimonials-slider {
+        position: relative;
+        overflow: hidden;
+        margin: 0 -1rem;
+    }
+
+    .testimonials-track {
+        display: flex;
+        gap: 2rem;
+        transition: transform 0.5s ease-in-out;
+        margin: 0 1rem;
+    }
+</style>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-6">What They Say About Our Services</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
+                Unlock your business potential with proven StartupStage services: tailored solutions for funding, marketing, and operations to drive growth and success.
+            </p>
+        </div>
+
+        <!-- Testimonials Slider Container -->
+        <div class="testimonials-slider">
+            <div id="testimonials-track" class="testimonials-track">
+                <!-- Testimonials will be inserted here by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex justify-center gap-4 mt-12">
+            <button id="prev-testimonial" class="testimonial-nav-button flex items-center justify-center text-gray-400">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </button>
+            <button id="next-testimonial" class="testimonial-nav-button flex items-center justify-center text-gray-400">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Section Styles -->
+<style>
+    .pricing-section {
+        background: radial-gradient(
+            ellipse at 50% 50%,
+            rgba(139, 92, 246, 0.03) 0%,
+            transparent 100%
+        );
+        padding: 8rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .pricing-card {
+        background: rgba(17, 16, 28, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 24px;
+        transition: all 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pricing-card:hover {
+        border-color: rgba(139, 92, 246, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .feature-check {
+        color: #8B5CF6;
+        opacity: 0.8;
+    }
+
+    .get-started-btn {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.2s ease;
+    }
+
+    .get-started-btn.purple {
+        border-color: rgba(139, 92, 246, 0.5);
+        background: rgba(139, 92, 246, 0.1);
+    }
+
+    .get-started-btn:hover {
+        border-color: rgba(139, 92, 246, 0.5);
+        background: rgba(139, 92, 246, 0.1);
+    }
+
+    .feature-dot {
+        width: 4px;
+        height: 4px;
+        background: rgba(139, 92, 246, 0.5);
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 0.5rem;
+    }
+</style>
+
+<!-- Pricing Section -->
+<section class="pricing-section">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-16">Choose according to your needs</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Founders' Circle Card -->
+            <div class="pricing-card p-8">
+                <div class="mb-8">
+                    <div class="text-3xl font-bold mb-2">$200<span class="text-gray-400 text-xl">/Month</span></div>
+                    <h3 class="text-xl mb-2">Founders' Circle Membership</h3>
+                    <p class="text-sm text-gray-400">Who It's For: Founders and owners committed to scaling their businesses.</p>
+                </div>
+
+                <button class="get-started-btn w-full py-3 rounded-lg mb-8">
+                    Get Started
+                </button>
+
+                <div class="space-y-6">
+                    <h4 class="font-medium">What you receive:</h4>
+                    <div class="space-y-4">
+                        <div class="flex gap-3">
+                            <svg class="w-5 h-5 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                            <div>
+                                <div class="font-medium">Exclusive Community</div>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    A private, moderated community where you can exchange insights, celebrate wins, and seek advice from peers and experts.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3">
+                            <svg class="w-5 h-5 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <div>
+                                <div class="font-medium">SaaS Savings</div>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    Access exclusive discounts on over 430 apps, with average yearly savings of $15,000+.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3">
+                            <svg class="w-5 h-5 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            <div>
+                                <div class="font-medium">Resources & Templates</div>
+                                <div class="space-y-2 mt-2">
+                                    <p class="text-sm text-gray-400 flex items-center">
+                                        <span class="feature-dot"></span>
+                                        Investor Pitch Deck Template
+                                    </p>
+                                    <p class="text-sm text-gray-400 flex items-center">
+                                        <span class="feature-dot"></span>
+                                        Founder's Second Brain Template
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-auto pt-8">
+                    <p class="text-sm text-gray-500 italic">
+                        Privacy: NDA-friendly, with private discussions and essential fractional leaders
+                    </p>
+                </div>
+            </div>
+
+            <!-- SmartScale Card -->
+            <div class="pricing-card p-8">
+                <div class="mb-8">
+                    <div class="text-3xl font-bold mb-2">$2,600<span class="text-gray-400 text-xl">/Month</span></div>
+                    <h3 class="text-xl mb-2">SmartScale Subscription</h3>
+                    <p class="text-sm text-gray-400">Who It's For: Companies with revenue and a growing user base, ready to scale.</p>
+                </div>
+
+                <button class="get-started-btn purple w-full py-3 rounded-lg mb-8">
+                    Get Started
+                </button>
+
+                <div class="space-y-6">
+                    <h4 class="font-medium">What's included:</h4>
+                    <div class="space-y-4">
+                        <div class="flex gap-3">
+                            <svg class="w-5 h-5 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <div class="font-medium">Everything in Founders' Circle, Plus:</div>
+                        </div>
+
+                        <div class="flex gap-3">
+                            <svg class="w-5 h-5 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/>
+                            </svg>
+                            <div>
+                                <div class="font-medium">CoFounder-on-Call</div>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    Direct access to a seasoned Co-Founder for mentorship, strategy, and investor introductions.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3">
+                            <svg class="w-5 h-5 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                            </svg>
+                            <div>
+                                <div class="font-medium">8 Hours Executive Coaching</div>
+                                <div class="grid grid-cols-2 gap-2 mt-2">
+                                    <div class="text-sm text-gray-400 flex items-center">
+                                        <span class="feature-dot"></span>
+                                        Finance & Tax
+                                    </div>
+                                    <div class="text-sm text-gray-400 flex items-center">
+                                        <span class="feature-dot"></span>
+                                        Social Branding
+                                    </div>
+                                    <div class="text-sm text-gray-400 flex items-center">
+                                        <span class="feature-dot"></span>
+                                        Product Management
+                                    </div>
+                                    <div class="text-sm text-gray-400 flex items-center">
+                                        <span class="feature-dot"></span>
+                                        Development
+                                    </div>
+                                    <div class="text-sm text-gray-400 flex items-center">
+                                        <span class="feature-dot"></span>
+                                        Tech Strategy
+                                    </div>
+                                    <div class="text-sm text-gray-400 flex items-center">
+                                        <span class="feature-dot"></span>
+                                        Go-to-Market
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enterprise Card -->
+            <div class="pricing-card p-8">
+                <div class="mb-8">
+                    <div class="text-3xl font-bold mb-2">Enterprise</div>
+                    <h3 class="text-xl mb-2">Custom Solutions</h3>
+                    <p class="text-sm text-gray-400">Who It's For: Established startups ready for significant scaling across multiple dimensions.</p>
+                </div>
+
+                <button class="get-started-btn purple w-full py-3 rounded-lg mb-8">
+                    Contact Us
+                </button>
+
+                <div class="space-y-6">
+                    <h4 class="font-medium">What we provide:</h4>
+                    <div class="space-y-4">
+                        <div class="flex gap-3">
+                            <svg class="w-5 h-5 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                            <div>
+                                <div class="font-medium">Full Growth Suite</div>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    Comprehensive solutions covering every aspect of your business growth.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3">
+                            <svg class="w-5 h-5 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                            <div>
+                                <div class="font-medium">Customized Strategy</div>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    Tailored solutions for complex scaling needs and ambitious growth targets.
+                                </p>
+                            </div>
+                        </div>
+                                <div class="flex gap-3">
+                                    <svg class="w-5 h-5 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                                    </svg>
+                                    <div>
+                                        <div class="font-medium">Dedicated Team</div>
+                                        <p class="text-sm text-gray-400 mt-1">
+                                            Full access to senior leadership team and specialized experts.
+                                        </p>
+                                    </div>
+                                </div>
+        
+                                <div class="flex gap-3">
+                                    <svg class="w-5 h-5 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                                    </svg>
+                                    <div>
+                                        <div class="font-medium">Custom Solutions</div>
+                                        <div class="grid grid-cols-2 gap-2 mt-2">
+                                            <div class="text-sm text-gray-400 flex items-center">
+                                                <span class="feature-dot"></span>
+                                                Tailored Strategy
+                                            </div>
+                                            <div class="text-sm text-gray-400 flex items-center">
+                                                <span class="feature-dot"></span>
+                                                Full Team Access
+                                            </div>
+                                            <div class="text-sm text-gray-400 flex items-center">
+                                                <span class="feature-dot"></span>
+                                                Priority Support
+                                            </div>
+                                            <div class="text-sm text-gray-400 flex items-center">
+                                                <span class="feature-dot"></span>
+                                                Custom Reporting
+                                            </div>
+                                            <div class="text-sm text-gray-400 flex items-center">
+                                                <span class="feature-dot"></span>
+                                                24/7 Assistance
+                                            </div>
+                                            <div class="text-sm text-gray-400 flex items-center">
+                                                <span class="feature-dot"></span>
+                                                Growth Planning
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="mt-auto pt-8">
+                            <p class="text-sm text-gray-500 italic">
+                                Contact us for custom pricing based on your specific needs and scale
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section Styles -->
+<style>
+    .faq-section {
+        padding: 4rem 0;
+        background: #000000;
+    }
+
+    .faq-card {
+        background: rgba(17, 16, 28, 0.95);
+        border-radius: 0.5rem;
+        margin-bottom: 0.5rem;
+        overflow: hidden;
+    }
+
+    .faq-button {
+        width: 100%;
+        text-align: left;
+        padding: 1rem 1.5rem;
+        background: rgba(17, 16, 28, 0.95);
+        border: none;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.2s ease;
+    }
+
+    .faq-content {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        padding: 0 1.5rem;
+    }
+
+    .faq-content.active {
+        max-height: 500px;
+        opacity: 1;
+        padding-bottom: 1.5rem;
+    }
+
+    .faq-icon {
+        font-size: 1.25rem;
+        transition: transform 0.3s ease;
+        color: #8B5CF6;
+    }
+
+    .faq-button[aria-expanded="true"] .faq-icon {
+        transform: rotate(45deg);
+    }
+
+    .process-step {
+        margin-bottom: 0.75rem;
+        color: #9CA3AF;
+    }
+
+    .process-step strong {
+        color: white;
+        font-weight: 500;
+    }
+
+    .apply-section {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .apply-link {
+        color: #8B5CF6;
+        text-decoration: none;
+    }
+
+    .apply-link:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<!-- FAQ Section -->
+<section class="faq-section">
+    <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-3xl font-medium text-center mb-12">FAQ</h2>
+        
+        <div class="space-y-2">
+            <!-- How StartupStage Works -->
+            <div class="faq-card">
+                <button class="faq-button" aria-expanded="true" aria-controls="faq-1">
+                    <span>How StartupStage Works:</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div id="faq-1" class="faq-content active">
+                    <p class="text-gray-400 mb-4">StartupStage is a dynamic platform and publication designed to catapult startups into the limelight. Here's the process:</p>
+                    
+                    <div class="process-step">
+                        <strong>Sign Up:</strong> Founders register for free on StartupStage app, creating a profile for their startup.
+                    </div>
+                    <div class="process-step">
+                        <strong>Enter the Contest:</strong> Startups submit their pitch to join our weekly cohort competition.
+                    </div>
+                    <div class="process-step">
+                        <strong>Community Engagement:</strong> Once approved, startups are featured in our weekly voting, which allows our community of investors and enthusiasts to vote.
+                    </div>
+                    <div class="process-step">
+                        <strong>Promotion Period:</strong> The voting period is active from Monday at 10 AM to the following Monday at 10 AM, during which startups encourage their network to vote for them on StartupStage.
+                    </div>
+                    <div class="process-step">
+                        <strong>Win and Grow:</strong> The startup with the most votes wins a week-long marketing and advertising blitz across our extensive network.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Should You Apply? -->
+            <div class="faq-card">
+                <button class="faq-button" aria-expanded="false" aria-controls="faq-2">
+                    <span>Why Should You Apply?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div id="faq-2" class="faq-content">
+                    <p class="text-gray-400">Our platform offers unparalleled exposure and growth opportunities for emerging startups.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Apply Now Section -->
+        <div class="apply-section">
+            <p class="text-gray-400">
+                What are you waiting for? — Apply for free now! 
+                <a href="https://startupstage.app/" class="apply-link">https://startupstage.app/</a>
+            </p>
+        </div>
+    </div>
+</section>
+<!-- Newsletter Section Styles -->
+<style>
+    .newsletter-section {
+        position: relative;
+        background: linear-gradient(to bottom,
+            transparent,
+            rgba(139, 92, 246, 0.05) 50%,
+            transparent
+        );
+        padding: 8rem 0;
+    }
+
+    .email-input {
+        background: rgba(17, 16, 28, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.2s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .email-input:focus {
+        border-color: rgba(139, 92, 246, 0.5);
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.1);
+    }
+
+    .subscribe-btn {
+        background: #8B5CF6;
+        transition: all 0.2s ease;
+    }
+
+    .subscribe-btn:hover {
+        background: #7C3AED;
+        transform: translateY(-1px);
+    }
+
+    .footer-section {
+        background: rgba(17, 16, 28, 0.95);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-link {
+        color: #6B7280;
+        transition: color 0.2s ease;
+    }
+
+    .footer-link:hover {
+        color: #fff;
+    }
+
+    .social-icon {
+        opacity: 0.6;
+        transition: all 0.2s ease;
+    }
+
+    .social-icon:hover {
+        opacity: 1;
+        transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+</style>
+
+<!-- Newsletter Section -->
+<section class="newsletter-section">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold mb-6">Let's Join Our Deep Journey</h2>
+        <p class="text-gray-400 mb-12">
+            Check out the latest startups, community opportunities, and other great content in our weekly newsletter. Don't miss it!
+        </p>
+        <div class="flex gap-4">
+            <input type="email" 
+                placeholder="Enter your email address" 
+                class="email-input flex-1 px-6 py-3 rounded-full text-white"
+            >
+            <button class="subscribe-btn px-8 py-3 rounded-full text-white font-medium hover:shadow-lg">
+                Subscribe Our Newsletter
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="footer-section">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+        <!-- Main Footer Content -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+            <!-- Logo and Social Icons -->
+            <div class="md:col-span-3">
+                <!-- Logo -->
+                <div class="flex items-center gap-2 mb-8">
+                    <svg class="w-8 h-8 text-purple-500" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                    <span class="text-purple-500 font-medium">StartupStage</span>
+                </div>
+
+                <!-- Social Media Icons -->
+                <div class="flex gap-6">
+                    <a href="#" class="social-icon">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026 13.83 13.83 0 0 0 1.226-1.963.074.074 0 0 0-.041-.104 13.175 13.175 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="md:col-span-3">
+                <h4 class="text-white font-medium mb-6">Product</h4>
+                <div class="space-y-4">
+                    <a href="#" class="footer-link block">Features</a>
+                    <a href="#" class="footer-link block">Solutions</a>
+                </div>
+            </div>
+
+            <div class="md:col-span-3">
+                <h4 class="text-white font-medium mb-6">Company</h4>
+                <div class="space-y-4">
+                    <a href="#" class="footer-link block">About Us</a>
+                    <a href="#" class="footer-link block">Blog</a>
+                </div>
+            </div>
+
+            <div class="md:col-span-3">
+                <h4 class="text-white font-medium mb-6">Resources</h4>
+                <div class="space-y-4">
+                    <a href="#" class="footer-link block">Startup Directory</a>
+                    <a href="#" class="footer-link block">Founders Circle</a>
+                    <a href="#" class="footer-link block">Contact</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+            <div class="flex gap-6 mb-4 md:mb-0">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms and Conditions</a>
+            </div>
+            <div>
+                WindyLink Ventures, LLC. All Rights Reserved.
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- FAQ JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const faqButtons = document.querySelectorAll('.faq-button');
+    
+    faqButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const expanded = button.getAttribute('aria-expanded') === 'true';
+            const content = document.getElementById(button.getAttribute('aria-controls'));
+            
+            // Toggle button state
+            button.setAttribute('aria-expanded', !expanded);
+            
+            // Toggle content visibility
+            content.classList.toggle('active');
+            
+            // Close other open FAQs
+            faqButtons.forEach(otherButton => {
+                if (otherButton !== button && otherButton.getAttribute('aria-expanded') === 'true') {
+                    otherButton.setAttribute('aria-expanded', 'false');
+                    const otherContent = document.getElementById(otherButton.getAttribute('aria-controls'));
+                    otherContent.classList.remove('active');
+                }
+            });
+        });
+    });
+});
+</script>
+        
+        <script>
+            const testimonials = [
+                {
+                    quote: "Luke and StartupStage have a unique passion for startups and their founders. A lot of people say they do, few do as much to serve and support founders as Luke does. Thank you for all you do!",
+                    author: "Michael Kelly",
+                    position: "Co-Founder | Resolute Future"
+                },
+                {
+                    quote: "The StartupStage team has been instrumental in our growth journey. Their strategic insights and hands-on support have helped us navigate complex challenges and achieve significant milestones.",
+                    author: "Sarah Anderson",
+                    position: "CEO | TechFlow Solutions"
+                },
+                {
+                    quote: "The network and resources provided by StartupStage have been game-changing for our business. Their commitment to founder success is unmatched in the startup ecosystem.",
+                    author: "David Chen",
+                    position: "Founder | InnovateX"
+                },
+                {
+                    quote: "StartupStage's approach to scaling businesses is truly unique. They don't just provide resources, they become true partners in your growth journey.",
+                    author: "Emily Rodriguez",
+                    position: "CTO | NextGen Solutions"
+                },
+                {
+                    quote: "The level of expertise and dedication from the StartupStage team is exceptional. They've helped us navigate crucial growth phases with confidence.",
+                    author: "James Wilson",
+                    position: "CEO | TechVenture"
+                }
+            ];
+            
+            let currentIndex = 0;
+            
+            function createTestimonialCard(testimonial) {
+                return `
+                    <div class="testimonial-card p-8">
+                        <div class="mb-8">
+                            <svg class="w-8 h-8 text-purple-500 mb-6 opacity-50" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                            </svg>
+                            <p class="text-gray-400 leading-relaxed">"${testimonial.quote}"</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center">
+                                <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium">${testimonial.author}</p>
+                                <p class="text-sm text-gray-500">${testimonial.position}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            function updateTestimonials() {
+                const track = document.getElementById('testimonials-track');
+                const cards = [];
+                
+                // Get current and next two testimonials
+                for (let i = 0; i < 3; i++) {
+                    const index = (currentIndex + i) % testimonials.length;
+                    cards.push(createTestimonialCard(testimonials[index]));
+                }
+                
+                // Update track with new cards
+                track.innerHTML = cards.join('');
+            }
+            
+            function nextTestimonial() {
+                currentIndex = (currentIndex + 1) % testimonials.length;
+                const track = document.getElementById('testimonials-track');
+                
+                // Add slide-out animation
+                track.style.transform = 'translateX(-110%)';
+                track.style.opacity = '0';
+                
+                setTimeout(() => {
+                    updateTestimonials();
+                    // Reset position instantly
+                    track.style.transition = 'none';
+                    track.style.transform = 'translateX(10%)';
+                    track.style.opacity = '0';
+                    
+                    // Force reflow
+                    track.offsetHeight;
+                    
+                    // Add slide-in animation
+                    track.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
+                    track.style.transform = 'translateX(0)';
+                    track.style.opacity = '1';
+                }, 500);
+            }
+            
+            function previousTestimonial() {
+                currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+                const track = document.getElementById('testimonials-track');
+                
+                // Add slide-out animation
+                track.style.transform = 'translateX(110%)';
+                track.style.opacity = '0';
+                
+                setTimeout(() => {
+                    updateTestimonials();
+                    // Reset position instantly
+                    track.style.transition = 'none';
+                    track.style.transform = 'translateX(-10%)';
+                    track.style.opacity = '0';
+                    
+                    // Force reflow
+                    track.offsetHeight;
+                    
+                    // Add slide-in animation
+                    track.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
+                    track.style.transform = 'translateX(0)';
+                    track.style.opacity = '1';
+                }, 500);
+            }
+            
+            // Initialize on page load
+            document.addEventListener('DOMContentLoaded', () => {
+                updateTestimonials();
+                
+                // Add event listeners to navigation buttons
+                document.getElementById('prev-testimonial').addEventListener('click', previousTestimonial);
+                document.getElementById('next-testimonial').addEventListener('click', nextTestimonial);
+                
+                // Optional: Auto-advance testimonials
+                setInterval(nextTestimonial, 5000);
+            });
+            </script>
+
+<!-- Testimonials JavaScript -->
+<script>
+
+// Timer functionality
+function updateTimer() {
+    // Set end date to 30 days from now
+    const endDate = new Date();
+    endDate.setDate(endDate.getDate() + 30);
+    
+    function update() {
+        const now = new Date();
+        const diff = endDate - now;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    update();
+    setInterval(update, 1000);
+}
+
+// Slider functionality
+const companies = [
+    {
+        name: "StartupStage | Growth Membership",
+        description: "Scale your startup with our comprehensive growth solutions!",
+        location: "UK",
+        status: "Active",
+        membership: "Premium Membership"
+    },
+    {
+        name: "Enterprise Solutions Pro",
+        description: "Enterprise-grade solutions for established startups!",
+        location: "US",
+        status: "Active",
+        membership: "Enterprise Membership"
+    },
+    // Add more companies as needed
+];
+
+let currentSlide = 0;
+let mobileBreakpoint = 768;
+
+function updateTimerLayout() {
+    const timerContainer = document.querySelector('.timer-circles');
+    const isTablet = window.innerWidth <= 1024;
+    const isMobile = window.innerWidth <= mobileBreakpoint;
+    
+    if (timerContainer) {
+        if (isMobile) {
+            timerContainer.style.gap = '1rem';
+        } else if (isTablet) {
+            timerContainer.style.gap = '2rem';
+        } else {
+            timerContainer.style.gap = '4rem';
+        }
+    }
+}
+
+// Updated Testimonials JavaScript
+function updateTestimonialsLayout() {
+    const isMobile = window.innerWidth <= mobileBreakpoint;
+    const track = document.getElementById('testimonials-track');
+    
+    if (track) {
+        if (isMobile) {
+            track.style.gap = '1rem';
+            // Show only one testimonial at a time on mobile
+            document.querySelectorAll('.testimonial-card').forEach(card => {
+                card.style.flex = '0 0 100%';
+            });
+        } else {
+            track.style.gap = '2rem';
+            document.querySelectorAll('.testimonial-card').forEach(card => {
+                card.style.flex = '0 0 calc(33.333% - 1.33rem)';
+            });
+        }
+    }
+}
+
+// Mobile Menu Toggle
+function toggleMobileMenu() {
+    const mobileMenu = document.querySelector('.mobile-menu');
+    mobileMenu.classList.toggle('active');
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    
+    if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target) && mobileMenu.classList.contains('active')) {
+        mobileMenu.classList.remove('active');
+    }
+});
+
+// Prevent clicks inside mobile menu from closing it
+document.querySelector('.mobile-menu').addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+// Initialize and add event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    updateTimerLayout();
+    updateTestimonialsLayout();
+    
+    window.addEventListener('resize', () => {
+        updateTimerLayout();
+        updateTestimonialsLayout();
+    });
+});
+
+function createCompanyCard(company) {
+    return `
+        <div class="company-card p-8 w-full flex-shrink-0">
+            <div class="flex items-center gap-8">
+                <div class="w-40 h-40 bg-gray-800 rounded-lg flex items-center justify-center">
+                    <svg class="w-16 h-16 text-gray-600" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="flex gap-4 mb-4">
+                        <span class="text-gray-400">${company.location}</span>
+                        <span class="text-purple-400">${company.status}</span>
+                        <span class="text-gray-400">${company.membership}</span>
+                    </div>
+                    <h3 class="text-2xl font-medium mb-2">${company.name}</h3>
+                    <p class="text-gray-400">${company.description}</p>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function initializeSlider() {
+    const slidesContainer = document.getElementById('slides');
+    slidesContainer.innerHTML = companies.map(company => createCompanyCard(company)).join('');
+    updateSlidePosition();
+}
+
+function updateSlidePosition() {
+    const slidesElement = document.getElementById('slides');
+    slidesElement.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % companies.length;
+    updateSlidePosition();
+}
+
+function previousSlide() {
+    currentSlide = (currentSlide - 1 + companies.length) % companies.length;
+    updateSlidePosition();
+}
+
+// Initialize everything when the document is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    updateTimer();
+    initializeSlider();
+});
+</script>
+</body>
+</html>
