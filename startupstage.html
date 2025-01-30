@@ -516,12 +516,12 @@
 
 <!-- Timer Section -->
 <section class="timer-section">
-    <div class="max-w-4xl mx-auto text-center px-4">
-        <h2 class="text-4xl font-bold mb-4">Vote on Our Current Cohort</h2>
-        <p class="text-gray-400 mb-12">This Cohort Ends in</p>
+    <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-4xl font-bold mb-4 text-center">Vote on Our Current Cohort</h2>
+        <p class="text-gray-400 mb-12 text-center">This Cohort Ends in</p>
         
-        <!-- Timer Circles -->
-        <div class="flex justify-center gap-16 mb-20">
+        <div class="timer-circles flex justify-center gap-16 mb-20">
+            <!-- Timer circles remain the same but will be responsive -->
             <div class="flex flex-col items-center">
                 <div class="timer-circle mb-2">
                     <span id="days" class="text-3xl font-medium">00</span>
@@ -548,7 +548,6 @@
             </div>
         </div>
 
-        <!-- Company Slider -->
         <div class="relative">
             <!-- Navigation Arrows -->
             <button class="nav-arrow absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 w-12 h-12 rounded-xl flex items-center justify-center text-gray-400" onclick="previousSlide()">
@@ -566,6 +565,24 @@
             <div id="slides-container" class="overflow-hidden">
                 <div id="slides" class="flex transition-transform duration-300">
                     <!-- Company Cards - Will be populated by JavaScript -->
+                    <div class="company-card p-8">
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <div class="w-40 h-40 bg-gray-800 rounded-lg flex items-center justify-center">
+                                <svg class="w-16 h-16 text-gray-600" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <div class="company-info text-center md:text-left">
+                                <div class="company-tags flex gap-4 mb-4">
+                                    <span class="text-gray-400">UK</span>
+                                    <span class="text-purple-400">Active</span>
+                                    <span class="text-gray-400">Premium Membership</span>
+                                </div>
+                                <h3 class="text-2xl font-medium mb-2">StartupStage | Growth Membership</h3>
+                                <p class="text-gray-400">Scale your startup with our comprehensive growth solutions!</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -589,8 +606,13 @@
                 </button>
             </div>
         </div>
+
+        <!-- Company Card with responsive layout -->
+       
     </div>
 </section>
+
+
 <!-- Testimonials Section Styles -->
 <style>
     .testimonials-section {
@@ -1117,77 +1139,78 @@
         );
         padding: 8rem 0;
     }
-
+    
     .email-input {
         background: rgba(17, 16, 28, 0.8);
         border: 1px solid rgba(255, 255, 255, 0.05);
         transition: all 0.2s ease;
         backdrop-filter: blur(10px);
     }
-
+    
     .email-input:focus {
         border-color: rgba(139, 92, 246, 0.5);
         outline: none;
         box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.1);
     }
-
+    
     .subscribe-btn {
         background: #8B5CF6;
         transition: all 0.2s ease;
     }
-
+    
     .subscribe-btn:hover {
         background: #7C3AED;
         transform: translateY(-1px);
     }
-
+    
     .footer-section {
         background: rgba(17, 16, 28, 0.95);
         border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
-
+    
     .footer-link {
         color: #6B7280;
         transition: color 0.2s ease;
     }
-
+    
     .footer-link:hover {
         color: #fff;
     }
-
+    
     .social-icon {
         opacity: 0.6;
         transition: all 0.2s ease;
     }
-
+    
     .social-icon:hover {
         opacity: 1;
         transform: translateY(-2px);
     }
-
+    
     .footer-bottom {
         border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
-</style>
-
-<!-- Newsletter Section -->
-<section class="newsletter-section">
-    <div class="max-w-3xl mx-auto px-4 text-center">
-        <h2 class="text-4xl font-bold mb-6">Let's Join Our Deep Journey</h2>
-        <p class="text-gray-400 mb-12">
-            Check out the latest startups, community opportunities, and other great content in our weekly newsletter. Don't miss it!
-        </p>
-        <div class="flex gap-4">
-            <input type="email" 
-                placeholder="Enter your email address" 
-                class="email-input flex-1 px-6 py-3 rounded-full text-white"
-            >
-            <button class="subscribe-btn px-8 py-3 rounded-full text-white font-medium hover:shadow-lg">
-                Subscribe Our Newsletter
-            </button>
+    </style>
+    
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">Let's Join Our Deep Journey</h2>
+            <p class="text-gray-400 mb-8 sm:mb-12 text-sm sm:text-base">
+                Check out the latest startups, community opportunities, and other great content in our weekly newsletter. Don't miss it!
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <input 
+                    type="email"
+                    placeholder="Enter your email address"
+                    class="email-input w-full sm:flex-1 px-4 sm:px-6 py-2 sm:py-3 rounded-full text-white text-sm sm:text-base"
+                >
+                <button class="subscribe-btn w-full sm:w-auto px-6 sm:px-8 py-2 sm:py-3 rounded-full text-white font-medium hover:shadow-lg text-sm sm:text-base">
+                    Subscribe Our Newsletter
+                </button>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 <!-- Footer Section -->
 <footer class="footer-section">
