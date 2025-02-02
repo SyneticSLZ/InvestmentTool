@@ -39,6 +39,37 @@ const HUNTER_API_KEY = process.env.HUNTER_API_KEY;
 const HUNTER_API_URL = 'https://api.hunter.io/v2';
 
 
+const nodemailer = require('nodemailer');
+
+
+app.post('/send-email', async (req, res) => {
+    try {
+        const { to, subject, text, smtp } = req.body;
+
+        const transporter = nodemailer.createTransport({
+            host: smtp.host,
+            port: smtp.port,
+            secure: smtp.secure,
+            auth: {
+                user: process.env.GMAIL_USER,
+                pass: process.env.GMAIL_APP_PASSWORD
+            }
+        });
+
+        const info = await transporter.sendMail({
+            from: process.env.GMAIL_USER,
+            to: to,
+            subject: subject,
+            text: text
+        });
+
+        res.json({ success: true, messageId: info.messageId });
+    } catch (error) {
+        console.error('Email sending error:', error);
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
 // Mock data simulating Hunter.io response
 const mockContactsResponse = {
     "data": {
@@ -124,40 +155,40 @@ app.post('/search-contacts', async (req, res) => {
         return res.status(400).json({ error: 'Domain is required' });
     }
 
-    // try {
-    //     const response = await axios.get(`${HUNTER_API_URL}/domain-search`, {
-    //         params: {
-    //             domain,
-    //             api_key: HUNTER_API_KEY,
-    //             limit: 3, // Adjust as needed
-    //             seniority: ['executive', 'senior'], // Filter for senior positions
-    //             department: ['executive', 'finance', 'investment'] // Relevant departments
-    //         }
-    //     });
-
-    //     // Cache the results if needed
-    //     res.json(response.data);
-    // } catch (error) {
-    //     console.error('Hunter.io API error:', error);
-    //     res.status(500).json({ 
-    //         error: 'Error fetching contacts',
-    //         details: error.response?.data || error.message 
-    //     });
-    // }
-
     try {
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Return mock data
-        res.json(mockContactsResponse);
+        const response = await axios.get(`${HUNTER_API_URL}/domain-search`, {
+            params: {
+                domain,
+                api_key: HUNTER_API_KEY,
+                limit: 3, // Adjust as needed
+                seniority: ['executive', 'senior'], // Filter for senior positions
+                department: ['executive', 'finance', 'investment'] // Relevant departments
+            }
+        });
+
+        // Cache the results if needed
+        res.json(response.data);
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Hunter.io API error:', error);
         res.status(500).json({ 
             error: 'Error fetching contacts',
-            details: error.message 
+            details: error.response?.data || error.message 
         });
     }
+
+    // try {
+    //     // Simulate API delay
+    //     await new Promise(resolve => setTimeout(resolve, 1000));
+        
+    //     // Return mock data
+    //     res.json(mockContactsResponse);
+    // } catch (error) {
+    //     console.error('Error:', error);
+    //     res.status(500).json({ 
+    //         error: 'Error fetching contacts',
+    //         details: error.message 
+    //     });
+    // }
 });
 // Fetch latest funding rounds
 app.get('/latest-investments', async (req, res) => {

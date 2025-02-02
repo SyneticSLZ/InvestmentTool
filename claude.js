@@ -178,11 +178,11 @@ function updateRefreshTimestamp() {
 
 
 // Global state for filters
-let activeFilters = {
-    dateRange: { start: '', end: '' },
-    investmentType: '',
-    region: ''
-};
+// let activeFilters = {
+//     dateRange: { start: '', end: '' },
+//     investmentType: '',
+//     region: ''
+// };
 
 // Store original data
 let originalData = [];
@@ -253,43 +253,101 @@ function renderMainTable(data) {
     
     const mainContent = document.getElementById('mainContent');
     const fullHTML = `
-        <div class="space-y-4">
-            <!-- Filters -->
-            <div class="bg-white rounded-xl shadow-sm p-4">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <!-- Date Range Filters -->
+    <div class="space-y-6">
+        <!-- Enhanced Filters Section -->
+<!-- Elegant Filters Section -->
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border dark:border-gray-700 transition-colors">
+    <!-- Active Filters Bar -->
+    <div class="flex items-center justify-between px-6 py-3 border-b dark:border-gray-700">
+        <div class="flex items-center space-x-2">
+            <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Active Filters:</span>
+            <div class="flex flex-wrap gap-2" id="activeFilterTags">
+                <!-- Active filter tags will be inserted here -->
+            </div>
+        </div>
+        <div class="flex items-center space-x-3">
+            <button onclick="clearAllFilters()" class="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
+                Clear All
+            </button>
+            <button onclick="toggleFilterPanel()" class="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">
+                <i class="fas fa-sliders-h mr-1"></i>
+                Filters
+            </button>
+        </div>
+    </div>
+
+    <!-- Filter Panel (Initially Hidden) -->
+    <div id="filterPanel" class="hidden">
+        <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Date Range Section -->
+            <div class="space-y-4">
+                <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center">
+                    <i class="far fa-calendar-alt mr-2"></i>
+                    Date Range
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="setQuickDateRange(7)" 
+                            class="px-4 py-2 text-sm rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                        Last 7 days
+                    </button>
+                    <button onclick="setQuickDateRange(30)" 
+                            class="px-4 py-2 text-sm rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                        Last 30 days
+                    </button>
+                    <button onclick="setQuickDateRange(90)" 
+                            class="px-4 py-2 text-sm rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                        Last quarter
+                    </button>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
+                        <label class="block text-sm text-gray-500 dark:text-gray-400 mb-1">From</label>
                         <input type="date" id="startDate" 
                                value="${activeFilters.dateRange.start}"
-                               class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                               class="block w-full h-11 px-4 rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:border-blue-500 focus:ring-blue-500 dark:focus:border-blue-400 dark:focus:ring-blue-400 transition-colors">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">End Date</label>
+                        <label class="block text-sm text-gray-500 dark:text-gray-400 mb-1">To</label>
                         <input type="date" id="endDate" 
                                value="${activeFilters.dateRange.end}"
-                               class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                               class="block w-full h-11 px-4 rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:border-blue-500 focus:ring-blue-500 dark:focus:border-blue-400 dark:focus:ring-blue-400 transition-colors">
                     </div>
-                    
-                    <!-- Investment Type Filter -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Investment Type</label>
+                </div>
+            </div>
+
+            <!-- Investment Type & Region Section -->
+            <div class="space-y-6">
+                <!-- Investment Type -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        <i class="fas fa-chart-line mr-2"></i>
+                        Investment Type
+                    </label>
+                    <div class="relative">
                         <select id="investmentType" 
-                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
-                            <option value="">All Types</option>
+                                class="block w-full h-11 pl-4 pr-10 rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:border-blue-500 focus:ring-blue-500 dark:focus:border-blue-400 dark:focus:ring-blue-400 transition-colors appearance-none cursor-pointer">
+                            <option value="">All Investment Types</option>
                             <option value="Seed" ${activeFilters.investmentType === 'seed' ? 'selected' : ''}>Seed</option>
                             <option value="Series A" ${activeFilters.investmentType === 'Series A' ? 'selected' : ''}>Series A</option>
                             <option value="Series B" ${activeFilters.investmentType === 'Series B' ? 'selected' : ''}>Series B</option>
                             <option value="Series C" ${activeFilters.investmentType === 'Series C' ? 'selected' : ''}>Series C</option>
                             <option value="Series D" ${activeFilters.investmentType === 'Series D' ? 'selected' : ''}>Series D</option>
                         </select>
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-gray-400 dark:text-gray-500">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
                     </div>
-                    
-                    <!-- Region/Currency Filter -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Region</label>
+                </div>
+
+                <!-- Region -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        <i class="fas fa-globe mr-2"></i>
+                        Region
+                    </label>
+                    <div class="relative">
                         <select id="region" 
-                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                                class="block w-full h-11 pl-4 pr-10 rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:border-blue-500 focus:ring-blue-500 dark:focus:border-blue-400 dark:focus:ring-blue-400 transition-colors appearance-none cursor-pointer">
                             <option value="">All Regions</option>
                             <option value="America" ${activeFilters.region === 'America' ? 'selected' : ''}>America (USD)</option>
                             <option value="China" ${activeFilters.region === 'China' ? 'selected' : ''}>China (CNY)</option>
@@ -297,79 +355,86 @@ function renderMainTable(data) {
                             <option value="United Kingdom" ${activeFilters.region === 'United Kingdom' ? 'selected' : ''}>United Kingdom (GBP)</option>
                             <option value="Japan" ${activeFilters.region === 'Japan' ? 'selected' : ''}>Japan (JPY)</option>
                         </select>
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-gray-400 dark:text-gray-500">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Table -->
-            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-                            ${filteredData.length === 0 ? `
-                    <div class="p-8 text-center">
-                        <p class="text-gray-500 text-lg">No results found for the selected filters</p>
-                        <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-blue-100 text-blue-700 rounded-md hover:bg-blue-200 transition-colors">
-                            Reset Filters
-                        </button>
-                    </div>
-                ` : `
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Company</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Round</th>
-                                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
-                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            ${filteredData.map(event => `
-                                <tr class="hover:bg-gray-50 transition-colors">
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center">
-                                            <div class="flex-shrink-0 h-10 w-10">
-                                                <img class="h-12 w-12 rounded-full object-cover" 
-                                                     src="https://images.crunchbase.com/image/upload/c_pad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/${event.identifier.image_id}"
-                                                     alt="${event.company_name}">
-                                            </div>
-                                            <div class="ml-4">
-                                                <div class="text-sm font-medium text-gray-900">
-                                                    ${event.funded_organization_identifier.value}
-                                                </div>
-                                                <div class="text-sm text-gray-500">
-                                                    ${event.short_description || ''}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">
-                                            ${new Date(event.announced_on).toLocaleDateString()}
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                            ${event.investment_type}
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-900">
-                                        ${formatCurrency(event.money_raised.value, event.money_raised.currency)}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-center">
-                                        <button onclick="showFundingDetails('${event.uuid}')"
-                                                class="inline-flex items-center px-3 py-1 border border-transparent text-sm leading-4 font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                            View Details
-                                        </button>
-                                    </td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                </div>
-                `}
             </div>
         </div>
-    `;
+    </div>
+</div>
+
+        <!-- Table -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border dark:border-gray-700 overflow-hidden transition-colors">
+            ${filteredData.length === 0 ? `
+                <div class="p-12 text-center">
+                    <p class="text-gray-600 dark:text-gray-300 text-lg mb-4">No results found for the selected filters</p>
+                    <button onclick="resetFilters()" 
+                            class="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors">
+                        Reset Filters
+                    </button>
+                </div>
+            ` : `
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead class="bg-gray-50 dark:bg-gray-900">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Company</th>
+                            <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Date</th>
+                            <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Round</th>
+                            <th class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Amount</th>
+                            <th class="px-6 py-4 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                        ${filteredData.map(event => `
+                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 h-12 w-12">
+                                            <img class="h-12 w-12 rounded-full object-cover border dark:border-gray-600" 
+                                                 src="https://images.crunchbase.com/image/upload/c_pad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/${event.identifier.image_id}"
+                                                 alt="${event.company_name}">
+                                        </div>
+                                        <div class="ml-4">
+                                            <div class="text-sm font-medium text-gray-900 dark:text-white">
+                                                ${event.funded_organization_identifier.value}
+                                            </div>
+                                            <div class="text-sm text-gray-500 dark:text-gray-400">
+                                                ${event.short_description || ''}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900 dark:text-white">
+                                        ${new Date(event.announced_on).toLocaleDateString()}
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200">
+                                        ${event.investment_type}
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-900 dark:text-white">
+                                    ${formatCurrency(event.money_raised.value, event.money_raised.currency)}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-center">
+                                    <button onclick="showFundingDetails('${event.uuid}')"
+                                            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-blue-700 dark:text-blue-200 bg-blue-100 dark:bg-blue-900 hover:bg-blue-200 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800 transition-colors">
+                                        View Details
+                                    </button>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+            `}
+        </div>
+    </div>
+`;
     
     mainContent.innerHTML = fullHTML;
 
@@ -389,6 +454,122 @@ function resetFilters() {
     };
     renderMainTable(originalData);
 }
+
+let activeFilters = {
+    dateRange: { start: '', end: '' },
+    investmentType: '',
+    region: ''
+};
+
+// Toggle filter panel
+function toggleFilterPanel() {
+    const panel = document.getElementById('filterPanel');
+    panel.classList.toggle('hidden');
+}
+
+// Quick date range selector
+function setQuickDateRange(days) {
+    const end = new Date();
+    const start = new Date();
+    start.setDate(start.getDate() - days);
+    
+    document.getElementById('startDate').value = start.toISOString().split('T')[0];
+    document.getElementById('endDate').value = end.toISOString().split('T')[0];
+    
+    updateFilters();
+}
+
+// Update active filters
+function updateFilters() {
+    activeFilters = {
+        dateRange: {
+            start: document.getElementById('startDate').value,
+            end: document.getElementById('endDate').value
+        },
+        investmentType: document.getElementById('investmentType').value,
+        region: document.getElementById('region').value
+    };
+    
+    updateActiveFilterTags();
+    // Trigger your data refresh here
+}
+
+// Update active filter tags
+function updateActiveFilterTags() {
+    const container = document.getElementById('activeFilterTags');
+    let tags = [];
+    
+    if (activeFilters.dateRange.start && activeFilters.dateRange.end) {
+        tags.push(`
+            <span class="inline-flex items-center px-3 py-1 rounded-lg text-sm bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300">
+                ${new Date(activeFilters.dateRange.start).toLocaleDateString()} - ${new Date(activeFilters.dateRange.end).toLocaleDateString()}
+                <button onclick="removeDateFilter()" class="ml-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200">
+                    <i class="fas fa-times"></i>
+                </button>
+            </span>
+        `);
+    }
+    
+    if (activeFilters.investmentType) {
+        tags.push(`
+            <span class="inline-flex items-center px-3 py-1 rounded-lg text-sm bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300">
+                ${activeFilters.investmentType}
+                <button onclick="removeInvestmentTypeFilter()" class="ml-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200">
+                    <i class="fas fa-times"></i>
+                </button>
+            </span>
+        `);
+    }
+    
+    if (activeFilters.region) {
+        tags.push(`
+            <span class="inline-flex items-center px-3 py-1 rounded-lg text-sm bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300">
+                ${activeFilters.region}
+                <button onclick="removeRegionFilter()" class="ml-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200">
+                    <i class="fas fa-times"></i>
+                </button>
+            </span>
+        `);
+    }
+    
+    container.innerHTML = tags.join('');
+}
+
+// Remove individual filters
+function removeDateFilter() {
+    document.getElementById('startDate').value = '';
+    document.getElementById('endDate').value = '';
+    updateFilters();
+}
+
+function removeInvestmentTypeFilter() {
+    document.getElementById('investmentType').value = '';
+    updateFilters();
+}
+
+function removeRegionFilter() {
+    document.getElementById('region').value = '';
+    updateFilters();
+}
+
+// Clear all filters
+function clearAllFilters() {
+    document.getElementById('startDate').value = '';
+    document.getElementById('endDate').value = '';
+    document.getElementById('investmentType').value = '';
+    document.getElementById('region').value = '';
+    updateFilters();
+}
+
+// Initialize event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    const inputs = ['startDate', 'endDate', 'investmentType', 'region'];
+    inputs.forEach(id => {
+        document.getElementById(id).addEventListener('change', updateFilters);
+    });
+    updateFilters();
+});
+
 
 async function showFundingDetails(eventId) {
     const event = fundingData.find(e => e.uuid === eventId);
@@ -693,198 +874,198 @@ async function generateDetailsTab(event) {
     const properties = crunchbaseData?.properties?.identifier || {};
 
     return `
-        <div class="space-y-6">
-            <div class="bg-gray-50 rounded-xl p-6">
-                <!-- Company Header -->
-                <div class="flex items-start space-x-6">
-                    ${company.image_id ? `
-                        <img src="https://images.crunchbase.com/image/upload/c_pad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/${company.image_id}" 
-                             alt="${company.value}"
-                             class="w-24 h-24 rounded-xl object-cover flex-shrink-0">
-                    ` : `
-                        <div class="w-24 h-24 rounded-xl bg-gray-200 flex items-center justify-center flex-shrink-0">
-                            <span class="text-3xl font-semibold text-gray-400">
-                                ${company.value.charAt(0)}
-                            </span>
-                        </div>
-                    `}
-                    <div class="flex-1">
-                        <div class="flex items-start justify-between">
-                            <div>
-                                <h2 class="text-2xl font-bold text-gray-900">${company.value}</h2>
-                                ${fields.short_description ? `
-                                    <p class="mt-2 text-gray-600">${fields.short_description}</p>
-                                ` : ''}
-                            </div>
-                            <div class="flex space-x-3">
-                                ${fields.linkedin?.value ? `
-                                    <a href="${fields.linkedin.value}" 
-                                       target="_blank"
-                                       class="text-blue-600 hover:text-blue-800">
-                                        <i class="fab fa-linkedin text-xl"></i>
-                                    </a>
-                                ` : ''}
-                                ${fields.twitter?.value ? `
-                                    <a href="https://twitter.com/${fields.twitter.value}" 
-                                       target="_blank"
-                                       class="text-blue-400 hover:text-blue-600">
-                                        <i class="fab fa-twitter text-xl"></i>
-                                    </a>
-                                ` : ''}
-                                ${fields.website_url ? `
-                                    <a href="${fields.website_url}" 
-                                       target="_blank"
-                                       class="text-blue-600 hover:text-blue-800">
-                                        <i class="fas fa-globe text-xl"></i>
-                                    </a>
-                                ` : ''}
-                            </div>
-                        </div>
-
-                        <!-- Company Quick Stats -->
-                        <div class="mt-4 flex flex-wrap gap-4">
-                            ${fields.created_at ? `
-                                <div class="flex items-center text-sm text-gray-500">
-                                    <i class="far fa-calendar mr-2"></i>
-                                    Founded ${new Date(fields.created_at).toLocaleDateString()}
-                                </div>
+    <div class="space-y-8">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border dark:border-gray-700 p-6 transition-colors">
+            <!-- Company Header -->
+            <div class="flex items-start space-x-6">
+                ${company.image_id ? `
+                    <img src="https://images.crunchbase.com/image/upload/c_pad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/${company.image_id}" 
+                         alt="${company.value}"
+                         class="w-24 h-24 rounded-lg object-cover flex-shrink-0 border dark:border-gray-600">
+                ` : `
+                    <div class="w-24 h-24 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center flex-shrink-0">
+                        <span class="text-3xl font-semibold text-gray-400 dark:text-gray-500">
+                            ${company.value.charAt(0)}
+                        </span>
+                    </div>
+                `}
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white truncate">${company.value}</h2>
+                            ${fields.short_description ? `
+                                <p class="mt-2 text-gray-600 dark:text-gray-300">${fields.short_description}</p>
                             ` : ''}
-                            ${fields.last_funding_date ? `
-                                <div class="flex items-center text-sm text-gray-500">
-                                    <i class="fas fa-money-bill mr-2"></i>
-                                    Last Funding ${new Date(fields.last_funding_date).toLocaleDateString()}
-                                </div>
+                        </div>
+                        <div class="flex space-x-4 ml-4">
+                            ${fields.linkedin?.value ? `
+                                <a href="${fields.linkedin.value}" 
+                                   target="_blank"
+                                   class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors">
+                                    <i class="fab fa-linkedin text-xl"></i>
+                                </a>
+                            ` : ''}
+                            ${fields.twitter?.value ? `
+                                <a href="https://twitter.com/${fields.twitter.value}" 
+                                   target="_blank"
+                                   class="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+                                    <i class="fab fa-twitter text-xl"></i>
+                                </a>
+                            ` : ''}
+                            ${fields.website_url ? `
+                                <a href="${fields.website_url}" 
+                                   target="_blank"
+                                   class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors">
+                                    <i class="fas fa-globe text-xl"></i>
+                                </a>
                             ` : ''}
                         </div>
                     </div>
-                </div>
 
-                <!-- Current Funding Round -->
-                <div class="mt-8">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Current Funding Round</h3>
-                    <div class="bg-white rounded-lg p-6 shadow-sm">
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div>
-                                <p class="text-sm text-gray-500">Amount Raised</p>
-                                <div class="flex items-baseline space-x-2">
-                                    <p class="text-2xl font-bold text-gray-900">
-                                        ${formatCurrency(event.money_raised.value, event.money_raised.currency)}
-                                    </p>
-                                    ${event.money_raised.currency !== 'USD' ? `
-                                        <p class="text-sm text-gray-500">
-                                            (${formatCurrency(event.money_raised.value_usd, 'USD')})
-                                        </p>
-                                    ` : ''}
-                                </div>
+                    <!-- Company Quick Stats -->
+                    <div class="mt-4 flex flex-wrap gap-4">
+                        ${fields.created_at ? `
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <i class="far fa-calendar mr-2"></i>
+                                Founded ${new Date(fields.created_at).toLocaleDateString()}
                             </div>
-                            <div>
-                                <p class="text-sm text-gray-500">Round Type</p>
-                                <p class="text-xl font-semibold text-gray-900 capitalize">
-                                    ${event.investment_type}
+                        ` : ''}
+                        ${fields.last_funding_date ? `
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-money-bill mr-2"></i>
+                                Last Funding ${new Date(fields.last_funding_date).toLocaleDateString()}
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Funding Round -->
+            <div class="mt-8">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Current Funding Round</h3>
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border dark:border-gray-600 transition-colors">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Amount Raised</p>
+                            <div class="flex items-baseline space-x-2 mt-1">
+                                <p class="text-2xl font-bold text-gray-900 dark:text-white">
+                                    ${formatCurrency(event.money_raised.value, event.money_raised.currency)}
                                 </p>
+                                ${event.money_raised.currency !== 'USD' ? `
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                                        (${formatCurrency(event.money_raised.value_usd, 'USD')})
+                                    </p>
+                                ` : ''}
                             </div>
-                            <div>
-                                <p class="text-sm text-gray-500">Announcement Date</p>
-                                <p class="text-xl font-semibold text-gray-900">
-                                    ${new Date(event.announced_on).toLocaleDateString()}
-                                </p>
-                            </div>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Round Type</p>
+                            <p class="text-xl font-semibold text-gray-900 dark:text-white capitalize mt-1">
+                                ${event.investment_type}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Announcement Date</p>
+                            <p class="text-xl font-semibold text-gray-900 dark:text-white mt-1">
+                                ${new Date(event.announced_on).toLocaleDateString()}
+                            </p>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Organization Metrics -->
-                <div class="mt-8">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Organization Metrics</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Rankings -->
-                        <div class="bg-white rounded-lg p-6 shadow-sm">
-                            <h4 class="text-sm font-medium text-gray-500 mb-4">Rankings</h4>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <p class="text-sm text-gray-500">Organization Rank</p>
-                                    <p class="text-lg font-semibold text-gray-900">
-                                        ${fields.rank_org || 'N/A'}
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-500">Company Rank</p>
-                                    <p class="text-lg font-semibold text-gray-900">
-                                        ${fields.rank_org_company || 'N/A'}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Performance Changes -->
-                        <div class="bg-white rounded-lg p-6 shadow-sm">
-                            <h4 class="text-sm font-medium text-gray-500 mb-4">Recent Performance</h4>
-                            <div class="grid grid-cols-3 gap-4">
-                                <div>
-                                    <p class="text-sm text-gray-500">7 Days</p>
-                                    <p class="text-lg font-semibold ${fields.rank_delta_d7 > 0 ? 'text-green-600' : 'text-red-600'}">
-                                        ${fields.rank_delta_d7 ? `${fields.rank_delta_d7.toFixed(1)}%` : 'N/A'}
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-500">30 Days</p>
-                                    <p class="text-lg font-semibold ${fields.rank_delta_d30 > 0 ? 'text-green-600' : 'text-red-600'}">
-                                        ${fields.rank_delta_d30 ? `${fields.rank_delta_d30.toFixed(1)}%` : 'N/A'}
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-500">90 Days</p>
-                                    <p class="text-lg font-semibold ${fields.rank_delta_d90 > 0 ? 'text-green-600' : 'text-red-600'}">
-                                        ${fields.rank_delta_d90 ? `${fields.rank_delta_d90.toFixed(1)}%` : 'N/A'}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Location Information -->
-                ${fields.location_identifiers ? `
-                    <div class="mt-8">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Location</h3>
-                        <div class="bg-white rounded-lg p-6 shadow-sm">
-                            <div class="flex flex-wrap gap-2">
-                                ${fields.location_identifiers.map(location => `
-                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-50 text-blue-700">
-                                        ${location.value}
-                                        ${location.location_type ? `
-                                            <span class="ml-1 text-blue-500 text-xs">(${location.location_type})</span>
-                                        ` : ''}
-                                    </span>
-                                `).join('')}
-                            </div>
-                        </div>
-                    </div>
-                ` : ''}
-
-                <!-- Additional Information -->
-                <div class="mt-8">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Additional Information</h3>
-                    <div class="bg-white rounded-lg p-6 shadow-sm">
+            <!-- Organization Metrics -->
+            <div class="mt-8">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Organization Metrics</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Rankings -->
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border dark:border-gray-600 transition-colors">
+                        <h4 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-4">Rankings</h4>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <p class="text-sm text-gray-500">Created</p>
-                                <p class="text-sm font-medium text-gray-900">
-                                    ${new Date(fields.created_at).toLocaleDateString()}
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Organization Rank</p>
+                                <p class="text-lg font-semibold text-gray-900 dark:text-white mt-1">
+                                    ${fields.rank_org || 'N/A'}
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-500">Last Updated</p>
-                                <p class="text-sm font-medium text-gray-900">
-                                    ${new Date(fields.updated_at).toLocaleDateString()}
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Company Rank</p>
+                                <p class="text-lg font-semibold text-gray-900 dark:text-white mt-1">
+                                    ${fields.rank_org_company || 'N/A'}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performance Changes -->
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border dark:border-gray-600 transition-colors">
+                        <h4 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-4">Recent Performance</h4>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">7 Days</p>
+                                <p class="text-lg font-semibold mt-1 ${fields.rank_delta_d7 > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}">
+                                    ${fields.rank_delta_d7 ? `${fields.rank_delta_d7.toFixed(1)}%` : 'N/A'}
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">30 Days</p>
+                                <p class="text-lg font-semibold mt-1 ${fields.rank_delta_d30 > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}">
+                                    ${fields.rank_delta_d30 ? `${fields.rank_delta_d30.toFixed(1)}%` : 'N/A'}
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">90 Days</p>
+                                <p class="text-lg font-semibold mt-1 ${fields.rank_delta_d90 > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}">
+                                    ${fields.rank_delta_d90 ? `${fields.rank_delta_d90.toFixed(1)}%` : 'N/A'}
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Location Information -->
+            ${fields.location_identifiers ? `
+                <div class="mt-8">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Location</h3>
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border dark:border-gray-600 transition-colors">
+                        <div class="flex flex-wrap gap-2">
+                            ${fields.location_identifiers.map(location => `
+                                <span class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 transition-colors">
+                                    ${location.value}
+                                    ${location.location_type ? `
+                                        <span class="ml-1.5 text-blue-500 dark:text-blue-400 text-xs">(${location.location_type})</span>
+                                    ` : ''}
+                                </span>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            ` : ''}
+
+            <!-- Additional Information -->
+            <div class="mt-8">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Additional Information</h3>
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border dark:border-gray-600 transition-colors">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Created</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-white mt-1">
+                                ${new Date(fields.created_at).toLocaleDateString()}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Last Updated</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-white mt-1">
+                                ${new Date(fields.updated_at).toLocaleDateString()}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    `;
+    </div>
+`;
 }
 
 async function generateInvestorsTab(event) {
@@ -903,168 +1084,191 @@ async function generateInvestorsTab(event) {
     }));
 
     return `
-        <div class="space-y-6">
-            ${investorsWithData.map(investor => {
-                const fields = investor.crunchbaseData?.cards?.fields || {};
-                const properties = investor.crunchbaseData?.properties?.identifier || {};
-                
-                return `
-                    <div class="investor-card bg-white rounded-xl border p-6 hover:shadow-md transition-shadow">
-                        <div class="flex items-start justify-between">
-                            <div class="flex items-start space-x-4">
-                                ${investor.image_id ? `
-                                    <img class="h-16 w-16 rounded-xl object-cover" 
-                                         src="https://images.crunchbase.com/image/upload/c_pad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/${investor.image_id}"
-                                         alt="${properties.value}">
-                                ` : `
-                                    <div class="h-16 w-16 rounded-xl bg-gray-100 flex items-center justify-center">
-                                        <span class="text-xl font-semibold text-gray-400">
-                                            ${investor.value.charAt(0)}
-                                        </span>
+    <div class="space-y-6">
+        ${investorsWithData.map(investor => {
+            const fields = investor.crunchbaseData?.cards?.fields || {};
+            const properties = investor.crunchbaseData?.properties?.identifier || {};
+            
+            return `
+                <div class="investor-card bg-white dark:bg-gray-800 rounded-lg border dark:border-gray-700 p-6 hover:shadow-md dark:hover:shadow-lg dark:hover:shadow-black/20 transition-all">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-start space-x-4">
+                            ${investor.image_id ? `
+                                <img class="h-16 w-16 rounded-lg object-cover border dark:border-gray-600" 
+                                     src="https://images.crunchbase.com/image/upload/c_pad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/${investor.image_id}"
+                                     alt="${properties.value}">
+                            ` : `
+                                <div class="h-16 w-16 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                                    <span class="text-xl font-semibold text-gray-400 dark:text-gray-500">
+                                        ${investor.value.charAt(0)}
+                                    </span>
+                                </div>
+                            `}
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white truncate">${investor.value}</h3>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400 capitalize">
+                                            ${investor.role || 'Investor'} · ${investor.entity_def_id}
+                                        </p>
                                     </div>
-                                `}
-                                <div class="flex-1">
-                                    <div class="flex items-start justify-between">
+                                </div>
+                                ${fields.short_description ? `
+                                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                                        ${fields.short_description}
+                                    </p>
+                                ` : ''}
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 ml-4">
+                            ${fields.linkedin?.value ? `
+                                <a href="${fields.linkedin.value}" 
+                                   target="_blank"
+                                   class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors">
+                                    <i class="fab fa-linkedin text-xl"></i>
+                                </a>
+                            ` : ''}
+                            ${fields.twitter?.value ? `
+                                <a href="https://twitter.com/${fields.twitter.value}" 
+                                   target="_blank"
+                                   class="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+                                    <i class="fab fa-twitter text-xl"></i>
+                                </a>
+                            ` : ''}
+                            ${fields.website_url ? `
+                                <a href="${fields.website_url}" 
+                                   target="_blank"
+                                   class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors">
+                                    <i class="fas fa-globe text-xl"></i>
+                                </a>
+                            ` : ''}
+                            <button onclick="toggleInvestorDetails('${investor.uuid}')"
+                                    class="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+                                <i class="fas fa-chevron-down transform transition-transform duration-200"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Expandable Details Section -->
+                    <div id="investor-${investor.uuid}-details" class="hidden mt-6">
+                        <div class="border-t dark:border-gray-700 pt-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Company Stats -->
+                                <div class="space-y-4">
+                                    <h4 class="text-sm font-medium text-gray-500 dark:text-gray-400">Organization Stats</h4>
+                                    <div class="grid grid-cols-2 gap-4 bg-gray-50 dark:bg-gray-700 p-4 rounded-lg border dark:border-gray-600">
                                         <div>
-                                            <h3 class="text-xl font-semibold text-gray-900">${investor.value}</h3>
-                                            <p class="text-sm text-gray-500 capitalize">
-                                                ${investor.role || 'Investor'} · ${investor.entity_def_id}
+                                            <p class="text-sm text-gray-500 dark:text-gray-400">Org Rank</p>
+                                            <p class="text-lg font-semibold text-gray-900 dark:text-white mt-1">
+                                                ${fields.rank_org || 'N/A'}
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm text-gray-500 dark:text-gray-400">Principal Rank</p>
+                                            <p class="text-lg font-semibold text-gray-900 dark:text-white mt-1">
+                                                ${fields.rank_principal || 'N/A'}
                                             </p>
                                         </div>
                                     </div>
-                                    ${fields.short_description ? `
-                                        <p class="mt-2 text-sm text-gray-600">
-                                            ${fields.short_description}
-                                        </p>
-                                    ` : ''}
                                 </div>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                ${fields.linkedin?.value ? `
-                                    <a href="${fields.linkedin.value}" 
-                                       target="_blank"
-                                       class="text-blue-600 hover:text-blue-800">
-                                        <i class="fab fa-linkedin text-xl"></i>
-                                    </a>
-                                ` : ''}
-                                ${fields.twitter?.value ? `
-                                    <a href="https://twitter.com/${fields.twitter.value}" 
-                                       target="_blank"
-                                       class="text-blue-400 hover:text-blue-600">
-                                        <i class="fab fa-twitter text-xl"></i>
-                                    </a>
-                                ` : ''}
-                                ${fields.website_url ? `
-                                    <a href="${fields.website_url}" 
-                                       target="_blank"
-                                       class="text-blue-600 hover:text-blue-800">
-                                        <i class="fas fa-globe text-xl"></i>
-                                    </a>
-                                ` : ''}
-                                <button onclick="toggleInvestorDetails('${investor.uuid}')"
-                                        class="text-gray-400 hover:text-gray-600">
-                                    <i class="fas fa-chevron-down"></i>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Expandable Details Section -->
-                        <div id="investor-${investor.uuid}-details" class="hidden mt-6">
-                            <div class="border-t pt-4">
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <!-- Company Stats -->
-                                    <div class="space-y-4">
-                                        <h4 class="text-sm font-medium text-gray-500">Organization Stats</h4>
-                                        <div class="grid grid-cols-2 gap-4 bg-gray-50 p-4 rounded-lg">
-                                            <div>
-                                                <p class="text-sm text-gray-500">Org Rank</p>
-                                                <p class="text-lg font-semibold text-gray-900">
-                                                    ${fields.rank_org || 'N/A'}
-                                                </p>
-                                            </div>
-                                            <div>
-                                                <p class="text-sm text-gray-500">Principal Rank</p>
-                                                <p class="text-lg font-semibold text-gray-900">
-                                                    ${fields.rank_principal || 'N/A'}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <!-- Recent Performance -->
-                                    <div class="space-y-4">
-                                        <h4 class="text-sm font-medium text-gray-500">Recent Performance</h4>
-                                        <div class="grid grid-cols-3 gap-4 bg-gray-50 p-4 rounded-lg">
-                                            <div>
-                                                <p class="text-sm text-gray-500">7 Days</p>
-                                                <p class="text-lg font-semibold ${fields.rank_delta_d7 > 0 ? 'text-green-600' : 'text-red-600'}">
-                                                    ${fields.rank_delta_d7 ? `${fields.rank_delta_d7.toFixed(1)}%` : 'N/A'}
-                                                </p>
-                                            </div>
-                                            <div>
-                                                <p class="text-sm text-gray-500">30 Days</p>
-                                                <p class="text-lg font-semibold ${fields.rank_delta_d30 > 0 ? 'text-green-600' : 'text-red-600'}">
-                                                    ${fields.rank_delta_d30 ? `${fields.rank_delta_d30.toFixed(1)}%` : 'N/A'}
-                                                </p>
-                                            </div>
-                                            <div>
-                                                <p class="text-sm text-gray-500">90 Days</p>
-                                                <p class="text-lg font-semibold ${fields.rank_delta_d90 > 0 ? 'text-green-600' : 'text-red-600'}">
-                                                    ${fields.rank_delta_d90 ? `${fields.rank_delta_d90.toFixed(1)}%` : 'N/A'}
-                                                </p>
-                                            </div>
+                                <!-- Recent Performance -->
+                                <div class="space-y-4">
+                                    <h4 class="text-sm font-medium text-gray-500 dark:text-gray-400">Recent Performance</h4>
+                                    <div class="grid grid-cols-3 gap-4 bg-gray-50 dark:bg-gray-700 p-4 rounded-lg border dark:border-gray-600">
+                                        <div>
+                                            <p class="text-sm text-gray-500 dark:text-gray-400">7 Days</p>
+                                            <p class="text-lg font-semibold mt-1 ${fields.rank_delta_d7 > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}">
+                                                ${fields.rank_delta_d7 ? `${fields.rank_delta_d7.toFixed(1)}%` : 'N/A'}
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm text-gray-500 dark:text-gray-400">30 Days</p>
+                                            <p class="text-lg font-semibold mt-1 ${fields.rank_delta_d30 > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}">
+                                                ${fields.rank_delta_d30 ? `${fields.rank_delta_d30.toFixed(1)}%` : 'N/A'}
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm text-gray-500 dark:text-gray-400">90 Days</p>
+                                            <p class="text-lg font-semibold mt-1 ${fields.rank_delta_d90 > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}">
+                                                ${fields.rank_delta_d90 ? `${fields.rank_delta_d90.toFixed(1)}%` : 'N/A'}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <!-- Location Information -->
-                                ${fields.location_identifiers ? `
-                                    <div class="mt-4">
-                                        <h4 class="text-sm font-medium text-gray-500 mb-2">Location</h4>
-                                        <div class="flex flex-wrap gap-2">
-                                            ${fields.location_identifiers.map(location => `
-                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium bg-blue-50 text-blue-700">
-                                                    ${location.value}
-                                                </span>
-                                            `).join('')}
-                                        </div>
+                            <!-- Location Information -->
+                            ${fields.location_identifiers ? `
+                                <div class="mt-6">
+                                    <h4 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">Location</h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        ${fields.location_identifiers.map(location => `
+                                            <span class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200">
+                                                ${location.value}
+                                            </span>
+                                        `).join('')}
                                     </div>
-                                ` : ''}
+                                </div>
+                            ` : ''}
 
-                                <!-- Additional Info -->
-                                <div class="mt-4 space-y-2">
-                                    <p class="text-sm text-gray-500">
+                            <!-- Additional Info -->
+                            <div class="mt-6 grid grid-cols-2 gap-4">
+                                <div>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">
                                         <span class="font-medium">Created:</span> 
                                         ${new Date(fields.created_at).toLocaleDateString()}
                                     </p>
-                                    <p class="text-sm text-gray-500">
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">
                                         <span class="font-medium">Last Updated:</span> 
                                         ${new Date(fields.updated_at).toLocaleDateString()}
                                     </p>
                                 </div>
+                            </div>
 
-                                <!-- Contact Search Section -->
-                                <div class="mt-6">
-                                    <div class="flex justify-between items-center mb-4">
-                                        <h4 class="text-sm font-medium text-gray-500">Contact Information</h4>
-                                        <button onclick="searchContacts('${investor.uuid}', '${fields.website_url || ''}')"
-                                                class="inline-flex items-center px-3 py-1 text-sm text-blue-600 hover:text-blue-800">
-                                            <i class="fas fa-search mr-2"></i>
-                                            Find Contacts
-                                        </button>
-                                    </div>
-                                    <div id="contacts-list-${investor.uuid}" class="space-y-4">
-                                        <!-- Contacts will be loaded here -->
-                                    </div>
+                            <!-- Contact Search Section -->
+                            <div class="mt-6 border-t dark:border-gray-700 pt-6">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h4 class="text-sm font-medium text-gray-500 dark:text-gray-400">Contact Information</h4>
+                                    <button onclick="searchContacts('${investor.uuid}', '${fields.website_url || ''}')"
+                                            class="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors">
+                                        <i class="fas fa-search mr-2"></i>
+                                        Find Contacts
+                                    </button>
+                                </div>
+                                <div id="contacts-list-${investor.uuid}" class="space-y-4">
+                                    <!-- Contacts will be loaded here -->
                                 </div>
                             </div>
                         </div>
                     </div>
-                `;
-            }).join('')}
-        </div>
-    `;
+                </div>
+            `;
+        }).join('')}
+    </div>
+
+   
+`;
 }
+
+ // <script>
+    //     // Toggle investor details
+    //     function toggleInvestorDetails(uuid) {
+    //         const detailsSection = document.getElementById(`investor-${uuid}-details`);
+    //         const button = event.currentTarget;
+    //         const icon = button.querySelector('i');
+            
+    //         if (detailsSection.classList.contains('hidden')) {
+    //             detailsSection.classList.remove('hidden');
+    //             icon.style.transform = 'rotate(180deg)';
+    //         } else {
+    //             detailsSection.classList.add('hidden');
+    //             icon.style.transform = 'rotate(0deg)';
+    //         }
+    //     }
+    // </script>
 
 // function generateInvestorsTab(event) {
 //     return `
@@ -1604,14 +1808,14 @@ Best regards,</textarea>
 }
 
 // Email composition handling
-function composeEmail(email) {
-    const templateId = `email-template-${email.replace('@', '-at-')}`;
-    const template = document.getElementById(templateId);
+// function composeEmail(email) {
+//     const templateId = `email-template-${email.replace('@', '-at-')}`;
+//     const template = document.getElementById(templateId);
     
-    if (template) {
-        template.classList.toggle('hidden');
-    }
-}
+//     if (template) {
+//         template.classList.toggle('hidden');
+//     }
+// }
 
 
 
@@ -1665,78 +1869,52 @@ async function searchContacts(investorId, websiteUrl) {
 
         // Generate HTML for contacts
         const contactsHTML = `
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            ${contacts.map(contact => `
-                <div class="bg-white rounded-lg border p-4 hover:shadow-md transition-shadow">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h5 class="text-sm font-medium text-gray-900">
-                                ${contact.first_name} ${contact.last_name}
-                            </h5>
-                            ${contact.position ? `
-                                <p class="text-sm text-gray-500">${contact.position}</p>
-                            ` : ''}
-                            <p class="text-sm text-gray-500">${contact.value}</p>
-                            ${contact.confidence ? `
-                                <div class="mt-1">
-                                    <div class="flex items-center">
-                                        <div class="flex-1 h-2 bg-gray-200 rounded-full">
-                                            <div 
-                                                class="h-2 bg-${getConfidenceColor(contact.confidence)} rounded-full" 
-                                                style="width: ${contact.confidence}%">
-                                            </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        ${contacts.map(contact => `
+            <div class="bg-white dark:bg-gray-800 rounded-lg border dark:border-gray-700 p-5 hover:shadow-md dark:hover:shadow-lg dark:hover:shadow-black/20 transition-all">
+                <div class="flex justify-between items-start">
+                    <div class="flex-1 min-w-0">
+                        <h5 class="text-sm font-medium text-gray-900 dark:text-white truncate">
+                            ${contact.first_name} ${contact.last_name}
+                        </h5>
+                        ${contact.position ? `
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-0.5">${contact.position}</p>
+                        ` : ''}
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-0.5">${contact.value}</p>
+                        ${contact.confidence ? `
+                            <div class="mt-2">
+                                <div class="flex items-center">
+                                    <div class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                        <div 
+                                            class="h-2 bg-${getConfidenceColor(contact.confidence)} dark:bg-${getConfidenceColor(contact.confidence)}/80 rounded-full transition-all" 
+                                            style="width: ${contact.confidence}%">
                                         </div>
-                                        <span class="ml-2 text-xs text-gray-500">
-                                            ${contact.confidence}%
-                                        </span>
                                     </div>
+                                    <span class="ml-2 text-xs text-gray-500 dark:text-gray-400">
+                                        ${contact.confidence}%
+                                    </span>
                                 </div>
-                            ` : ''}
-                        </div>
-                        <div class="flex space-x-2">
-                            ${contact.linkedin ? `
-                                <a href="${contact.linkedin}"
-                                   target="_blank"
-                                   class="text-blue-600 hover:text-blue-800 p-1">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                            ` : ''}
-                            <button onclick="composeEmail('${contact.value}', '${investorId}')"
-                                    class="text-blue-600 hover:text-blue-800 p-1">
-                                <i class="fas fa-envelope"></i>
-                            </button>
-                        </div>
+                            </div>
+                        ` : ''}
                     </div>
-
-                    <!-- Email Composition Area (Hidden by default) -->
-                    <div id="email-compose-${contact.value.replace('@', '-at-')}" class="hidden mt-4">
-                        <div class="space-y-3">
-                            <div>
-                                <label class="block text-xs font-medium text-gray-500">Subject</label>
-                                <input type="text" 
-                                       class="mt-1 w-full px-3 py-2 text-sm border rounded-md focus:ring-2 focus:ring-blue-500"
-                                       value="Regarding your investment opportunity">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-medium text-gray-500">Message</label>
-                                <textarea 
-                                    class="mt-1 w-full px-3 py-2 text-sm border rounded-md focus:ring-2 focus:ring-blue-500" 
-                                    rows="4">Dear ${contact.first_name},
-
-I noticed your recent investment and would love to connect regarding potential opportunities for collaboration.
-
-Best regards,</textarea>
-                            </div>
-                            <button onclick="sendEmail('${contact.value}')"
-                                    class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm transition-colors">
-                                Send Email
-                            </button>
-                        </div>
+                    <div class="flex space-x-3 ml-4">
+                        ${contact.linkedin ? `
+                            <a href="${contact.linkedin}"
+                               target="_blank"
+                               class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 p-1 transition-colors">
+                                <i class="fab fa-linkedin text-lg"></i>
+                            </a>
+                        ` : ''}
+                        <button onclick="composeEmail('${contact.value}', '${investorId}', '${contact.first_name}', '${contact.last_name}', '${contact.position || ''}')"
+                                class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 p-1 transition-colors">
+                            <i class="fas fa-envelope text-lg"></i>
+                        </button>
                     </div>
                 </div>
-            `).join('')}
-        </div>
-    `;
+            </div>
+        `).join('')}
+    </div>
+`;
 
     contactsContainer.innerHTML = contactsHTML;
 
@@ -1757,22 +1935,205 @@ function getConfidenceColor(confidence) {
     return 'red-500';
 }
 
-// Email composition toggle
-function composeEmail(email, investorId) {
-    const emailId = `email-compose-${email.replace('@', '-at-')}`;
-    const emailDiv = document.getElementById(emailId);
+function openEmailModal(recipientEmail, investorId) {
+    const modal = document.getElementById('emailModal');
+    const toInput = document.getElementById('emailTo');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    toInput.value = recipientEmail;
+    document.body.style.overflow = 'hidden';
+}
+
+function closeEmailModal() {
+    const modal = document.getElementById('emailModal');
+    modal.classList.remove('flex');
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+}
+
+// Sidebar toggle functions
+function toggleSidebar(panelId) {
+    const sidebar = document.getElementById('emailSidebar');
+    const panel = document.getElementById(panelId);
+    const allPanels = ['templatesPanel', 'signaturesPanel'];
     
-    if (emailDiv) {
-        emailDiv.classList.toggle('hidden');
+    // If clicking the active panel, close sidebar
+    if (!sidebar.classList.contains('hidden') && !panel.classList.contains('hidden')) {
+        sidebar.classList.add('hidden');
+        panel.classList.add('hidden');
+        return;
     }
+    
+    // Show sidebar
+    sidebar.classList.remove('hidden');
+    
+    // Hide all panels
+    allPanels.forEach(p => {
+        document.getElementById(p).classList.add('hidden');
+    });
+    
+    // Show selected panel
+    panel.classList.remove('hidden');
+}
+
+function toggleTemplates() {
+    toggleSidebar('templatesPanel');
+}
+
+function toggleSignatures() {
+    toggleSidebar('signaturesPanel');
+}
+
+function toggleAttachments() {
+    const attachmentsPreview = document.getElementById('attachmentsPreview');
+    attachmentsPreview.classList.toggle('hidden');
+}
+
+// Update the contact card click handler
+// Function to compose email with contact details
+function composeEmail(email, investorId, firstName, lastName, position) {
+    // Open the modal
+    const modal = document.getElementById('emailModal');
+    const toInput = document.getElementById('emailTo');
+    const subjectInput = document.getElementById('emailSubject');
+    const bodyInput = document.getElementById('emailBody');
+    
+    // Set the recipient
+    toInput.value = email;
+    
+    // Set default subject
+    subjectInput.value = "Potential Investment Opportunity Discussion";
+    
+    // Set default message with proper signature
+    bodyInput.value = `Dear ${firstName},
+
+I noticed your work at ${position ? position + ' and ' : ''}would love to connect regarding potential opportunities for collaboration.
+
+Looking forward to your response.
+
+Best regards,
+[Your Name]`;
+    
+    // Show the modal
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+}
+
+// Add these helper functions if you haven't already
+function getConfidenceColor(confidence) {
+    if (confidence >= 80) return 'green-500';
+    if (confidence >= 60) return 'blue-500';
+    if (confidence >= 40) return 'yellow-500';
+    return 'red-500';
 }
 
 // Send email function
-async function sendEmail(email) {
-    // Implement your email sending logic here
-    showNotification(`Email would be sent to ${email}`, 'success');
+function sendEmail() {
+    const toInput = document.getElementById('emailTo');
+    const subjectInput = document.getElementById('emailSubject');
+    const bodyInput = document.getElementById('emailBody');
+    
+    // Here you would typically make an API call to your backend
+    console.log('Sending email to:', toInput.value);
+    console.log('Subject:', subjectInput.value);
+    console.log('Body:', bodyInput.value);
+    
+    // Close the modal after sending
+    closeEmailModal();
+    
+    // Show success message
+    alert('Email sent successfully!');
 }
 
+// Handle ESC key to close modal
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeEmailModal();
+    }
+});
+
+// Close modal when clicking outside
+document.getElementById('emailModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+        closeEmailModal();
+    }
+});
+
+// Email composition toggle
+// function composeEmail(email, investorId) {
+//     const emailId = `email-compose-${email.replace('@', '-at-')}`;
+//     const emailDiv = document.getElementById(emailId);
+    
+//     if (emailDiv) {
+//         emailDiv.classList.toggle('hidden');
+//     }
+// }
+
+// Send email function
+// async function sendEmail(recipientEmail) {
+//     // Get the email composition elements
+//     const emailContainer = document.getElementById(`email-compose-${recipientEmail.replace('@', '-at-')}`);
+//     const subjectInput = emailContainer.querySelector('input[type="text"]');
+//     const messageInput = emailContainer.querySelector('textarea');
+
+//     // Show loading state on the send button
+//     const sendButton = emailContainer.querySelector('button');
+//     const originalButtonText = sendButton.innerHTML;
+//     sendButton.innerHTML = `
+//         <div class="flex items-center justify-center">
+//             <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+//             <span class="ml-2">Sending...</span>
+//         </div>
+//     `;
+//     sendButton.disabled = true;
+
+//     try {
+//         const response = await fetch(`${API_BASE_URL}/send-email`, {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify({
+//                 to: recipientEmail,
+//                 subject: subjectInput.value,
+//                 text: messageInput.value,
+//                 // You might want to add these to your environment variables
+//                 smtp: {
+//                     host: 'smtp.gmail.com',
+//                     port: 587,
+//                     secure: false, // true for 465, false for other ports
+//                     auth: {
+//                         user: 'process.env.GMAIL_USER',
+//                         pass: 'process.env.GMAIL_APP_PASSWORD' // Use App Password, not regular password
+//                     }
+//                 }
+//             })
+//         });
+
+//         if (!response.ok) {
+//             throw new Error(`HTTP error! status: ${response.status}`);
+//         }
+
+//         const data = await response.json();
+
+//         // Show success message
+//         showNotification('Email sent successfully!', 'success');
+        
+//         // Reset form and hide email composition area
+//         subjectInput.value = '';
+//         messageInput.value = '';
+//         emailContainer.classList.add('hidden');
+
+//     } catch (error) {
+//         console.error('Error sending email:', error);
+//         showNotification('Failed to send email. Please try again.', 'error');
+//     } finally {
+//         // Reset button state
+//         sendButton.innerHTML = originalButtonText;
+//         sendButton.disabled = false;
+//     }
+// }
 // Initialize the dashboard
 document.addEventListener('DOMContentLoaded', async () => {
     setupEventListeners();
