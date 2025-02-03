@@ -51,9 +51,9 @@ app.post('/send-email', async (req, res) => {
             port: smtp.port,
             secure: smtp.secure,
             auth: {
-                user: process.env.GMAIL_USER,
-                pass: process.env.GMAIL_APP_PASSWORD
-            }
+                user: 'syneticslz@gmail.com',
+                pass: 'gble ksdb ntdq hqlx'
+              }
         });
 
         const info = await transporter.sendMail({

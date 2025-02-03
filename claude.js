@@ -1670,11 +1670,11 @@ function formatCurrency(amount, currency) {
     }).format(amount);
 }
 
-function sendEmail(email, subject, body) {
-    // Implement email sending functionality
-    console.log(`Sending email to ${email}`);
-    showNotification('Email sent successfully!', 'success');
-}
+// function sendEmail(email, subject, body) {
+//     // Implement email sending functionality
+//     console.log(`Sending email to ${email}`);
+//     showNotification('Email sent successfully!', 'success');
+// }
 
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
@@ -2029,21 +2029,41 @@ function getConfidenceColor(confidence) {
 }
 
 // Send email function
-function sendEmail() {
+async function sendEmail() {
     const toInput = document.getElementById('emailTo');
     const subjectInput = document.getElementById('emailSubject');
     const bodyInput = document.getElementById('emailBody');
-    
-    // Here you would typically make an API call to your backend
-    console.log('Sending email to:', toInput.value);
-    console.log('Subject:', subjectInput.value);
-    console.log('Body:', bodyInput.value);
-    
-    // Close the modal after sending
-    closeEmailModal();
-    
-    // Show success message
-    alert('Email sent successfully!');
+
+    try {
+        const response = await fetch('http://localhost:3000/send-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                to: toInput.value,
+                subject: subjectInput.value,
+                text: bodyInput.value,
+                smtp: {
+                    host: 'smtp.gmail.com',
+                    port: 465,
+                    secure: true
+                }
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            closeEmailModal();
+            alert('Email sent successfully!');
+        } else {
+            throw new Error(data.error || 'Failed to send email');
+        }
+    } catch (error) {
+        console.error('Error sending email:', error);
+        alert('Failed to send email. Please try again.');
+    }
 }
 
 // Handle ESC key to close modal
