@@ -11,7 +11,7 @@ const PORT = 3000;
 const corsOptions = {
     origin: function (origin, callback) {
         // Add your frontend URL(s) here
-        const allowedOrigins = ['http://localhost:3000', 'http://localhost:5000', 'http://127.0.0.1:5501'];
+        const allowedOrigins = ['http://localhost:3000', 'https://syneticslz.github.io', 'http://127.0.0.1:5501'];
         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
@@ -24,7 +24,7 @@ const corsOptions = {
 };
 
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://localhost:5000', 'http://127.0.0.1:5501'],
+    origin: ['http://localhost:3000', 'https://syneticslz.github.io', 'http://127.0.0.1:5501,'],
     credentials: true
 }));;
 app.use(express.json())
