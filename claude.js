@@ -249,7 +249,7 @@ function renderMainTable(data) {
     }
 
     // Filter and sort the data
-    const filteredData = filterAndSortData(data);
+    const filteredData = filterAndSortData(originalData);
     
     const mainContent = document.getElementById('mainContent');
     const fullHTML = `
@@ -445,6 +445,24 @@ function renderMainTable(data) {
         document.getElementById('investmentType')?.addEventListener('change', updateFilters);
         document.getElementById('region')?.addEventListener('change', updateFilters);
     });
+    updateActiveFilterTags();
+
+}
+function updateFilters() {
+    activeFilters = {
+        dateRange: {
+            start: document.getElementById('startDate')?.value || '',
+            end: document.getElementById('endDate')?.value || ''
+        },
+        investmentType: document.getElementById('investmentType')?.value || '',
+        region: document.getElementById('region')?.value || ''
+    };
+    
+    // Re-render the main table with original data (it will be filtered inside renderMainTable)
+    renderMainTable(originalData);
+    
+    // Update the filter tags
+    updateActiveFilterTags();
 }
 function resetFilters() {
     activeFilters = {
@@ -452,7 +470,7 @@ function resetFilters() {
         investmentType: '',
         region: ''
     };
-    renderMainTable(originalData);
+    clearAllFilters();
 }
 
 let activeFilters = {
@@ -467,6 +485,14 @@ function toggleFilterPanel() {
     panel.classList.toggle('hidden');
 }
 
+function clearAllFilters() {
+    if (document.getElementById('startDate')) document.getElementById('startDate').value = '';
+    if (document.getElementById('endDate')) document.getElementById('endDate').value = '';
+    if (document.getElementById('investmentType')) document.getElementById('investmentType').value = '';
+    if (document.getElementById('region')) document.getElementById('region').value = '';
+    updateFilters();
+}
+
 // Quick date range selector
 function setQuickDateRange(days) {
     const end = new Date();
@@ -479,20 +505,20 @@ function setQuickDateRange(days) {
     updateFilters();
 }
 
-// Update active filters
-function updateFilters() {
-    activeFilters = {
-        dateRange: {
-            start: document.getElementById('startDate').value,
-            end: document.getElementById('endDate').value
-        },
-        investmentType: document.getElementById('investmentType').value,
-        region: document.getElementById('region').value
-    };
+// // Update active filters
+// function updateFilters() {
+//     activeFilters = {
+//         dateRange: {
+//             start: document.getElementById('startDate').value,
+//             end: document.getElementById('endDate').value
+//         },
+//         investmentType: document.getElementById('investmentType').value,
+//         region: document.getElementById('region').value
+//     };
     
-    updateActiveFilterTags();
-    // Trigger your data refresh here
-}
+//     updateActiveFilterTags();
+//     // Trigger your data refresh here
+// }
 
 // Update active filter tags
 function updateActiveFilterTags() {
@@ -1951,6 +1977,44 @@ function closeEmailModal() {
     document.body.style.overflow = '';
 }
 
+function toggleMediaUpload(type) {
+    const panel = document.getElementById('mediaUploadPanel');
+    const sidebar = document.getElementById('emailSidebar');
+    
+    if (panel.classList.contains('hidden')) {
+        // Hide other panels
+        document.getElementById('templatesPanel').classList.add('hidden');
+        document.getElementById('signaturesPanel').classList.add('hidden');
+        
+        // Show media panel
+        panel.classList.remove('hidden');
+        sidebar.classList.remove('hidden');
+    } else {
+        panel.classList.add('hidden');
+        sidebar.classList.add('hidden');
+    }
+}
+
+function closeMediaUpload() {
+    document.getElementById('mediaUploadPanel').classList.add('hidden');
+    document.getElementById('emailSidebar').classList.add('hidden');
+}
+
+function showMediaPreview() {
+    document.getElementById('mediaPreviewModal').classList.remove('hidden');
+    document.getElementById('mediaPreviewModal').classList.add('flex');
+}
+
+function closeMediaPreview() {
+    document.getElementById('mediaPreviewModal').classList.add('hidden');
+    document.getElementById('mediaPreviewModal').classList.remove('flex');
+}
+
+function insertMedia() {
+    // Insert media into email body
+    closeMediaPreview();
+}
+
 // Sidebar toggle functions
 function toggleSidebar(panelId) {
     const sidebar = document.getElementById('emailSidebar');
@@ -1988,37 +2052,160 @@ function toggleAttachments() {
     const attachmentsPreview = document.getElementById('attachmentsPreview');
     attachmentsPreview.classList.toggle('hidden');
 }
+function generateOpening(position) {
+    const investmentRoles = ['investor', 'partner', 'principal', 'associate', 'investment'];
+    const isInvestmentRole = position && investmentRoles.some(role => position.toLowerCase().includes(role));
+    
+    if (isInvestmentRole) {
+        return "given your investment expertise";
+    } else if (position && position.toLowerCase().includes('founder')) {
+        return "as a founder";
+    } else if (position && position.toLowerCase().includes('ceo')) {
+        return "as CEO";
+    } else if (position) {
+        return `given your role as ${position}`;
+    }
+    return "";
+}
 
+// Helper function to generate context based on funding round
+function generateFundingContext(event) {
+    const roundSize = formatCurrency(event.money_raised.value, event.money_raised.currency);
+    const companyName = event.funded_organization_identifier.value;
+    
+    let roundContext = "";
+    if (event.investment_type.toLowerCase().includes('seed')) {
+        roundContext = `seed round of ${roundSize}`;
+    } else if (event.investment_type.toLowerCase().includes('series')) {
+        roundContext = `Series ${event.investment_type.slice(-1)} round of ${roundSize}`;
+    } else {
+        roundContext = `${event.investment_type} round of ${roundSize}`;
+    }
+    
+    return {
+        companyName,
+        roundContext
+    };
+}
 // Update the contact card click handler
 // Function to compose email with contact details
-function composeEmail(email, investorId, firstName, lastName, position) {
-    // Open the modal
+// Helper function to get key company metrics
+function getCompanyMetrics(crunchbaseData) {
+    const fields = crunchbaseData?.cards?.fields || {};
+    return {
+        totalFunding: fields.total_funding_amount_usd || 4000000,
+        fundingRounds: fields.funding_rounds || 1,
+        employeeCount: fields.employee_count || 100,
+        founded: fields.founded_on || '23.01.24',
+        categories: fields.categories?.map(c => c.value) || [],
+        location: fields.location_identifiers?.[0]?.value || 'America'
+    };
+}
+ 
+// Helper function to generate investment history context
+function generateInvestmentContext(companyMetrics) {
+    let context = '';
+    if (companyMetrics.totalFunding) {
+        context += `having invested in companies with a total funding of ${formatCurrency(companyMetrics.totalFunding, 'USD')}`;
+    }
+    if (companyMetrics.fundingRounds) {
+        context += ` across ${companyMetrics.fundingRounds} funding rounds`;
+    }
+    return context || 'with your impressive investment track record';
+}
+
+async function composeEmail(email, investorId, firstName, lastName, position) {
     const modal = document.getElementById('emailModal');
     const toInput = document.getElementById('emailTo');
     const subjectInput = document.getElementById('emailSubject');
     const bodyInput = document.getElementById('emailBody');
     
-    // Set the recipient
+    // Find the current funding event and company data
+    const event = fundingData.find(e => {
+        return e.investor_identifiers.some(investor => investor.uuid === investorId);
+    });
+    
+    // Get investor's company data
+    const investor = event.investor_identifiers.find(inv => inv.uuid === investorId);
+    let investorCompanyData = null;
+    try {
+        investorCompanyData = await fetchCrunchbaseEntity(
+            investor.uuid,
+            investor.entity_def_id === 'person' ? 'people' : 'organizations'
+        );
+    } catch (error) {
+        console.error('Error fetching investor data:', error);
+    }
+
+    // Get funded company data
+    let fundedCompanyData = null;
+    try {
+        fundedCompanyData = await fetchCrunchbaseEntity(event.funded_organization_identifier.uuid);
+    } catch (error) {
+        console.error('Error fetching company data:', error);
+    }
+
+    // Get metrics for both companies
+    const investorMetrics = getCompanyMetrics(investorCompanyData);
+    const fundedMetrics = getCompanyMetrics(fundedCompanyData);
+
+    // Set recipient and subject
     toInput.value = email;
-    
-    // Set default subject
-    subjectInput.value = "Potential Investment Opportunity Discussion";
-    
-    // Set default message with proper signature
-    bodyInput.value = `Dear ${firstName},
+    subjectInput.value = "Do you want your Money back";
 
-I noticed your work at ${position ? position + ' and ' : ''}would love to connect regarding potential opportunities for collaboration.
+    // Generate company context
+    const fundedCompanyContext = fundedMetrics.categories.length > 0 ? 
+        `${event.funded_organization_identifier.value}, a ${fundedMetrics.categories[0]} company` :
+        event.funded_organization_identifier.value;
 
-Looking forward to your response.
+    const roundSize = formatCurrency(event.money_raised.value, event.money_raised.currency);
+    const roundUSD = event.money_raised.currency !== 'USD' ? 
+        ` (${formatCurrency(event.money_raised.value_usd, 'USD')})` : '';
+
+    // Generate investment context
+    const investmentHistory = generateInvestmentContext(investorMetrics);
+
+    // Generate personalized message
+    const message = `Dear ${firstName},
+
+I noticed your recent participation in ${fundedCompanyContext}'s ${event.investment_type} round of ${roundSize}${roundUSD}. ${investmentHistory}, I believe you have a keen eye for promising opportunities.
+
+What caught my attention about ${event.funded_organization_identifier.value}:
+• Founded in ${new Date(fundedMetrics.founded).getFullYear()}
+• ${fundedMetrics.employeeCount || 'Growing'} team based in ${fundedMetrics.location}
+• Operating in ${fundedMetrics.categories?.slice(0, 3).join(', ') || 'innovative technology sectors'}
+
+I have a similar opportunity that I believe could offer even better returns. Our metrics show:
+• 3x faster growth rate than industry average
+• 85% customer retention rate
+• Clear path to profitability within 18 months
+
+Would you be open to a 15-minute call next week? I can share detailed metrics and our growth strategy.
 
 Best regards,
-[Your Name]`;
+Rob
+
+P.S. I'm happy to sign an NDA before sharing detailed financials.`;
+
+    bodyInput.value = message;
     
-    // Show the modal
+    // Show modal
     modal.classList.remove('hidden');
     modal.classList.add('flex');
     document.body.style.overflow = 'hidden';
+    
+    // Focus and select signature
+    setTimeout(() => {
+        bodyInput.focus();
+        const lastBracketPos = bodyInput.value.lastIndexOf('[');
+        if (lastBracketPos !== -1) {
+            bodyInput.setSelectionRange(lastBracketPos, lastBracketPos + 10);
+        }
+    }, 100);
 }
+
+// Example usage:
+// composeEmail('john.doe@example.com', 'investor123', 'John', 'Doe', 'Investment Partner');
 
 // Add these helper functions if you haven't already
 function getConfidenceColor(confidence) {
