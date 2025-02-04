@@ -29,7 +29,7 @@ async function saveCacheToFile() {
 // Fetch company data with caching
 async function fetchCrunchbaseEntity(uuid, type = 'organizations') {
     try {
-        const response = await fetch(`http://localhost:3000/entity/${type}/${uuid}`);
+        const response = await fetch(`${API_BASE_URL}/entity/${type}/${uuid}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -1845,7 +1845,7 @@ Best regards,</textarea>
 
 
 
-const API_BASE_URL = 'http://localhost:3000'; // Replace with your server URL
+const API_BASE_URL = 'https://investmenttool.onrender.com'; // Replace with your server URL
 
 async function searchContacts(investorId, websiteUrl) {
     if (!websiteUrl) {
@@ -2222,7 +2222,7 @@ async function sendEmail() {
     const bodyInput = document.getElementById('emailBody');
 
     try {
-        const response = await fetch('http://localhost:3000/send-email', {
+        const response = await fetch(`${API_BASE_URL}/send-email`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
