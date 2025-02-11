@@ -375,8 +375,124 @@ async function nfetchCrunchbaseDatap(uuid, type = 'people') {
         }
 
 
+        // Configure API request
+const API_KEY = '656dc69a-ccf0-444c-8f9a-b47c72397a40'; // Replace with your actual API key
+const API_URL = 'https://piloterr.com/api/v2/producthunt/product/info?query=ToolJet';
+// https://piloterr.com/api/v2/producthunt/product/info?query=miro
+
+const options = {
+    method: 'GET',
+    headers: {
+        'x-api-key': API_KEY,
+        'Content-Type': 'application/json'
+    }
+};
+
+// Function to format date for filename
+function getFormattedDate() {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    
+    return `${year}${month}${day}_${hours}${minutes}`;
+}
+
+// Function to save data to file
+async function saveToFile(data, filename) {
+    try {
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(a.href);
+        console.log(`Data successfully saved to ${filename}`);
+    } catch (error) {
+        console.error('Error saving file:', error);
+        throw error;
+    }
+}
+
+// Main function to fetch and save data
+async function fetchAndSaveProductData() {
+    try {
+        const response = await fetch(API_URL, options);
+        
+        console.log(response)
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        
+        const data = await response.json();
+        const filename = `producthunt_data_${getFormattedDate()}.json`;
+        
+        await saveToFile(data, filename);
+        return data;
+    } catch (error) {
+        console.error('Error fetching or saving data:', error);
+        throw error;
+    }
+}
+
+// Usage
+
+
+const API_TOKEN = "fqthilF8Q-5yXTMJGW1x1CdYnvdcJM_cdeSbEh-BBdk"; // Replace with your API token
+
+const query = `
+query {
+  posts(first: 10) {
+    edges {
+      node {
+        id
+        name
+        tagline
+        url
+        votesCount
+        createdAt
+      }
+    }
+  }
+}`;
+
+async function getLatestProductHuntPosts() {
+  const response = await fetch("https://api.producthunt.com/v2/api/graphql", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${API_TOKEN}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ query })
+  });
+
+  const data = await response.json();
+  console.log(data.data.posts.edges.map(post => ({
+    name: post.node.name,
+    url: post.node.url,
+    tagline: post.node.tagline
+  })));
+}
+
+
+
+
 app.listen(PORT, async() => {
     console.log(`Server is running on http://localhost:${PORT}`);
+    // getLatestProductHuntPosts();
+    fetchAndSaveProductData()
+    // .then(data => {
+    //     console.log('Operation completed successfully');
+    //     console.log('Response data:', data);
+    // })
+    // .catch(error => {
+    //     console.error('Operation failed:', error);
+    // });
     // saveFundingRounds(apiKey);
     // data = await nfetchCrunchbaseDatao('c1bf457d-08a2-4e0d-a99f-33e2edb3897a')
     // console.log(data)
