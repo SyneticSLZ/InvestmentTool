@@ -3499,7 +3499,7 @@ function setupEventListeners() {
             const tabName = tab.getAttribute('data-tab');
             
             // Show loading state
-            document.getElementById('modalContent').innerHTML = `
+            document.getElementById('modalContentfund').innerHTML = `
                 <div class="flex items-center justify-center p-12">
                     <div class="flex flex-col items-center space-y-4">
                         <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
@@ -3520,7 +3520,7 @@ function setupEventListeners() {
             activeModalTab = tabName;
             const event = fundingData.find(e => e.uuid === currentEventId);
             if (event) {
-                await updateModalContent(event);
+                await updateModalContentfunding(event);
             }
         });
     })
