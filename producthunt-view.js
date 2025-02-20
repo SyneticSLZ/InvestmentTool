@@ -2915,6 +2915,20 @@ function renderMainTable(data) {
     mainContent.innerHTML = cardsHTML;
 }
 
+async function scrapeWebsitefromprod(url) {
+    fetch('https://pupetteer.onrender.com/producthuntwebsite', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url: url })
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Website data:', data.website);
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }
+  
+
 async function showPostDetails(postId) {
     const post = postsData.find(p => p.id === postId);
     if (!post) return;
@@ -3009,7 +3023,10 @@ async function showPostDetails(postId) {
             throw new Error(data.errors[0].message);
         }
 
+       
+
         const postDetails = data.data.post;
+        prodhuntwebsite = await scrapeWebsitefromprod(postDetails.url)
         modalContent.innerHTML = `
             <div class="space-y-8">
                 <!-- Product Header -->
@@ -3030,7 +3047,7 @@ async function showPostDetails(postId) {
                                     <p class="mt-1 text-gray-600 dark:text-gray-300">${postDetails.tagline}</p>
                                 </div>
                                 <div class="flex items-center space-x-4">
-                                    <a href="${postDetails.url}" target="_blank" 
+                                    <a href="${prodhuntwebsite}" target="_blank" 
                                        class="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300">
                                         <i class="fas fa-external-link-alt"></i>
                                     </a>
@@ -3064,7 +3081,7 @@ async function showPostDetails(postId) {
                 <div class="mt-6 border-t dark:border-gray-700 pt-6">
                     <div class="flex justify-between items-center mb-4">
                         <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Contact Search</h4>
-                        <button onclick="searchContacts(event, '${postDetails.website ? new URL(postDetails.website).hostname : postDetails.name.toLowerCase().replace(/\s+/g, '') + '.com'}')"
+                        <button onclick="searchContacts(event, '${prodhuntwebsite}')"
                                 class="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 rounded-lg hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors">
                             <i class="fas fa-search mr-2"></i>
                             Find Contacts
