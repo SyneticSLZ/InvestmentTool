@@ -1,0 +1,95 @@
+[
+  {
+    "name": "Infinite",
+    "location": "San Francisco, CA, USA",
+    "description": "Fast, affordable global B2B payments",
+    "batch": "W25",
+    "industries": [
+      "Fintech",
+      "Payments"
+    ],
+    "url": "https://www.ycombinator.com/companies/infinite",
+    "scrapedAt": "2025-02-18T15:32:11.587Z",
+    "details": {
+      "founded": "2024",
+      "team_size": "3",
+      "status": "Active",
+      "location": "San Francisco",
+      "main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/eb918a1c2da0e7143351dc449810630e78b19bed.png",
+      "small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/06fe642a19b453ea3710d2e7202684aaf56d85f8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECAGSJYRTSF%2F20250218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250218T153211Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEGMaCXVzLXdlc3QtMiJHMEUCIQDMgsb%2Fg9FbPrfet2kO%2BxTuNNrPIn%2Fbq6sVuHluge8uNgIgGdOw6SWXxoInnUQqO3y6DWX%2FTwtTJ7TaDOQqwbUIQsoq7gMIjP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwwMDYyMDE4MTEwNzIiDCuX%2B0Xbl%2FWp2p4IpCrCA%2BLckbV82qcrAsUhOfhjdgfCf0CCqmpjXMHgySq%2BH%2FbYl%2FkxoXuyG%2B7OHFFrYVncOexp4X3J2EB%2FzsUdF5I2AGbKSdCnGP8JWt%2B454Q9NjG8HCaKo95Xsk44jl%2FPNIxl5WD4wKFu7XVkVmpdLKMO4YtZCRUDN%2BpmrKjB%2FfBB%2FpjiBPmpuaI9O7Rzv0UpmcsUvgIHVG0XWB3QvkTXGSQ2vrBASkUoASXjjuT0wd4xC%2F%2BCEYG2xIqpZaAHhvOvpzfaixCWs%2FeGd9qgBuHX5iOFczEIry7BIBBnEl7ZLOOtuNapNFl94wYsL7UmTYJDOb%2Bp0TMwZAEWZgknVT68J6dosP2vlqvcg0B5GQaIqsYc0GTTbAHQsKChHanrnkk%2FCzCtPE5Ktc%2BB4RCmlhwbvNtE3vuHd61TKVO3kbh7HaMFMyYa%2FPgyK4pE9b9l%2Bzc%2F3lkMWmHpJPJlE4yUOp8J20YMkdHJfer4kQ6LSsTdKyPHaPsFU2qFXDtJj9FEpNC%2BFY0DbvMSogI77kEIjFVk8Gak8i%2BPQ3x0IlqDKYjJye0FT8%2FK9of%2BHxcyzoX5a4NusjL10WgdVAJTrcOimU9hhzJqK8crkjC919G9BjqlAWOKMWWfO1i1Didq3JL4EG26qgztzcRiDpNqwUCsBvSl9XnEbzaV18kQnYLp%2FZpjnz6iR%2F8EyTJtNrr4jXXRFJyGNBrFySEn6UborApdJuAczYZmLq9ZXu76okVobQLSbq9c1ykm5GBsFmMgmIyGi%2FMkFILKjfsYJq%2BFcJ9VPZrhu5UZ%2Fh8h0wBfOkC%2BpxY49ylwynsge2HsOocni2cvvHfeP4vwlA%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=011117c3fadc03a56e9b1317a218edd534853678857ebcc2b0070e6e0dba22ee",
+      "links": {
+        "website": "https://infinite.dev/",
+        "linkedin": "https://linkedin.com/company/infiniteinc",
+        "twitter": "https://twitter.com/nvs",
+        "github": "https://github.com/infiniteagents"
+      },
+      "description": "Infinite is a stablecoin payment processor. We offer businesses turnkey APIs and SDKs to move money cross-border same-day with low fees, all without crypto complexity.",
+      "tags": [
+        "payments",
+        "b2b"
+      ],
+      "founders": [
+        {
+          "name": "Raj Lad",
+          "title": "Founder",
+          "bio": "Cofounder and CTO at Infinite. Previously payments tech lead at Sardine where I launched the global stablecoin payments and credit risk workflow products.",
+          "linkedin_url": "https://www.linkedin.com/in/rajlad/",
+          "twitter_url": null
+        },
+        {
+          "name": "Nikhil Srinivasan, Cofounder & CEO",
+          "title": "Founder",
+          "bio": "Cofounder and CEO of Infinite with Raj Lad. Previously platform product lead at Sardine and Coinbase (S12) via Distributed Systems (F1).",
+          "linkedin_url": "https://linkedin.com/in/nikhilsrinivasan",
+          "twitter_url": "https://twitter.com/nvs"
+        }
+      ]
+    }
+  },
+  {
+    "name": "Closure",
+    "location": "New York, NY, USA",
+    "description": "We help law enforcement solve crime",
+    "batch": "W25",
+    "industries": [
+      "Government"
+    ],
+    "url": "https://www.ycombinator.com/companies/closure",
+    "scrapedAt": "2025-02-18T15:32:11.587Z",
+    "details": {
+      "founded": "2024",
+      "team_size": "4",
+      "status": "Active",
+      "location": "New York",
+      "main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/c5b9a8ffa191d64a12f160ab46ed4cf4f2dd85dc.png",
+      "small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/fc01a2ba3ba66c6e25056ecebe0d978226b103f1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECAGSJYRTSF%2F20250218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250218T153214Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEGMaCXVzLXdlc3QtMiJHMEUCIQDMgsb%2Fg9FbPrfet2kO%2BxTuNNrPIn%2Fbq6sVuHluge8uNgIgGdOw6SWXxoInnUQqO3y6DWX%2FTwtTJ7TaDOQqwbUIQsoq7gMIjP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwwMDYyMDE4MTEwNzIiDCuX%2B0Xbl%2FWp2p4IpCrCA%2BLckbV82qcrAsUhOfhjdgfCf0CCqmpjXMHgySq%2BH%2FbYl%2FkxoXuyG%2B7OHFFrYVncOexp4X3J2EB%2FzsUdF5I2AGbKSdCnGP8JWt%2B454Q9NjG8HCaKo95Xsk44jl%2FPNIxl5WD4wKFu7XVkVmpdLKMO4YtZCRUDN%2BpmrKjB%2FfBB%2FpjiBPmpuaI9O7Rzv0UpmcsUvgIHVG0XWB3QvkTXGSQ2vrBASkUoASXjjuT0wd4xC%2F%2BCEYG2xIqpZaAHhvOvpzfaixCWs%2FeGd9qgBuHX5iOFczEIry7BIBBnEl7ZLOOtuNapNFl94wYsL7UmTYJDOb%2Bp0TMwZAEWZgknVT68J6dosP2vlqvcg0B5GQaIqsYc0GTTbAHQsKChHanrnkk%2FCzCtPE5Ktc%2BB4RCmlhwbvNtE3vuHd61TKVO3kbh7HaMFMyYa%2FPgyK4pE9b9l%2Bzc%2F3lkMWmHpJPJlE4yUOp8J20YMkdHJfer4kQ6LSsTdKyPHaPsFU2qFXDtJj9FEpNC%2BFY0DbvMSogI77kEIjFVk8Gak8i%2BPQ3x0IlqDKYjJye0FT8%2FK9of%2BHxcyzoX5a4NusjL10WgdVAJTrcOimU9hhzJqK8crkjC919G9BjqlAWOKMWWfO1i1Didq3JL4EG26qgztzcRiDpNqwUCsBvSl9XnEbzaV18kQnYLp%2FZpjnz6iR%2F8EyTJtNrr4jXXRFJyGNBrFySEn6UborApdJuAczYZmLq9ZXu76okVobQLSbq9c1ykm5GBsFmMgmIyGi%2FMkFILKjfsYJq%2BFcJ9VPZrhu5UZ%2Fh8h0wBfOkC%2BpxY49ylwynsge2HsOocni2cvvHfeP4vwlA%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=994aed222174400be632d444b213a9898852c5d13cb17dc7185118deaa945f1c",
+      "links": {
+        "website": "https://closure-intel.com/",
+        "linkedin": "https://www.linkedin.com/company/closure-intel",
+        "twitter": "https://twitter.com/ycombinator",
+        "github": null
+      },
+      "description": "Law enforcement is drowning in data. Closure helps search it to solve crime. \r\n\n- Hiring: UX, Engineering; \r\n- Expanding: Local, state, and federal law enforcement.",
+      "tags": [
+        "govtech",
+        "ai"
+      ],
+      "founders": [
+        {
+          "name": "Gilad Levy, Co-Founder and CTO",
+          "title": "Founder",
+          "bio": "Building the platform for closing cases faster.\nAn engineer with 12 years of experience building data systems. I served as a combat helicopter pilot in the Israeli Air Force and as a Cyber Security Engineer. Subsequently, I worked at Spot.io (acquired by NetApp), Microsoft, and Rivery (acquired by Boomi).\nI hold a Master's degree in Computer Science from Reichman University and an MBA from Tel Aviv University.",
+          "linkedin_url": "https://www.linkedin.com/in/gilad-levy/",
+          "twitter_url": null
+        },
+        {
+          "name": "Aaron Zelinger, Co-Founder",
+          "title": "Founder",
+          "bio": "Helping law enforcement solve crime @Closure with @GiladLevy. \n\nTakes helping government seriously; takes himself not so seriously.\n\nPreviously: 2 yrs @Arena, 6 yrs @Palantir (#savetheshire)",
+          "linkedin_url": "https://www.linkedin.com/in/aaron-zelinger/",
+          "twitter_url": null
+        }
+      ]
+    }
+  }
+]

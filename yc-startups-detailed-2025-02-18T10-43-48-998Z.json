@@ -1,0 +1,133 @@
+[
+  {
+    "name": "Infinite",
+    "location": "San Francisco, CA, USA",
+    "description": "Fast, affordable global B2B payments",
+    "batch": "W25",
+    "industries": [
+      "Fintech",
+      "Payments"
+    ],
+    "url": "https://www.ycombinator.com/companies/infinite",
+    "scrapedAt": "2025-02-18T10:43:30.073Z",
+    "details": {
+      "companyName": "Infinite",
+      "description": "Fast, affordable global B2B payments. Founded in 2024 by Raj Lad and Nikhil Srinivasan, Infinite has 3 employees based in San Francisco, CA, USA. Infinite is hiring for 1 roles in engineering.",
+      "founded": null,
+      "location": null,
+      "teamSize": null,
+      "socialLinks": {
+        "twitter": "https://twitter.com/nvs",
+        "linkedin": "https://linkedin.com/company/infiniteinc",
+        "facebook": "https://www.facebook.com/YCombinator/"
+      },
+      "teamMembers": [],
+      "openPositions": [],
+      "fundingHistory": [],
+      "techStack": [],
+      "metrics": {
+        "revenue": null,
+        "growth": null,
+        "users": null
+      }
+    }
+  },
+  {
+    "name": "Closure",
+    "location": "New York, NY, USA",
+    "description": "We help law enforcement solve crime",
+    "batch": "W25",
+    "industries": [
+      "Government"
+    ],
+    "url": "https://www.ycombinator.com/companies/closure",
+    "scrapedAt": "2025-02-18T10:43:30.073Z",
+    "details": {
+      "companyName": "Closure",
+      "description": "We help law enforcement solve crime. Founded in 2024 by Gilad Levy and Aaron Zelinger, Closure has 4 employees based in New York, NY, USA.",
+      "founded": null,
+      "location": null,
+      "teamSize": null,
+      "socialLinks": {
+        "twitter": "https://twitter.com/ycombinator",
+        "linkedin": "https://www.linkedin.com/company/closure-intel",
+        "facebook": "https://www.facebook.com/YCombinator/"
+      },
+      "teamMembers": [],
+      "openPositions": [],
+      "fundingHistory": [],
+      "techStack": [],
+      "metrics": {
+        "revenue": null,
+        "growth": null,
+        "users": null
+      }
+    }
+  },
+  {
+    "name": "Mundo AI",
+    "location": "San Francisco, CA, USA",
+    "description": "High Quality Multilingual Training Data for AI Models",
+    "batch": "W25",
+    "industries": [
+      "B2B",
+      "Infrastructure"
+    ],
+    "url": "https://www.ycombinator.com/companies/mundo-ai",
+    "scrapedAt": "2025-02-18T10:43:30.073Z",
+    "details": {
+      "companyName": "Mundo AI",
+      "description": "High Quality Multilingual Training Data for AI Models. Founded in 2024 by Naijide Anwaer, Garreth Lee, Jason Liao, and Kenneth Wu, Mundo AI has 4 employees based in San Francisco, CA, USA.",
+      "founded": null,
+      "location": null,
+      "teamSize": null,
+      "socialLinks": {
+        "twitter": "https://twitter.com/ycombinator",
+        "linkedin": "https://www.linkedin.com/company/mundoai",
+        "facebook": "https://www.facebook.com/YCombinator/"
+      },
+      "teamMembers": [],
+      "openPositions": [],
+      "fundingHistory": [],
+      "techStack": [],
+      "metrics": {
+        "revenue": null,
+        "growth": null,
+        "users": null
+      }
+    }
+  },
+  {
+    "name": "Artificial Societies",
+    "location": "San Francisco, CA, USA",
+    "description": "We use AI to simulate large groups of people and how they interact",
+    "batch": "W25",
+    "industries": [
+      "B2B",
+      "Analytics"
+    ],
+    "url": "https://www.ycombinator.com/companies/artificial-societies",
+    "scrapedAt": "2025-02-18T10:43:30.073Z",
+    "details": {
+      "companyName": "Artificial Societies",
+      "description": "We use AI to simulate large groups of people and how they interact. Founded in 2024 by James He and Patrick Sharpe, Artificial Societies has 3 employees based in San Francisco, CA, USA.",
+      "founded": null,
+      "location": null,
+      "teamSize": null,
+      "socialLinks": {
+        "twitter": "https://twitter.com/ycombinator",
+        "linkedin": "https://www.linkedin.com/company/artificial-societies",
+        "facebook": "https://www.facebook.com/YCombinator/"
+      },
+      "teamMembers": [],
+      "openPositions": [],
+      "fundingHistory": [],
+      "techStack": [],
+      "metrics": {
+        "revenue": null,
+        "growth": null,
+        "users": null
+      }
+    }
+  }
+]

@@ -1,5 +1,7 @@
 const fetch = require("node-fetch");
 
+
+
 const API_TOKEN = "fqthilF8Q-5yXTMJGW1x1CdYnvdcJM_cdeSbEh-BBdk";
 // const HUNTER_API_KEY = "your_hunter_api_key";
 
@@ -131,24 +133,37 @@ async function runLeadGen() {
   const startups = await getLatestStartups();
   console.log(startups)
 
-//   for (let startup of startups) {
-//     console.log(`Fetching details for ${startup.name}...`);
-//     const details = await getStartupDetails(startup.id);
+  for (let startup of startups) {
+    console.log(`Fetching details for ${startup.name}...`);
+    const details = await getStartupDetails(startup.id);
 
-//     // let emails = [];
-//     // if (details.makers.length > 0 && details.makers[0].website) {
-//     //   const domain = new URL(details.makers[0].website).hostname;
-//     //   emails = await getEmails(domain);
-//     // }
+    // let emails = [];
+    // if (details.makers.length > 0 && details.makers[0].website) {
+    //   const domain = new URL(details.makers[0].website).hostname;
+    //   emails = await getEmails(domain);
+    // }
 
-//     console.log({
-//       name: details.name,
-//       description: details.description,
-//       url: details.url,
-//       twitter: details.makers.length > 0 ? `https://twitter.com/${details.makers[0].twitterUsername}` : "N/A",
-//     //   emails
-//     });
-//   }
+    console.log({
+      name: details.name,
+      description: details.description,
+      url: details.url,
+      twitter: details.makers.length > 0 ? `https://twitter.com/${details.makers[0].twitterUsername}` : "N/A",
+    //   emails
+    });
+  }
+}
+async function getHackerNewsStartups() {
+  const response = await fetch("https://hacker-news.firebaseio.com/v0/showstories.json");
+  const storyIds = await response.json();
+
+  for (let i = 0; i < 10; i++) { // Get the top 10 latest posts
+      let story = await fetch(`https://hacker-news.firebaseio.com/v0/item/${storyIds[i]}.json`);
+      let storyData = await story.json();
+      console.log(`Title: ${storyData.title} - ${storyData.url}`);
+  }
 }
 
-runLeadGen();
+getHackerNewsStartups();
+// runLeadGen();
+
+

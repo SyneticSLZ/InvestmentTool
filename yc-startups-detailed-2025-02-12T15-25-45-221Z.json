@@ -1,0 +1,132 @@
+[
+  {
+    "name": "Reditus Space",
+    "location": "Atlanta, GA, USA",
+    "description": "Reusable Satellites for zero-g manufacturing",
+    "batch": "W25",
+    "industries": [
+      "Industrials",
+      "Aviation and Space"
+    ],
+    "url": "https://www.ycombinator.com/companies/reditus-space",
+    "scrapedAt": "2025-02-12T15:25:26.890Z",
+    "details": {
+      "companyName": "Reditus Space",
+      "description": "Reusable Satellites for zero-g manufacturing. Founded in 2024 by Stef Crum and Will Sherman, Reditus Space has 2 employees based in Atlanta, GA, USA. Reditus Space is hiring for 1 roles in engineering.",
+      "founded": null,
+      "location": null,
+      "teamSize": null,
+      "socialLinks": {
+        "twitter": "https://twitter.com/ycombinator",
+        "linkedin": "https://www.linkedin.com/company/reditus-space",
+        "facebook": "https://www.facebook.com/YCombinator/"
+      },
+      "teamMembers": [],
+      "openPositions": [],
+      "fundingHistory": [],
+      "techStack": [],
+      "metrics": {
+        "revenue": null,
+        "growth": null,
+        "users": null
+      }
+    }
+  },
+  {
+    "name": "TripleZip",
+    "location": "New York, NY, USA",
+    "description": "Automating CRE accounting with AI",
+    "batch": "W25",
+    "industries": [
+      "Real Estate and Construction"
+    ],
+    "url": "https://www.ycombinator.com/companies/triplezip",
+    "scrapedAt": "2025-02-12T15:25:26.890Z",
+    "details": {
+      "companyName": "TripleZip",
+      "description": "Automating CRE accounting with AI. Founded in 2025 by Grayson Pike and Yash Sahota, TripleZip has 2 employees based in New York, NY, USA.",
+      "founded": null,
+      "location": null,
+      "teamSize": null,
+      "socialLinks": {
+        "twitter": "https://twitter.com/ycombinator",
+        "linkedin": "https://www.linkedin.com/company/106200029/",
+        "facebook": "https://www.facebook.com/YCombinator/"
+      },
+      "teamMembers": [],
+      "openPositions": [],
+      "fundingHistory": [],
+      "techStack": [],
+      "metrics": {
+        "revenue": null,
+        "growth": null,
+        "users": null
+      }
+    }
+  },
+  {
+    "name": "Delineate",
+    "location": "Boston, MA, USA",
+    "description": "Extract meaningful data from research literature and patents at…",
+    "batch": "W25",
+    "industries": [
+      "B2B",
+      "Engineering, Product and Design"
+    ],
+    "url": "https://www.ycombinator.com/companies/delineate",
+    "scrapedAt": "2025-02-12T15:25:26.890Z",
+    "details": {
+      "companyName": "Delineate",
+      "description": "Extract meaningful data from research literature and patents at…. Founded in 2024 by Jawad Iqbal and Emily Nieves, Delineate has 20 employees based in Boston, MA, USA.",
+      "founded": null,
+      "location": null,
+      "teamSize": null,
+      "socialLinks": {
+        "twitter": "https://twitter.com/ycombinator",
+        "linkedin": "https://www.linkedin.com/company/delineate-pro/",
+        "facebook": "https://www.facebook.com/YCombinator/"
+      },
+      "teamMembers": [],
+      "openPositions": [],
+      "fundingHistory": [],
+      "techStack": [],
+      "metrics": {
+        "revenue": null,
+        "growth": null,
+        "users": null
+      }
+    }
+  },
+  {
+    "name": "Tally",
+    "location": "San Francisco, CA, USA",
+    "description": "AI agents for accounting firms",
+    "batch": "W25",
+    "industries": [
+      "B2B"
+    ],
+    "url": "https://www.ycombinator.com/companies/tally-2",
+    "scrapedAt": "2025-02-12T15:25:26.890Z",
+    "details": {
+      "companyName": "Tally",
+      "description": "AI agents for accounting firms. Founded in 2025 by Rami Ghanem, Tally has 1 employees based in San Francisco, CA, USA.",
+      "founded": null,
+      "location": null,
+      "teamSize": null,
+      "socialLinks": {
+        "twitter": "https://www.twitter.com/tallyapp",
+        "linkedin": "https://www.linkedin.com/company/tallyhq",
+        "facebook": "https://www.facebook.com/YCombinator/"
+      },
+      "teamMembers": [],
+      "openPositions": [],
+      "fundingHistory": [],
+      "techStack": [],
+      "metrics": {
+        "revenue": null,
+        "growth": null,
+        "users": null
+      }
+    }
+  }
+]

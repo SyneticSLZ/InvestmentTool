@@ -1,0 +1,91 @@
+[
+  {
+    "name": "Infinite",
+    "location": "San Francisco, CA, USA",
+    "description": "Fast, affordable global B2B payments",
+    "batch": "W25",
+    "industries": [
+      "Fintech",
+      "Payments"
+    ],
+    "url": "https://www.ycombinator.com/companies/infinite",
+    "scrapedAt": "2025-02-18T11:06:29.195Z",
+    "details": {
+      "founded": "2024",
+      "team_size": "3",
+      "status": "Active",
+      "location": "San Francisco",
+      "links": {
+        "website": "https://infinite.dev/",
+        "linkedin": "https://linkedin.com/company/infiniteinc",
+        "twitter": "https://twitter.com/nvs",
+        "github": "https://github.com/infiniteagents"
+      },
+      "description": "Infinite is a stablecoin payment processor. We offer businesses turnkey APIs and SDKs to move money cross-border same-day with low fees, all without crypto complexity.",
+      "tags": [
+        "payments",
+        "b2b"
+      ],
+      "founders": [
+        {
+          "name": "Raj Lad",
+          "title": "Founder",
+          "bio": "Cofounder and CTO at Infinite. Previously payments tech lead at Sardine where I launched the global stablecoin payments and credit risk workflow products.",
+          "linkedin_url": "https://www.linkedin.com/in/rajlad/",
+          "twitter_url": null
+        },
+        {
+          "name": "Nikhil Srinivasan, Cofounder & CEO",
+          "title": "Founder",
+          "bio": "Cofounder and CEO of Infinite with Raj Lad. Previously platform product lead at Sardine and Coinbase (S12) via Distributed Systems (F1).",
+          "linkedin_url": "https://linkedin.com/in/nikhilsrinivasan",
+          "twitter_url": "https://twitter.com/nvs"
+        }
+      ]
+    }
+  },
+  {
+    "name": "Closure",
+    "location": "New York, NY, USA",
+    "description": "We help law enforcement solve crime",
+    "batch": "W25",
+    "industries": [
+      "Government"
+    ],
+    "url": "https://www.ycombinator.com/companies/closure",
+    "scrapedAt": "2025-02-18T11:06:29.195Z",
+    "details": {
+      "founded": "2024",
+      "team_size": "4",
+      "status": "Active",
+      "location": "New York",
+      "links": {
+        "website": "https://closure-intel.com/",
+        "linkedin": "https://www.linkedin.com/company/closure-intel",
+        "twitter": "https://twitter.com/ycombinator",
+        "github": null
+      },
+      "description": "Law enforcement is drowning in data. Closure helps search it to solve crime. \r\n\n- Hiring: UX, Engineering; \r\n- Expanding: Local, state, and federal law enforcement.",
+      "tags": [
+        "govtech",
+        "ai"
+      ],
+      "founders": [
+        {
+          "name": "Gilad Levy, Co-Founder and CTO",
+          "title": "Founder",
+          "bio": "Building the platform for closing cases faster.\nAn engineer with 12 years of experience building data systems. I served as a combat helicopter pilot in the Israeli Air Force and as a Cyber Security Engineer. Subsequently, I worked at Spot.io (acquired by NetApp), Microsoft, and Rivery (acquired by Boomi).\nI hold a Master's degree in Computer Science from Reichman University and an MBA from Tel Aviv University.",
+          "linkedin_url": "https://www.linkedin.com/in/gilad-levy/",
+          "twitter_url": null
+        },
+        {
+          "name": "Aaron Zelinger, Co-Founder",
+          "title": "Founder",
+          "bio": "Helping law enforcement solve crime @Closure with @GiladLevy. \n\nTakes helping government seriously; takes himself not so seriously.\n\nPreviously: 2 yrs @Arena, 6 yrs @Palantir (#savetheshire)",
+          "linkedin_url": "https://www.linkedin.com/in/aaron-zelinger/",
+          "twitter_url": null
+        }
+      ]
+    }
+  }
+]

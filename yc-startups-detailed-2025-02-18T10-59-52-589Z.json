@@ -1,0 +1,199 @@
+[
+  {
+    "name": "Infinite",
+    "location": "San Francisco, CA, USA",
+    "description": "Fast, affordable global B2B payments",
+    "batch": "W25",
+    "industries": [
+      "Fintech",
+      "Payments"
+    ],
+    "url": "https://www.ycombinator.com/companies/infinite",
+    "scrapedAt": "2025-02-18T10:59:42.534Z",
+    "details": {
+      "founded": "2024",
+      "team_size": "3",
+      "status": "Active",
+      "location": "San Francisco",
+      "links": {
+        "website": null,
+        "linkedin": "https://linkedin.com/company/infiniteinc",
+        "twitter": "https://twitter.com/nvs",
+        "github": "https://github.com/infiniteagents"
+      },
+      "description": "Infinite is a stablecoin payment processor. We offer businesses turnkey APIs and SDKs to move money cross-border same-day with low fees, all without crypto complexity.",
+      "tags": [
+        "payments",
+        "b2b"
+      ],
+      "founders": [
+        {
+          "name": "Raj Lad",
+          "title": "Founder",
+          "bio": "Cofounder and CTO at Infinite. Previously payments tech lead at Sardine where I launched the global stablecoin payments and credit risk workflow products.",
+          "linkedin_url": "https://www.linkedin.com/in/rajlad/",
+          "twitter_url": null
+        },
+        {
+          "name": "Nikhil Srinivasan, Cofounder & CEO",
+          "title": "Founder",
+          "bio": "Cofounder and CEO of Infinite with Raj Lad. Previously platform product lead at Sardine and Coinbase (S12) via Distributed Systems (F1).",
+          "linkedin_url": "https://linkedin.com/in/nikhilsrinivasan",
+          "twitter_url": "https://twitter.com/nvs"
+        }
+      ]
+    }
+  },
+  {
+    "name": "Closure",
+    "location": "New York, NY, USA",
+    "description": "We help law enforcement solve crime",
+    "batch": "W25",
+    "industries": [
+      "Government"
+    ],
+    "url": "https://www.ycombinator.com/companies/closure",
+    "scrapedAt": "2025-02-18T10:59:42.534Z",
+    "details": {
+      "founded": "2024",
+      "team_size": "4",
+      "status": "Active",
+      "location": "New York",
+      "links": {
+        "website": null,
+        "linkedin": "https://www.linkedin.com/company/closure-intel",
+        "twitter": "https://twitter.com/ycombinator",
+        "github": null
+      },
+      "description": "Law enforcement is drowning in data. Closure helps search it to solve crime. \r\n\n- Hiring: UX, Engineering; \r\n- Expanding: Local, state, and federal law enforcement.",
+      "tags": [
+        "govtech",
+        "ai"
+      ],
+      "founders": [
+        {
+          "name": "Gilad Levy, Co-Founder and CTO",
+          "title": "Founder",
+          "bio": "Building the platform for closing cases faster.\nAn engineer with 12 years of experience building data systems. I served as a combat helicopter pilot in the Israeli Air Force and as a Cyber Security Engineer. Subsequently, I worked at Spot.io (acquired by NetApp), Microsoft, and Rivery (acquired by Boomi).\nI hold a Master's degree in Computer Science from Reichman University and an MBA from Tel Aviv University.",
+          "linkedin_url": "https://www.linkedin.com/in/gilad-levy/",
+          "twitter_url": null
+        },
+        {
+          "name": "Aaron Zelinger, Co-Founder",
+          "title": "Founder",
+          "bio": "Helping law enforcement solve crime @Closure with @GiladLevy. \n\nTakes helping government seriously; takes himself not so seriously.\n\nPreviously: 2 yrs @Arena, 6 yrs @Palantir (#savetheshire)",
+          "linkedin_url": "https://www.linkedin.com/in/aaron-zelinger/",
+          "twitter_url": null
+        }
+      ]
+    }
+  },
+  {
+    "name": "Mundo AI",
+    "location": "San Francisco, CA, USA",
+    "description": "High Quality Multilingual Training Data for AI Models",
+    "batch": "W25",
+    "industries": [
+      "B2B",
+      "Infrastructure"
+    ],
+    "url": "https://www.ycombinator.com/companies/mundo-ai",
+    "scrapedAt": "2025-02-18T10:59:42.534Z",
+    "details": {
+      "founded": "2024",
+      "team_size": "4",
+      "status": "Active",
+      "location": "San Francisco",
+      "links": {
+        "website": null,
+        "linkedin": "https://www.linkedin.com/company/mundoai",
+        "twitter": "https://twitter.com/ycombinator",
+        "github": null
+      },
+      "description": "AI models are terrible in non-English languages because it's nearly impossible to find training data in other languages. So, we're building the world's largest and highest-quality multilingual data library.",
+      "tags": [
+        "artificial-intelligence",
+        "machine-learning",
+        "ai"
+      ],
+      "founders": [
+        {
+          "name": "Naijide Anwaer",
+          "title": "Founder",
+          "bio": "Co-founder at Mundo AI building the largest and highest quality multilingual datasets. Product builder. Lover of languages and culture. Ex-Platform PM at Binance.US.",
+          "linkedin_url": "https://www.linkedin.com/in/naijide-anwaer",
+          "twitter_url": null
+        },
+        {
+          "name": "Garreth Lee",
+          "title": "Founder",
+          "bio": "Previously I worked on pretraining data at Cohere and tokenization at Hugging Face. I'm interested in all things related to ML/AI and love playing music.",
+          "linkedin_url": "https://www.linkedin.com/in/garrethlee",
+          "twitter_url": null
+        },
+        {
+          "name": "Jason Liao, CEO and Founder",
+          "title": "Founder",
+          "bio": "Hi! I'm Jason. Last year I worked on ML research abroad, where I discovered how impossibly challenging it is to build good multi-lingual AI models. Before that, I was the youngest quant researcher at a $60B hedge fund in Canada. jason@mundoai.world",
+          "linkedin_url": "https://www.linkedin.com/in/jasonliao02/",
+          "twitter_url": null
+        },
+        {
+          "name": "Kenneth Wu",
+          "title": "Founder",
+          "bio": "doing fun stuff",
+          "linkedin_url": "https://www.linkedin.com/in/wukenneth/",
+          "twitter_url": null
+        }
+      ]
+    }
+  },
+  {
+    "name": "Artificial Societies",
+    "location": "San Francisco, CA, USA",
+    "description": "We use AI to simulate large groups of people and how they interact",
+    "batch": "W25",
+    "industries": [
+      "B2B",
+      "Analytics"
+    ],
+    "url": "https://www.ycombinator.com/companies/artificial-societies",
+    "scrapedAt": "2025-02-18T10:59:42.534Z",
+    "details": {
+      "founded": "2024",
+      "team_size": "3",
+      "status": "Active",
+      "location": "San Francisco",
+      "links": {
+        "website": "https://societies.io/",
+        "linkedin": "https://www.linkedin.com/company/artificial-societies",
+        "twitter": "https://twitter.com/ycombinator",
+        "github": "https://github.com/artificial-societies"
+      },
+      "description": "Artificial Societies uses AI to simulate human societies. Companies like Anthropic are using Artificial Societies to predict how their marketing and content will perform in a simulation of their target customers, before launching in the real world. \r\n\nThis is a cracked team: James left rural China at age 14, got into Cambridge, turned down a CS PhD to do startups, and - in his spare time - lead the largest ever study of an LLM society. James is joined by Patrick, an applied behavioural scientist who has run over 200 real-world experiments for businesses including Fortune 500 companies. \r\n\nWe joined forces through a shared frustration that no one really understands large scale human behaviours: traditional market research is not only slow and expensive, but fundamentally flawed - it misses how people influence each other. Humans are not isolated individuals, we are social animals.\r\n\nWe began by simulating 1,000 investors to test startup pitches, which we used ourselves to get into YC and secure pre-seed investment. Since releasing this publicly as “Wave”, startup founders have run over 3000 simulations, deploying over 2.6bn LLM tokens in the process. \r\n\nWe have since released \"Reach\", where anyone can simulate their own LinkedIn audience and test how their posts will perform before posting for real. Artificial Societies is doing for simulations what ChatGPT did for LLMs - making them accessible to everyone.\r\n\nAs AI advances, we will create representative models of entire human societies. Our vision is a world where all content, products, and policies are first simulated in an Artificial Society. We are on a mission to create Artificial Collective Intelligence - humans innovate in collectives, we want to scale collective innovation with ACI.",
+      "tags": [
+        "artificial-intelligence",
+        "machine-learning",
+        "saas",
+        "b2b",
+        "market-research"
+      ],
+      "founders": [
+        {
+          "name": "James He",
+          "title": "Founder",
+          "bio": "CEO at Artificial Societies. Ex-Cambridge computational social science. Ex Yonder.\n\nAt 16, James was offered $600k to fund his ed-tech startup but chose to attend Cambridge instead. After graduating, James turned down a PhD offer to join Yonder - a credit card startup - and built the entirety of their lending ML systems. He then started his own scholarship at age 21, and led the largest-scale study of an LLM society in his spare time. He co-founded Artificial Societies in Oct 2024.",
+          "linkedin_url": "https://www.linkedin.com/in/james-k-he/",
+          "twitter_url": null
+        },
+        {
+          "name": "Patrick Sharpe",
+          "title": "Founder",
+          "bio": "Leading Product at Artificial Societies. Background in applied behavioural science.\n\nPatrick completed an MSc in behavioural econ, and left academia to lead behavioural science and CX projects at iptiQ - an insurtech startup owned by Swiss Re, the largest Reinsurer in the world. He joined Unconventional Wisdom, a specialised behavioural science consultancy, and scaled the client-base 3x within a year, before co-founding Artificial Societies in 2024.",
+          "linkedin_url": "https://www.linkedin.com/in/sharpe-patrick/",
+          "twitter_url": null
+        }
+      ]
+    }
+  }
+]

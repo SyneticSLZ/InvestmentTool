@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download Medical Devices Excel</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        .container {
+            text-align: center;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .download-btn {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .download-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="download-btn" onclick="generateExcel()">Download Excel File</button>
+    </div>
+
+    <script>
+        function generateExcel() {
+            // Create workbook
+            const wb = XLSX.utils.book_new();
+
+            // Create the data array
+            const data = [
+                ["Company", "First Name", "Last Name", "Title", "Email-1", "Email-2", "Annual Revenue", "Website", "LinkedIn", "Comment", "Sector", "Function", "Product", "Medical", "Department", "IP/OEM", "# Employ", "City", "State"],
+                ["Goddard", "Andrew", "Goddard", "CEO, owner", "a.goddard@goddardtech.com", "andy@goddardtech.com", 28261000, "https://www.linkedin.com", "https://www.linkedin.com", "", "Product development", "Manufacturing", "", "", "", "", 93, "Boston", "Massachusetts"],
+                ["ATL Technology, LLC", "Joe", "Glover", "Chief Executive", "joeg@atltechnology.com", "joeg@atltechnology.com", 55065000, "https://www.linkedin.com", "https://www.linkedin.com", "", "Manufacturers", "", "", "", "", "", 390, "Los Angeles", "California"],
+                ["Stradis Healthcare (Acquired)", "Jeff", "Jacobs", "CEO and", "jeff.jacobs@stradishealthcare.com", "", 39000000, "", "", "", "Manufacturers", "", "", "", "", "", 30, "Delray Beach", "Florida"],
+                ["Oscar Inc.", "Thomas", "Osypka", "President and", "tosypka@oscar.com", "thomas@oscar.com", 57000000, "https://www.linkedin.com", "https://www.linkedin.com", "", "Manufacturers (Cardiac)", "", "", "", "", "", 330, "Palm Harbor", "Florida"],
+                ["Command Medical Products, Inc.", "David", "Slick", "CEO", "davidslick@commandmedical.com", "davidslick@commandmedical.com", 30620000, "https://www.linkedin.com", "https://www.linkedin.com", "", "Manufacturers (Contract)", "", "", "", "", "", 120, "Ormond Beach", "Florida"],
+                ["David Schnur Associates", "Barry", "Schnur", "President / CEO", "bschnur@dschnur.com", "bschnur@dschnur.com", 30045000, "https://www.linkedin.com", "https://www.linkedin.com", "", "Manufacturers (Contract)", "", "", "", "", "", 18, "Redwood City", "California"],
+                ["MPE Inc", "Hank", "Kohl", "President / CEO", "hkohl@mpe-inc.com", "kohl@mpe-inc.com", 60000000, "https://www.linkedin.com", "https://www.linkedin.com", "", "Manufacturers (Contract)", "", "", "", "", "", 250, "Washington", "Washington"],
+                ["MRPC", "Greg", "Riemer", "President & CEO", "greg.riemer@mrpcorp.com", "greg.riemer@mrpcorp.com", 48000000, "https://www.linkedin.com", "https://www.linkedin.com", "", "Manufacturers (Contract)", "", "", "", "", "", 120, "Pewaukee", "Wisconsin"],
+                ["Criterion Tool", "Lorri", "Ondercin", "CEO", "londercin@criteriontool.com", "ondercin@criteriontool.com", 64843000, "https://www.linkedin.com", "https://www.linkedin.com", "*", "Manufacturers (Contract)", "", "", "", "", "", 13, "Cleveland", "Ohio"],
+                ["Criterion Tool", "Tanya", "Disalvo", "CEO & Owner", "tdisalvo@criteriontool.com", "tdisalvo@criteriontool.com", 64843000, "https://www.linkedin.com", "https://www.linkedin.com", "*", "Manufacturers (Contract)", "", "", "", "", "", 13, "Cleveland", "Ohio"],
+                ["ProMed Molded Products", "Wayne", "Kelly", "CEO / President", "wayne.kelly@promedmoldedproducts.com", "wayne.kelly@promedmoldedproducts.com", 32000000, "https://www.linkedin.com", "https://www.linkedin.com", "", "Manufacturers (Contract), Drug Eluting, Molded Implants", "", "", "", "", "", 130, "Minneapolis", "Minnesota"],
+                ["Cagenix", "Daryl", "Newman", "CEO", "dnewman@cagenix.com", "dnewman@cagenix.com", 28591000, "https://www.linkedin.com", "https://www.linkedin.com", "", "Manufacturers (Dental)", "", "", "", "", "", 27, "Memphis", "Tennessee"],
+                ["Sprig Oral Health Technologies, Inc.", "Brenda", "Hansen", "Chief Executive", "brenda@sprigusa.com", "brenda@sprigusa.com", 49777000, "https://www.linkedin.com", "https://www.linkedin.com", "", "Manufacturers (Dental)", "", "", "", "", "", 22, "Loomis", "California"],
+                ["SS White Dental", "Tom", "Gallop", "CEO", "tgallop@sswhitedental.com", "tgallop@sswhitedental.com", 35000000, "https://www.linkedin.com", "https://www.linkedin.com", "", "Manufacturers (Dental)", "", "", "", "", "", 170, "Boulder", "Colorado"],
+                ["Diatron Medical Instruments", "Jim", "Schepp", "CEO", "jim.schepp@diatron.com", "schepp@diatron.com", 25000000, "https://www.linkedin.com", "https://www.linkedin.com", "", "Manufacturers (Diagnostic Analysers)", "", "", "", "", "", 170, "Fort Lauderdale", "Florida"],
+                ["PlasmaJet", "Brian", "Tippett", "President and", "btippett@plasmasurgical.com", "btippett@plasmasurgical.com", 25000000, "https://www.linkedin.com", "https://www.linkedin.com", "", "Manufacturers (Endometriosis)", "", "", "", "", "", 27, "Atlanta", "Georgia"],
+                ["Ergo-Flex Technologies", "Linda", "Anderson", "Owner CEO", "linda@ergoflextechnologies.com", "linda@ergoflextechnologies.com", 36774000, "https://www.linkedin.com", "https://www.linkedin.com", "", "Manufacturers (Furniture)", "", "", "", "", "", 11, "Conroe", "Texas"],
+                ["Flowonix Medical", "Steve", "Adler", "Chief Executive", "steve.adler@flowonix.com", "steve.adler@flowonix.com", 28479000, "https://flowonix.com/", "", "", "Manufacturers (Infusion Pumps)", "", "", "", "", "", 31, "Randolph", "New Jersey"],
+                ["Vector Surgical", "Janet", "Phillips", "Vector Surgical", "janet.phillips@vectorsurgical.com", "janet.phillips@vectorsurgical.com", 35000000, "https://www.linkedin.com", "https://www.linkedin.com", "", "Manufacturers (Margin Markers, Multiple, Oncology)", "", "", "", "", "", 15, "Milwaukee", "Wisconsin"]
+            ];
+
+            // Create worksheet
+            const ws = XLSX.utils.aoa_to_sheet(data);
+
+            // Add worksheet to workbook
+            XLSX.utils.book_append_sheet(wb, ws, "Manufacturing");
+
+            // Generate Excel file
+            XLSX.writeFile(wb, "medical_devices_manufacturing.xlsx");
+        }
+    </script>
+</body>
+</html>
