@@ -1,3 +1,5 @@
+
+
 let postsData = [];
 let ycData = [];
 let fundingData = []
@@ -7,6 +9,7 @@ let currentCompanyData = null;
 let currentModalTab = 'details';
 let lastRefreshTime = new Date();
 let activeModalTab = 'details';
+let factiveModalTab = 'details';
 let currentPostId = null;
 let API_TOKEN = "fqthilF8Q-5yXTMJGW1x1CdYnvdcJM_cdeSbEh-BBdk";
 const CRUNCHBASE_BASE_URL = 'https://api.crunchbase.com/api/v4';
@@ -2035,7 +2038,7 @@ async function updateModalContentfunding(event) {
         console.log('updating modal content')
         const modalContent = document.getElementById('modalContentfund');
         
-        if (activeModalTab === 'details') {
+        if (factiveModalTab === 'details') {
             modalContent.innerHTML = await generateDetailsTab(event);
         } else {
             modalContent.innerHTML = await generateInvestorsTab(event);
@@ -3490,6 +3493,38 @@ function closeMediaPreview() {
 }
 
 function setupEventListeners() {
+
+    document.querySelectorAll('.modal-tab').forEach(tab => {
+        tab.addEventListener('click', async () => {
+            const tabName = tab.getAttribute('data-tab');
+            
+            // Show loading state
+            document.getElementById('modalContent').innerHTML = `
+                <div class="flex items-center justify-center p-12">
+                    <div class="flex flex-col items-center space-y-4">
+                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+                        <p class="text-gray-500">Loading ${tabName} data...</p>
+                    </div>
+                </div>
+            `;
+            
+            // Update active tab styling
+            document.querySelectorAll('.modal-tab').forEach(t => {
+                t.classList.remove('active', 'bg-blue-100', 'text-blue-700');
+                t.classList.add('text-gray-500', 'hover:text-gray-700');
+            });
+            tab.classList.add('active', 'bg-blue-100', 'text-blue-700');
+            tab.classList.remove('text-gray-500', 'hover:text-gray-700');
+            
+            // Update content
+            activeModalTab = tabName;
+            const event = fundingData.find(e => e.uuid === currentEventId);
+            if (event) {
+                await updateModalContent(event);
+            }
+        });
+    })
+
     document.querySelectorAll('#ycModal .close-modal').forEach(button => {
         button.addEventListener('click', () => {
             document.getElementById('ycModal').style.display = 'none';

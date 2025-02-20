@@ -1,6 +1,7 @@
 let fundingData = []
 let lastRefreshTime = new Date();
 let activeModalTab = 'details';
+
 currentEventId = null
 // Crunchbase data handling
 const CRUNCHBASE_BASE_URL = 'https://api.crunchbase.com/api/v4';
