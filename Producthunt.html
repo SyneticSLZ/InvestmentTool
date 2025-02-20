@@ -110,23 +110,43 @@
                     <span>Refresh</span>
                 </button>
 
-                <!-- <button id="darkModeToggle" class="bg-gray-50 dark:bg-[rgba(17,16,28,0.8)] hover:bg-gray-100 dark:hover:bg-[rgba(139,92,246,0.1)] text-gray-700 dark:text-gray-200 p-2 rounded-lg border dark:border-gray-800 transition-colors">
+                <button id="darkModeToggle" class="bg-gray-50 dark:bg-[rgba(17,16,28,0.8)] hover:bg-gray-100 dark:hover:bg-[rgba(139,92,246,0.1)] text-gray-700 dark:text-gray-200 p-2 rounded-lg border dark:border-gray-800 transition-colors">
                     <i class="fas fa-moon dark:hidden"></i>
                     <i class="fas fa-sun hidden dark:inline"></i>
-                </button> -->
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 pt-24 pb-8">
+
+    <!-- <main class="container mx-auto px-4 pt-24 pb-8">
+        
         <div id="mainContent" class="space-y-6">
-            <!-- Loading State -->
+            
             <div class="flex items-center justify-center py-12">
                 <div class="loading-spin w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full"></div>
             </div>
         </div>
-    </main>
+        <div id="ycContent" class="space-y-6 hidden">
+           
+        </div>
+    </main> -->
+
+    <!-- Main Content -->
+<main class="container mx-auto px-4 pt-24 pb-8">
+    <div class="space-y-12">
+        <!-- Section Headers -->
+        <div class="flex justify-between items-center">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Latest Launches</h2>
+            <span id="refreshTimestamp" class="text-sm text-gray-500 dark:text-gray-400"></span>
+        </div>
+        
+        <!-- Combined Content -->
+        <div id="mainContent" class="space-y-12">
+            <!-- Content will be rendered here -->
+        </div>
+    </div>
+</main>
 
     <!-- Product Details Modal -->
     <div id="fundingModal" class="modal fixed inset-0 hidden items-start justify-center pt-16 px-4 z-50">
@@ -162,6 +182,89 @@
         </div>
     </div>
 
+        <!-- Enhanced Modal -->
+        <div id="fundingModalfund" class="modal fixed inset-0 bg-black bg-opacity-50 items-start justify-center pt-16 px-4 z-50" style="display: none;">
+            <div class="modal-content bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-hidden">
+                <div class="sticky top-0 bg-white dark:bg-gray-800 border-b dark:border-gray-700 z-10">
+                    <div class="flex justify-between items-center p-6">
+                        <h2 class="text-2xl font-bold text-gray-900 dark:text-white" id="modalTitle">Funding Details</h2>
+                        <button class="close-modal text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="px-6 pb-4">
+                        <nav class="flex space-x-4">
+                            <button class="modal-tab px-3 py-2 text-sm font-medium rounded-md transition-colors text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700" data-tab="details">
+                                Funding Details
+                            </button>
+                            <button class="modal-tab px-3 py-2 text-sm font-medium rounded-md transition-colors text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700" data-tab="investors">
+                                Investors & Contacts
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+                <div class="p-6 overflow-y-auto" style="max-height: calc(90vh - 160px);">
+                    <div id="modalContentfund" class="text-gray-600 dark:text-gray-300"></div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Company Details Modal -->
+<!-- YC Company Details Modal -->
+<div id="ycModal" class="modal fixed inset-0 hidden items-start justify-center pt-16 px-4 z-50">
+    <div class="modal-content max-w-4xl w-full bg-white dark:bg-[rgba(17,16,28,0.95)] rounded-xl shadow-xl">
+        <div class="sticky top-0 border-b border-gray-200 dark:border-gray-800 z-10">
+            <div class="flex justify-between items-center p-6">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white" id="ycModalTitle">Company Details</h2>
+                <button class="close-modal text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <div class="p-6 max-h-[80vh] overflow-y-auto">
+            <div id="ycModalContent" class="text-gray-600 dark:text-gray-300">
+                <!-- Modal content will be inserted here -->
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Add this new modal for emails -->
+<div id="emailModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 items-center justify-center">
+    <div class="bg-white dark:bg-gray-800 rounded-lg max-w-2xl w-full m-4">
+        <div class="p-6 border-b dark:border-gray-700">
+            <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Compose Email</h3>
+                <button onclick="closeEmailModal()" class="text-gray-500 hover:text-gray-700 dark:text-gray-400">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="p-6 space-y-4">
+            <div>
+                <label class="block text-sm text-gray-700 dark:text-gray-300 mb-1">To:</label>
+                <input type="text" id="emailTo" readonly class="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border dark:border-gray-600 rounded-lg">
+            </div>
+
+            <div>
+                <label class="block text-sm text-gray-700 dark:text-gray-300 mb-1">Subject:</label>
+                <input type="text" id="emailSubject" class="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border dark:border-gray-600 rounded-lg">
+            </div>
+
+            <div>
+                <label class="block text-sm text-gray-700 dark:text-gray-300 mb-1">Message:</label>
+                <textarea id="emailBody" rows="10" class="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border dark:border-gray-600 rounded-lg resize-none"></textarea>
+            </div>
+        </div>
+
+        <div class="px-6 py-4 border-t dark:border-gray-700 flex justify-end">
+            <button onclick="sendEmail()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                Send Email
+            </button>
+        </div>
+    </div>
+</div>
     <script>
         // Dark mode toggle
         const darkModeToggle = document.getElementById('darkModeToggle');
@@ -197,6 +300,18 @@
                 updateDarkMode(e.matches);
             }
         });
+
+        
+// Set dark mode as default if no preference is saved
+document.addEventListener('DOMContentLoaded', () => {
+    if (!localStorage.getItem('darkMode')) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('darkMode', 'true');
+    }
+});
+
+
+        
     </script>
     <script src="producthunt-view.js"></script>
 </body>

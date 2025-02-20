@@ -448,6 +448,9 @@ function renderMainTable(data) {
     updateActiveFilterTags();
 
 }
+
+
+
 function updateFilters() {
     activeFilters = {
         dateRange: {

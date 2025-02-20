@@ -1,0 +1,290 @@
+{
+  "url": "https://www.ycombinator.com/companies",
+  "timestamp": "2025-02-12T14:51:38.218Z",
+  "elements": {
+    "articles": [],
+    "potentialCards": [
+      {
+        "tag": "div",
+        "id": "ycdc_new/pages/Companies/IndexPage-react-component-f92bc8de-b6da-4885-aeee-705b6eb1a3ea",
+        "className": "",
+        "text": "AboutCompaniesStartup JobsFind a Co-FounderLibrarySAFEResources\nApply\nStartup Directory\n\nSince 2005,",
+        "children": 3,
+        "rect": {
+          "x": 13,
+          "y": 0,
+          "width": 888,
+          "height": 6218.703125,
+          "top": 0,
+          "right": 901,
+          "bottom": 6218.703125,
+          "left": 13
+        }
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "mx-auto max-w-ycdc-page",
+        "text": "Startup Directory\n\nSince 2005, we have invested in over 5,000 companies that have a combined valuati",
+        "children": 2,
+        "rect": {
+          "x": 13,
+          "y": 101,
+          "width": 888,
+          "height": 5652.703125,
+          "top": 101,
+          "right": 901,
+          "bottom": 5753.703125,
+          "left": 13
+        }
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "space-y-2",
+        "text": "Sort by\nDefault\nLaunch Date\n💎 Top Companies91\nIs Hiring1117\nNonprofit43\nBatch\nAll batches5120\nX251\n",
+        "children": 2,
+        "rect": {
+          "x": 13,
+          "y": 321.984375,
+          "width": 875,
+          "height": 5406.71875,
+          "top": 321.984375,
+          "right": 888,
+          "bottom": 5728.703125,
+          "left": 13
+        }
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "_sharedDirectory_1pgsr_76 ",
+        "text": "💎 Top Companies91\nIs Hiring1117\nNonprofit43\nBatch\nAll batches5120\nX251\nW25105\nF2495\nS24253\nW24252\nS",
+        "children": 2,
+        "rect": {
+          "x": 13,
+          "y": 367.984375,
+          "width": 875,
+          "height": 5360.71875,
+          "top": 367.984375,
+          "right": 888,
+          "bottom": 5728.703125,
+          "left": 13
+        }
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "_section_1pgsr_163 _facets_1pgsr_216",
+        "text": "💎 Top Companies91\nIs Hiring1117\nNonprofit43\nBatch\nAll batches5120\nX251\nW25105\nF2495\nS24253\nW24252\nS",
+        "children": 17,
+        "rect": {
+          "x": 13,
+          "y": 367.984375,
+          "width": 300,
+          "height": 1307,
+          "top": 367.984375,
+          "right": 313,
+          "bottom": 1674.984375,
+          "left": 13
+        }
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "_facet_1pgsr_85",
+        "text": "Batch\nAll batches5120\nX251\nW25105\nF2495\nS24253\nW24252\nS23221\nW23275\nSee all options",
+        "children": 11,
+        "rect": {
+          "x": 34,
+          "y": 502.984375,
+          "width": 258,
+          "height": 251,
+          "top": 502.984375,
+          "right": 292,
+          "bottom": 753.984375,
+          "left": 34
+        }
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "_facet_1pgsr_85",
+        "text": "Industry\nAll industries5120\nB2B2453\nEducation194\nFintech578\nConsumer813\nHealthcare606\nReal Estate an",
+        "children": 11,
+        "rect": {
+          "x": 34,
+          "y": 794.984375,
+          "width": 258,
+          "height": 251,
+          "top": 794.984375,
+          "right": 292,
+          "bottom": 1045.984375,
+          "left": 34
+        }
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "mx-auto max-w-ycdc-page py-12 lg:py-16",
+        "text": "Y Combinator\nPrograms\nYC Program\nStartup School\nWork at a Startup\nCo-Founder Matching\nCompany\nYC Blo",
+        "children": 2,
+        "rect": {
+          "x": 13,
+          "y": 5753.703125,
+          "width": 888,
+          "height": 465,
+          "top": 5753.703125,
+          "right": 901,
+          "bottom": 6218.703125,
+          "left": 13
+        }
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "flex flex-col space-y-8 md:flex-row md:space-y-0",
+        "text": "Y Combinator\nPrograms\nYC Program\nStartup School\nWork at a Startup\nCo-Founder Matching\nCompany\nYC Blo",
+        "children": 3,
+        "rect": {
+          "x": 13,
+          "y": 5801.703125,
+          "width": 888,
+          "height": 280,
+          "top": 5801.703125,
+          "right": 901,
+          "bottom": 6081.703125,
+          "left": 13
+        }
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "flex flex-col space-y-8 sm:flex-row sm:space-x-16 sm:space-y-0 md:justify-items-center",
+        "text": "Programs\nYC Program\nStartup School\nWork at a Startup\nCo-Founder Matching\nCompany\nYC Blog\nContact\nPre",
+        "children": 3,
+        "rect": {
+          "x": 137,
+          "y": 5801.703125,
+          "width": 497.1875,
+          "height": 280,
+          "top": 5801.703125,
+          "right": 634.1875,
+          "bottom": 6081.703125,
+          "left": 137
+        }
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "",
+        "text": "Programs\nYC Program\nStartup School\nWork at a Startup\nCo-Founder Matching",
+        "children": 2,
+        "rect": {
+          "x": 137,
+          "y": 5801.703125,
+          "width": 137.96875,
+          "height": 280,
+          "top": 5801.703125,
+          "right": 274.96875,
+          "bottom": 6081.703125,
+          "left": 137
+        }
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "",
+        "text": "Company\nYC Blog\nContact\nPress\nPeople\nCareers\nPrivacy Policy\nNotice at Collection\nSecurity\nTerms of U",
+        "children": 2,
+        "rect": {
+          "x": 338.96875,
+          "y": 5801.703125,
+          "width": 124.984375,
+          "height": 280,
+          "top": 5801.703125,
+          "right": 463.953125,
+          "bottom": 6081.703125,
+          "left": 338.96875
+        }
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "",
+        "text": "Resources\nStartup Directory\nStartup Library\nInvestors\nSAFE\nHacker News\nLaunch YC\nYC Deals",
+        "children": 2,
+        "rect": {
+          "x": 527.953125,
+          "y": 5801.703125,
+          "width": 106.234375,
+          "height": 280,
+          "top": 5801.703125,
+          "right": 634.1875,
+          "bottom": 6081.703125,
+          "left": 527.953125
+        }
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "mt-8 flex-1 space-x-2 sm:text-right md:mt-0",
+        "text": "Apply",
+        "children": 2,
+        "rect": {
+          "x": 634.1875,
+          "y": 5801.703125,
+          "width": 266.8125,
+          "height": 280,
+          "top": 5801.703125,
+          "right": 901,
+          "bottom": 6081.703125,
+          "left": 634.1875
+        }
+      }
+    ],
+    "companyLinks": [],
+    "allClasses": [
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355",
+      "_company_1pgsr_355"
+    ]
+  }
+}

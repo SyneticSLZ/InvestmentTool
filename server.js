@@ -485,7 +485,7 @@ async function getLatestProductHuntPosts() {
 app.listen(PORT, async() => {
     console.log(`Server is running on http://localhost:${PORT}`);
     // getLatestProductHuntPosts();
-    fetchAndSaveProductData()
+    // fetchAndSaveProductData()
     // .then(data => {
     //     console.log('Operation completed successfully');
     //     console.log('Response data:', data);
