@@ -2611,6 +2611,7 @@ function simulateHunterData(companyName, domain) {
 async function searchContacts(event, domain) {
     event.preventDefault();
     const contactsList = document.getElementById('contacts-list');
+    console.log(domain)
     
     // Show loading state
     contactsList.innerHTML = `
@@ -3260,7 +3261,7 @@ function showYCDetails(companyName) {
             <div class="mt-6 border-t dark:border-gray-700 pt-6">
                 <div class="flex justify-between items-center mb-4">
                     <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Contact Search</h4>
-                    <button onclick="searchContacts(event, '${company.details.links?.website ? new URL(company.details.links.website).hostname : company.name.toLowerCase().replace(/\s+/g, '') + '.com'}')"
+                    <button onclick="searchContacts(event, '${company.details.links.website}')"
                             class="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors">
                         <i class="fas fa-search mr-2"></i>
                         Find Contacts
