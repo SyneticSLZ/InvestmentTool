@@ -2131,6 +2131,21 @@ async function generateDetailsTab(event) {
                         </div>
                     </div>
 
+                <!-- Contact Search Section -->
+                <div class="mt-6 border-t dark:border-gray-700 pt-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Contact Search</h4>
+                        <button onclick="searchContacts(event, '${fields.website_url}')"
+                                class="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 rounded-lg hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors">
+                            <i class="fas fa-search mr-2"></i>
+                            Find Contacts
+                        </button>
+                    </div>
+                    <div id="contacts-list" class="space-y-4">
+                        <!-- Contacts will be loaded here -->
+                    </div>
+                </div>
+
                     <!-- Company Quick Stats -->
                     <div class="mt-4 flex flex-wrap gap-4">
                         ${fields.created_at ? `
@@ -2609,7 +2624,7 @@ function simulateHunterData(companyName, domain) {
 }
 
 async function searchContacts(event, domain) {
-    event.preventDefault();
+    // event.preventDefault();
     const contactsList = document.getElementById('contacts-list');
     console.log(domain)
     
