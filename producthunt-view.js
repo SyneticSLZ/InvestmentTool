@@ -2935,7 +2935,7 @@ function renderMainTable(data) {
 
 async function scrapeWebsitefromprod(url) {
     fetch('https://pupetteer.onrender.com/producthuntwebsite', {
-      method: 'GET',
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ url: url })
     })
