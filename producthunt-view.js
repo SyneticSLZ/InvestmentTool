@@ -3241,7 +3241,7 @@ function showYCDetails(companyName) {
     const modal = document.getElementById('ycModal');
     const modalContent = document.getElementById('ycModalContent');
     document.getElementById('ycModalTitle').textContent = company.name;
-    
+    console.log(company.details.links.website, company.details.links)
     modalContent.innerHTML = `
         <div class="space-y-8">
             <!-- Company Header -->
