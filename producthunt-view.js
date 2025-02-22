@@ -2933,19 +2933,44 @@ function renderMainTable(data) {
     mainContent.innerHTML = cardsHTML;
 }
 
-async function scrapeWebsitefromprod(url) {
-    fetch('https://pupetteer.onrender.com/producthuntwebsite', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ url: url })
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Website data:', data.website);
-      })
-      .catch(error => console.error('Error fetching data:', error));
-  }
+// async function scrapeWebsitefromprod(url) {
+//     fetch('https://pupetteer.onrender.com/producthuntwebsite', {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify({ url: url })
+//     })
+//       .then(response => response.json())
+//       .then(data => {
+//         console.log('Website data:', data.website);
+//       })
+//       .catch(error => console.error('Error fetching data:', error));
+//   }
   
+
+
+  async function scrapeWebsitefromprod(url) {
+    try {
+      const response = await fetch('https://pupetteer.onrender.com/producthuntwebsite', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ url })
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      console.log('Website data:', data.website);
+      return data.website;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
+  }
+
 
 async function showPostDetails(postId) {
     const post = postsData.find(p => p.id === postId);
