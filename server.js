@@ -166,6 +166,7 @@ app.post('/search-contacts', async (req, res) => {
             }
         });
 
+        console.log(response.data)
         // Cache the results if needed
         res.json(response.data);
     } catch (error) {
