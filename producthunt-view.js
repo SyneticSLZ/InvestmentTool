@@ -3073,6 +3073,7 @@ async function showPostDetails(postId) {
          proddata = await scrapeWebsitefromprod(postDetails.url)
          prodhuntwebsite = proddata.website
          makers = proddata.makers
+         console.log(proddata)
         modalContent.innerHTML = `
             <div class="space-y-8">
                 <!-- Product Header -->
