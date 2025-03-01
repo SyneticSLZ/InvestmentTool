@@ -2964,7 +2964,7 @@ function renderMainTable(data) {
   
       const data = await response.json();
       console.log('Website data:', data.website);
-      return data.website;
+      return data;
     } catch (error) {
       console.error('Error fetching data:', error);
       throw error;
@@ -3069,7 +3069,10 @@ async function showPostDetails(postId) {
        
 
         const postDetails = data.data.post;
-        prodhuntwebsite = await scrapeWebsitefromprod(postDetails.url)
+        
+         proddata = await scrapeWebsitefromprod(postDetails.url)
+         prodhuntwebsite = proddata.website
+         makers = proddata.makers
         modalContent.innerHTML = `
             <div class="space-y-8">
                 <!-- Product Header -->
@@ -3154,7 +3157,7 @@ async function showPostDetails(postId) {
                     </div>
                 ` : ''}
 
-                <!-- Makers -->
+                <!-- Makers 
                 ${postDetails.makers?.length ? `
                     <div class="bg-white dark:bg-[rgba(17,16,28,0.95)] rounded-xl border border-gray-200 dark:border-gray-800 p-6">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Makers</h3>
@@ -3181,7 +3184,32 @@ async function showPostDetails(postId) {
                             `).join('')}
                         </div>
                     </div>
-                ` : ''}
+                ` : ''} -->
+
+                <!-- Makers -->
+${makers?.length ? `
+    <div class="bg-white dark:bg-[rgba(17,16,28,0.95)] rounded-xl border border-gray-200 dark:border-gray-800 p-6">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Makers</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            ${makers.map(maker => `
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                        <span class="text-xl font-semibold text-gray-500 dark:text-gray-400">
+                            ${maker.name.split(" ")[0].charAt(0)}
+                        </span>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-900 dark:text-white">${maker.name}</h4>
+                        <a href="${maker.profile}" target="_blank" 
+                           class="text-sm text-purple-600 dark:text-purple-400 hover:underline">
+                            View Profile
+                        </a>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    </div>
+` : ''}
 
                 <!-- Media Gallery -->
                 ${postDetails.media?.length ? `
