@@ -296,40 +296,40 @@ app.post('/remove-mailbox', async (req, res) => {
 
 // Send email
 // Update send-email endpoint to use UUID
-app.post('/send-email-gmail', async (req, res) => {
-    const { uuid, mailboxId, to, subject, body } = req.body;
+// app.post('/send-email-gmail', async (req, res) => {
+//     const { uuid, mailboxId, to, subject, body } = req.body;
     
-    try {
-        const auth = await loadTokens(uuid, mailboxId);
-        const gmail = google.gmail({ version: 'v1', auth });
+//     try {
+//         const auth = await loadTokens(uuid, mailboxId);
+//         const gmail = google.gmail({ version: 'v1', auth });
 
-        // Create email
-        const email = [
-            `To: ${to}`,
-            'Content-Type: text/plain; charset=utf-8',
-            `Subject: ${subject}`,
-            '',
-            body,
-        ].join('\n');
+//         // Create email
+//         const email = [
+//             `To: ${to}`,
+//             'Content-Type: text/plain; charset=utf-8',
+//             `Subject: ${subject}`,
+//             '',
+//             body,
+//         ].join('\n');
 
-        const encodedMessage = Buffer.from(email)
-            .toString('base64')
-            .replace(/\+/g, '-')
-            .replace(/\//g, '_')
-            .replace(/=+$/, '');
+//         const encodedMessage = Buffer.from(email)
+//             .toString('base64')
+//             .replace(/\+/g, '-')
+//             .replace(/\//g, '_')
+//             .replace(/=+$/, '');
 
-        // Send email via Gmail API
-        await gmail.users.messages.send({
-            userId: 'me',
-            requestBody: { raw: encodedMessage },
-        });
+//         // Send email via Gmail API
+//         await gmail.users.messages.send({
+//             userId: 'me',
+//             requestBody: { raw: encodedMessage },
+//         });
 
-        res.json({ message: 'Email sent successfully' });
-    } catch (error) {
-        console.error('Error sending email:', error);
-        res.status(500).json({ error: 'Failed to send email' });
-    }
-});
+//         res.json({ message: 'Email sent successfully' });
+//     } catch (error) {
+//         console.error('Error sending email:', error);
+//         res.status(500).json({ error: 'Failed to send email' });
+//     }
+// });
 
 async function loadTokens(uuid, mailboxId) {
     try {
@@ -460,6 +460,244 @@ app.post('/campaign/send', async (req, res) => {
     // Process emails in the background
     processCampaignEmails(uuid, mailboxId, emails, campaignName, sendInterval || 60);
 });
+
+
+app.post('/verify-email', async (req, res) => {
+    const { email, domain } = req.body;
+    
+    if (!email) {
+        return res.status(400).json({ error: 'Email is required' });
+    }
+    
+    try {
+        // Try to verify with Hunter API
+        const url = `https://api.hunter.io/v2/email-verifier?email=${encodeURIComponent(email)}&api_key=${HUNTER_API_KEY}`;
+        
+        const response = await axios.get(url);
+        
+        return res.json({
+            success: true,
+            result: response.data.data
+        });
+    } catch (error) {
+        console.error('Error verifying email:', error.response?.data || error.message);
+        
+        // Send error response
+        return res.status(500).json({
+            success: false,
+            error: error.response?.data?.errors || error.message
+        });
+    }
+});
+
+// Domain verification endpoint (for bulk checking)
+app.post('/verify-domain', async (req, res) => {
+    const { domain } = req.body;
+    
+    if (!domain) {
+        return res.status(400).json({ error: 'Domain is required' });
+    }
+    
+    try {
+        // Get domain information from Hunter API
+        const url = `https://api.hunter.io/v2/domain-search?domain=${encodeURIComponent(domain)}&api_key=${HUNTER_API_KEY}`;
+        
+        const response = await axios.get(url);
+        
+        return res.json({
+            success: true,
+            result: response.data.data
+        });
+    } catch (error) {
+        console.error('Error checking domain:', error.response?.data || error.message);
+        
+        // Send error response
+        return res.status(500).json({
+            success: false,
+            error: error.response?.data?.errors || error.message
+        });
+    }
+});
+
+// Enhanced campaign scheduling endpoint
+app.post('/campaign/schedule', async (req, res) => {
+    const { uuid, mailboxId, leads, campaignName, sendInterval, startDate, settings, followUps } = req.body;
+    
+    if (!uuid || !mailboxId || !leads || !leads.length || !campaignName) {
+        return res.status(400).json({ error: 'Missing required parameters' });
+    }
+    
+    try {
+        // Create campaign in database or store in a file for this example
+        const campaignId = Date.now().toString();
+        
+        // Store campaign data
+        const campaign = {
+            id: campaignId,
+            uuid,
+            mailboxId,
+            name: campaignName,
+            leadCount: leads.length,
+            sendInterval: sendInterval || 60,
+            startDate: startDate || new Date().toISOString(),
+            settings: settings || {
+                trackOpens: true,
+                trackClicks: true,
+                stopOnReply: true,
+                stopOnClick: false
+            },
+            followUps: followUps || [],
+            status: 'Scheduled',
+            createdAt: new Date().toISOString()
+        };
+        
+        // For this implementation, we're just logging the campaign info
+        // In a real app, you would save this to a database
+        console.log('Campaign scheduled:', campaign);
+        
+        // Return success response
+        res.json({
+            success: true,
+            message: `Campaign ${campaignName} scheduled successfully with ${leads.length} emails`,
+            campaignId
+        });
+        
+        // In a real app, you would schedule the campaign for the start date
+        // For this example, we'll just log that information
+        console.log(`Campaign will start at: ${new Date(campaign.startDate).toLocaleString()}`);
+        
+    } catch (error) {
+        console.error('Error scheduling campaign:', error);
+        res.status(500).json({ 
+            success: false,
+            error: error.message
+        });
+    }
+});
+
+// Email tracking endpoints
+app.get('/track-open', (req, res) => {
+    const { cid, eid } = req.query;
+    
+    // Record the open in the database
+    console.log(`Email open tracked: Campaign=${cid}, LeadId=${eid}`);
+    
+    // Return a 1x1 transparent pixel
+    res.set('Content-Type', 'image/gif');
+    res.send(Buffer.from('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', 'base64'));
+});
+
+app.get('/track-click', (req, res) => {
+    const { cid, lid, url } = req.query;
+    
+    // Record the click in the database
+    console.log(`Link click tracked: Campaign=${cid}, LeadId=${lid}, URL=${url}`);
+    
+    // Redirect to the original URL
+    res.redirect(url);
+});
+
+// Campaign management endpoints
+
+// Get campaigns for a user
+app.get('/campaigns/:uuid', async (req, res) => {
+    const { uuid } = req.params;
+    
+    if (!uuid) {
+        return res.status(400).json({ error: 'UUID is required' });
+    }
+    
+    try {
+        // In a real app, you would fetch campaigns from a database
+        // For this example, we'll return an empty array
+        res.json({
+            success: true,
+            campaigns: []
+        });
+    } catch (error) {
+        console.error('Error fetching campaigns:', error);
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
+});
+
+// Pause a campaign
+app.post('/campaign/pause', async (req, res) => {
+    const { uuid, campaignId } = req.body;
+    
+    if (!uuid || !campaignId) {
+        return res.status(400).json({ error: 'UUID and campaignId are required' });
+    }
+    
+    try {
+        // In a real app, you would update the campaign status in your database
+        console.log(`Pausing campaign ${campaignId} for user ${uuid}`);
+        
+        res.json({
+            success: true,
+            message: 'Campaign paused successfully'
+        });
+    } catch (error) {
+        console.error('Error pausing campaign:', error);
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
+});
+
+// Resume a campaign
+app.post('/campaign/resume', async (req, res) => {
+    const { uuid, campaignId } = req.body;
+    
+    if (!uuid || !campaignId) {
+        return res.status(400).json({ error: 'UUID and campaignId are required' });
+    }
+    
+    try {
+        // In a real app, you would update the campaign status in your database
+        console.log(`Resuming campaign ${campaignId} for user ${uuid}`);
+        
+        res.json({
+            success: true,
+            message: 'Campaign resumed successfully'
+        });
+    } catch (error) {
+        console.error('Error resuming campaign:', error);
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
+});
+
+// Delete a campaign
+app.post('/campaign/delete', async (req, res) => {
+    const { uuid, campaignId } = req.body;
+    
+    if (!uuid || !campaignId) {
+        return res.status(400).json({ error: 'UUID and campaignId are required' });
+    }
+    
+    try {
+        // In a real app, you would delete or archive the campaign in your database
+        console.log(`Deleting campaign ${campaignId} for user ${uuid}`);
+        
+        res.json({
+            success: true,
+            message: 'Campaign deleted successfully'
+        });
+    } catch (error) {
+        console.error('Error deleting campaign:', error);
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
+});
+
 
 // Process campaign emails in the background
 async function processCampaignEmails(uuid, mailboxId, emails, campaignName, sendInterval) {

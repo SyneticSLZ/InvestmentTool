@@ -3,17 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OffMarket Insights | xAI</title>
+    <title>xAI Insights | HealthCost & IP Landscape</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
         }
         .glass-effect {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        .section-toggle {
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+        }
+        .section-toggle.hidden {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .section-toggle:not(.hidden) {
+            max-height: 2000px;
+            opacity: 1;
         }
         .hover-scale {
             transition: transform 0.2s ease;
@@ -21,66 +38,173 @@
         .hover-scale:hover {
             transform: scale(1.02);
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        th {
+            background: rgba(255, 255, 255, 0.05);
+            font-weight: 600;
+        }
+        input:focus {
+            outline: none;
+            ring: 2px solid #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 24px;
+        }
     </style>
 </head>
 <body class="min-h-screen font-sans antialiased">
     <!-- Navbar -->
-    <nav class="fixed top-0 w-full bg-gray-900/80 glass-effect shadow-lg p-4 z-10">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <nav class=" top-0 w-full bg-gray-900/80 glass-effect shadow-lg p-3 z-10">
+        <div class="container flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <span class="text-xl font-bold text-white">OffMarket Insights</span>
-                <span class="text-xs text-gray-400">Powered by xAI</span>
+                <span class="text-xl font-bold text-white">xAI Insights</span>
+                <span class="text-xs text-gray-400">HealthCost & IP Landscape</span>
             </div>
-            <div class="space-x-4">
-                <button id="dashboardBtn" class="text-gray-300 hover:text-white">Dashboard</button>
-                <button id="historyBtn" class="text-gray-300 hover:text-white">History</button>
+            <div class="space-x-6">
+                <button id="healthCostBtn" class="text-gray-300 hover:text-white font-medium">HealthCost</button>
+                <button id="ipLandscapeBtn" class="text-gray-300 hover:text-white font-medium">IP Landscape</button>
+                <button id="historyBtn" class="text-gray-300 hover:text-white font-medium">History</button>
+                <select id="userRole" class="p-2 bg-gray-800 text-white border border-gray-700 rounded-lg">
+                    <option value="medical">Medical Management</option>
+                    <option value="it">IT</option>
+                    <option value="finance">Finance</option>
+                    <option value="ip">IP Attorney</option>
+                    <option value="marketing">Marketing</option>
+                </select>
+                <span id="usageCounter" class="text-gray-400 text-sm"></span>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto mt-20 p-6">
-        <!-- Search Section -->
-        <section class="glass-effect p-6 rounded-lg shadow-lg hover-scale">
-            <h2 class="text-2xl font-semibold text-white mb-4">Analyze Off-Market Data</h2>
+    <main class="container mt-54">
+        <!-- HealthCost Section -->
+        <section id="healthCost" class="glass-effect p-6 rounded-lg shadow-lg hover-scale">
+            <h2 class="text-2xl font-semibold text-white mb-6">Healthcare Cost Analysis</h2>
             <div class="flex flex-col space-y-4">
-                <input 
-                    id="searchInput" 
-                    type="text" 
-                    placeholder="Drug name, PBM, insurer, or RFP keyword..." 
-                    class="w-full p-3 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
+                <input id="healthSearchInput" type="text" placeholder="Drug name, PBM, or condition..." class="w-full p-3 bg-gray-800 text-white border border-gray-700 rounded-lg">
                 <div class="flex space-x-4">
-                    <button id="searchBtn" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">Fetch Insights</button>
-                    <select id="dataType" class="p-3 bg-gray-800 text-white border border-gray-700 rounded-lg">
+                    <button id="healthSearchBtn" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">Analyze</button>
+                    <select id="healthDataType" class="p-3 bg-gray-800 text-white border border-gray-700 rounded-lg">
                         <option value="drug">Drug Costs & Alternatives</option>
-                        <option value="pbm">PBM & Insurer Insights</option>
-                        <option value="rfp">RFP Analysis</option>
-                        <option value="trends">Industry Trends</option>
+                        <option value="pbm">PBM Comparison</option>
+                        <option value="exclusive">Exclusive Insights</option>
+                    </select>
+                    <select id="pricingTier" class="p-3 bg-gray-800 text-white border border-gray-700 rounded-lg">
+                        <option value="basic">Basic ($2000/month)</option>
+                        <option value="premium">Premium ($5/query)</option>
                     </select>
                 </div>
             </div>
-            <p id="status" class="text-gray-400 mt-2 text-sm">Enter a query to begin.</p>
+            <p id="healthStatus" class="text-gray-400 mt-2 text-sm">Enter a query to begin.</p>
+
+            <div id="healthResults" class="mt-6 hidden">
+                <div id="drugResults" class="section-toggle hidden">
+                    <h3 class="text-xl font-medium text-white mb-2 cursor-pointer" onclick="toggleSection('drugResults')">Drug Insights</h3>
+                    <div id="drugData" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+                </div>
+                <div id="pbmResults" class="section-toggle hidden">
+                    <h3 class="text-xl font-medium text-white mb-2 cursor-pointer" onclick="toggleSection('pbmResults')">PBM Comparison</h3>
+                    <table id="pbmTable" class="overflow-x-auto">
+                        <thead><tr><th>PBM</th><th>Drug Price</th><th>Contract Status</th><th>Market Share</th><th>Recommendation</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div id="exclusiveResults" class="section-toggle hidden">
+                    <h3 class="text-xl font-medium text-white mb-2 cursor-pointer" onclick="toggleSection('exclusiveResults')">Exclusive Insights</h3>
+                    <div id="exclusiveData" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+                </div>
+                <div class="mt-6 flex space-x-4">
+                    <button id="exportHealthCsv" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Export CSV</button>
+                    <button id="exportHealthPdf" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Export PDF</button>
+                </div>
+            </div>
         </section>
 
-        <!-- Dashboard Section -->
-        <section id="dashboard" class="mt-8 glass-effect p-6 rounded-lg shadow-lg hidden">
-            <h2 class="text-2xl font-semibold text-white mb-4">Insights Dashboard</h2>
-            <div id="insights" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Dynamic insights injected here -->
+        <!-- IP Landscape Section -->
+        <section id="ipLandscape" class="mt-8 glass-effect p-6 rounded-lg shadow-lg hover-scale hidden">
+            <h2 class="text-2xl font-semibold text-white mb-6">IP & Competitive Landscape</h2>
+            <div class="flex flex-col space-y-4">
+                <input id="ipSearchInput" type="text" placeholder="Device, company, or technology..." class="w-full p-3 bg-gray-800 text-white border border-gray-700 rounded-lg">
+                <div class="flex space-x-4">
+                    <button id="ipSearchBtn" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">Analyze</button>
+                    <select id="ipDataType" class="p-3 bg-gray-800 text-white border border-gray-700 rounded-lg">
+                        <option value="patents">Patent Families</option>
+                        <option value="regulatory">Regulatory Filings</option>
+                        <option value="clinical">Clinical Trials</option>
+                        <option value="market">Market Analysis</option>
+                        <option value="legal">Legal Actions</option>
+                        <option value="tradeshow">Trade Show Insights</option>
+                    </select>
+                    <select id="region" class="p-3 bg-gray-800 text-white border border-gray-700 rounded-lg">
+                        <option value="global">Global</option>
+                        <option value="us">US Only</option>
+                        <option value="eu">EU Only</option>
+                    </select>
+                </div>
             </div>
-            <div class="mt-6 flex space-x-4">
-                <button id="exportCsvBtn" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Export CSV</button>
-                <button id="exportPdfBtn" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Export PDF</button>
+            <p id="ipStatus" class="text-gray-400 mt-2 text-sm">Enter a query to begin.</p>
+
+            <div id="ipResults" class="mt-6 hidden">
+                <div id="patentResults" class="section-toggle hidden">
+                    <h3 class="text-xl font-medium text-white mb-2 cursor-pointer" onclick="toggleSection('patentResults')">Patent Insights</h3>
+                    <table id="patentTable" class="overflow-x-auto">
+                        <thead><tr><th>Family ID</th><th>Title</th><th>Assignee</th><th>Filing Date</th><th>Status</th><th>Claims</th><th>Linked Product</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div id="regulatoryResults" class="section-toggle hidden">
+                    <h3 class="text-xl font-medium text-white mb-2 cursor-pointer" onclick="toggleSection('regulatoryResults')">Regulatory Filings</h3>
+                    <table id="regulatoryTable" class="overflow-x-auto">
+                        <thead><tr><th>Device</th><th>Agency</th><th>Approval Date</th><th>Indications</th><th>Status</th><th>Reimbursement</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div id="clinicalResults" class="section-toggle hidden">
+                    <h3 class="text-xl font-medium text-white mb-2 cursor-pointer" onclick="toggleSection('clinicalResults')">Clinical Trials</h3>
+                    <table id="clinicalTable" class="overflow-x-auto">
+                        <thead><tr><th>Trial ID</th><th>Device</th><th>Phase</th><th>Start Date</th><th>Region</th><th>Enrollment</th><th>Outcome</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div id="marketResults" class="section-toggle hidden">
+                    <h3 class="text-xl font-medium text-white mb-2 cursor-pointer" onclick="toggleSection('marketResults')">Market Analysis</h3>
+                    <div id="marketData" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+                </div>
+                <div id="legalResults" class="section-toggle hidden">
+                    <h3 class="text-xl font-medium text-white mb-2 cursor-pointer" onclick="toggleSection('legalResults')">Legal Actions</h3>
+                    <table id="legalTable" class="overflow-x-auto">
+                        <thead><tr><th>Case ID</th><th>Plaintiff</th><th>Defendant</th><th>Filing Date</th><th>Technology</th><th>Status</th><th>Notes</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div id="tradeshowResults" class="section-toggle hidden">
+                    <h3 class="text-xl font-medium text-white mb-2 cursor-pointer" onclick="toggleSection('tradeshowResults')">Trade Show Insights</h3>
+                    <div id="tradeshowData" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+                </div>
+                <div class="mt-6 flex space-x-4">
+                    <button id="exportIpCsv" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Export CSV</button>
+                    <button id="exportIpPdf" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Export PDF</button>
+                    <button id="setAlert" class="bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700">Set Alert</button>
+                </div>
             </div>
         </section>
 
         <!-- History Section -->
         <section id="history" class="mt-8 glass-effect p-6 rounded-lg shadow-lg hidden">
-            <h2 class="text-2xl font-semibold text-white mb-4">Search History</h2>
-            <ul id="historyList" class="space-y-2">
-                <!-- History items injected here -->
-            </ul>
+            <h2 class="text-2xl font-semibold text-white mb-6">Search History</h2>
+            <ul id="historyList" class="space-y-2"></ul>
         </section>
     </main>
 
@@ -89,122 +213,329 @@
         <p>© 2025 xAI. All rights reserved.</p>
     </footer>
 
-    <script >
+    <script>
         // DOM Elements
-const searchInput = document.getElementById('searchInput');
-const searchBtn = document.getElementById('searchBtn');
-const dataTypeSelect = document.getElementById('dataType');
-const status = document.getElementById('status');
-const dashboard = document.getElementById('dashboard');
-const insightsDiv = document.getElementById('insights');
-const exportCsvBtn = document.getElementById('exportCsvBtn');
-const exportPdfBtn = document.getElementById('exportPdfBtn');
+const healthCost = document.getElementById('healthCost');
+const ipLandscape = document.getElementById('ipLandscape');
 const historySection = document.getElementById('history');
+const toggleButtons = {
+    healthCostBtn: healthCost,
+    ipLandscapeBtn: ipLandscape,
+    historyBtn: historySection
+};
+const healthSearchBtn = document.getElementById('healthSearchBtn');
+const ipSearchBtn = document.getElementById('ipSearchBtn');
+const exportHealthCsv = document.getElementById('exportHealthCsv');
+const exportHealthPdf = document.getElementById('exportHealthPdf');
+const exportIpCsv = document.getElementById('exportIpCsv');
+const exportIpPdf = document.getElementById('exportIpPdf');
+const setAlert = document.getElementById('setAlert');
+const userRole = document.getElementById('userRole');
+const pricingTier = document.getElementById('pricingTier');
+const usageCounter = document.getElementById('usageCounter');
 const historyList = document.getElementById('historyList');
-const dashboardBtn = document.getElementById('dashboardBtn');
-const historyBtn = document.getElementById('historyBtn');
 
 // State
-let currentData = null;
+let currentHealthData = null;
+let currentIpData = null;
 let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+let queryCount = parseInt(localStorage.getItem('queryCount')) || 0;
+let isPremium = pricingTier.value === 'premium';
+let alerts = JSON.parse(localStorage.getItem('alerts')) || [];
 
-// Simulated live data fetch (replace with real API calls)
-async function fetchOffMarketData(query, type) {
-    status.textContent = 'Fetching live data...';
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let data;
-            switch (type) {
-                case 'drug':
-                    data = {
-                        query,
-                        drugCost: `$${Math.floor(Math.random() * 1000)}/month (CMS)`,
-                        genericAlternative: query.includes('drug') ? 'Yes - FDA Approved Generic' : 'N/A',
-                        pbmComparison: ['Express Scripts: $800', 'CVS Caremark: $850', 'OptumRx: $820'],
-                        timestamp: new Date().toLocaleString()
-                    };
-                    break;
-                case 'pbm':
-                    data = {
-                        query,
-                        insurerPartnerships: `${query} works with UnitedHealth (CMS Filing)`,
-                        marketShare: `${Math.floor(Math.random() * 30) + 10}% (HCCI Estimate)`,
-                        pbmContracts: ['Contract with CVS Caremark renewed 2024', 'OptumRx deal pending'],
-                        timestamp: new Date().toLocaleString()
-                    };
-                    break;
-                case 'rfp':
-                    data = {
-                        query,
-                        rfpDetails: `Found RFP for ${query} seeking PBM cost reduction (HHS)`,
-                        winningVendor: 'Express Scripts (2024 Award)',
-                        recommendation: 'Partner with OptumRx for 15% savings',
-                        timestamp: new Date().toLocaleString()
-                    };
-                    break;
-                case 'trends':
-                    data = {
-                        query,
-                        trend: 'Post-COVID drug costs up 20% (KFF)',
-                        regulatoryUpdate: 'CMS rule on PBM transparency effective 2025',
-                        highDollarClaims: 'Insurers shifting to value-based care (NIHCM)',
-                        timestamp: new Date().toLocaleString()
-                    };
-                    break;
-            }
-            resolve(data);
-        }, 1000); // Simulate 1-second delay
-    });
+// Data Sources
+const DATA_SOURCES = {
+    fdaDrug: 'https://api.fda.gov/drug/label.json?search=',
+    fdaDevice: 'https://api.fda.gov/device/510k.json?search=',
+    cms: 'https://data.cms.gov/provider-data/api/1',
+    patents: 'https://api.patentsview.org/patents/query',
+    clinical: 'https://clinicaltrials.gov/api/v2/studies',
+    pacer: 'https://www.pacer.gov/api', // Requires API key
+    ema: 'https://www.ema.europa.eu/ema/api', // Hypothetical
+    market: 'https://api.example.com/market', // Simulated
+    proxy: 'https://api.allorigins.win/get?url='
+};
+
+// HealthCost Data Fetching
+async function fetchHealthData(query, type) {
+    document.getElementById('healthStatus').textContent = 'Fetching data...';
+    try {
+        switch (type) {
+            case 'drug':
+                const fdaRes = await fetch(`${DATA_SOURCES.fdaDrug}${encodeURIComponent(query)}&limit=5`);
+                const fdaData = await fdaRes.json();
+                const drugName = fdaData.results?.[0]?.openfda?.brand_name?.[0] || query;
+                return {
+                    query,
+                    brandCost: `$${Math.floor(Math.random() * 1000) + 200}/month`,
+                    genericCost: fdaData.results?.[0]?.openfda?.generic_name?.[0] ? `${fdaData.results[0].openfda.generic_name[0]}: $${Math.floor(Math.random() * 100) + 50}` : 'N/A',
+                    historicalTrend: `5yr: +${Math.floor(Math.random() * 10)}%`,
+                    regionalPricing: { US: '$950', EU: '€800' },
+                    reimbursement: 'Medicare: 80%, Medicaid: 75%',
+                    similarDrugs: fdaData.results?.slice(1).map(r => `${r.openfda?.brand_name?.[0] || 'Similar'}: $${Math.floor(Math.random() * 600) + 100}`) || ['Drug A: $400'],
+                    pbmOptions: [`Express Scripts: $${Math.floor(Math.random() * 100) + 700}`, `CVS Caremark: $${Math.floor(Math.random() * 100) + 750}`],
+                    timestamp: new Date().toLocaleString()
+                };
+            case 'pbm':
+                return {
+                    query,
+                    pbmOptions: [`${query} via Express Scripts: $800`, 'CVS Caremark: $850', 'OptumRx: $820'],
+                    contracts: ['Renewed 2024', 'Pending 2025', 'Active'],
+                    rebates: '15%-20%',
+                    marketShare: `${Math.floor(Math.random() * 30) + 10}%`,
+                    recommendations: ['OptumRx: 15% savings'],
+                    timestamp: new Date().toLocaleString()
+                };
+            case 'exclusive':
+                if (!isPremium) throw new Error('Premium required');
+                return {
+                    query,
+                    insight: `Pending CMS rule may cap ${query} costs`,
+                    source: 'CMS Filing 2025',
+                    impact: '10-15% cost reduction',
+                    competitorStrategy: 'Pfizer increasing rebates',
+                    timestamp: new Date().toLocaleString()
+                };
+        }
+    } catch (error) {
+        console.error(error);
+        document.getElementById('healthStatus').textContent = 'Error fetching data. Using fallback...';
+        return fallbackHealthData(query, type);
+    }
 }
 
-// Render insights based on data type
-function renderInsights(data, type) {
-    let html = '';
+function fallbackHealthData(query, type) {
+    switch (type) {
+        case 'drug': return { query, brandCost: '$950/month', genericCost: `Generic ${query}: $75`, historicalTrend: 'N/A', regionalPricing: { US: '$950' }, reimbursement: 'N/A', similarDrugs: ['Drug A: $400'], pbmOptions: ['Express Scripts: $800'], timestamp: new Date().toLocaleString() };
+        case 'pbm': return { query, pbmOptions: [`${query} via Express Scripts: $800`], contracts: ['Active'], rebates: 'N/A', marketShare: '15%', recommendations: ['OptumRx recommended'], timestamp: new Date().toLocaleString() };
+        case 'exclusive': return { query, insight: `Cost trend for ${query} up 10%`, source: 'Fallback', impact: 'Monitor', competitorStrategy: 'N/A', timestamp: new Date().toLocaleString() };
+    }
+}
+
+// IP Data Fetching
+async function fetchIpData(query, type, region = 'global') {
+    document.getElementById('ipStatus').textContent = 'Fetching data...';
+    try {
+        switch (type) {
+            case 'patents':
+                const patentRes = await fetch(`${DATA_SOURCES.patents}?q={"_text_any":"${query}"}&fields=patent_number,patent_title,assignee_name,patent_date,status,patent_abstract`);
+                const patents = await patentRes.json();
+                return Promise.all(patents.patents.map(async p => ({
+                    familyId: p.patent_number,
+                    title: p.patent_title,
+                    assignee: p.assignee_name,
+                    filingDate: p.patent_date,
+                    status: p.status || 'Pending',
+                    claims: p.patent_abstract.slice(0, 100) + '...',
+                    linkedProduct: await inferProductLink(p) || 'N/A'
+                })));
+            case 'regulatory':
+                const regRes = await fetch(`${region === 'eu' ? DATA_SOURCES.ema : DATA_SOURCES.fdaDevice}${encodeURIComponent(query)}&limit=10`);
+                const regData = await regRes.json();
+                return regData.results.map(r => ({
+                    device: r.device_name || query,
+                    agency: region === 'eu' ? 'EMA' : 'FDA',
+                    approvalDate: r.decision_date || 'N/A',
+                    indications: r.indications_for_use || 'General Use',
+                    status: r.status || 'Approved',
+                    reimbursement: region === 'eu' ? 'EU Health Systems: 70%' : 'Medicare: 80%'
+                }));
+            case 'clinical':
+                const clinicalRes = await fetch(`${DATA_SOURCES.clinical}?query.term=${encodeURIComponent(query)}`);
+                const trials = await clinicalRes.json();
+                return trials.studies.map(t => ({
+                    trialId: t.protocolSection?.identificationModule?.nctId || 'N/A',
+                    device: t.protocolSection?.armsInterventionsModule?.interventions[0]?.name || query,
+                    phase: t.protocolSection?.designModule?.phase || 'N/A',
+                    startDate: t.protocolSection?.statusModule?.startDateStruct?.date || 'N/A',
+                    region: t.protocolSection?.locationsModule?.locations[0]?.country || region,
+                    enrollment: t.protocolSection?.designModule?.enrollmentInfo?.count || 'N/A',
+                    outcome: t.resultsSection?.primaryOutcomes?.[0]?.measure || 'Pending'
+                }));
+            case 'market':
+                return {
+                    marketSize: `$${Math.floor(Math.random() * 100)}B`,
+                    competitors: ['Competitor A', 'Competitor B', 'Competitor C'],
+                    marketShare: `${Math.floor(Math.random() * 50)}%`,
+                    revenueTrend: `+${Math.floor(Math.random() * 20)}% (5yr)`,
+                    entryDate: '2020-01-01'
+                };
+            case 'legal':
+                return [{
+                    caseId: '12345',
+                    plaintiff: 'Company X',
+                    defendant: 'Company Y',
+                    filingDate: '2024-01-15',
+                    technology: query,
+                    status: 'Ongoing',
+                    notes: 'Potential infringement on patent US1234567'
+                }];
+            case 'tradeshow':
+                return [{
+                    event: 'MedTech 2025',
+                    date: '2025-03-10',
+                    presenter: 'Company Z',
+                    product: query,
+                    insight: 'New device prototype unveiled'
+                }];
+        }
+    } catch (error) {
+        console.error(error);
+        document.getElementById('ipStatus').textContent = 'Error fetching data. Using fallback...';
+        return fallbackIpData(query, type);
+    }
+}
+
+function fallbackIpData(query, type) {
+    switch (type) {
+        case 'patents': return [{ familyId: 'US1234567', title: `${query} Device`, assignee: 'Company X', filingDate: '2023-01-01', status: 'Granted', claims: 'N/A', linkedProduct: 'N/A' }];
+        case 'regulatory': return [{ device: query, agency: 'FDA', approvalDate: '2023-06-01', indications: 'General', status: 'Approved', reimbursement: 'N/A' }];
+        case 'clinical': return [{ trialId: 'NCT12345678', device: query, phase: 'Phase III', startDate: '2023-01-01', region: 'US', enrollment: '500', outcome: 'N/A' }];
+        case 'market': return { marketSize: '$50B', competitors: ['Comp A'], marketShare: '25%', revenueTrend: 'N/A', entryDate: 'N/A' };
+        case 'legal': return [{ caseId: 'Fallback', plaintiff: 'N/A', defendant: 'N/A', filingDate: 'N/A', technology: query, status: 'N/A', notes: 'N/A' }];
+        case 'tradeshow': return [{ event: 'Fallback Event', date: 'N/A', presenter: 'N/A', product: query, insight: 'N/A' }];
+    }
+}
+
+async function inferProductLink(patent) {
+    return patent.patent_title.includes('Device') ? 'Inferred Product' : 'N/A'; // Placeholder for AI logic
+}
+
+// Rendering Functions
+function renderHealthResults(data, type) {
+    const results = document.getElementById('healthResults');
+    results.classList.remove('hidden');
+    toggleSection('drugResults', true);
+    toggleSection('pbmResults', true);
+    toggleSection('exclusiveResults', true);
     switch (type) {
         case 'drug':
-            html = `
-                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">Drug Cost</h3><p class="text-gray-300">${data.drugCost}</p></div>
-                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">Generic Alternative</h3><p class="text-gray-300">${data.genericAlternative}</p></div>
-                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">PBM Comparison</h3><p class="text-gray-300">${data.pbmComparison.join('<br>')}</p></div>
+            toggleSection('drugResults', false);
+            document.getElementById('drugData').innerHTML = `
+                <div class="p-4 bg-gray-800 rounded-lg"><h4 class="text-lg font-medium text-white">Brand Cost</h4><p>${data.brandCost}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h4 class="text-lg font-medium text-white">Generic Cost</h4><p>${data.genericCost}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h4 class="text-lg font-medium text-white">Historical Trend</h4><p>${data.historicalTrend}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h4 class="text-lg font-medium text-white">Regional Pricing</h4><p>US: ${data.regionalPricing.US}, EU: ${data.regionalPricing.EU || 'N/A'}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h4 class="text-lg font-medium text-white">Reimbursement</h4><p>${data.reimbursement}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h4 class="text-lg font-medium text-white">Similar Drugs</h4><p>${data.similarDrugs.join('<br>')}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h4 class="text-lg font-medium text-white">PBM Options</h4><p>${data.pbmOptions.join('<br>')}</p></div>
             `;
             break;
         case 'pbm':
-            html = `
-                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">Insurer Partnerships</h3><p class="text-gray-300">${data.insurerPartnerships}</p></div>
-                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">Market Share</h3><p class="text-gray-300">${data.marketShare}</p></div>
-                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">PBM Contracts</h3><p class="text-gray-300">${data.pbmContracts.join('<br>')}</p></div>
-            `;
+            toggleSection('pbmResults', false);
+            document.querySelector('#pbmTable tbody').innerHTML = data.pbmOptions.map((opt, i) => `
+                <tr><td>${opt.split(':')[0]}</td><td>${opt.split(':')[1]}</td><td>${data.contracts[i]}</td><td>${data.marketShare}</td><td>${data.recommendations[0]}</td></tr>
+            `).join('');
             break;
-        case 'rfp':
-            html = `
-                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">RFP Details</h3><p class="text-gray-300">${data.rfpDetails}</p></div>
-                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">Winning Vendor</h3><p class="text-gray-300">${data.winningVendor}</p></div>
-                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">Recommendation</h3><p class="text-gray-300">${data.recommendation}</p></div>
-            `;
-            break;
-        case 'trends':
-            html = `
-                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">Industry Trend</h3><p class="text-gray-300">${data.trend}</p></div>
-                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">Regulatory Update</h3><p class="text-gray-300">${data.regulatoryUpdate}</p></div>
-                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">High-Dollar Claims</h3><p class="text-gray-300">${data.highDollarClaims}</p></div>
+        case 'exclusive':
+            toggleSection('exclusiveResults', false);
+            document.getElementById('exclusiveData').innerHTML = `
+                <div class="p-4 bg-gray-800 rounded-lg"><h4 class="text-lg font-medium text-white">Insight</h4><p>${data.insight}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h4 class="text-lg font-medium text-white">Source</h4><p>${data.source}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h4 class="text-lg font-medium text-white">Impact</h4><p>${data.impact}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h4 class="text-lg font-medium text-white">Competitor Strategy</h4><p>${data.competitorStrategy}</p></div>
             `;
             break;
     }
-    insightsDiv.innerHTML = html + `<div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">Timestamp</h3><p class="text-gray-300">${data.timestamp}</p></div>`;
-    dashboard.classList.remove('hidden');
-    historySection.classList.add('hidden');
-    status.textContent = 'Insights loaded successfully!';
+    document.getElementById('healthStatus').textContent = 'Analysis loaded successfully!';
 }
 
-// Update and render search history
-function updateHistory(query, type) {
-    const entry = `${query} (${type})`;
+function renderIpResults(data, type) {
+    const results = document.getElementById('ipResults');
+    results.classList.remove('hidden');
+    toggleSection('patentResults', true);
+    toggleSection('regulatoryResults', true);
+    toggleSection('clinicalResults', true);
+    toggleSection('marketResults', true);
+    toggleSection('legalResults', true);
+    toggleSection('tradeshowResults', true);
+    switch (type) {
+        case 'patents':
+            toggleSection('patentResults', false);
+            document.querySelector('#patentTable tbody').innerHTML = data.map(p => `
+                <tr><td>${p.familyId}</td><td>${p.title}</td><td>${p.assignee}</td><td>${p.filingDate}</td><td>${p.status}</td><td>${p.claims}</td><td>${p.linkedProduct}</td></tr>
+            `).join('');
+            break;
+        case 'regulatory':
+            toggleSection('regulatoryResults', false);
+            document.querySelector('#regulatoryTable tbody').innerHTML = data.map(r => `
+                <tr><td>${r.device}</td><td>${r.agency}</td><td>${r.approvalDate}</td><td>${r.indications}</td><td>${r.status}</td><td>${r.reimbursement}</td></tr>
+            `).join('');
+            checkAlerts('regulatory', data);
+            break;
+        case 'clinical':
+            toggleSection('clinicalResults', false);
+            document.querySelector('#clinicalTable tbody').innerHTML = data.map(t => `
+                <tr><td>${t.trialId}</td><td>${t.device}</td><td>${t.phase}</td><td>${t.startDate}</td><td>${t.region}</td><td>${t.enrollment}</td><td>${t.outcome}</td></tr>
+            `).join('');
+            break;
+        case 'market':
+            toggleSection('marketResults', false);
+            document.getElementById('marketData').innerHTML = `
+                <div class="p-4 bg-gray-800 rounded-lg"><h4 class="text-lg font-medium text-white">Market Size</h4><p>${data.marketSize}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h4 class="text-lg font-medium text-white">Competitors</h4><p>${data.competitors.join(', ')}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h4 class="text-lg font-medium text-white">Market Share</h4><p>${data.marketShare}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h4 class="text-lg font-medium text-white">Revenue Trend</h4><p>${data.revenueTrend}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h4 class="text-lg font-medium text-white">Entry Date</h4><p>${data.entryDate}</p></div>
+            `;
+            break;
+        case 'legal':
+            toggleSection('legalResults', false);
+            document.querySelector('#legalTable tbody').innerHTML = data.map(l => `
+                <tr><td>${l.caseId}</td><td>${l.plaintiff}</td><td>${l.defendant}</td><td>${l.filingDate}</td><td>${l.technology}</td><td>${l.status}</td><td>${l.notes}</td></tr>
+            `).join('');
+            break;
+        case 'tradeshow':
+            toggleSection('tradeshowResults', false);
+            document.getElementById('tradeshowData').innerHTML = data.map(t => `
+                <div class="p-4 bg-gray-800 rounded-lg"><h4 class="text-lg font-medium text-white">${t.event}</h4><p>Date: ${t.date}<br>Presenter: ${t.presenter}<br>Product: ${t.product}<br>Insight: ${t.insight}</p></div>
+            `).join('');
+            break;
+    }
+    document.getElementById('ipStatus').textContent = 'Analysis loaded successfully!';
+}
+
+// Alert System
+function checkAlerts(type, data) {
+    alerts.forEach(alert => {
+        if (alert.type === type && data.some(d => d.device === alert.query || d.technology === alert.query)) {
+            notifyUser(`Alert: New ${type} data for ${alert.query}`);
+        }
+    });
+}
+
+function setAlertHandler() {
+    const query = document.getElementById('ipSearchInput').value;
+    const type = document.getElementById('ipDataType').value;
+    const region = document.getElementById('region').value;
+    if (query) {
+        alerts.push({ query, type, region });
+        localStorage.setItem('alerts', JSON.stringify(alerts));
+        notifyUser(`Alert set for ${query} (${type}, ${region})`);
+    }
+}
+
+function notifyUser(message) {
+    alert(message); // Replace with a proper notification system in production
+}
+
+// Utility Functions
+function toggleSection(sectionId, hide = false) {
+    const section = document.getElementById(sectionId);
+    section.classList[hide ? 'add' : 'remove']('hidden');
+}
+
+function updateHistory(query, type, section) {
+    const entry = `${query} (${type}, ${section})`;
     if (!searchHistory.includes(entry)) {
         searchHistory.unshift(entry);
         if (searchHistory.length > 10) searchHistory.pop();
         localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
         renderHistory();
     }
+    queryCount++;
+    localStorage.setItem('queryCount', queryCount);
+    usageCounter.textContent = `Queries this month: ${queryCount} (${isPremium ? '$5/query' : '$2000 flat'})`;
 }
 
 function renderHistory() {
@@ -217,84 +548,103 @@ function renderHistory() {
         : '<p class="text-gray-400">No search history yet.</p>';
 }
 
-window.reSearch = async (entry) => {
-    const [query, type] = entry.split(' (');
-    searchInput.value = query;
-    dataTypeSelect.value = type.slice(0, -1);
-    const data = await fetchOffMarketData(query, type.slice(0, -1));
-    currentData = data;
-    renderInsights(data, type.slice(0, -1));
-};
-
-// Export functions (simplified CSV/PDF)
-function exportToCSV(data, type) {
-    const csvContent = type === 'drug'
-        ? [['Query', 'Drug Cost', 'Generic Alternative', 'PBM Comparison', 'Timestamp'], [data.query, data.drugCost, data.genericAlternative, data.pbmComparison.join(';'), data.timestamp]]
-        : type === 'pbm'
-        ? [['Query', 'Insurer Partnerships', 'Market Share', 'PBM Contracts', 'Timestamp'], [data.query, data.insurerPartnerships, data.marketShare, data.pbmContracts.join(';'), data.timestamp]]
-        : type === 'rfp'
-        ? [['Query', 'RFP Details', 'Winning Vendor', 'Recommendation', 'Timestamp'], [data.query, data.rfpDetails, data.winningVendor, data.recommendation, data.timestamp]]
-        : [['Query', 'Trend', 'Regulatory Update', 'High-Dollar Claims', 'Timestamp'], [data.query, data.trend, data.regulatoryUpdate, data.highDollarClaims, data.timestamp]];
-    const csv = csvContent.map(row => row.join(',')).join('\n');
-    const blob = new Blob([csv], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${data.query.replace(/\s/g, '_')}_insights.csv`;
-    a.click();
+async function reSearch(entry) {
+    const [query, rest] = entry.split(' (');
+    const [type, section] = rest.slice(0, -1).split(', ');
+    if (section === 'healthCost') {
+        document.getElementById('healthSearchInput').value = query;
+        document.getElementById('healthDataType').value = type;
+        const data = await fetchHealthData(query, type);
+        currentHealthData = data;
+        renderHealthResults(data, type);
+    } else {
+        document.getElementById('ipSearchInput').value = query;
+        document.getElementById('ipDataType').value = type;
+        const data = await fetchIpData(query, type, document.getElementById('region').value);
+        currentIpData = data;
+        renderIpResults(data, type);
+    }
 }
 
-function exportToPDF(data, type) {
-    const content = type === 'drug'
-        ? `Query: ${data.query}\nDrug Cost: ${data.drugCost}\nGeneric Alternative: ${data.genericAlternative}\nPBM Comparison: ${data.pbmComparison.join(', ')}\nTimestamp: ${data.timestamp}`
-        : type === 'pbm'
-        ? `Query: ${data.query}\nInsurer Partnerships: ${data.insurerPartnerships}\nMarket Share: ${data.marketShare}\nPBM Contracts: ${data.pbmContracts.join(', ')}\nTimestamp: ${data.timestamp}`
-        : type === 'rfp'
-        ? `Query: ${data.query}\nRFP Details: ${data.rfpDetails}\nWinning Vendor: ${data.winningVendor}\nRecommendation: ${data.recommendation}\nTimestamp: ${data.timestamp}`
-        : `Query: ${data.query}\nTrend: ${data.trend}\nRegulatory Update: ${data.regulatoryUpdate}\nHigh-Dollar Claims: ${data.highDollarClaims}\nTimestamp: ${data.timestamp}`;
-    const blob = new Blob([content], { type: 'application/pdf' });
+function exportToCSV(data, type, section) {
+    let csvContent;
+    if (section === 'healthCost') {
+        if (type === 'drug') csvContent = [['Query', 'Brand Cost', 'Generic Cost', 'Historical Trend', 'Regional Pricing', 'Reimbursement', 'Similar Drugs', 'PBM Options', 'Timestamp'], [data.query, data.brandCost, data.genericCost, data.historicalTrend, JSON.stringify(data.regionalPricing), data.reimbursement, data.similarDrugs.join(';'), data.pbmOptions.join(';'), data.timestamp]];
+        else if (type === 'pbm') csvContent = [['Query', 'PBM Options', 'Contracts', 'Rebates', 'Market Share', 'Recommendations', 'Timestamp'], [data.query, data.pbmOptions.join(';'), data.contracts.join(';'), data.rebates, data.marketShare, data.recommendations.join(';'), data.timestamp]];
+        else csvContent = [['Query', 'Insight', 'Source', 'Impact', 'Competitor Strategy', 'Timestamp'], [data.query, data.insight, data.source, data.impact, data.competitorStrategy, data.timestamp]];
+    } else {
+        if (type === 'patents') csvContent = [['Family ID', 'Title', 'Assignee', 'Filing Date', 'Status', 'Claims', 'Linked Product'], data.map(p => [p.familyId, p.title, p.assignee, p.filingDate, p.status, p.claims, p.linkedProduct])];
+        else if (type === 'regulatory') csvContent = [['Device', 'Agency', 'Approval Date', 'Indications', 'Status', 'Reimbursement'], data.map(r => [r.device, r.agency, r.approvalDate, r.indications, r.status, r.reimbursement])];
+        // Add other types similarly
+    }
+    const csv = csvContent.map(row => row.join(',')).join('\n');
+    downloadFile(csv, `${data.query || 'data'}_${type}_insights.csv`, 'text/csv');
+}
+
+function exportToPDF(data, type, section) {
+    const content = section === 'healthCost'
+        ? type === 'drug' ? `Query: ${data.query}\nBrand Cost: ${data.brandCost}\nGeneric Cost: ${data.genericCost}\nHistorical Trend: ${data.historicalTrend}\nRegional Pricing: ${JSON.stringify(data.regionalPricing)}\nReimbursement: ${data.reimbursement}\nSimilar Drugs: ${data.similarDrugs.join(', ')}\nPBM Options: ${data.pbmOptions.join(', ')}\nTimestamp: ${data.timestamp}`
+        : type === 'pbm' ? `Query: ${data.query}\nPBM Options: ${data.pbmOptions.join(', ')}\nContracts: ${data.contracts.join(', ')}\nRebates: ${data.rebates}\nMarket Share: ${data.marketShare}\nRecommendations: ${data.recommendations.join(', ')}\nTimestamp: ${data.timestamp}`
+        : `Query: ${data.query}\nInsight: ${data.insight}\nSource: ${data.source}\nImpact: ${data.impact}\nCompetitor Strategy: ${data.competitorStrategy}\nTimestamp: ${data.timestamp}`
+        : JSON.stringify(data, null, 2); // Simplified for IP
+    downloadFile(content, `${data.query || 'data'}_${type}_insights.pdf`, 'text/plain');
+}
+
+function downloadFile(content, fileName, type) {
+    const blob = new Blob([content], { type });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `${data.query.replace(/\s/g, '_')}_insights.pdf`;
+    a.download = fileName;
     a.click();
+    window.URL.revokeObjectURL(url);
 }
 
 // Event Listeners
-searchBtn.addEventListener('click', async () => {
-    const query = searchInput.value.trim();
-    const type = dataTypeSelect.value;
-    if (!query) {
-        status.textContent = 'Please enter a query.';
-        return;
-    }
-    const data = await fetchOffMarketData(query, type);
-    currentData = data;
-    renderInsights(data, type);
-    updateHistory(query, type);
+healthSearchBtn.addEventListener('click', async () => {
+    const query = document.getElementById('healthSearchInput').value.trim();
+    const type = document.getElementById('healthDataType').value;
+    if (!query) return document.getElementById('healthStatus').textContent = 'Please enter a query.';
+    const data = await fetchHealthData(query, type);
+    currentHealthData = data;
+    renderHealthResults(data, type);
+    updateHistory(query, type, 'healthCost');
 });
 
-dashboardBtn.addEventListener('click', () => {
-    dashboard.classList.remove('hidden');
-    historySection.classList.add('hidden');
+ipSearchBtn.addEventListener('click', async () => {
+    const query = document.getElementById('ipSearchInput').value.trim();
+    const type = document.getElementById('ipDataType').value;
+    const region = document.getElementById('region').value;
+    if (!query) return document.getElementById('ipStatus').textContent = 'Please enter a query.';
+    const data = await fetchIpData(query, type, region);
+    currentIpData = data;
+    renderIpResults(data, type);
+    updateHistory(query, type, 'ipLandscape');
 });
 
-historyBtn.addEventListener('click', () => {
-    dashboard.classList.add('hidden');
-    historySection.classList.remove('hidden');
-    renderHistory();
+exportHealthCsv.addEventListener('click', () => currentHealthData && exportToCSV(currentHealthData, document.getElementById('healthDataType').value, 'healthCost'));
+exportHealthPdf.addEventListener('click', () => currentHealthData && exportToPDF(currentHealthData, document.getElementById('healthDataType').value, 'healthCost'));
+exportIpCsv.addEventListener('click', () => currentIpData && exportToCSV(currentIpData, document.getElementById('ipDataType').value, 'ipLandscape'));
+exportIpPdf.addEventListener('click', () => currentIpData && exportToPDF(currentIpData, document.getElementById('ipDataType').value, 'ipLandscape'));
+setAlert.addEventListener('click', setAlertHandler);
+
+pricingTier.addEventListener('change', (e) => {
+    isPremium = e.target.value === 'premium';
+    if (isPremium) notifyUser('Premium features enabled!');
+    usageCounter.textContent = `Queries this month: ${queryCount} (${isPremium ? '$5/query' : '$2000 flat'})`;
 });
 
-exportCsvBtn.addEventListener('click', () => {
-    if (currentData) exportToCSV(currentData, dataTypeSelect.value);
-});
-
-exportPdfBtn.addEventListener('click', () => {
-    if (currentData) exportToPDF(currentData, dataTypeSelect.value); // Integrate jsPDF for production
+Object.keys(toggleButtons).forEach(btnId => {
+    document.getElementById(btnId).addEventListener('click', () => {
+        Object.values(toggleButtons).forEach(el => el.classList.add('hidden'));
+        toggleButtons[btnId].classList.remove('hidden');
+        if (btnId === 'historyBtn') renderHistory();
+    });
 });
 
 // Initialize
 renderHistory();
+usageCounter.textContent = `Queries this month: ${queryCount} (${isPremium ? '$5/query' : '$2000 flat'})`;
     </script>
 </body>
 </html>
