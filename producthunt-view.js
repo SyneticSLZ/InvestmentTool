@@ -26,6 +26,7 @@ const outputdata = {
         "name": "FirstHR 2.0 with HR Copilot",
         "tagline": "All-in-one HR platform for small business",
         "description": "For small business, FirstHR is an HR platform, focused on hiring and team development with a pinch of AI.",
+        "website": "https://www.firstHR.com",
         "url": "https://www.producthunt.com/posts/firsthr-2-0-with-hr-copilot?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+test++%28ID%3A+169128%29",
         "votesCount": 245,
         "commentsCount": 35,

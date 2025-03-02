@@ -133,8 +133,69 @@
     </main> -->
 
     <!-- Main Content -->
-<main class="container mx-auto px-4 pt-24 pb-8">
-    <div class="space-y-12">
+    <main class="container mx-auto px-4 pt-24 pb-8">
+        <div class="space-y-8">
+            <!-- Filter Section -->
+            <div class="bg-white dark:bg-[rgba(17,16,28,0.95)] rounded-xl border border-gray-200 dark:border-gray-800 p-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 md:mb-0">Filter Results</h2>
+                    <div class="flex gap-2">
+                        <button id="clearFiltersBtn" class="px-4 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
+                            Clear Filters
+                        </button>
+                        <button id="updateDataBtn" class="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center">
+                            <i class="fas fa-cloud-download-alt mr-2"></i>
+                            Update Data
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Source Filter -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Source</label>
+                        <div class="flex flex-wrap gap-2">
+                            <label class="inline-flex items-center px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg cursor-pointer">
+                                <input type="checkbox" name="source" value="producthunt" class="mr-2 text-purple-600" checked>
+                                <span class="text-sm text-gray-700 dark:text-gray-300">Product Hunt</span>
+                            </label>
+                            <label class="inline-flex items-center px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg cursor-pointer">
+                                <input type="checkbox" name="source" value="yc" class="mr-2 text-blue-600" checked>
+                                <span class="text-sm text-gray-700 dark:text-gray-300">Y Combinator</span>
+                            </label>
+                            <label class="inline-flex items-center px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg cursor-pointer">
+                                <input type="checkbox" name="source" value="funding" class="mr-2 text-green-600" checked>
+                                <span class="text-sm text-gray-700 dark:text-gray-300">Funding Rounds</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Category/Industry Filter -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Industry/Category</label>
+                        <select id="industryFilter" class="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">All Industries</option>
+                            <option value="Artificial Intelligence">AI/ML</option>
+                            <option value="Fintech">Fintech</option>
+                            <option value="Developer Tools">Developer Tools</option>
+                            <option value="Design Tools">Design Tools</option>
+                            <option value="HR Tools">HR Tools</option>
+                            <option value="Video Tools">Video & Media</option>
+                            <option value="SaaS">SaaS</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Funding Range -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Funding Amount</label>
+                        <div class="flex items-center space-x-4">
+                            <input type="number" id="minFunding" placeholder="Min" class="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <span class="text-gray-500">to</span>
+                            <input type="number" id="maxFunding" placeholder="Max" class="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+                </div>
+            </div>
         <!-- Section Headers -->
         <div class="flex justify-between items-center">
             <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Latest Launches</h2>

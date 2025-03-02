@@ -1,0 +1,108 @@
+{
+  "data": {
+    "posts": {
+      "edges": [
+        {
+          "node": {
+            "id": "924882",
+            "name": "Chikka",
+            "tagline": "Uncover user insights with intelligent AI voice interviewer",
+            "url": "https://www.producthunt.com/posts/chikka?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+test++%28ID%3A+169128%29",
+            "votesCount": 83,
+            "createdAt": "2025-03-02T08:01:00Z"
+          }
+        },
+        {
+          "node": {
+            "id": "921364",
+            "name": "Flare",
+            "tagline": "Shorten links and redirect to the right app",
+            "url": "https://www.producthunt.com/posts/flare-6?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+test++%28ID%3A+169128%29",
+            "votesCount": 79,
+            "createdAt": "2025-03-02T08:01:00Z"
+          }
+        },
+        {
+          "node": {
+            "id": "918970",
+            "name": "GrowthTrack AI",
+            "tagline": "Make your website better, faster, higher earning. ",
+            "url": "https://www.producthunt.com/posts/growthtrack-ai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+test++%28ID%3A+169128%29",
+            "votesCount": 77,
+            "createdAt": "2025-03-02T08:01:00Z"
+          }
+        },
+        {
+          "node": {
+            "id": "903248",
+            "name": "Findaway Voices by Spotify",
+            "tagline": "ElevenLabs & Spotify make audiobook publishing effortless",
+            "url": "https://www.producthunt.com/posts/findaway-voices-by-spotify?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+test++%28ID%3A+169128%29",
+            "votesCount": 72,
+            "createdAt": "2025-03-02T08:01:00Z"
+          }
+        },
+        {
+          "node": {
+            "id": "906829",
+            "name": "Protoclone",
+            "tagline": "The world's first bipedal, muscuskeletal android",
+            "url": "https://www.producthunt.com/posts/protoclone?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+test++%28ID%3A+169128%29",
+            "votesCount": 69,
+            "createdAt": "2025-03-02T08:01:00Z"
+          }
+        },
+        {
+          "node": {
+            "id": "906359",
+            "name": "Apple News+ Food",
+            "tagline": "Recipes, reviews, and tips, all in one place",
+            "url": "https://www.producthunt.com/posts/apple-news-food?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+test++%28ID%3A+169128%29",
+            "votesCount": 69,
+            "createdAt": "2025-03-02T08:01:00Z"
+          }
+        },
+        {
+          "node": {
+            "id": "913703",
+            "name": "Adobe Photoshop App",
+            "tagline": "The power of Photoshop, in your pocket",
+            "url": "https://www.producthunt.com/posts/adobe-photoshop-app?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+test++%28ID%3A+169128%29",
+            "votesCount": 67,
+            "createdAt": "2025-03-02T08:01:00Z"
+          }
+        },
+        {
+          "node": {
+            "id": "912961",
+            "name": "GitSyncPad",
+            "tagline": "A single-click button to do tasks like git add, commit, push",
+            "url": "https://www.producthunt.com/posts/gitsyncpad?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+test++%28ID%3A+169128%29",
+            "votesCount": 66,
+            "createdAt": "2025-03-02T08:01:00Z"
+          }
+        },
+        {
+          "node": {
+            "id": "547485",
+            "name": "Podcas",
+            "tagline": "Generate Podcast with AI",
+            "url": "https://www.producthunt.com/posts/podcas?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+test++%28ID%3A+169128%29",
+            "votesCount": 57,
+            "createdAt": "2025-03-02T08:01:00Z"
+          }
+        },
+        {
+          "node": {
+            "id": "931572",
+            "name": "Knowtex",
+            "tagline": "Voice AI billing for clinical notes, ICD-10 and E&M codes",
+            "url": "https://www.producthunt.com/posts/knowtex?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+test++%28ID%3A+169128%29",
+            "votesCount": 10,
+            "createdAt": "2025-03-02T08:01:00Z"
+          }
+        }
+      ]
+    }
+  }
+}

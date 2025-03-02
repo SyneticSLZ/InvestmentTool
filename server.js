@@ -2,6 +2,8 @@ const express = require('express');
 const axios = require('axios');
 require('dotenv').config();
 const fetch = require('node-fetch');
+const puppeteer = require('puppeteer');
+const fs = require('fs').promises;
 const cors = require('cors');
 const app = express();
 const PORT = 3000;
@@ -445,22 +447,53 @@ async function fetchAndSaveProductData() {
 
 
 const API_TOKEN = "fqthilF8Q-5yXTMJGW1x1CdYnvdcJM_cdeSbEh-BBdk"; // Replace with your API token
-
+// query {
+//     posts(first: 10) {
+//       edges {
+//         node {
+//           id
+//           name
+//           tagline
+//           url
+//           votesCount
+//           createdAt
+//         }
+//       }
+//     }
+//   }`;
 const query = `
+
+
 query {
-  posts(first: 10) {
-    edges {
-      node {
-        id
-        name
-        tagline
-        url
-        votesCount
-        createdAt
+    posts(first: 10) {
+      edges {
+        node {
+          id
+          name
+          tagline
+          description
+          url
+          votesCount
+          commentsCount
+          reviewsCount
+          reviewsRating
+          thumbnail {
+            url
+          }
+          topics {
+            edges {
+              node {
+                id
+                name
+                slug
+                followersCount
+              }
+            }
+          }
+        }
       }
     }
-  }
-}`;
+  }`;
 
 async function getLatestProductHuntPosts() {
   const response = await fetch("https://api.producthunt.com/v2/api/graphql", {
@@ -473,11 +506,21 @@ async function getLatestProductHuntPosts() {
   });
 
   const data = await response.json();
-  console.log(data.data.posts.edges.map(post => ({
-    name: post.node.name,
-    url: post.node.url,
-    tagline: post.node.tagline
-  })));
+  const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+  const outputFile = `prod-detailed-${timestamp}.json`;
+  
+  await fs.writeFile(
+      outputFile,
+      JSON.stringify(data, null, 2)
+  );
+
+  console.log(`Data saved to ${outputFile}`);
+  console.log(data)
+//   console.log(data.data.posts.edges.map(post => ({
+//     name: post.node.name,
+//     url: post.node.url,
+//     tagline: post.node.tagline
+//   })));
 }
 
 
@@ -485,7 +528,7 @@ async function getLatestProductHuntPosts() {
 
 app.listen(PORT, async() => {
     console.log(`Server is running on http://localhost:${PORT}`);
-    // getLatestProductHuntPosts();
+    getLatestProductHuntPosts();
     // fetchAndSaveProductData()
     // .then(data => {
     //     console.log('Operation completed successfully');
@@ -502,8 +545,8 @@ app.listen(PORT, async() => {
     //     JSON.stringify(data, null, 2)
     // );
     // console.log(`Data saved`);
-// const data = await getFundingRounds(apiKey)
-//     .then(data => console.log(data))
-//     .catch(error => console.error(error));
+const data = await getFundingRounds(apiKey)
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
 });
 

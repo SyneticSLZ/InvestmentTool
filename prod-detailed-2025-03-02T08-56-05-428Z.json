@@ -1,0 +1,7 @@
+{
+  "errors": [
+    {
+      "message": "Query has complexity of 885802, which exceeds max complexity of 500000"
+    }
+  ]
+}
