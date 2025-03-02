@@ -1965,13 +1965,43 @@ function getConfidenceColor(confidence) {
     return 'red-500';
 }
 
-function openEmailModal(recipientEmail, investorId) {
+function openEmailModal(email, firstName, lastName, position) {
     const modal = document.getElementById('emailModal');
     const toInput = document.getElementById('emailTo');
+    const subjectInput = document.getElementById('emailSubject');
+    const bodyInput = document.getElementById('emailBody');
+    const fromAccountDropdown = document.getElementById('emailFromAccount');
+    
+    const company = document.getElementById('modalTitle').textContent;
+    
+    toInput.value = email;
+    subjectInput.value = campaignSettings.templates.defaultSubject.replace('{{company}}', company);
+    
+    let emailBody = campaignSettings.templates.emailTemplate
+        .replace('{{name}}', firstName)
+        .replace('{{company}}', company)
+        .replace('{{title}}', position);
+        
+    emailBody = emailBody.replace('[Your Signature]', campaignSettings.templates.emailSignature);
+    
+    bodyInput.value = emailBody;
+    
+    // Set the from account if a default is available
+    if (selectedGmailAccount && gmailAccounts.includes(selectedGmailAccount)) {
+        fromAccountDropdown.value = selectedGmailAccount;
+    }
+    
+    // Disable the send button if no Gmail account is selected
+    const sendButton = document.getElementById('sendEmailBtn');
+    sendButton.disabled = !fromAccountDropdown.value;
+    
+    // Add event listener to the dropdown to enable/disable the send button
+    fromAccountDropdown.addEventListener('change', function() {
+        sendButton.disabled = !this.value;
+    });
+    
     modal.classList.remove('hidden');
     modal.classList.add('flex');
-    toInput.value = recipientEmail;
-    document.body.style.overflow = 'hidden';
 }
 
 function closeEmailModal() {
@@ -2224,39 +2254,57 @@ async function sendEmail() {
     const toInput = document.getElementById('emailTo');
     const subjectInput = document.getElementById('emailSubject');
     const bodyInput = document.getElementById('emailBody');
+    const fromAccountDropdown = document.getElementById('emailFromAccount');
+    
+    const mailboxId = fromAccountDropdown.value;
+    
+    if (!mailboxId) {
+        showNotification('Please select a Gmail account to send from.', 'warning');
+        return;
+    }
 
     try {
-        const response = await fetch(`${API_BASE_URL}/send-email`, {
+        // Show sending notification
+        showNotification('Sending email...', 'info');
+        
+        // Disable the send button while sending
+        const sendButton = document.getElementById('sendEmailBtn');
+        sendButton.disabled = true;
+        sendButton.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Sending...';
+        
+        // Call the API to send the email
+        const response = await fetch(`${API_BASE_URL}/send-email-gmail`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                uuid: userUuid,
+                mailboxId: mailboxId,
                 to: toInput.value,
                 subject: subjectInput.value,
-                text: bodyInput.value,
-                smtp: {
-                    host: 'smtp.gmail.com',
-                    port: 465,
-                    secure: true
-                }
+                body: bodyInput.value
             })
         });
-
-        const data = await response.json();
-
-        if (data.success) {
-            closeEmailModal();
-            alert('Email sent successfully!');
-        } else {
-            throw new Error(data.error || 'Failed to send email');
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Failed to send email');
         }
+        
+        showNotification('Email sent successfully!', 'success');
+        closeEmailModal();
+        
     } catch (error) {
         console.error('Error sending email:', error);
-        alert('Failed to send email. Please try again.');
+        showNotification('Failed to send email: ' + error.message, 'error');
+        
+        // Re-enable the send button
+        const sendButton = document.getElementById('sendEmailBtn');
+        sendButton.disabled = false;
+        sendButton.innerHTML = '<i class="fab fa-google mr-2"></i> Send with Gmail';
     }
 }
-
 // Handle ESC key to close modal
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {

@@ -3,10 +3,15 @@ const axios = require('axios');
 require('dotenv').config();
 const fetch = require('node-fetch');
 const puppeteer = require('puppeteer');
+const { google } = require('googleapis')
+const nodemailer = require('nodemailer')
+const path = require('path')
+require('dotenv').config()
 const fs = require('fs').promises;
 const cors = require('cors');
 const app = express();
 const PORT = 3000;
+const { v4: uuidv4 } = require('uuid');
 
 
 // CORS Configuration
@@ -31,6 +36,10 @@ app.use(cors({
 }));;
 app.use(express.json())
 
+const SCOPES = ['https://www.googleapis.com/auth/gmail.send'];
+const TOKEN_DIR = path.join(__dirname, 'tokens');
+const USERS_DIR = path.join(__dirname, 'users');
+
 // Crunchbase API base URL
 const CRUNCHBASE_API_URL = 'https://api.crunchbase.com/api/v4/entities/organizations';
 const CRUNCHBASE_API_KEY = process.env.CRUNCHBASE_API_KEY;
@@ -40,37 +49,476 @@ const apiKey = process.env.api
 const HUNTER_API_KEY = process.env.HUNTER_API_KEY;
 const HUNTER_API_URL = 'https://api.hunter.io/v2';
 
+const client_id = process.env.client_id;
+const client_secret = process.env.client_secret;
+const redirect_uri = process.env.redirect_uri;
 
-const nodemailer = require('nodemailer');
+// Load OAuth2 client
+// const { client_id, client_secret, redirect_uri } = require('./credentials.json');
+const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uri);
 
-
-app.post('/send-email', async (req, res) => {
+async function initializeUsersDir() {
     try {
-        const { to, subject, text, smtp } = req.body;
-
-        const transporter = nodemailer.createTransport({
-            host: smtp.host,
-            port: smtp.port,
-            secure: smtp.secure,
-            auth: {
-                user: 'syneticslz@gmail.com',
-                pass: 'gble ksdb ntdq hqlx'
-              }
-        });
-
-        const info = await transporter.sendMail({
-            from: process.env.GMAIL_USER,
-            to: to,
-            subject: subject,
-            text: text
-        });
-
-        res.json({ success: true, messageId: info.messageId });
+        await fs.mkdir(USERS_DIR, { recursive: true });
+        console.log('Users directory initialized');
     } catch (error) {
-        console.error('Email sending error:', error);
-        res.status(500).json({ success: false, error: error.message });
+        console.error('Error initializing users directory:', error);
+    }
+}
+
+// Generate OAuth2 URL for user authorization
+app.get('/auth', (req, res) => {
+    const userUuid = req.query.uuid;
+    
+    if (!userUuid) {
+        return res.status(400).json({ error: 'UUID is required' });
+    }
+    
+    const authUrl = oAuth2Client.generateAuthUrl({
+        access_type: 'offline',
+        scope: SCOPES,
+        prompt: 'consent', // Always prompt for consent to ensure we get a refresh token
+        state: userUuid // Pass the UUID as state to retrieve it in the callback
+    });
+    
+    res.json({ url: authUrl, uuid: userUuid });
+});
+
+// Handle OAuth2 callback
+app.get('/auth/callback', async (req, res) => {
+    const code = req.query.code;
+    const userUuid = req.query.state; // Get UUID from state parameter
+    
+    if (!code || !userUuid) {
+        return res.status(400).send('Missing required parameters');
+    }
+    
+    try {
+        // Exchange code for tokens
+        const { tokens } = await oAuth2Client.getToken(code);
+        
+        // Create user directory if it doesn't exist
+        const userDir = path.join(USERS_DIR, userUuid);
+        await fs.mkdir(userDir, { recursive: true });
+        
+        // Get Gmail user email
+        oAuth2Client.setCredentials(tokens);
+        const gmail = google.gmail({ version: 'v1', auth: oAuth2Client });
+        const profile = await gmail.users.getProfile({ userId: 'me' });
+        const emailAddress = profile.data.emailAddress;
+        
+        // Save token with email as filename
+        const tokenPath = path.join(userDir, `${emailAddress}.json`);
+        await fs.writeFile(tokenPath, JSON.stringify(tokens));
+        
+        res.send(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Gmail Authorization Success</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    text-align: center;
+                    padding: 40px;
+                    background-color: #f7f7f7;
+                }
+                .container {
+                    background-color: white;
+                    border-radius: 8px;
+                    padding: 30px;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    max-width: 500px;
+                    margin: 0 auto;
+                }
+                h1 {
+                    color: #4285F4;
+                }
+                .icon {
+                    font-size: 48px;
+                    margin-bottom: 20px;
+                    color: #34A853;
+                }
+                .email {
+                    font-weight: bold;
+                    color: #333;
+                    margin: 10px 0;
+                }
+                .button {
+                    background-color: #4285F4;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 16px;
+                    margin-top: 20px;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="icon">✓</div>
+                <h1>Gmail Account Connected Successfully!</h1>
+                <p>Your Gmail account has been successfully connected to StartupStage.</p>
+                <p class="email">${emailAddress}</p>
+                <p>You can now close this window and return to the application.</p>
+                <button class="button" onclick="window.close()">Close Window</button>
+            </div>
+        </body>
+        </html>
+        `);
+    } catch (error) {
+        console.error('Error during auth:', error);
+        res.status(500).send(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Gmail Authorization Failed</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    text-align: center;
+                    padding: 40px;
+                    background-color: #f7f7f7;
+                }
+                .container {
+                    background-color: white;
+                    border-radius: 8px;
+                    padding: 30px;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    max-width: 500px;
+                    margin: 0 auto;
+                }
+                h1 {
+                    color: #EA4335;
+                }
+                .icon {
+                    font-size: 48px;
+                    margin-bottom: 20px;
+                    color: #EA4335;
+                }
+                .button {
+                    background-color: #4285F4;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 16px;
+                    margin-top: 20px;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="icon">✗</div>
+                <h1>Gmail Authorization Failed</h1>
+                <p>There was an error while trying to connect your Gmail account.</p>
+                <p>Please try again or contact support if the problem persists.</p>
+                <button class="button" onclick="window.close()">Close Window</button>
+            </div>
+        </body>
+        </html>
+        `);
     }
 });
+
+
+
+
+// List mailboxes (user IDs with tokens)
+
+// List mailboxes (email accounts) for a specific user
+app.get('/mailboxes/:uuid', async (req, res) => {
+    const { uuid } = req.params;
+    
+    if (!uuid) {
+        return res.status(400).json({ error: 'UUID is required' });
+    }
+    
+    try {
+        const userDir = path.join(USERS_DIR, uuid);
+        
+        // Check if user directory exists
+        try {
+            await fs.access(userDir);
+        } catch (error) {
+            // User directory doesn't exist, return empty array
+            return res.json({ mailboxes: [] });
+        }
+        
+        // Get all token files in the user directory
+        const files = await fs.readdir(userDir);
+        const mailboxes = files
+            .filter(file => file.endsWith('.json'))
+            .map(file => file.replace('.json', ''));
+        
+        res.json({ mailboxes });
+    } catch (error) {
+        console.error('Error listing mailboxes:', error);
+        res.status(500).json({ error: 'Failed to list mailboxes' });
+    }
+});
+
+// Remove a mailbox
+app.post('/remove-mailbox', async (req, res) => {
+    const { uuid, mailboxId } = req.body;
+    
+    if (!uuid || !mailboxId) {
+        return res.status(400).json({ error: 'UUID and mailboxId are required' });
+    }
+    
+    try {
+        const tokenPath = path.join(USERS_DIR, uuid, `${mailboxId}.json`);
+        
+        // Check if token file exists
+        try {
+            await fs.access(tokenPath);
+        } catch (error) {
+            return res.status(404).json({ error: 'Mailbox not found' });
+        }
+        
+        // Delete the token file
+        await fs.unlink(tokenPath);
+        
+        res.json({ message: 'Mailbox removed successfully' });
+    } catch (error) {
+        console.error('Error removing mailbox:', error);
+        res.status(500).json({ error: 'Failed to remove mailbox' });
+    }
+});
+
+// Send email
+// Update send-email endpoint to use UUID
+app.post('/send-email-gmail', async (req, res) => {
+    const { uuid, mailboxId, to, subject, body } = req.body;
+    
+    try {
+        const auth = await loadTokens(uuid, mailboxId);
+        const gmail = google.gmail({ version: 'v1', auth });
+
+        // Create email
+        const email = [
+            `To: ${to}`,
+            'Content-Type: text/plain; charset=utf-8',
+            `Subject: ${subject}`,
+            '',
+            body,
+        ].join('\n');
+
+        const encodedMessage = Buffer.from(email)
+            .toString('base64')
+            .replace(/\+/g, '-')
+            .replace(/\//g, '_')
+            .replace(/=+$/, '');
+
+        // Send email via Gmail API
+        await gmail.users.messages.send({
+            userId: 'me',
+            requestBody: { raw: encodedMessage },
+        });
+
+        res.json({ message: 'Email sent successfully' });
+    } catch (error) {
+        console.error('Error sending email:', error);
+        res.status(500).json({ error: 'Failed to send email' });
+    }
+});
+
+async function loadTokens(uuid, mailboxId) {
+    try {
+        const tokenPath = path.join(USERS_DIR, uuid, `${mailboxId}.json`);
+        const tokenData = await fs.readFile(tokenPath, 'utf8');
+        const tokens = JSON.parse(tokenData);
+        
+        // Set up OAuth2 client with tokens
+        oAuth2Client.setCredentials(tokens);
+        
+        // Check if token is expired and refresh if needed
+        if (tokens.expiry_date < Date.now()) {
+            console.log('Token expired, refreshing...');
+            const { credentials } = await oAuth2Client.refreshAccessToken();
+            await fs.writeFile(tokenPath, JSON.stringify(credentials));
+            oAuth2Client.setCredentials(credentials);
+        }
+        
+        return oAuth2Client;
+    } catch (error) {
+        console.error('Error loading tokens:', error);
+        throw new Error('Token not found or invalid');
+    }
+}
+
+// Send email with Gmail
+app.post('/send-email-gmail', async (req, res) => {
+    const { uuid, mailboxId, to, subject, body } = req.body;
+    
+    if (!uuid || !mailboxId || !to || !subject || !body) {
+        return res.status(400).json({ error: 'Missing required parameters' });
+    }
+    
+    try {
+        // Load tokens and get auth client
+        const auth = await loadTokens(uuid, mailboxId);
+        
+        // Create Gmail client
+        const gmail = google.gmail({ version: 'v1', auth });
+        
+        // Create email content
+        const emailLines = [
+            `To: ${to}`,
+            'Content-Type: text/html; charset=utf-8',
+            `Subject: ${subject}`,
+            '',
+            body.replace(/\n/g, '<br>') // Convert newlines to HTML line breaks
+        ];
+        
+        const email = emailLines.join('\r\n');
+        
+        // Encode email in base64 format required by Gmail API
+        const encodedMessage = Buffer.from(email)
+            .toString('base64')
+            .replace(/\+/g, '-')
+            .replace(/\//g, '_')
+            .replace(/=+$/, '');
+        
+        // Send email
+        const result = await gmail.users.messages.send({
+            userId: 'me',
+            requestBody: {
+                raw: encodedMessage,
+            },
+        });
+        
+        res.json({ 
+            message: 'Email sent successfully',
+            messageId: result.data.id
+        });
+    } catch (error) {
+        console.error('Error sending email:', error);
+        res.status(500).json({ 
+            error: 'Failed to send email',
+            details: error.message
+        });
+    }
+});
+
+// Send a test email to verify Gmail configuration
+app.post('/test-gmail-connection', async (req, res) => {
+    const { uuid, mailboxId } = req.body;
+    
+    if (!uuid || !mailboxId) {
+        return res.status(400).json({ error: 'UUID and mailboxId are required' });
+    }
+    
+    try {
+        // Load tokens and get auth client
+        const auth = await loadTokens(uuid, mailboxId);
+        
+        // Create Gmail client
+        const gmail = google.gmail({ version: 'v1', auth });
+        
+        // Get user profile to verify connection
+        const profile = await gmail.users.getProfile({ userId: 'me' });
+        
+        res.json({
+            success: true,
+            email: profile.data.emailAddress,
+            messagesTotal: profile.data.messagesTotal,
+            threadsTotal: profile.data.threadsTotal
+        });
+    } catch (error) {
+        console.error('Error testing Gmail connection:', error);
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
+});
+
+// Bulk send emails for a campaign
+app.post('/campaign/send', async (req, res) => {
+    const { uuid, mailboxId, emails, campaignName, sendInterval } = req.body;
+    
+    if (!uuid || !mailboxId || !emails || !emails.length) {
+        return res.status(400).json({ error: 'Missing required parameters' });
+    }
+    
+    // Start sending emails in the background
+    res.json({
+        success: true,
+        message: `Campaign started. Sending ${emails.length} emails.`,
+        campaignId: Date.now().toString()
+    });
+    
+    // Process emails in the background
+    processCampaignEmails(uuid, mailboxId, emails, campaignName, sendInterval || 60);
+});
+
+// Process campaign emails in the background
+async function processCampaignEmails(uuid, mailboxId, emails, campaignName, sendInterval) {
+    console.log(`Starting campaign: ${campaignName} with ${emails.length} emails`);
+    
+    try {
+        // Load tokens and get auth client
+        const auth = await loadTokens(uuid, mailboxId);
+        const gmail = google.gmail({ version: 'v1', auth });
+        
+        // Process each email with delay between sends
+        let successCount = 0;
+        let failureCount = 0;
+        
+        for (const email of emails) {
+            try {
+                // Create email content
+                const emailLines = [
+                    `To: ${email.to}`,
+                    'Content-Type: text/html; charset=utf-8',
+                    `Subject: ${email.subject}`,
+                    '',
+                    email.body.replace(/\n/g, '<br>')
+                ];
+                
+                const emailContent = emailLines.join('\r\n');
+                
+                // Encode email
+                const encodedMessage = Buffer.from(emailContent)
+                    .toString('base64')
+                    .replace(/\+/g, '-')
+                    .replace(/\//g, '_')
+                    .replace(/=+$/, '');
+                
+                // Send email
+                await gmail.users.messages.send({
+                    userId: 'me',
+                    requestBody: {
+                        raw: encodedMessage,
+                    },
+                });
+                
+                successCount++;
+                console.log(`Campaign ${campaignName}: Sent email ${successCount} to ${email.to}`);
+                
+                // Wait before sending the next email
+                await new Promise(resolve => setTimeout(resolve, sendInterval * 1000));
+            } catch (error) {
+                failureCount++;
+                console.error(`Failed to send email to ${email.to}:`, error);
+            }
+        }
+        
+        console.log(`Campaign ${campaignName} completed. Success: ${successCount}, Failures: ${failureCount}`);
+    } catch (error) {
+        console.error(`Campaign ${campaignName} failed:`, error);
+    }
+}
+
+// Initialize the application
+
+
+// Start the server
+
 
 // Mock data simulating Hunter.io response
 const mockContactsResponse = {
@@ -524,11 +972,17 @@ async function getLatestProductHuntPosts() {
 }
 
 
+initialize().catch(console.error);
+
+async function initialize() {
+    // Create users directory
+    await initializeUsersDir();
+  
 
 
 app.listen(PORT, async() => {
     console.log(`Server is running on http://localhost:${PORT}`);
-    getLatestProductHuntPosts();
+    // getLatestProductHuntPosts();
     // fetchAndSaveProductData()
     // .then(data => {
     //     console.log('Operation completed successfully');
@@ -545,8 +999,9 @@ app.listen(PORT, async() => {
     //     JSON.stringify(data, null, 2)
     // );
     // console.log(`Data saved`);
-const data = await getFundingRounds(apiKey)
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
+// const data = await getFundingRounds(apiKey)
+//     .then(data => console.log(data))
+//     .catch(error => console.error(error));
 });
 
+}
