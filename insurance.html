@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OffMarket Insights | xAI</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hover-scale {
+            transition: transform 0.2s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full bg-gray-900/80 glass-effect shadow-lg p-4 z-10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-xl font-bold text-white">OffMarket Insights</span>
+                <span class="text-xs text-gray-400">Powered by xAI</span>
+            </div>
+            <div class="space-x-4">
+                <button id="dashboardBtn" class="text-gray-300 hover:text-white">Dashboard</button>
+                <button id="historyBtn" class="text-gray-300 hover:text-white">History</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto mt-20 p-6">
+        <!-- Search Section -->
+        <section class="glass-effect p-6 rounded-lg shadow-lg hover-scale">
+            <h2 class="text-2xl font-semibold text-white mb-4">Analyze Off-Market Data</h2>
+            <div class="flex flex-col space-y-4">
+                <input 
+                    id="searchInput" 
+                    type="text" 
+                    placeholder="Drug name, PBM, insurer, or RFP keyword..." 
+                    class="w-full p-3 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                <div class="flex space-x-4">
+                    <button id="searchBtn" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">Fetch Insights</button>
+                    <select id="dataType" class="p-3 bg-gray-800 text-white border border-gray-700 rounded-lg">
+                        <option value="drug">Drug Costs & Alternatives</option>
+                        <option value="pbm">PBM & Insurer Insights</option>
+                        <option value="rfp">RFP Analysis</option>
+                        <option value="trends">Industry Trends</option>
+                    </select>
+                </div>
+            </div>
+            <p id="status" class="text-gray-400 mt-2 text-sm">Enter a query to begin.</p>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="mt-8 glass-effect p-6 rounded-lg shadow-lg hidden">
+            <h2 class="text-2xl font-semibold text-white mb-4">Insights Dashboard</h2>
+            <div id="insights" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamic insights injected here -->
+            </div>
+            <div class="mt-6 flex space-x-4">
+                <button id="exportCsvBtn" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Export CSV</button>
+                <button id="exportPdfBtn" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Export PDF</button>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="mt-8 glass-effect p-6 rounded-lg shadow-lg hidden">
+            <h2 class="text-2xl font-semibold text-white mb-4">Search History</h2>
+            <ul id="historyList" class="space-y-2">
+                <!-- History items injected here -->
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-12 py-4 text-center text-gray-500 text-sm">
+        <p>© 2025 xAI. All rights reserved.</p>
+    </footer>
+
+    <script >
+        // DOM Elements
+const searchInput = document.getElementById('searchInput');
+const searchBtn = document.getElementById('searchBtn');
+const dataTypeSelect = document.getElementById('dataType');
+const status = document.getElementById('status');
+const dashboard = document.getElementById('dashboard');
+const insightsDiv = document.getElementById('insights');
+const exportCsvBtn = document.getElementById('exportCsvBtn');
+const exportPdfBtn = document.getElementById('exportPdfBtn');
+const historySection = document.getElementById('history');
+const historyList = document.getElementById('historyList');
+const dashboardBtn = document.getElementById('dashboardBtn');
+const historyBtn = document.getElementById('historyBtn');
+
+// State
+let currentData = null;
+let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+
+// Simulated live data fetch (replace with real API calls)
+async function fetchOffMarketData(query, type) {
+    status.textContent = 'Fetching live data...';
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            let data;
+            switch (type) {
+                case 'drug':
+                    data = {
+                        query,
+                        drugCost: `$${Math.floor(Math.random() * 1000)}/month (CMS)`,
+                        genericAlternative: query.includes('drug') ? 'Yes - FDA Approved Generic' : 'N/A',
+                        pbmComparison: ['Express Scripts: $800', 'CVS Caremark: $850', 'OptumRx: $820'],
+                        timestamp: new Date().toLocaleString()
+                    };
+                    break;
+                case 'pbm':
+                    data = {
+                        query,
+                        insurerPartnerships: `${query} works with UnitedHealth (CMS Filing)`,
+                        marketShare: `${Math.floor(Math.random() * 30) + 10}% (HCCI Estimate)`,
+                        pbmContracts: ['Contract with CVS Caremark renewed 2024', 'OptumRx deal pending'],
+                        timestamp: new Date().toLocaleString()
+                    };
+                    break;
+                case 'rfp':
+                    data = {
+                        query,
+                        rfpDetails: `Found RFP for ${query} seeking PBM cost reduction (HHS)`,
+                        winningVendor: 'Express Scripts (2024 Award)',
+                        recommendation: 'Partner with OptumRx for 15% savings',
+                        timestamp: new Date().toLocaleString()
+                    };
+                    break;
+                case 'trends':
+                    data = {
+                        query,
+                        trend: 'Post-COVID drug costs up 20% (KFF)',
+                        regulatoryUpdate: 'CMS rule on PBM transparency effective 2025',
+                        highDollarClaims: 'Insurers shifting to value-based care (NIHCM)',
+                        timestamp: new Date().toLocaleString()
+                    };
+                    break;
+            }
+            resolve(data);
+        }, 1000); // Simulate 1-second delay
+    });
+}
+
+// Render insights based on data type
+function renderInsights(data, type) {
+    let html = '';
+    switch (type) {
+        case 'drug':
+            html = `
+                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">Drug Cost</h3><p class="text-gray-300">${data.drugCost}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">Generic Alternative</h3><p class="text-gray-300">${data.genericAlternative}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">PBM Comparison</h3><p class="text-gray-300">${data.pbmComparison.join('<br>')}</p></div>
+            `;
+            break;
+        case 'pbm':
+            html = `
+                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">Insurer Partnerships</h3><p class="text-gray-300">${data.insurerPartnerships}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">Market Share</h3><p class="text-gray-300">${data.marketShare}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">PBM Contracts</h3><p class="text-gray-300">${data.pbmContracts.join('<br>')}</p></div>
+            `;
+            break;
+        case 'rfp':
+            html = `
+                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">RFP Details</h3><p class="text-gray-300">${data.rfpDetails}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">Winning Vendor</h3><p class="text-gray-300">${data.winningVendor}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">Recommendation</h3><p class="text-gray-300">${data.recommendation}</p></div>
+            `;
+            break;
+        case 'trends':
+            html = `
+                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">Industry Trend</h3><p class="text-gray-300">${data.trend}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">Regulatory Update</h3><p class="text-gray-300">${data.regulatoryUpdate}</p></div>
+                <div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">High-Dollar Claims</h3><p class="text-gray-300">${data.highDollarClaims}</p></div>
+            `;
+            break;
+    }
+    insightsDiv.innerHTML = html + `<div class="p-4 bg-gray-800 rounded-lg"><h3 class="text-lg font-medium text-white">Timestamp</h3><p class="text-gray-300">${data.timestamp}</p></div>`;
+    dashboard.classList.remove('hidden');
+    historySection.classList.add('hidden');
+    status.textContent = 'Insights loaded successfully!';
+}
+
+// Update and render search history
+function updateHistory(query, type) {
+    const entry = `${query} (${type})`;
+    if (!searchHistory.includes(entry)) {
+        searchHistory.unshift(entry);
+        if (searchHistory.length > 10) searchHistory.pop();
+        localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+        renderHistory();
+    }
+}
+
+function renderHistory() {
+    historyList.innerHTML = searchHistory.length
+        ? searchHistory.map(entry => `
+            <li class="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 cursor-pointer" onclick="reSearch('${entry}')">
+                ${entry} <span class="text-gray-500 text-sm">— Click to re-run</span>
+            </li>
+        `).join('')
+        : '<p class="text-gray-400">No search history yet.</p>';
+}
+
+window.reSearch = async (entry) => {
+    const [query, type] = entry.split(' (');
+    searchInput.value = query;
+    dataTypeSelect.value = type.slice(0, -1);
+    const data = await fetchOffMarketData(query, type.slice(0, -1));
+    currentData = data;
+    renderInsights(data, type.slice(0, -1));
+};
+
+// Export functions (simplified CSV/PDF)
+function exportToCSV(data, type) {
+    const csvContent = type === 'drug'
+        ? [['Query', 'Drug Cost', 'Generic Alternative', 'PBM Comparison', 'Timestamp'], [data.query, data.drugCost, data.genericAlternative, data.pbmComparison.join(';'), data.timestamp]]
+        : type === 'pbm'
+        ? [['Query', 'Insurer Partnerships', 'Market Share', 'PBM Contracts', 'Timestamp'], [data.query, data.insurerPartnerships, data.marketShare, data.pbmContracts.join(';'), data.timestamp]]
+        : type === 'rfp'
+        ? [['Query', 'RFP Details', 'Winning Vendor', 'Recommendation', 'Timestamp'], [data.query, data.rfpDetails, data.winningVendor, data.recommendation, data.timestamp]]
+        : [['Query', 'Trend', 'Regulatory Update', 'High-Dollar Claims', 'Timestamp'], [data.query, data.trend, data.regulatoryUpdate, data.highDollarClaims, data.timestamp]];
+    const csv = csvContent.map(row => row.join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${data.query.replace(/\s/g, '_')}_insights.csv`;
+    a.click();
+}
+
+function exportToPDF(data, type) {
+    const content = type === 'drug'
+        ? `Query: ${data.query}\nDrug Cost: ${data.drugCost}\nGeneric Alternative: ${data.genericAlternative}\nPBM Comparison: ${data.pbmComparison.join(', ')}\nTimestamp: ${data.timestamp}`
+        : type === 'pbm'
+        ? `Query: ${data.query}\nInsurer Partnerships: ${data.insurerPartnerships}\nMarket Share: ${data.marketShare}\nPBM Contracts: ${data.pbmContracts.join(', ')}\nTimestamp: ${data.timestamp}`
+        : type === 'rfp'
+        ? `Query: ${data.query}\nRFP Details: ${data.rfpDetails}\nWinning Vendor: ${data.winningVendor}\nRecommendation: ${data.recommendation}\nTimestamp: ${data.timestamp}`
+        : `Query: ${data.query}\nTrend: ${data.trend}\nRegulatory Update: ${data.regulatoryUpdate}\nHigh-Dollar Claims: ${data.highDollarClaims}\nTimestamp: ${data.timestamp}`;
+    const blob = new Blob([content], { type: 'application/pdf' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${data.query.replace(/\s/g, '_')}_insights.pdf`;
+    a.click();
+}
+
+// Event Listeners
+searchBtn.addEventListener('click', async () => {
+    const query = searchInput.value.trim();
+    const type = dataTypeSelect.value;
+    if (!query) {
+        status.textContent = 'Please enter a query.';
+        return;
+    }
+    const data = await fetchOffMarketData(query, type);
+    currentData = data;
+    renderInsights(data, type);
+    updateHistory(query, type);
+});
+
+dashboardBtn.addEventListener('click', () => {
+    dashboard.classList.remove('hidden');
+    historySection.classList.add('hidden');
+});
+
+historyBtn.addEventListener('click', () => {
+    dashboard.classList.add('hidden');
+    historySection.classList.remove('hidden');
+    renderHistory();
+});
+
+exportCsvBtn.addEventListener('click', () => {
+    if (currentData) exportToCSV(currentData, dataTypeSelect.value);
+});
+
+exportPdfBtn.addEventListener('click', () => {
+    if (currentData) exportToPDF(currentData, dataTypeSelect.value); // Integrate jsPDF for production
+});
+
+// Initialize
+renderHistory();
+    </script>
+</body>
+</html>

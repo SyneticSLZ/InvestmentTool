@@ -36,7 +36,7 @@ app.use(cors({
 }));;
 app.use(express.json())
 
-const SCOPES = ['https://www.googleapis.com/auth/gmail.send'];
+const SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/userinfo.email'];
 const TOKEN_DIR = path.join(__dirname, 'tokens');
 const USERS_DIR = path.join(__dirname, 'users');
 
@@ -92,6 +92,9 @@ app.get('/auth/callback', async (req, res) => {
     if (!code || !userUuid) {
         return res.status(400).send('Missing required parameters');
     }
+
+        // Continue with saving the token...
+
     
     try {
         // Exchange code for tokens
@@ -103,10 +106,8 @@ app.get('/auth/callback', async (req, res) => {
         
         // Get Gmail user email
         oAuth2Client.setCredentials(tokens);
-        const gmail = google.gmail({ version: 'v1', auth: oAuth2Client });
-        const profile = await gmail.users.getProfile({ userId: 'me' });
-        const emailAddress = profile.data.emailAddress;
-        
+        const tokenInfo = await oAuth2Client.getTokenInfo(tokens.access_token);
+        emailAddress = tokenInfo.email || 'unknown-user@gmail.com';
         // Save token with email as filename
         const tokenPath = path.join(userDir, `${emailAddress}.json`);
         await fs.writeFile(tokenPath, JSON.stringify(tokens));
@@ -169,6 +170,9 @@ app.get('/auth/callback', async (req, res) => {
         </html>
         `);
     } catch (error) {
+
+        console.error('Failed to get email from token info:', error);
+        emailAddress = `gmail-user-${Date.now()}`;
         console.error('Error during auth:', error);
         res.status(500).send(`
         <!DOCTYPE html>
@@ -217,6 +221,7 @@ app.get('/auth/callback', async (req, res) => {
                 <p>There was an error while trying to connect your Gmail account.</p>
                 <p>Please try again or contact support if the problem persists.</p>
                 <button class="button" onclick="window.close()">Close Window</button>
+                <p>${error}</p>
             </div>
         </body>
         </html>
