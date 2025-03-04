@@ -2278,12 +2278,12 @@ if (event.target === modal) {
     // localStorage.setItem('darkMode', 'true');
 
     // Check for saved dark mode preference
-    if (localStorage.getItem('darkMode') === 'true' || 
-        (!localStorage.getItem('darkMode') && 
-        window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          const html = document.documentElement;
-          html.classList.add('dark');
-    }
+    // if (localStorage.getItem('darkMode') === 'true' || 
+    //     (!localStorage.getItem('darkMode') && 
+    //     window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    //       const html = document.documentElement;
+    //       html.classList.add('dark');
+    // }
 
     // Update dark mode state
     // function updateDarkMode(isDark) {
