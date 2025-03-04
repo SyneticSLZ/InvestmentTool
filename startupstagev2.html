@@ -2927,6 +2927,13 @@ const YCdata = [
             overlay.classList.remove('hidden');
         }
 
+
+        function showModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('hidden');
+            modal.classList.add('flex'); // For modals using flex display
+        }
+        
         function hideLoadingOverlay() {
             const overlay = document.getElementById('loadingOverlay');
             overlay.classList.add('hidden');
