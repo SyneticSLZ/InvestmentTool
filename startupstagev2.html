@@ -272,7 +272,7 @@
     </div>
 
     <!-- Enhanced Funding Modal with fixes -->
-    <div id="fundingModalfund" class="modal fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center px-4 z-50">
+    <div id="fundingModalfund"  class="modal fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center px-4 z-50">
         <div class="modal-content bg-white dark:bg-[rgba(17,16,28,0.95)] rounded-xl shadow-xl w-full max-w-4xl max-h-[90vh] overflow-hidden">
             <div class="sticky top-0 bg-white dark:bg-[rgba(17,16,28,0.95)] border-b dark:border-gray-700 z-10">
                 <div class="flex justify-between items-center p-6">
@@ -2839,9 +2839,22 @@ const YCdata = [
                     document.getElementById('ycModal').style.display = 'none';
                 });
             });
+            
+            document.querySelectorAll('#fundingModalfund .close-modal').forEach(button => {
+                button.addEventListener('click', () => {
+                    document.getElementById('ycModal').style.display = 'none';
+                });
+            });
 
             window.addEventListener('click', (event) => {
                 const ycModal = document.getElementById('ycModal');
+                if (event.target === ycModal) {
+                    ycModal.style.display = 'none';
+                }
+            });
+
+            window.addEventListener('click', (event) => {
+                const ycModal = document.getElementById('fundingModalfund');
                 if (event.target === ycModal) {
                     ycModal.style.display = 'none';
                 }
@@ -2919,6 +2932,37 @@ const YCdata = [
             });
         }
 
+        document.getElementById('fundingModalfund').addEventListener('click', function(event) {
+    if (event.target === this) {
+        this.classList.add('hidden');
+    }
+});
+
+
+// Add this to your existing <script> tag
+  document.addEventListener('DOMContentLoaded', () => {
+    // Close Product Hunt modal
+    document.querySelectorAll('.close-modal').forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = button.closest('.modal'); // Find the nearest modal parent
+            if (modal) {
+                modal.classList.add('hidden'); // Use class-based hiding
+                modal.style.display = 'none';  // Also set display for consistency
+            }
+        });
+    });
+
+    // Close Funding Round modal
+    document.querySelector('.close-funding-modal').addEventListener('click', () => {
+        const modal = document.getElementById('fundingModalfund');
+        modal.classList.add('hidden');
+        modal.style.display = 'none';
+    });
+});
+document.querySelector('.close-funding-modal').addEventListener('click', function() {
+    document.getElementById('fundingModalfund').classList.add('hidden');
+});
+
         function showLoadingOverlay(message = "Loading...") {
             const overlay = document.getElementById('loadingOverlay');
             const messageEl = document.getElementById('loadingMessage');
@@ -2933,7 +2977,27 @@ const YCdata = [
             modal.classList.remove('hidden');
             modal.classList.add('flex'); // For modals using flex display
         }
-        
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex'); // For modals using flex display
+            }
+        }
+        document.querySelectorAll('fundingModalfund').forEach(modal => {
+            document.getElementById('fundingModalfund').addEventListener('click', (event) => {
+                if (event.target === modal) { // Click is on the modal background, not content
+                    closeModal(modal.id);
+                }
+            });
+        });
+
+        // Close Funding modal (fundingModalfund)
+        function closeFundingModalFund() {
+            closeModal('fundingModalfund');
+        }
+
         function hideLoadingOverlay() {
             const overlay = document.getElementById('loadingOverlay');
             overlay.classList.add('hidden');
