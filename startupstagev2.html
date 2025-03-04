@@ -90,7 +90,15 @@
             z-index: 9999;
         }
     </style>
+    <script>
+      // Check localStorage and apply dark mode as the default if no preference exists
+      if (localStorage.getItem('darkMode') === null || localStorage.getItem('darkMode') === 'true') {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('darkMode', 'true'); // Set default if not present
+      }
+  </script>
 </head>
+
 <body class="bg-white dark:bg-black transition-colors duration-200">
     <!-- Loading Overlay -->
     <div id="loadingOverlay" class="loading-overlay hidden">
@@ -4925,6 +4933,13 @@ ${makers?.length ? `
             }
         }
 
+// Dark mode toggle functionality
+const darkModeToggle = document.getElementById('darkModeToggle');
+darkModeToggle.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+    const isDarkMode = document.documentElement.classList.contains('dark');
+    localStorage.setItem('darkMode', isDarkMode);
+});
         // Media preview functionality
         function showMediaPreview(url) {
             const previewModal = document.getElementById('mediaPreviewModal');
