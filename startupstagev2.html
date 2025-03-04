@@ -27,6 +27,25 @@
             color: white;
         }
 
+        :root {
+    /* Light mode default styles */
+    background: #ffffff;
+    color: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        background: #000000;
+        color: #ffffff;
+    }
+}
+
+.dark {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
+
         .product-card {
             background: rgba(17, 16, 28, 0.95);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -91,16 +110,17 @@
         }
     </style>
 <script>
-  // Check localStorage and apply the correct mode
-  const isDarkMode = localStorage.getItem('darkMode');
-  if (isDarkMode === null || isDarkMode === 'true') {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('darkMode', 'true'); // Default to dark mode
-  } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('darkMode', 'false'); // Ensure it’s set
-  }
-</script>
+  document.addEventListener('DOMContentLoaded', () => {
+      const isDarkMode = localStorage.getItem('darkMode');
+      if (isDarkMode === null || isDarkMode === 'true') {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('darkMode', 'true');
+      } else {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('darkMode', 'false');
+      }
+  });
+  </script>
 </head>
 
 <body class="bg-white dark:bg-black transition-colors duration-200">
@@ -5112,13 +5132,7 @@ ${makers?.length ? `
             }
         }
 
-// Dark mode toggle functionality
-const darkModeToggle = document.getElementById('darkModeToggle');
-darkModeToggle.addEventListener('click', () => {
-    document.documentElement.classList.toggle('dark');
-    const isDarkMode = document.documentElement.classList.contains('dark');
-    localStorage.setItem('darkMode', isDarkMode);
-});
+
         // Media preview functionality
         function showMediaPreview(url) {
             const previewModal = document.getElementById('mediaPreviewModal');
@@ -5150,6 +5164,14 @@ darkModeToggle.addEventListener('click', () => {
         //         localStorage.setItem('darkMode', 'true');
         //     }
         // });
+
+        // Dark mode toggle functionality
+const darkModeToggle = document.getElementById('darkModeToggle');
+darkModeToggle.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+    const isDarkMode = document.documentElement.classList.contains('dark');
+    localStorage.setItem('darkMode', isDarkMode);
+});
     </script>
 </body>
 </html>
