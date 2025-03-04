@@ -2286,21 +2286,21 @@ if (event.target === modal) {
     }
 
     // Update dark mode state
-    function updateDarkMode(isDark) {
-        if (isDark) {
-            html.classList.add('dark');
-            localStorage.setItem('darkMode', 'true');
-        } else {
-            html.classList.remove('dark');
-            localStorage.setItem('darkMode', 'false');
-        }
-    }
+    // function updateDarkMode(isDark) {
+    //     if (isDark) {
+    //         html.classList.add('dark');
+    //         localStorage.setItem('darkMode', 'true');
+    //     } else {
+    //         html.classList.remove('dark');
+    //         localStorage.setItem('darkMode', 'false');
+    //     }
+    // }
 
-    // Toggle dark mode
-    darkModeToggle.addEventListener('click', () => {
-        const isDark = !html.classList.contains('dark');
-        updateDarkMode(isDark);
-    });
+    // // Toggle dark mode
+    // darkModeToggle.addEventListener('click', () => {
+    //     const isDark = !html.classList.contains('dark');
+    //     updateDarkMode(isDark);
+    // });
 }
 
 document.getElementById('fundingModalfund').addEventListener('click', function(event) {
@@ -4506,9 +4506,9 @@ function updateRefreshTimestamp() {
 // });
 
 // Dark mode toggle functionality
-const darkModeToggle = document.getElementById('darkModeToggle');
-darkModeToggle.addEventListener('click', () => {
-document.documentElement.classList.toggle('dark');
-const isDarkMode = document.documentElement.classList.contains('dark');
-localStorage.setItem('darkMode', isDarkMode);
-});
+// const darkModeToggle = document.getElementById('darkModeToggle');
+// darkModeToggle.addEventListener('click', () => {
+// document.documentElement.classList.toggle('dark');
+// const isDarkMode = document.documentElement.classList.contains('dark');
+// localStorage.setItem('darkMode', isDarkMode);
+// });

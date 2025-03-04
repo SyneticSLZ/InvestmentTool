@@ -109,8 +109,9 @@
             z-index: 9999;
         }
     </style>
-<script>
+<!-- <script>
   document.addEventListener('DOMContentLoaded', () => {
+    document.documentElement.classList.add('dark');
       const isDarkMode = localStorage.getItem('darkMode');
       if (isDarkMode === null || isDarkMode === 'true') {
           document.documentElement.classList.add('dark');
@@ -120,10 +121,10 @@
           localStorage.setItem('darkMode', 'false');
       }
   });
-  </script>
+  </script> -->
 </head>
 
-<body class="bg-black dark:bg-black transition-colors duration-200">
+<body class="bg-white dark:bg-black transition-colors duration-200">
     <!-- Loading Overlay -->
     <div id="loadingOverlay" class="loading-overlay hidden">
         <div class="bg-white dark:bg-gray-800 rounded-lg p-8 flex flex-col items-center">
