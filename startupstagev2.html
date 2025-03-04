@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,9 +39,9 @@
             }
         }
 
-        body {
+        /* body {
             font-family: system-ui, -apple-system, sans-serif;
-        }
+        } */
 
         .dark {
             background: #000000;
@@ -50,12 +50,12 @@
 
 
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
     :root {
         background: #000000;
         color: #ffffff;
     }
-}
+} */
 /* 
 .dark {
     background: #000000 !important;
@@ -130,7 +130,7 @@
         }
     </style>
     <!-- Add this to the head section of your HTML -->
-<style>
+<!-- <style>
   /* Ensure dark mode is applied by default */
   html {
     background-color: #000000;
@@ -167,13 +167,13 @@
   body {
     animation: show-content 0s 0.1s forwards;
   }
-</style>
+</style> -->
 
 <!-- Add this script before any other scripts to ensure dark mode is applied early -->
 <script>
   (function() {
     // Always start in dark mode by default
-    document.documentElement.classList.add('dark');
+    // document.documentElement.classList.add('dark');
     
     // If there's a saved preference, use that instead
     const savedMode = localStorage.getItem('darkMode');
@@ -181,7 +181,7 @@
       document.documentElement.classList.remove('dark');
     } else {
       // If no preference or preference is 'true', ensure dark mode is on
-      localStorage.setItem('darkMode', 'true');
+      // localStorage.setItem('darkMode', 'true');
     }
   })();
 </script>
