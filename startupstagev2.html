@@ -272,31 +272,33 @@
     </div>
 
     <!-- Enhanced Funding Modal with fixes -->
-    <div id="fundingModalfund"  class="modal fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center px-4 z-50">
-        <div class="modal-content bg-white dark:bg-[rgba(17,16,28,0.95)] rounded-xl shadow-xl w-full max-w-4xl max-h-[90vh] overflow-hidden">
-            <div class="sticky top-0 bg-white dark:bg-[rgba(17,16,28,0.95)] border-b dark:border-gray-700 z-10">
-                <div class="flex justify-between items-center p-6">
-                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white" id="modalTitle">Funding Details</h2>
-                    <button class="close-funding-modal text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
-                </div>
-                <div class="px-6 pb-4">
-                    <nav class="flex space-x-4">
-                        <button class="modal-tab px-3 py-2 text-sm font-medium rounded-md transition-colors bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300" data-tab="details">
-                            Funding Details
-                        </button>
-                        <button class="modal-tab px-3 py-2 text-sm font-medium rounded-md transition-colors text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700" data-tab="investors">
-                            Investors & Contacts
-                        </button>
-                    </nav>
-                </div>
-            </div>
-            <div class="p-6 overflow-y-auto" style="max-height: calc(90vh - 160px);">
-                <div id="modalContentfund" class="text-gray-600 dark:text-gray-300"></div>
-            </div>
-        </div>
-    </div>
+<!-- Enhanced Funding Modal with fixes -->
+<!-- Enhanced Funding Modal with fixes -->
+<div id="fundingModalfund" class="modal fixed inset-0 bg-black bg-opacity-50 hidden flex items-start justify-center pt-16 z-50">
+  <div class="modal-content bg-white dark:bg-[rgba(17,16,28,0.95)] rounded-xl shadow-xl w-full max-w-4xl max-h-[90vh] overflow-hidden mx-auto">
+      <div class="sticky top-0 bg-white dark:bg-[rgba(17,16,28,0.95)] border-b dark:border-gray-700 z-10">
+          <div class="flex justify-between items-center p-6">
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white" id="modalTitle">Funding Details</h2>
+              <button class="close-funding-modal text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+                  <i class="fas fa-times text-xl"></i>
+              </button>
+          </div>
+          <div class="px-6 pb-4">
+              <nav class="flex space-x-4">
+                  <button class="modal-tab px-3 py-2 text-sm font-medium rounded-md transition-colors bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300" data-tab="details">
+                      Funding Details
+                  </button>
+                  <button class="modal-tab px-3 py-2 text-sm font-medium rounded-md transition-colors text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700" data-tab="investors">
+                      Investors & Contacts
+                  </button>
+              </nav>
+          </div>
+      </div>
+      <div class="p-6 overflow-y-auto" style="max-height: calc(90vh - 160px);">
+          <div id="modalContentfund" class="text-gray-600 dark:text-gray-300"></div>
+      </div>
+  </div>
+</div>
 
     <!-- YC Company Details Modal -->
     <div id="ycModal" class="modal fixed inset-0 hidden items-start justify-center pt-16 px-4 z-50">
