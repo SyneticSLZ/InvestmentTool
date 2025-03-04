@@ -90,13 +90,17 @@
             z-index: 9999;
         }
     </style>
-    <script>
-      // Check localStorage and apply dark mode as the default if no preference exists
-      if (localStorage.getItem('darkMode') === null || localStorage.getItem('darkMode') === 'true') {
-          document.documentElement.classList.add('dark');
-          localStorage.setItem('darkMode', 'true'); // Set default if not present
-      }
-  </script>
+<script>
+  // Check localStorage and apply the correct mode
+  const isDarkMode = localStorage.getItem('darkMode');
+  if (isDarkMode === null || isDarkMode === 'true') {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('darkMode', 'true'); // Default to dark mode
+  } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('darkMode', 'false'); // Ensure it’s set
+  }
+</script>
 </head>
 
 <body class="bg-white dark:bg-black transition-colors duration-200">
@@ -155,6 +159,10 @@
       <i class="fas fa-moon dark:hidden"></i>
       <i class="fas fa-sun hidden dark:inline"></i>
   </button>
+  <button id="darkModeToggle" class="bg-gray-50 dark:bg-[rgba(17,16,28,0.8)] hover:bg-gray-100 dark:hover:bg-[rgba(139,92,246,0.1)] text-gray-700 dark:text-gray-200 p-2 rounded-lg border dark:border-gray-800 transition-colors">
+    <i class="fas fa-moon dark:hidden"></i>
+    <i class="fas fa-sun hidden dark:inline"></i>
+</button>
 </div>
 </div>
 </nav>
@@ -2904,16 +2912,17 @@ const YCdata = [
             });
 
             // Dark mode toggle
-            const darkModeToggle = document.getElementById('darkModeToggle');
-            const html = document.documentElement;
-            html.classList.add('dark');
-            localStorage.setItem('darkMode', 'true');
+            // const darkModeToggle = document.getElementById('darkModeToggle');
+            // const html = document.documentElement;
+            // html.classList.add('dark');
+            // localStorage.setItem('darkMode', 'true');
 
             // Check for saved dark mode preference
             if (localStorage.getItem('darkMode') === 'true' || 
                 (!localStorage.getItem('darkMode') && 
                 window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                html.classList.add('dark');
+                  const html = document.documentElement;
+                  html.classList.add('dark');
             }
 
             // Update dark mode state
@@ -5134,13 +5143,13 @@ darkModeToggle.addEventListener('click', () => {
             timestamp.textContent = `Last updated: ${lastRefreshTime.toLocaleString()}`;
         }
 
-        // Initialize dark mode on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            if (!localStorage.getItem('darkMode')) {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('darkMode', 'true');
-            }
-        });
+        // // Initialize dark mode on page load
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     if (!localStorage.getItem('darkMode')) {
+        //         document.documentElement.classList.add('dark');
+        //         localStorage.setItem('darkMode', 'true');
+        //     }
+        // });
     </script>
 </body>
 </html>
