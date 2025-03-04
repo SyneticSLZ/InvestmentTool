@@ -6,6 +6,27 @@
     <title>StartupStage</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Always start in dark mode by default
+        document.documentElement.classList.add('dark');
+        
+        // If there's a saved preference, use that instead
+        const savedMode = localStorage.getItem('darkMode');
+        if (savedMode === 'false') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          // If no preference or preference is 'true', ensure dark mode is on
+          localStorage.setItem('darkMode', 'true');
+        }
+        
+        // Setup toggle button functionality
+        document.getElementById('darkModeToggle').addEventListener('click', () => {
+          const isDarkMode = document.documentElement.classList.toggle('dark');
+          localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
+        });
+      });
+    </script>
     <style>
         @keyframes slideIn {
             from {
