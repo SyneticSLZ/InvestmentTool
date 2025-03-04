@@ -327,7 +327,7 @@ async function getRecentYCStartups(limit = 10) {
 // Run the script
 (async () => {
     try {
-        await getRecentYCStartups(3);
+        await getRecentYCStartups(10);
     } catch (error) {
         console.error('Script failed:', error);
         process.exit(1);

@@ -2112,10 +2112,43 @@ let campaignSettings = {
 // Initialize the dashboard
 document.addEventListener('DOMContentLoaded', async () => {
     setupEventListeners();
+    setupDarkMode();
     loadUserUuid();
     await loadAllData();
     populateCampaignSettings();
 });
+// Add this to the beginning of your JavaScript file or in a separate script tag
+// This ensures dark mode is applied before the page renders
+
+
+function setupDarkMode() {
+  // Apply dark mode setting
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const savedMode = localStorage.getItem('darkMode');
+  
+  if (savedMode === 'false') {
+      document.documentElement.classList.remove('dark');
+  } else {
+      // If no preference or preference is 'true', or user prefers dark, ensure dark mode is on
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('darkMode', 'true');
+  }
+  
+  // Dark mode toggle functionality - make sure this is set up only once
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  if (darkModeToggle) {
+      // Remove any existing event listeners
+      const newToggle = darkModeToggle.cloneNode(true);
+      darkModeToggle.parentNode.replaceChild(newToggle, darkModeToggle);
+      
+      // Add new event listener
+      newToggle.addEventListener('click', () => {
+          const isDarkMode = document.documentElement.classList.toggle('dark');
+          localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
+      });
+  }
+}
+
 
 function setupEventListeners() {
     // Filter event listeners
