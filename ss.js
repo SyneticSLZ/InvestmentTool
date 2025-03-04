@@ -541,199 +541,625 @@ const outputdata = {
 
 data = outputdata
 
-const YCdata = [
-{
-"name": "Infinite",
-"location": "San Francisco, CA, USA",
-"description": "Fast, affordable global B2B payments",
-"batch": "W25",
-"industries": [
-"Fintech",
-"Payments"
-],
-"url": "https://www.ycombinator.com/companies/infinite",
-"scrapedAt": "2025-02-18T15:32:11.587Z",
-"details": {
-"founded": "2024",
-"team_size": "3",
-"status": "Active",
-"location": "San Francisco",
-"main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/eb918a1c2da0e7143351dc449810630e78b19bed.png",
-"small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/06fe642a19b453ea3710d2e7202684aaf56d85f8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECAGSJYRTSF%2F20250218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250218T153211Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEGMaCXVzLXdlc3QtMiJHMEUCIQDMgsb%2Fg9FbPrfet2kO%2BxTuNNrPIn%2Fbq6sVuHluge8uNgIgGdOw6SWXxoInnUQqO3y6DWX%2FTwtTJ7TaDOQqwbUIQsoq7gMIjP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwwMDYyMDE4MTEwNzIiDCuX%2B0Xbl%2FWp2p4IpCrCA%2BLckbV82qcrAsUhOfhjdgfCf0CCqmpjXMHgySq%2BH%2FbYl%2FkxoXuyG%2B7OHFFrYVncOexp4X3J2EB%2FzsUdF5I2AGbKSdCnGP8JWt%2B454Q9NjG8HCaKo95Xsk44jl%2FPNIxl5WD4wKFu7XVkVmpdLKMO4YtZCRUDN%2BpmrKjB%2FfBB%2FpjiBPmpuaI9O7Rzv0UpmcsUvgIHVG0XWB3QvkTXGSQ2vrBASkUoASXjjuT0wd4xC%2F%2BCEYG2xIqpZaAHhvOvpzfaixCWs%2FeGd9qgBuHX5iOFczEIry7BIBBnEl7ZLOOtuNapNFl94wYsL7UmTYJDOb%2Bp0TMwZAEWZgknVT68J6dosP2vlqvcg0B5GQaIqsYc0GTTbAHQsKChHanrnkk%2FCzCtPE5Ktc%2BB4RCmlhwbvNtE3vuHd61TKVO3kbh7HaMFMyYa%2FPgyK4pE9b9l%2Bzc%2F3lkMWmHpJPJlE4yUOp8J20YMkdHJfer4kQ6LSsTdKyPHaPsFU2qFXDtJj9FEpNC%2BFY0DbvMSogI77kEIjFVk8Gak8i%2BPQ3x0IlqDKYjJye0FT8%2FK9of%2BHxcyzoX5a4NusjL10WgdVAJTrcOimU9hhzJqK8crkjC919G9BjqlAWOKMWWfO1i1Didq3JL4EG26qgztzcRiDpNqwUCsBvSl9XnEbzaV18kQnYLp%2FZpjnz6iR%2F8EyTJtNrr4jXXRFJyGNBrFySEn6UborApdJuAczYZmLq9ZXu76okVobQLSbq9c1ykm5GBsFmMgmIyGi%2FMkFILKjfsYJq%2BFcJ9VPZrhu5UZ%2Fh8h0wBfOkC%2BpxY49ylwynsge2HsOocni2cvvHfeP4vwlA%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=011117c3fadc03a56e9b1317a218edd534853678857ebcc2b0070e6e0dba22ee",
-"links": {
-  "website": "https://infinite.dev/",
-  "linkedin": "https://linkedin.com/company/infiniteinc",
-  "twitter": "https://twitter.com/nvs",
-  "github": "https://github.com/infiniteagents"
-},
-"description": "Infinite is a stablecoin payment processor. We offer businesses turnkey APIs and SDKs to move money cross-border same-day with low fees, all without crypto complexity.",
-"tags": [
-  "payments",
-  "b2b"
-],
-"founders": [
+ const YCdata = [
   {
-    "name": "Raj Lad",
-    "title": "Founder",
-    "bio": "Cofounder and CTO at Infinite. Previously payments tech lead at Sardine where I launched the global stablecoin payments and credit risk workflow products.",
-    "linkedin_url": "https://www.linkedin.com/in/rajlad/",
-    "twitter_url": null
+    "name": "hud",
+    "location": "",
+    "description": "Evals for Computer Use agents",
+    "batch": "W25",
+    "industries": [
+      "B2B",
+      "Engineering, Product and Design"
+    ],
+    "url": "https://www.ycombinator.com/companies/hud",
+    "scrapedAt": "2025-03-04T20:17:09.235Z",
+    "details": {
+      "founded": "2025",
+      "team_size": "3",
+      "status": "Active",
+      "main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/72ba1775f18d84d7a5c6d25f0e693dc75df8d544.png",
+      "small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/e66359db7fc5f4bc3a906fd3ca7f81f524b3cb09.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECAC7GOUNYI%2F20250304%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250304T201707Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIG4m41t9ffuso1gdH0%2Bmwmx%2F0ettZYnvN%2FFouT66jiF1AiEAlAe6GSMBUPNs9g4beV87nDb1yiKOWBg7UwwgubPrrSYq7gMI9f%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwwMDYyMDE4MTEwNzIiDMq1zSXh9IMq7NsmfirCA7LsrEK%2B0DSwTu1zjYuEXZ%2F%2BxzKBYvnwNERD2lEsU3qMENItpAcKAJ2RjD%2Ffy174nvpSZHpFPg5tY6Q%2Fnl2SpwIM1bijqMkhDk9Pm6tw3AQsiii7iebrfGEtZC6AtR3PVmn2bbPLDgYShNT64LDbFhNafaV54zZ5Wv363jAPQHAHstcEDrEMYskLV4xchy5BEr46biUEdhS0NUWQxtbjblKJXV%2FXAAiXVHUrxGXoviv61nUKh6Wgw4XNRxUhWkyxA5r1wHke7qKKF01WhwvX1r6ginX1C61i2eckn8l%2BZMLaEV3mYwsoVhW6WfzTOGZYGFVaeggbV3NKKHoLjW%2Byh7ZrUrgxjAcFcvD1ycB2b7dfVKWF8qoH2i1jevclJxnqURq4RHUeSKAtvavBv5K8Mn1QFXKC8bpxbx8ljKEpaWxdfqIYhvIegquzev%2FxPCehZ4mUL%2B1qhXNG9tfdGinyp1YVB0IBoAVxHBCd5bf4DA9TS9Yi73GySp7HgvgpA9ne%2BaLT4gfQrYFLWsj1fKaWzYC3Np%2BI2RjnBqbVMmh4Nex6u3cfrblUYZ%2BkEZSTe4%2BeaNBfTQfLqogHcZqR%2B88cIBN0lDC3qZ2%2BBjqlARvUhNm%2FBC4EZ7XWyq%2BSY1ElXnUCWuYlH68PC8QThPrG4kyuFl2qLWOoM13z7fIebSkj0BwVhBlgATHhU9TaFWuN9HS8oTj%2BM8GWLF86qX38ypKvwsV%2BVu1SKDswzvTY2GeCN3468jTkJJ%2BVXa2F5g5SrVKTkvSN0ICdzkRkBFTWSbqF74BiTBwnWwKeQInVADg4y1sgoy5OsU4GQZRVq3971oPogw%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=cbc591f18d77fc9b6db432e0df2818e45da0821faa6a2e997c586ada256a30ba",
+      "links": {
+        "website": "https://hud.so/",
+        "linkedin": null,
+        "twitter": "https://twitter.com/parth220_",
+        "github": "https://github.com/Human-Data"
+      },
+      "description": "",
+      "tags": [],
+      "founders": [
+        {
+          "name": "Jay Ram",
+          "title": "Founder",
+          "bio": "CEO @HUD",
+          "linkedin_url": "https://www.linkedin.com/in/jay-ram-29003b198/",
+          "twitter_url": null
+        },
+        {
+          "name": "Lorenss Martinsons",
+          "title": "Founder",
+          "bio": "interested in natural intelligence, flowers, and the human condition",
+          "linkedin_url": "https://linkedin.com/in/lorenss",
+          "twitter_url": null
+        },
+        {
+          "name": "Parth Patel",
+          "title": "Founder",
+          "bio": "Co-founder of Human U Data.\n[a-z]*",
+          "linkedin_url": "https://linkedin.com/in/parth220",
+          "twitter_url": "https://twitter.com/parth220_"
+        }
+      ]
+    }
   },
   {
-    "name": "Nikhil Srinivasan, Cofounder & CEO",
-    "title": "Founder",
-    "bio": "Cofounder and CEO of Infinite with Raj Lad. Previously platform product lead at Sardine and Coinbase (S12) via Distributed Systems (F1).",
-    "linkedin_url": "https://linkedin.com/in/nikhilsrinivasan",
-    "twitter_url": "https://twitter.com/nvs"
-  }
-]
-}
-},
-{
-"name": "Closure",
-"location": "New York, NY, USA",
-"description": "We help law enforcement solve crime",
-"batch": "W25",
-"industries": [
-"Government"
-],
-"url": "https://www.ycombinator.com/companies/closure",
-"scrapedAt": "2025-02-18T15:32:11.587Z",
-"details": {
-"founded": "2024",
-"team_size": "4",
-"status": "Active",
-"location": "New York",
-"main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/c5b9a8ffa191d64a12f160ab46ed4cf4f2dd85dc.png",
-"small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/fc01a2ba3ba66c6e25056ecebe0d978226b103f1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECAGSJYRTSF%2F20250218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250218T153214Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEGMaCXVzLXdlc3QtMiJHMEUCIQDMgsb%2Fg9FbPrfet2kO%2BxTuNNrPIn%2Fbq6sVuHluge8uNgIgGdOw6SWXxoInnUQqO3y6DWX%2FTwtTJ7TaDOQqwbUIQsoq7gMIjP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwwMDYyMDE4MTEwNzIiDCuX%2B0Xbl%2FWp2p4IpCrCA%2BLckbV82qcrAsUhOfhjdgfCf0CCqmpjXMHgySq%2BH%2FbYl%2FkxoXuyG%2B7OHFFrYVncOexp4X3J2EB%2FzsUdF5I2AGbKSdCnGP8JWt%2B454Q9NjG8HCaKo95Xsk44jl%2FPNIxl5WD4wKFu7XVkVmpdLKMO4YtZCRUDN%2BpmrKjB%2FfBB%2FpjiBPmpuaI9O7Rzv0UpmcsUvgIHVG0XWB3QvkTXGSQ2vrBASkUoASXjjuT0wd4xC%2F%2BCEYG2xIqpZaAHhvOvpzfaixCWs%2FeGd9qgBuHX5iOFczEIry7BIBBnEl7ZLOOtuNapNFl94wYsL7UmTYJDOb%2Bp0TMwZAEWZgknVT68J6dosP2vlqvcg0B5GQaIqsYc0GTTbAHQsKChHanrnkk%2FCzCtPE5Ktc%2BB4RCmlhwbvNtE3vuHd61TKVO3kbh7HaMFMyYa%2FPgyK4pE9b9l%2Bzc%2F3lkMWmHpJPJlE4yUOp8J20YMkdHJfer4kQ6LSsTdKyPHaPsFU2qFXDtJj9FEpNC%2BFY0DbvMSogI77kEIjFVk8Gak8i%2BPQ3x0IlqDKYjJye0FT8%2FK9of%2BHxcyzoX5a4NusjL10WgdVAJTrcOimU9hhzJqK8crkjC919G9BjqlAWOKMWWfO1i1Didq3JL4EG26qgztzcRiDpNqwUCsBvSl9XnEbzaV18kQnYLp%2FZpjnz6iR%2F8EyTJtNrr4jXXRFJyGNBrFySEn6UborApdJuAczYZmLq9ZXu76okVobQLSbq9c1ykm5GBsFmMgmIyGi%2FMkFILKjfsYJq%2BFcJ9VPZrhu5UZ%2Fh8h0wBfOkC%2BpxY49ylwynsge2HsOocni2cvvHfeP4vwlA%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=994aed222174400be632d444b213a9898852c5d13cb17dc7185118deaa945f1c",
-"links": {
-  "website": "https://closure-intel.com/",
-  "linkedin": "https://www.linkedin.com/company/closure-intel",
-  "twitter": "https://twitter.com/ycombinator",
-  "github": null
-},
-"description": "Law enforcement is drowning in data. Closure helps search it to solve crime. \r\n\n- Hiring: UX, Engineering; \r\n- Expanding: Local, state, and federal law enforcement.",
-"tags": [
-  "govtech",
-  "ai"
-],
-"founders": [
-  {
-    "name": "Gilad Levy, Co-Founder and CTO",
-    "title": "Founder",
-    "bio": "Building the platform for closing cases faster.\nAn engineer with 12 years of experience building data systems. I served as a combat helicopter pilot in the Israeli Air Force and as a Cyber Security Engineer. Subsequently, I worked at Spot.io (acquired by NetApp), Microsoft, and Rivery (acquired by Boomi).\nI hold a Master's degree in Computer Science from Reichman University and an MBA from Tel Aviv University.",
-    "linkedin_url": "https://www.linkedin.com/in/gilad-levy/",
-    "twitter_url": null
+    "name": "Tejas AI",
+    "location": "Mumbai, MH, India",
+    "description": "Risk Decisioning Platform for Indian Banks",
+    "batch": "W25",
+    "industries": [
+      "B2B"
+    ],
+    "url": "https://www.ycombinator.com/companies/tejas-ai",
+    "scrapedAt": "2025-03-04T20:17:09.235Z",
+    "details": {
+      "founded": "2025",
+      "team_size": "2",
+      "status": "Active",
+      "location": "Mumbai, India",
+      "main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/840c36ebb3724b72f41749689acd669665f2e9e5.png",
+      "small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/b395c875811253bdac9806a9cb02846e52ee2eac.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECAC7GOUNYI%2F20250304%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250304T201710Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIG4m41t9ffuso1gdH0%2Bmwmx%2F0ettZYnvN%2FFouT66jiF1AiEAlAe6GSMBUPNs9g4beV87nDb1yiKOWBg7UwwgubPrrSYq7gMI9f%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwwMDYyMDE4MTEwNzIiDMq1zSXh9IMq7NsmfirCA7LsrEK%2B0DSwTu1zjYuEXZ%2F%2BxzKBYvnwNERD2lEsU3qMENItpAcKAJ2RjD%2Ffy174nvpSZHpFPg5tY6Q%2Fnl2SpwIM1bijqMkhDk9Pm6tw3AQsiii7iebrfGEtZC6AtR3PVmn2bbPLDgYShNT64LDbFhNafaV54zZ5Wv363jAPQHAHstcEDrEMYskLV4xchy5BEr46biUEdhS0NUWQxtbjblKJXV%2FXAAiXVHUrxGXoviv61nUKh6Wgw4XNRxUhWkyxA5r1wHke7qKKF01WhwvX1r6ginX1C61i2eckn8l%2BZMLaEV3mYwsoVhW6WfzTOGZYGFVaeggbV3NKKHoLjW%2Byh7ZrUrgxjAcFcvD1ycB2b7dfVKWF8qoH2i1jevclJxnqURq4RHUeSKAtvavBv5K8Mn1QFXKC8bpxbx8ljKEpaWxdfqIYhvIegquzev%2FxPCehZ4mUL%2B1qhXNG9tfdGinyp1YVB0IBoAVxHBCd5bf4DA9TS9Yi73GySp7HgvgpA9ne%2BaLT4gfQrYFLWsj1fKaWzYC3Np%2BI2RjnBqbVMmh4Nex6u3cfrblUYZ%2BkEZSTe4%2BeaNBfTQfLqogHcZqR%2B88cIBN0lDC3qZ2%2BBjqlARvUhNm%2FBC4EZ7XWyq%2BSY1ElXnUCWuYlH68PC8QThPrG4kyuFl2qLWOoM13z7fIebSkj0BwVhBlgATHhU9TaFWuN9HS8oTj%2BM8GWLF86qX38ypKvwsV%2BVu1SKDswzvTY2GeCN3468jTkJJ%2BVXa2F5g5SrVKTkvSN0ICdzkRkBFTWSbqF74BiTBwnWwKeQInVADg4y1sgoy5OsU4GQZRVq3971oPogw%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=a85c9e6cbaa209c6b4e470fdf39e3427efca538db35ca95621f213e37456ab07",
+      "links": {
+        "website": "https://www.trytejas.ai/",
+        "linkedin": "https://www.linkedin.com/company/tejasai/",
+        "twitter": "https://twitter.com/ycombinator",
+        "github": null
+      },
+      "description": "Tejas AI eliminates uncertainty, allowing decision-makers to develop and evaluate credit rules more quickly and effectively.",
+      "tags": [
+        "fintech",
+        "finance",
+        "b2b",
+        "ai"
+      ],
+      "founders": [
+        {
+          "name": "Gaurav Luhariwala & CEO",
+          "title": "Founder",
+          "bio": "Born and raised in India. Have previously built and scaled data-driven products for Indian banks and financial institutions -  founded Tejas AI with the mission of making financial services more inclusive worldwide.",
+          "linkedin_url": "https://www.linkedin.com/in/gauravluhariwala/",
+          "twitter_url": null
+        },
+        {
+          "name": "Bhavesh Tolia",
+          "title": "Founder",
+          "bio": "Co-Founder and CTO @Tejas AI - AI Risk decisioning platform. Built and scaled Generative AI products for BFSI enterprises with notable clients like Allianz Insurance (USA), AngelOne (India) and Deutsche Bank (DBS Singapore). Also, worked with the Outlook team in Microsoft previously.",
+          "linkedin_url": "https://www.linkedin.com/in/bhavesh-tolia-a17a37164/",
+          "twitter_url": null
+        }
+      ]
+    }
   },
   {
-    "name": "Aaron Zelinger, Co-Founder",
-    "title": "Founder",
-    "bio": "Helping law enforcement solve crime @Closure with @GiladLevy. \n\nTakes helping government seriously; takes himself not so seriously.\n\nPreviously: 2 yrs @Arena, 6 yrs @Palantir (#savetheshire)",
-    "linkedin_url": "https://www.linkedin.com/in/aaron-zelinger/",
-    "twitter_url": null
+    "name": "Praxim",
+    "location": "",
+    "description": "AI-native email and office file editing on one platform",
+    "batch": "W25",
+    "industries": [
+      "B2B",
+      "Productivity"
+    ],
+    "url": "https://www.ycombinator.com/companies/praxim",
+    "scrapedAt": "2025-03-04T20:17:09.235Z",
+    "details": {
+      "founded": "2025",
+      "team_size": "2",
+      "status": "Active",
+      "main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/be59095cc480f86c19c6f83b000c574f9e8e3cd0.png",
+      "small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/616ce79c835fe7a9beebfcb6bdc5c35cb883db54.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECAE6RHWDDW%2F20250304%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250304T201722Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQC%2Fs0Nl5uQYxoqUOPZvhnzpjtUUvlFS50S4QnmNVgFcHAIhAJB8f50jqirqXe%2FTIAROIqGyg%2BkF2mSWWAhLz0jd%2FU%2B9Ku4DCPX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMDA2MjAxODExMDcyIgy7%2FQzCJajLSJxokKgqwgOL7cq8c%2B3aO9Nk8w61uU5MmeoIO2%2FlEsfg7mLPkQqDFOierVXYqBj4MUNogfnCQHBomng2fdOubvQijReWm%2FD%2BJdISlKhI3tH%2FoIey2j8ZEaNE8OSZb4n0Cf6QBbNJV8mdTE25V5iHe5ycPhK0vI%2F3AbYgGkm8dYIvf3WDYSLU8vjJl8ZzWpPn22e5QrVvKg2nbRZ6MFwmhcCh%2BjVb6N0VgZ2mC9iODyOT48mCh9msU4oIn%2B9K%2F7DF0zBw5dFRdTboEi0BcuTLx4OMsB58Xr89sJHiZZw4XTMqbcIevtTugHmz5jyKabd%2F8eJEB6XGIvu3Og5GKnbWCPVynaBFs2qDyBZ5ZZLhW%2F4t2cLRZxJfcOVRT7%2FQFAU2ZWJ%2Bu1ssl53JJG8N0ifZh3U6yDj6tIfhS%2FvMQjyUYDJ9IrwAF6AYd07urbuZaFq5bZI2b9mgfHpwmVzCQn%2BpQwESTVGDtMF6dNrKImp%2B79uZhH9pkGZzTh%2BBkl%2F0SfjD40QuwAh3rvkW9lkSPRaeU%2BqQ1gb%2FdEnhQMCH1ZZ4gJqfwV8X50%2FhzVlcWuuek3kr%2FU%2FyKYSQNk1GtfDUQ1x5SKK3YWOqtoAF4jgwnKmdvgY6pAE2s6jX4un9UGxH37JjA6P1%2BR1PMBr%2BdLsFNwFc288mi08QzaeAjg6krgoF3hFUefn2tSWn7Zfv0XvrQMD6w%2Fun0nOGGq1sV2PsntddatoHsJ%2BGF85Dc06zl%2F%2FeF0yg444AiybxStrWZost3TLRTLhYLBbgkf4gJTHm6zT2Dk%2B90oRoPdtYAtwjBTXYALl2vgFk5w0v%2BQ8JOakflVb1Z64ojeZyzA%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=884fc839da0b43f74be18085d418fe11ecb444456db227d8c3dc5b00bbdf586a",
+      "links": {
+        "website": "https://www.praxim.ai/",
+        "linkedin": null,
+        "twitter": "https://twitter.com/ycombinator",
+        "github": null
+      },
+      "description": "Praxim is an AI-native workspace that organizes all your communications and documents into one unified platform. Praxim is the first such platform that can AI edit formatted files and documents like DOCX and PDF directly, reply to emails and text, and answer queries, all with company and user specific knowledge in mind.",
+      "tags": [
+        "artificial-intelligence",
+        "saas",
+        "consumer",
+        "b2b",
+        "databases"
+      ],
+      "founders": [
+        {
+          "name": "Richie Hsiung",
+          "title": "Founder",
+          "bio": "Richie is the Co-Founder of Praxim. He studied Math/CS/Philosophy at Yale.\n\nHe was a USA Math Olympian and won the American Invitational Math Examination with a perfect score. The AIME is now one of the most commonly used math benchmarks for AI models.",
+          "linkedin_url": "https://www.linkedin.com/in/richiehsiung/",
+          "twitter_url": null
+        },
+        {
+          "name": "Frank Li",
+          "title": "Founder",
+          "bio": "Frank is the Co-Founder of Praxim. He studied pure mathematics and computer science at Yale.\n\nHe was a USA Math Olympian and an ML/AI researcher at the Yale NLP Lab and the Fields Institute in Toronto.",
+          "linkedin_url": "https://www.linkedin.com/in/frank-li-6866411b0/",
+          "twitter_url": null
+        }
+      ]
+    }
+  },
+  {
+    "name": "awen",
+    "location": "Remote",
+    "description": "We are rebuilding photoshop with an AI-voice interface.",
+    "batch": "W25",
+    "industries": [
+      "B2B"
+    ],
+    "url": "https://www.ycombinator.com/companies/awen",
+    "scrapedAt": "2025-03-04T20:17:09.235Z",
+    "details": {
+      "founded": "2023",
+      "team_size": "3",
+      "status": "Active",
+      "main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/c1f3190ee23bef18e805a06ab238214a0db50d11.png",
+      "small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/ae79cea381c1990f15dd892090303907bd63afdf.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECAC7GOUNYI%2F20250304%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250304T201726Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIG4m41t9ffuso1gdH0%2Bmwmx%2F0ettZYnvN%2FFouT66jiF1AiEAlAe6GSMBUPNs9g4beV87nDb1yiKOWBg7UwwgubPrrSYq7gMI9f%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwwMDYyMDE4MTEwNzIiDMq1zSXh9IMq7NsmfirCA7LsrEK%2B0DSwTu1zjYuEXZ%2F%2BxzKBYvnwNERD2lEsU3qMENItpAcKAJ2RjD%2Ffy174nvpSZHpFPg5tY6Q%2Fnl2SpwIM1bijqMkhDk9Pm6tw3AQsiii7iebrfGEtZC6AtR3PVmn2bbPLDgYShNT64LDbFhNafaV54zZ5Wv363jAPQHAHstcEDrEMYskLV4xchy5BEr46biUEdhS0NUWQxtbjblKJXV%2FXAAiXVHUrxGXoviv61nUKh6Wgw4XNRxUhWkyxA5r1wHke7qKKF01WhwvX1r6ginX1C61i2eckn8l%2BZMLaEV3mYwsoVhW6WfzTOGZYGFVaeggbV3NKKHoLjW%2Byh7ZrUrgxjAcFcvD1ycB2b7dfVKWF8qoH2i1jevclJxnqURq4RHUeSKAtvavBv5K8Mn1QFXKC8bpxbx8ljKEpaWxdfqIYhvIegquzev%2FxPCehZ4mUL%2B1qhXNG9tfdGinyp1YVB0IBoAVxHBCd5bf4DA9TS9Yi73GySp7HgvgpA9ne%2BaLT4gfQrYFLWsj1fKaWzYC3Np%2BI2RjnBqbVMmh4Nex6u3cfrblUYZ%2BkEZSTe4%2BeaNBfTQfLqogHcZqR%2B88cIBN0lDC3qZ2%2BBjqlARvUhNm%2FBC4EZ7XWyq%2BSY1ElXnUCWuYlH68PC8QThPrG4kyuFl2qLWOoM13z7fIebSkj0BwVhBlgATHhU9TaFWuN9HS8oTj%2BM8GWLF86qX38ypKvwsV%2BVu1SKDswzvTY2GeCN3468jTkJJ%2BVXa2F5g5SrVKTkvSN0ICdzkRkBFTWSbqF74BiTBwnWwKeQInVADg4y1sgoy5OsU4GQZRVq3971oPogw%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=6f51f1758641639d9f56c9f3215b100e3ceaa51efc9577a5be4a4247da61f10e",
+      "links": {
+        "website": "https://www.awen.ai/",
+        "linkedin": "https://www.linkedin.com/company/awen-ai",
+        "twitter": "https://twitter.com/ycombinator",
+        "github": null
+      },
+      "description": "Instead of navigating complex menus or learning new tools, creatives can simply describe their vision in natural language—“Draw me a Swiss mountain lake. Now make it sunset. Add a boat. Now animate it.”\r\n\nAwen leverages AI reasoning to understand creative intent through voice. Our goal is to redefine how creatives engage with AI technology, balancing power and ease of use for both professionals and newcomers.",
+      "tags": [
+        "generative-ai",
+        "saas",
+        "creator-economy"
+      ],
+      "founders": [
+        {
+          "name": "Thibault Henriet",
+          "title": "Founder",
+          "bio": "Founder at awen. Previously served as Head of Operations France at Moda Operandi, a fashion tech scale-up, overseeing creative operations. Prior, worked as an assistant for contemporary artists, supporting artwork production and managing commissions across advertising, cinema, design, fashion, music, and publishing industries. At 21, received the prestigious O1 visa in visual arts. Alumnus of Sciences Po Paris.",
+          "linkedin_url": "https://linkedin.com/in/thibault-henriet-595a5860",
+          "twitter_url": null
+        }
+      ]
+    }
+  },
+  {
+    "name": "Mosaic",
+    "location": "San Francisco, CA, USA",
+    "description": "AI Agents for Video Editing",
+    "batch": "W25",
+    "industries": [
+      "Consumer",
+      "Content"
+    ],
+    "url": "https://www.ycombinator.com/companies/mosaic-2",
+    "scrapedAt": "2025-03-04T20:17:09.235Z",
+    "details": {
+      "founded": "2024",
+      "team_size": "2",
+      "status": "Active",
+      "location": "San Francisco",
+      "main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/d6dfe6fa43e0b95cdb2bab457cc30d8727a9bf97.png",
+      "small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/388d5a6de32ef09c5807374307b5fd819decd0f7.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECAL6MCB56Q%2F20250304%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250304T201729Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIATVMoPkjPVKjK7wFURjxXLIA4p4MwGXjCAC9ohSNcy%2FAiEAhytoh0w6srKZlyo7RCRZIa0vJVGQLxa5s%2FqxnxWLuZEq7gMI9f%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwwMDYyMDE4MTEwNzIiDFUznO8ry%2FtWCrGCAirCAxYJnQO41MHXpyKi6uVuEgwoGnSqmI1dr%2BVfdRhsUVgtK%2BLPACRjl1nPEZV9qGfX6NUfCiDLbcP6%2BNyIXHFkpnwJhzdtRQM%2F0ZS5XPlCk%2BUoo%2FaIMMePBxsIwjWY8%2FSkV2Kh41IQ2hoPeJr2fN9unh2WiOHMZXQ9tUS9HgnMrWKjcSZ1Lv8kezewZIJqc%2FJ4De4NpqWIruk74CXLpjTvYHf8Y6IUW697QjzkEl1pVoeNTymGuWCDUQjXzqFDeE%2B6WClTh3DnwRn5IMM9RQ9naHwCilbWd9zKcbjovulCyUKKvc%2Fwry3E6NOPlg48iEqiYnwwlxSMw7gqV6LZDM2Z84d%2BlljbxhPehH10SaooW3rVd1vtonFkv6d9uVWjYwjh%2BRVvWROzoWRCWOSxSXH2tmrfHp5m4PGWI5smIDfqWLOk5Z%2FAD13dqnj8dOqMtPN8iPj43JBrnKCWOl6U3312mZryz%2BRLaTLetMyFpIeDZf8hzoKKUuYu1CQjLj80OI6ZpRThB1DAJ2iQrzfPJcH4VvX%2F4szweXDQ%2B2WfupWE%2Fsbdw%2FLwFAevSziINxecVw303aumWkoN%2BLKCmTI1kwjV6UG9VDC3qZ2%2BBjqlAZFwdru8bT8OxfxMT2NWmjz%2FhdFxNIKXoEOukqd1fpvO2YbUQKhCTlRXAlDr12xPC9vxnTHOOAKevNu0AYymRQGiUbf79DTjuX9mRmeVGF9Y7VUwDNQQWphJz%2BeBSZT9k%2FD6rQs0hxElMt4fmFVPJ%2FjkpM9fpwjSk40XQc6AVVyjUR0JhnyE%2Bhngy6bKtZZ5%2FK%2FScvb2peXUzVYtkBh%2BQj3qOTcqog%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=4abc89acba37dc84659ee13b2262e3bd2654f15cc090cf6d29aedcc2f782c698",
+      "links": {
+        "website": "https://usemosaic.ai/",
+        "linkedin": "https://www.linkedin.com/company/use-mosaic-ai/",
+        "twitter": "https://twitter.com/superfx64",
+        "github": null
+      },
+      "description": "Mosaic is an agentic video editing paradigm. It enables anyone to create and run their own multimodal video editing agents in a node-based canvas. Our mission is to accelerate hours of video editing work to seconds.",
+      "tags": [
+        "artificial-intelligence",
+        "video",
+        "ai-assistant"
+      ],
+      "founders": [
+        {
+          "name": "Adish Jain",
+          "title": "Founder",
+          "bio": "CEO & Co-Founder @Mosaic. Previously Engineering @Tesla @AWS @Berkeley.",
+          "linkedin_url": "https://www.linkedin.com/in/adish-jain/",
+          "twitter_url": null
+        },
+        {
+          "name": "Kyle Wade",
+          "title": "Founder",
+          "bio": "CTO & Co-Founder @Mosaic. Previous ML Researcher @UCSD and Software Engineer @Tesla",
+          "linkedin_url": "https://www.linkedin.com/in/kylewade1373/",
+          "twitter_url": "https://twitter.com/superfx64"
+        }
+      ]
+    }
+  },
+  {
+    "name": "Vocality Health",
+    "location": "",
+    "description": "AI medical interpreter for hospitals",
+    "batch": "W25",
+    "industries": [
+      "Healthcare",
+      "Healthcare Services"
+    ],
+    "url": "https://www.ycombinator.com/companies/vocality-health",
+    "scrapedAt": "2025-03-04T20:17:09.235Z",
+    "details": {
+      "founded": "2025",
+      "team_size": "2",
+      "status": "Active",
+      "main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/41da0485e955f2070020b3fb65cf8716d346525e.png",
+      "small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/f9cf4354832f4ba4620dca2fb83459161373b143.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECAFYI6JI2T%2F20250304%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250304T201731Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIACz1h4EVEVK5Hsrzy74%2FXeJCa01MZqqpCPitiafcbBHAiEA8Du7hHb%2BMRV5orzgEiCgk0jl2e4m00CS%2FuMbYbZIinYq7gMI9f%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwwMDYyMDE4MTEwNzIiDAhbadD7OdQwGQWECCrCAwhJ1CdXahn8PdARNzHMCgmtI0okc4qihGwYC1hzf61lKLiI3ogV2%2BnLvmQ%2F1ClNCWBlCLTF8r%2BGTac8iXaX4pWJo70FqR2n%2F8lyCocPLs5Xpd5RPpKJ2wsKyZbDtGRTvTpmSZdrjfoBkE0UIHiGMxm4kAJSa%2Bb8jW8X27Kmp85c%2F3NR6ziKhiSU2QrIMZmu6deklyHsKlOeje6%2BxMn0p%2By4Kh2zHc6uAaWQOYUGCrc8x3csy9OciaYXEZ2NsPzCY2AVoTplyNLiBewrZqXGtuuG38aGQ2zJZHNjMOq92qgbI1K8CK8tQrv7mp5lYQaeYU86u9MJZ9gQrK7l30nGlcbX%2FiQB7nmsRg72bgINLssaoMbmiQ9cztM0sHCaUgiG9JwMY82rl2SEIutyHhNcjhf%2B8pvUynFcB46W%2Fjq73wLLhp58lm2%2Fm6EgDhqxRA2hg1L89Pm0JGph8hfeQG2ZSyRhRvklP%2Fh9cgVeLtRRTZ%2F3fPt7Qi4TegqTmfZ8Ohu7lOK4A0shubNCAxxqxyaP4RjUB6BfFPXIhdu8Cz%2B8iPN%2B9wq%2BK%2B0LH2DHcBEMZYg2iJzch2denduhuE3d856IILkAPTC3qZ2%2BBjqlAe4NUpFqss0mr5f9R8HvxS4u6hWY4f%2BsKOdCpxmLV5RFVWwwQRahTf6z4LD2qu1lCsUSEH7kxsZo7HZgPNwGOlS6D5uk%2Br%2B9yrpq4ZKr%2FT1WrqAnNe64QawPczQ5lz%2FkU0%2FAFvGXYAUQR0pTHyzzRBh4XZE6rr15nxFcRsjsVN7fwUmQyHrHFolRSCy5antkqJZJaPb3PMq2PoTQpy%2BBG%2Fj%2FIFbC9A%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=8a8a1256b812fdd0e059bd101a860d32dabf34dd8ee76d64811b1b8de2054416",
+      "links": {
+        "website": "https://www.vocalityhealth.com/",
+        "linkedin": "https://www.linkedin.com/company/vocality-health",
+        "twitter": "https://twitter.com/ycombinator",
+        "github": null
+      },
+      "description": "Our app allows doctors to speak any language, removing the need for human medical interpreters in hospitals and clinics. Hospitals spend billions on in-person and remote medical interpreters, yet non-English speaking patients still struggle to get the care they need. Furthermore, existing tech solutions make mistakes and aren't secure.\r\n\nWe're building the most accurate and compliant medical language interpretation system across voice and video modalities.",
+      "tags": [
+        "healthcare",
+        "health-&-wellness",
+        "ai"
+      ],
+      "founders": [
+        {
+          "name": "Vivek Jayaram/CTO",
+          "title": "Founder",
+          "bio": "Vivek is a Harvard CS graduate and PhD in generative models from UW. He previously led the implementation of computer vision algorithms at Second Spectrum (acq for 200M) and then founded a computer vision sports application that reached 1M ARR and 4M monthly users during his PhD. His research has focused on speech and music generative models, hearable devices, and fast diffusion sampling. He is building custom LLMs for medical language interpretation at Scyther.",
+          "linkedin_url": "https://www.linkedin.com/in/vivek-jayaram/",
+          "twitter_url": null
+        },
+        {
+          "name": "Brogan McPartland",
+          "title": "Founder",
+          "bio": "Cofounder and CEO of Vocality Health. Previously, cofounder and CTO of Fulltrack AI, a viral computer vision sports app that became the #1 sports app in India on the Google Play Store, surpassing Adidas and the Olympics (during the Olympics). Scaled Fulltrack to mid-six-figure MAUs and $1M ARR. Author of three patents from work at Fulltrack. Studied Computer Science at Harvard.",
+          "linkedin_url": "https://www.linkedin.com/in/brogan-mcpartland-05830031a/",
+          "twitter_url": null
+        }
+      ]
+    }
+  },
+  {
+    "name": "Enhanced Radar",
+    "location": "San Francisco, CA, USA",
+    "description": "Automating air traffic control",
+    "batch": "W25",
+    "industries": [
+      "Industrials",
+      "Aviation and Space"
+    ],
+    "url": "https://www.ycombinator.com/companies/enhanced-radar",
+    "scrapedAt": "2025-03-04T20:17:09.235Z",
+    "details": {
+      "founded": "2024",
+      "team_size": "2",
+      "status": "Active",
+      "location": "San Francisco",
+      "main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/97af6428ccfdfbaa94b52ffdadc13d8b1f2609b3.png",
+      "small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/2c22dd0358710d9cd2022759c5f0a09a55e25126.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECAFYI6JI2T%2F20250304%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250304T201735Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIACz1h4EVEVK5Hsrzy74%2FXeJCa01MZqqpCPitiafcbBHAiEA8Du7hHb%2BMRV5orzgEiCgk0jl2e4m00CS%2FuMbYbZIinYq7gMI9f%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwwMDYyMDE4MTEwNzIiDAhbadD7OdQwGQWECCrCAwhJ1CdXahn8PdARNzHMCgmtI0okc4qihGwYC1hzf61lKLiI3ogV2%2BnLvmQ%2F1ClNCWBlCLTF8r%2BGTac8iXaX4pWJo70FqR2n%2F8lyCocPLs5Xpd5RPpKJ2wsKyZbDtGRTvTpmSZdrjfoBkE0UIHiGMxm4kAJSa%2Bb8jW8X27Kmp85c%2F3NR6ziKhiSU2QrIMZmu6deklyHsKlOeje6%2BxMn0p%2By4Kh2zHc6uAaWQOYUGCrc8x3csy9OciaYXEZ2NsPzCY2AVoTplyNLiBewrZqXGtuuG38aGQ2zJZHNjMOq92qgbI1K8CK8tQrv7mp5lYQaeYU86u9MJZ9gQrK7l30nGlcbX%2FiQB7nmsRg72bgINLssaoMbmiQ9cztM0sHCaUgiG9JwMY82rl2SEIutyHhNcjhf%2B8pvUynFcB46W%2Fjq73wLLhp58lm2%2Fm6EgDhqxRA2hg1L89Pm0JGph8hfeQG2ZSyRhRvklP%2Fh9cgVeLtRRTZ%2F3fPt7Qi4TegqTmfZ8Ohu7lOK4A0shubNCAxxqxyaP4RjUB6BfFPXIhdu8Cz%2B8iPN%2B9wq%2BK%2B0LH2DHcBEMZYg2iJzch2denduhuE3d856IILkAPTC3qZ2%2BBjqlAe4NUpFqss0mr5f9R8HvxS4u6hWY4f%2BsKOdCpxmLV5RFVWwwQRahTf6z4LD2qu1lCsUSEH7kxsZo7HZgPNwGOlS6D5uk%2Br%2B9yrpq4ZKr%2FT1WrqAnNe64QawPczQ5lz%2FkU0%2FAFvGXYAUQR0pTHyzzRBh4XZE6rr15nxFcRsjsVN7fwUmQyHrHFolRSCy5antkqJZJaPb3PMq2PoTQpy%2BBG%2Fj%2FIFbC9A%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=089cb41b2bfbef8bc4a8807e0d8734028fff1758b1167d87be8c279cb4e09fc2",
+      "links": {
+        "website": "https://www.enhancedradar.com/",
+        "linkedin": "https://www.linkedin.com/company/enhanced-radar/",
+        "twitter": "https://twitter.com/ycombinator",
+        "github": null
+      },
+      "description": "Enhanced Radar is building better, safer air traffic control systems.",
+      "tags": [
+        "aerospace",
+        "ai"
+      ],
+      "founders": [
+        {
+          "name": "Eric Button",
+          "title": "Founder",
+          "bio": "Building AI for air traffic control. Former professional pilot (2,200 hours, G280 type rating with Part 135 experience). Prev. cofounder, Contrast (fintech, acq'd by PublicSq).",
+          "linkedin_url": "https://www.linkedin.com/in/ericbutton/",
+          "twitter_url": null
+        },
+        {
+          "name": "Kristian Gaylord",
+          "title": "Founder",
+          "bio": "Building AI for air traffic control. FAA Private Pilot. Prev embedded computer vision for satellites @ Pilot AI (acq'd). Prev high frequency trading in Rust. Statistics & Computer Science @ Columbia",
+          "linkedin_url": "https://www.linkedin.com/in/kaylord/",
+          "twitter_url": null
+        }
+      ]
+    }
+  },
+  {
+    "name": "Sublingual",
+    "location": "San Francisco, CA, USA",
+    "description": "LLM Observability with zero changes to your code",
+    "batch": "W25",
+    "industries": [
+      "B2B"
+    ],
+    "url": "https://www.ycombinator.com/companies/sublingual",
+    "scrapedAt": "2025-03-04T20:17:09.235Z",
+    "details": {
+      "team_size": "2",
+      "status": "Active",
+      "location": "San Francisco",
+      "main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/8ffaa07742bdd32e6b3e7d2318a753289e334055.png",
+      "small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/bbd5220e1c9b3c9ba53eb6c56e99bde8969d2aa2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECAL6MCB56Q%2F20250304%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250304T201745Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIATVMoPkjPVKjK7wFURjxXLIA4p4MwGXjCAC9ohSNcy%2FAiEAhytoh0w6srKZlyo7RCRZIa0vJVGQLxa5s%2FqxnxWLuZEq7gMI9f%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwwMDYyMDE4MTEwNzIiDFUznO8ry%2FtWCrGCAirCAxYJnQO41MHXpyKi6uVuEgwoGnSqmI1dr%2BVfdRhsUVgtK%2BLPACRjl1nPEZV9qGfX6NUfCiDLbcP6%2BNyIXHFkpnwJhzdtRQM%2F0ZS5XPlCk%2BUoo%2FaIMMePBxsIwjWY8%2FSkV2Kh41IQ2hoPeJr2fN9unh2WiOHMZXQ9tUS9HgnMrWKjcSZ1Lv8kezewZIJqc%2FJ4De4NpqWIruk74CXLpjTvYHf8Y6IUW697QjzkEl1pVoeNTymGuWCDUQjXzqFDeE%2B6WClTh3DnwRn5IMM9RQ9naHwCilbWd9zKcbjovulCyUKKvc%2Fwry3E6NOPlg48iEqiYnwwlxSMw7gqV6LZDM2Z84d%2BlljbxhPehH10SaooW3rVd1vtonFkv6d9uVWjYwjh%2BRVvWROzoWRCWOSxSXH2tmrfHp5m4PGWI5smIDfqWLOk5Z%2FAD13dqnj8dOqMtPN8iPj43JBrnKCWOl6U3312mZryz%2BRLaTLetMyFpIeDZf8hzoKKUuYu1CQjLj80OI6ZpRThB1DAJ2iQrzfPJcH4VvX%2F4szweXDQ%2B2WfupWE%2Fsbdw%2FLwFAevSziINxecVw303aumWkoN%2BLKCmTI1kwjV6UG9VDC3qZ2%2BBjqlAZFwdru8bT8OxfxMT2NWmjz%2FhdFxNIKXoEOukqd1fpvO2YbUQKhCTlRXAlDr12xPC9vxnTHOOAKevNu0AYymRQGiUbf79DTjuX9mRmeVGF9Y7VUwDNQQWphJz%2BeBSZT9k%2FD6rQs0hxElMt4fmFVPJ%2FjkpM9fpwjSk40XQc6AVVyjUR0JhnyE%2Bhngy6bKtZZ5%2FK%2FScvb2peXUzVYtkBh%2BQj3qOTcqog%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=efe7bdc665690946d4d2774ea795ed84837a00b46e3b1a86000709b54ed898b2",
+      "links": {
+        "website": "https://sublingual.ai/",
+        "linkedin": null,
+        "twitter": "https://twitter.com/ycombinator",
+        "github": "https://github.com/sublingual-ai/sublingual"
+      },
+      "description": "Open source tool which helps you log and analyze all of your LLM calls, including the prompt template, call parameters, responses, tool calls, and more. The coolest thing? You don't have to change any of your code!",
+      "tags": [
+        "developer-tools",
+        "open-source",
+        "infrastructure",
+        "ai"
+      ],
+      "founders": [
+        {
+          "name": "Dylan Bowman",
+          "title": "Founder",
+          "bio": "Background: LLM research in defense contracting and deployment safety.",
+          "linkedin_url": "https://www.linkedin.com/in/dylan-bowman-68a56218b/",
+          "twitter_url": null
+        },
+        {
+          "name": "Matthew Tang, Co-Founder and CEO",
+          "title": "Founder",
+          "bio": "recommendation systems, computer vision, deep learning theory",
+          "linkedin_url": "https://www.linkedin.com/in/mhtang2/",
+          "twitter_url": null
+        }
+      ]
+    }
+  },
+  {
+    "name": "Tergle",
+    "location": "San Francisco, CA, USA",
+    "description": "AI agents for auditing",
+    "batch": "W25",
+    "industries": [
+      "B2B",
+      "Finance and Accounting"
+    ],
+    "url": "https://www.ycombinator.com/companies/tergle",
+    "scrapedAt": "2025-03-04T20:17:09.235Z",
+    "details": {
+      "founded": "2024",
+      "team_size": "2",
+      "status": "Active",
+      "location": "San Francisco",
+      "main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/441b34e3b91d1925fe09d25d993360b31f740df4.png",
+      "small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/362b7d2821fb04912f57286a59d7c49921b63006.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECAE6RHWDDW%2F20250304%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250304T201748Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQC%2Fs0Nl5uQYxoqUOPZvhnzpjtUUvlFS50S4QnmNVgFcHAIhAJB8f50jqirqXe%2FTIAROIqGyg%2BkF2mSWWAhLz0jd%2FU%2B9Ku4DCPX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMDA2MjAxODExMDcyIgy7%2FQzCJajLSJxokKgqwgOL7cq8c%2B3aO9Nk8w61uU5MmeoIO2%2FlEsfg7mLPkQqDFOierVXYqBj4MUNogfnCQHBomng2fdOubvQijReWm%2FD%2BJdISlKhI3tH%2FoIey2j8ZEaNE8OSZb4n0Cf6QBbNJV8mdTE25V5iHe5ycPhK0vI%2F3AbYgGkm8dYIvf3WDYSLU8vjJl8ZzWpPn22e5QrVvKg2nbRZ6MFwmhcCh%2BjVb6N0VgZ2mC9iODyOT48mCh9msU4oIn%2B9K%2F7DF0zBw5dFRdTboEi0BcuTLx4OMsB58Xr89sJHiZZw4XTMqbcIevtTugHmz5jyKabd%2F8eJEB6XGIvu3Og5GKnbWCPVynaBFs2qDyBZ5ZZLhW%2F4t2cLRZxJfcOVRT7%2FQFAU2ZWJ%2Bu1ssl53JJG8N0ifZh3U6yDj6tIfhS%2FvMQjyUYDJ9IrwAF6AYd07urbuZaFq5bZI2b9mgfHpwmVzCQn%2BpQwESTVGDtMF6dNrKImp%2B79uZhH9pkGZzTh%2BBkl%2F0SfjD40QuwAh3rvkW9lkSPRaeU%2BqQ1gb%2FdEnhQMCH1ZZ4gJqfwV8X50%2FhzVlcWuuek3kr%2FU%2FyKYSQNk1GtfDUQ1x5SKK3YWOqtoAF4jgwnKmdvgY6pAE2s6jX4un9UGxH37JjA6P1%2BR1PMBr%2BdLsFNwFc288mi08QzaeAjg6krgoF3hFUefn2tSWn7Zfv0XvrQMD6w%2Fun0nOGGq1sV2PsntddatoHsJ%2BGF85Dc06zl%2F%2FeF0yg444AiybxStrWZost3TLRTLhYLBbgkf4gJTHm6zT2Dk%2B90oRoPdtYAtwjBTXYALl2vgFk5w0v%2BQ8JOakflVb1Z64ojeZyzA%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=52622c889cad0c282da5518f777793b552f858df22cac16372092e4251cdd40e",
+      "links": {
+        "website": "https://tergle.com/",
+        "linkedin": "https://www.linkedin.com/company/tergleai",
+        "twitter": "https://twitter.com/willjtarr",
+        "github": null
+      },
+      "description": "Tergle builds AI agents for auditing.",
+      "tags": [
+        "saas",
+        "b2b",
+        "compliance",
+        "ai"
+      ],
+      "founders": [
+        {
+          "name": "Adam Bowen",
+          "title": "Founder",
+          "bio": "Co-Founder at Tergle. Previously an engineer at NASA.\n\nBuilt a web-automation startup at 14, which funded my solo move to Japan at 17. Accepted to Ivy League, but turned down to live in Tokyo for 2 years. Learnt Japanese.",
+          "linkedin_url": "https://www.linkedin.com/in/adambowen03/",
+          "twitter_url": null
+        },
+        {
+          "name": "William Tarr",
+          "title": "Founder",
+          "bio": "Co-Founder at Tergle. Harvard CS dropout.\n\nBuilt national EdTech non-profit at 16 with Adam - scaled across UK to 500 partner schools. Worked as a software engineer at ASTRI and for the Chan-Zuckerberg Initiative. CS researcher at Harvard.",
+          "linkedin_url": "https://www.linkedin.com/in/willtarr/",
+          "twitter_url": "https://twitter.com/willjtarr"
+        }
+      ]
+    }
   }
 ]
-}
-},
-{
-"name": "hud",
-"location": "",
-"description": "Evals for Computer Use agents",
-"batch": "W25",
-"industries": [
-"B2B",
-"Engineering, Product and Design"
-],
-"url": "https://www.ycombinator.com/companies/hud",
-"scrapedAt": "2025-03-04T19:21:39.370Z",
-"details": {
-"founded": "2025",
-"team_size": "3",
-"status": "Active",
-"main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/72ba1775f18d84d7a5c6d25f0e693dc75df8d544.png",
-"small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/e66359db7fc5f4bc3a906fd3ca7f81f524b3cb09.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECADDLUVA5V%2F20250304%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250304T192137Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIBStSfqN5K%2F4D%2FuiZz2LLJYjhdF%2Fv3%2F%2Ffnec6Q7AA8tbAiAsaqlhjr3eVU0E0QYFUBDKdBk5qXcVlJsH7R8rwnanziruAwjy%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDAwNjIwMTgxMTA3MiIMM4Kbn6IncgG2WVj6KsID1IRWirjgBMwEiEGWmp9cWWQJsvmCPiQ2yzznjX0hl2no0TVn9zKFmhrBBM6N5R9Cp3lSotHY9ud0JuXYTzDE%2FwYuo2x2va7QiSGY8LTXYOZX1bRWYUs3M6rr9p5i%2B0KoBBpVcIT0Pfi8tN4mrjaiGKQ9dB2HmXmDNvDliEGP%2B6SndHniGey6zQPJQelAW8ZlPHzcawcvldN3w4kGokx2AEjxMKrSe8g9%2FZKlM%2BzQMo6K1dYEKlEAJ9y2h7Snx0ebEnATwUz5WbSPnuoH0bpD4zRGJJZtG3RkRKYcVgbRfdIq7gjUEcBW2onfFK2OGcnRjJeCviARdXiJJ3l9tbjX1zeaKh3eBhkufktGYKc%2BYTVdbqrS5024q2e%2F06pRLeOL9pgTdeq3e8IQIWe%2FSQg5bVmA2WAMKKaduxXs5lHE9suHDd54Yhgc7k9YLRmZc4MvpaIZxq6ftYXJBekN2rRu7V7evK9cD8y0pKIupCG9XKSm%2Fzdq310KP9Q%2BJdFfFQUkg2b%2BYcbMXDiN95xlyMXnbYI2Tb4XRO5HfKdHsli1A%2B6kRLliIKBx8TTsadKirHohdajBFxDDW5eDZi7m42J7%2F431MPnfnL4GOqYBLppPJuE0MrcmeTTG0WwRpp1CjBhlwAfi5xnIfY%2FnGU6bz%2B%2BO02ukuNiLXZfWijRRgFkuCasAYPufa5JcATl52ME%2BiI2x9MM1qm9ci%2BdfzVZglEp9cjBU1oUGJm%2FOAgi7VnNY0ccnwfJYFTHwSsyXK7W8mQLHGiokVnK6M8G6HMG36kstTLkvADQ700nYYT2k97FdHPf9z3sGBCMX%2Fw7HH%2FOq6Medkg%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=39bf99002dee7283f6cf8f7075fcae8812a97a74f9d584451102a425873dba42",
-"links": {
-"website": "https://hud.so/",
-"linkedin": null,
-"twitter": "https://twitter.com/parth220_",
-"github": "https://github.com/Human-Data"
-},
-"description": "",
-"tags": [],
-"founders": [
-{
-  "name": "Lorenss Martinsons",
-  "title": "Founder",
-  "bio": "interested in natural intelligence, flowers, and the human condition",
-  "linkedin_url": "https://linkedin.com/in/lorenss",
-  "twitter_url": null
-},
-{
-  "name": "Parth Patel",
-  "title": "Founder",
-  "bio": "Co-founder of Human U Data.\n[a-z]*",
-  "linkedin_url": "https://linkedin.com/in/parth220",
-  "twitter_url": "https://twitter.com/parth220_"
-},
-{
-  "name": "Jay Ram",
-  "title": "Founder",
-  "bio": "CEO @HUD",
-  "linkedin_url": "https://www.linkedin.com/in/jay-ram-29003b198/",
-  "twitter_url": null
-}
-]
-}
-},
-{
-"name": "Tejas AI",
-"location": "Mumbai, MH, India",
-"description": "Risk Decisioning Platform for Indian Banks",
-"batch": "W25",
-"industries": [
-"B2B"
-],
-"url": "https://www.ycombinator.com/companies/tejas-ai",
-"scrapedAt": "2025-03-04T19:21:39.370Z",
-"details": {
-"founded": "2025",
-"team_size": "2",
-"status": "Active",
-"location": "Mumbai, India",
-"main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/840c36ebb3724b72f41749689acd669665f2e9e5.png",
-"small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/b395c875811253bdac9806a9cb02846e52ee2eac.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECADDLUVA5V%2F20250304%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250304T192140Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIBStSfqN5K%2F4D%2FuiZz2LLJYjhdF%2Fv3%2F%2Ffnec6Q7AA8tbAiAsaqlhjr3eVU0E0QYFUBDKdBk5qXcVlJsH7R8rwnanziruAwjy%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDAwNjIwMTgxMTA3MiIMM4Kbn6IncgG2WVj6KsID1IRWirjgBMwEiEGWmp9cWWQJsvmCPiQ2yzznjX0hl2no0TVn9zKFmhrBBM6N5R9Cp3lSotHY9ud0JuXYTzDE%2FwYuo2x2va7QiSGY8LTXYOZX1bRWYUs3M6rr9p5i%2B0KoBBpVcIT0Pfi8tN4mrjaiGKQ9dB2HmXmDNvDliEGP%2B6SndHniGey6zQPJQelAW8ZlPHzcawcvldN3w4kGokx2AEjxMKrSe8g9%2FZKlM%2BzQMo6K1dYEKlEAJ9y2h7Snx0ebEnATwUz5WbSPnuoH0bpD4zRGJJZtG3RkRKYcVgbRfdIq7gjUEcBW2onfFK2OGcnRjJeCviARdXiJJ3l9tbjX1zeaKh3eBhkufktGYKc%2BYTVdbqrS5024q2e%2F06pRLeOL9pgTdeq3e8IQIWe%2FSQg5bVmA2WAMKKaduxXs5lHE9suHDd54Yhgc7k9YLRmZc4MvpaIZxq6ftYXJBekN2rRu7V7evK9cD8y0pKIupCG9XKSm%2Fzdq310KP9Q%2BJdFfFQUkg2b%2BYcbMXDiN95xlyMXnbYI2Tb4XRO5HfKdHsli1A%2B6kRLliIKBx8TTsadKirHohdajBFxDDW5eDZi7m42J7%2F431MPnfnL4GOqYBLppPJuE0MrcmeTTG0WwRpp1CjBhlwAfi5xnIfY%2FnGU6bz%2B%2BO02ukuNiLXZfWijRRgFkuCasAYPufa5JcATl52ME%2BiI2x9MM1qm9ci%2BdfzVZglEp9cjBU1oUGJm%2FOAgi7VnNY0ccnwfJYFTHwSsyXK7W8mQLHGiokVnK6M8G6HMG36kstTLkvADQ700nYYT2k97FdHPf9z3sGBCMX%2Fw7HH%2FOq6Medkg%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=f27d9811b9358d14a1f21498814a0617b7feb24f11795f8daadba1eaae65df1e",
-"links": {
-"website": "https://www.trytejas.ai/",
-"linkedin": "https://www.linkedin.com/company/tejasai/",
-"twitter": "https://twitter.com/ycombinator",
-"github": null
-},
-"description": "Tejas AI eliminates uncertainty, allowing decision-makers to develop and evaluate credit rules more quickly and effectively.",
-"tags": [
-"fintech",
-"finance",
-"b2b",
-"ai"
-],
-"founders": [
-{
-  "name": "Gaurav Luhariwala & CEO",
-  "title": "Founder",
-  "bio": "Born and raised in India. Have previously built and scaled data-driven products for Indian banks and financial institutions -  founded Tejas AI with the mission of making financial services more inclusive worldwide.",
-  "linkedin_url": "https://www.linkedin.com/in/gauravluhariwala/",
-  "twitter_url": null
-},
-{
-  "name": "Bhavesh Tolia",
-  "title": "Founder",
-  "bio": "Co-Founder and CTO @Tejas AI - AI Risk decisioning platform. Built and scaled Generative AI products for BFSI enterprises with notable clients like Allianz Insurance (USA), AngelOne (India) and Deutsche Bank (DBS Singapore). Also, worked with the Outlook team in Microsoft previously.",
-  "linkedin_url": "https://www.linkedin.com/in/bhavesh-tolia-a17a37164/",
-  "twitter_url": null
-}
-]
-}
-}
-]
+//[
+// {
+// "name": "Infinite",
+// "location": "San Francisco, CA, USA",
+// "description": "Fast, affordable global B2B payments",
+// "batch": "W25",
+// "industries": [
+// "Fintech",
+// "Payments"
+// ],
+// "url": "https://www.ycombinator.com/companies/infinite",
+// "scrapedAt": "2025-02-18T15:32:11.587Z",
+// "details": {
+// "founded": "2024",
+// "team_size": "3",
+// "status": "Active",
+// "location": "San Francisco",
+// "main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/eb918a1c2da0e7143351dc449810630e78b19bed.png",
+// "small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/06fe642a19b453ea3710d2e7202684aaf56d85f8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECAGSJYRTSF%2F20250218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250218T153211Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEGMaCXVzLXdlc3QtMiJHMEUCIQDMgsb%2Fg9FbPrfet2kO%2BxTuNNrPIn%2Fbq6sVuHluge8uNgIgGdOw6SWXxoInnUQqO3y6DWX%2FTwtTJ7TaDOQqwbUIQsoq7gMIjP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwwMDYyMDE4MTEwNzIiDCuX%2B0Xbl%2FWp2p4IpCrCA%2BLckbV82qcrAsUhOfhjdgfCf0CCqmpjXMHgySq%2BH%2FbYl%2FkxoXuyG%2B7OHFFrYVncOexp4X3J2EB%2FzsUdF5I2AGbKSdCnGP8JWt%2B454Q9NjG8HCaKo95Xsk44jl%2FPNIxl5WD4wKFu7XVkVmpdLKMO4YtZCRUDN%2BpmrKjB%2FfBB%2FpjiBPmpuaI9O7Rzv0UpmcsUvgIHVG0XWB3QvkTXGSQ2vrBASkUoASXjjuT0wd4xC%2F%2BCEYG2xIqpZaAHhvOvpzfaixCWs%2FeGd9qgBuHX5iOFczEIry7BIBBnEl7ZLOOtuNapNFl94wYsL7UmTYJDOb%2Bp0TMwZAEWZgknVT68J6dosP2vlqvcg0B5GQaIqsYc0GTTbAHQsKChHanrnkk%2FCzCtPE5Ktc%2BB4RCmlhwbvNtE3vuHd61TKVO3kbh7HaMFMyYa%2FPgyK4pE9b9l%2Bzc%2F3lkMWmHpJPJlE4yUOp8J20YMkdHJfer4kQ6LSsTdKyPHaPsFU2qFXDtJj9FEpNC%2BFY0DbvMSogI77kEIjFVk8Gak8i%2BPQ3x0IlqDKYjJye0FT8%2FK9of%2BHxcyzoX5a4NusjL10WgdVAJTrcOimU9hhzJqK8crkjC919G9BjqlAWOKMWWfO1i1Didq3JL4EG26qgztzcRiDpNqwUCsBvSl9XnEbzaV18kQnYLp%2FZpjnz6iR%2F8EyTJtNrr4jXXRFJyGNBrFySEn6UborApdJuAczYZmLq9ZXu76okVobQLSbq9c1ykm5GBsFmMgmIyGi%2FMkFILKjfsYJq%2BFcJ9VPZrhu5UZ%2Fh8h0wBfOkC%2BpxY49ylwynsge2HsOocni2cvvHfeP4vwlA%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=011117c3fadc03a56e9b1317a218edd534853678857ebcc2b0070e6e0dba22ee",
+// "links": {
+//   "website": "https://infinite.dev/",
+//   "linkedin": "https://linkedin.com/company/infiniteinc",
+//   "twitter": "https://twitter.com/nvs",
+//   "github": "https://github.com/infiniteagents"
+// },
+// "description": "Infinite is a stablecoin payment processor. We offer businesses turnkey APIs and SDKs to move money cross-border same-day with low fees, all without crypto complexity.",
+// "tags": [
+//   "payments",
+//   "b2b"
+// ],
+// "founders": [
+//   {
+//     "name": "Raj Lad",
+//     "title": "Founder",
+//     "bio": "Cofounder and CTO at Infinite. Previously payments tech lead at Sardine where I launched the global stablecoin payments and credit risk workflow products.",
+//     "linkedin_url": "https://www.linkedin.com/in/rajlad/",
+//     "twitter_url": null
+//   },
+//   {
+//     "name": "Nikhil Srinivasan, Cofounder & CEO",
+//     "title": "Founder",
+//     "bio": "Cofounder and CEO of Infinite with Raj Lad. Previously platform product lead at Sardine and Coinbase (S12) via Distributed Systems (F1).",
+//     "linkedin_url": "https://linkedin.com/in/nikhilsrinivasan",
+//     "twitter_url": "https://twitter.com/nvs"
+//   }
+// ]
+// }
+// },
+// {
+// "name": "Closure",
+// "location": "New York, NY, USA",
+// "description": "We help law enforcement solve crime",
+// "batch": "W25",
+// "industries": [
+// "Government"
+// ],
+// "url": "https://www.ycombinator.com/companies/closure",
+// "scrapedAt": "2025-02-18T15:32:11.587Z",
+// "details": {
+// "founded": "2024",
+// "team_size": "4",
+// "status": "Active",
+// "location": "New York",
+// "main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/c5b9a8ffa191d64a12f160ab46ed4cf4f2dd85dc.png",
+// "small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/fc01a2ba3ba66c6e25056ecebe0d978226b103f1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECAGSJYRTSF%2F20250218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250218T153214Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEGMaCXVzLXdlc3QtMiJHMEUCIQDMgsb%2Fg9FbPrfet2kO%2BxTuNNrPIn%2Fbq6sVuHluge8uNgIgGdOw6SWXxoInnUQqO3y6DWX%2FTwtTJ7TaDOQqwbUIQsoq7gMIjP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwwMDYyMDE4MTEwNzIiDCuX%2B0Xbl%2FWp2p4IpCrCA%2BLckbV82qcrAsUhOfhjdgfCf0CCqmpjXMHgySq%2BH%2FbYl%2FkxoXuyG%2B7OHFFrYVncOexp4X3J2EB%2FzsUdF5I2AGbKSdCnGP8JWt%2B454Q9NjG8HCaKo95Xsk44jl%2FPNIxl5WD4wKFu7XVkVmpdLKMO4YtZCRUDN%2BpmrKjB%2FfBB%2FpjiBPmpuaI9O7Rzv0UpmcsUvgIHVG0XWB3QvkTXGSQ2vrBASkUoASXjjuT0wd4xC%2F%2BCEYG2xIqpZaAHhvOvpzfaixCWs%2FeGd9qgBuHX5iOFczEIry7BIBBnEl7ZLOOtuNapNFl94wYsL7UmTYJDOb%2Bp0TMwZAEWZgknVT68J6dosP2vlqvcg0B5GQaIqsYc0GTTbAHQsKChHanrnkk%2FCzCtPE5Ktc%2BB4RCmlhwbvNtE3vuHd61TKVO3kbh7HaMFMyYa%2FPgyK4pE9b9l%2Bzc%2F3lkMWmHpJPJlE4yUOp8J20YMkdHJfer4kQ6LSsTdKyPHaPsFU2qFXDtJj9FEpNC%2BFY0DbvMSogI77kEIjFVk8Gak8i%2BPQ3x0IlqDKYjJye0FT8%2FK9of%2BHxcyzoX5a4NusjL10WgdVAJTrcOimU9hhzJqK8crkjC919G9BjqlAWOKMWWfO1i1Didq3JL4EG26qgztzcRiDpNqwUCsBvSl9XnEbzaV18kQnYLp%2FZpjnz6iR%2F8EyTJtNrr4jXXRFJyGNBrFySEn6UborApdJuAczYZmLq9ZXu76okVobQLSbq9c1ykm5GBsFmMgmIyGi%2FMkFILKjfsYJq%2BFcJ9VPZrhu5UZ%2Fh8h0wBfOkC%2BpxY49ylwynsge2HsOocni2cvvHfeP4vwlA%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=994aed222174400be632d444b213a9898852c5d13cb17dc7185118deaa945f1c",
+// "links": {
+//   "website": "https://closure-intel.com/",
+//   "linkedin": "https://www.linkedin.com/company/closure-intel",
+//   "twitter": "https://twitter.com/ycombinator",
+//   "github": null
+// },
+// "description": "Law enforcement is drowning in data. Closure helps search it to solve crime. \r\n\n- Hiring: UX, Engineering; \r\n- Expanding: Local, state, and federal law enforcement.",
+// "tags": [
+//   "govtech",
+//   "ai"
+// ],
+// "founders": [
+//   {
+//     "name": "Gilad Levy, Co-Founder and CTO",
+//     "title": "Founder",
+//     "bio": "Building the platform for closing cases faster.\nAn engineer with 12 years of experience building data systems. I served as a combat helicopter pilot in the Israeli Air Force and as a Cyber Security Engineer. Subsequently, I worked at Spot.io (acquired by NetApp), Microsoft, and Rivery (acquired by Boomi).\nI hold a Master's degree in Computer Science from Reichman University and an MBA from Tel Aviv University.",
+//     "linkedin_url": "https://www.linkedin.com/in/gilad-levy/",
+//     "twitter_url": null
+//   },
+//   {
+//     "name": "Aaron Zelinger, Co-Founder",
+//     "title": "Founder",
+//     "bio": "Helping law enforcement solve crime @Closure with @GiladLevy. \n\nTakes helping government seriously; takes himself not so seriously.\n\nPreviously: 2 yrs @Arena, 6 yrs @Palantir (#savetheshire)",
+//     "linkedin_url": "https://www.linkedin.com/in/aaron-zelinger/",
+//     "twitter_url": null
+//   }
+// ]
+// }
+// },
+// {
+// "name": "hud",
+// "location": "",
+// "description": "Evals for Computer Use agents",
+// "batch": "W25",
+// "industries": [
+// "B2B",
+// "Engineering, Product and Design"
+// ],
+// "url": "https://www.ycombinator.com/companies/hud",
+// "scrapedAt": "2025-03-04T19:21:39.370Z",
+// "details": {
+// "founded": "2025",
+// "team_size": "3",
+// "status": "Active",
+// "main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/72ba1775f18d84d7a5c6d25f0e693dc75df8d544.png",
+// "small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/e66359db7fc5f4bc3a906fd3ca7f81f524b3cb09.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECADDLUVA5V%2F20250304%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250304T192137Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIBStSfqN5K%2F4D%2FuiZz2LLJYjhdF%2Fv3%2F%2Ffnec6Q7AA8tbAiAsaqlhjr3eVU0E0QYFUBDKdBk5qXcVlJsH7R8rwnanziruAwjy%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDAwNjIwMTgxMTA3MiIMM4Kbn6IncgG2WVj6KsID1IRWirjgBMwEiEGWmp9cWWQJsvmCPiQ2yzznjX0hl2no0TVn9zKFmhrBBM6N5R9Cp3lSotHY9ud0JuXYTzDE%2FwYuo2x2va7QiSGY8LTXYOZX1bRWYUs3M6rr9p5i%2B0KoBBpVcIT0Pfi8tN4mrjaiGKQ9dB2HmXmDNvDliEGP%2B6SndHniGey6zQPJQelAW8ZlPHzcawcvldN3w4kGokx2AEjxMKrSe8g9%2FZKlM%2BzQMo6K1dYEKlEAJ9y2h7Snx0ebEnATwUz5WbSPnuoH0bpD4zRGJJZtG3RkRKYcVgbRfdIq7gjUEcBW2onfFK2OGcnRjJeCviARdXiJJ3l9tbjX1zeaKh3eBhkufktGYKc%2BYTVdbqrS5024q2e%2F06pRLeOL9pgTdeq3e8IQIWe%2FSQg5bVmA2WAMKKaduxXs5lHE9suHDd54Yhgc7k9YLRmZc4MvpaIZxq6ftYXJBekN2rRu7V7evK9cD8y0pKIupCG9XKSm%2Fzdq310KP9Q%2BJdFfFQUkg2b%2BYcbMXDiN95xlyMXnbYI2Tb4XRO5HfKdHsli1A%2B6kRLliIKBx8TTsadKirHohdajBFxDDW5eDZi7m42J7%2F431MPnfnL4GOqYBLppPJuE0MrcmeTTG0WwRpp1CjBhlwAfi5xnIfY%2FnGU6bz%2B%2BO02ukuNiLXZfWijRRgFkuCasAYPufa5JcATl52ME%2BiI2x9MM1qm9ci%2BdfzVZglEp9cjBU1oUGJm%2FOAgi7VnNY0ccnwfJYFTHwSsyXK7W8mQLHGiokVnK6M8G6HMG36kstTLkvADQ700nYYT2k97FdHPf9z3sGBCMX%2Fw7HH%2FOq6Medkg%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=39bf99002dee7283f6cf8f7075fcae8812a97a74f9d584451102a425873dba42",
+// "links": {
+// "website": "https://hud.so/",
+// "linkedin": null,
+// "twitter": "https://twitter.com/parth220_",
+// "github": "https://github.com/Human-Data"
+// },
+// "description": "",
+// "tags": [],
+// "founders": [
+// {
+//   "name": "Lorenss Martinsons",
+//   "title": "Founder",
+//   "bio": "interested in natural intelligence, flowers, and the human condition",
+//   "linkedin_url": "https://linkedin.com/in/lorenss",
+//   "twitter_url": null
+// },
+// {
+//   "name": "Parth Patel",
+//   "title": "Founder",
+//   "bio": "Co-founder of Human U Data.\n[a-z]*",
+//   "linkedin_url": "https://linkedin.com/in/parth220",
+//   "twitter_url": "https://twitter.com/parth220_"
+// },
+// {
+//   "name": "Jay Ram",
+//   "title": "Founder",
+//   "bio": "CEO @HUD",
+//   "linkedin_url": "https://www.linkedin.com/in/jay-ram-29003b198/",
+//   "twitter_url": null
+// }
+// ]
+// }
+// },
+// {
+// "name": "Tejas AI",
+// "location": "Mumbai, MH, India",
+// "description": "Risk Decisioning Platform for Indian Banks",
+// "batch": "W25",
+// "industries": [
+// "B2B"
+// ],
+// "url": "https://www.ycombinator.com/companies/tejas-ai",
+// "scrapedAt": "2025-03-04T19:21:39.370Z",
+// "details": {
+// "founded": "2025",
+// "team_size": "2",
+// "status": "Active",
+// "location": "Mumbai, India",
+// "main_logo": "https://bookface-images.s3.amazonaws.com/small_logos/840c36ebb3724b72f41749689acd669665f2e9e5.png",
+// "small_logo": "https://bookface-images.s3.us-west-2.amazonaws.com/logos/b395c875811253bdac9806a9cb02846e52ee2eac.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQC4NIECADDLUVA5V%2F20250304%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250304T192140Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIBStSfqN5K%2F4D%2FuiZz2LLJYjhdF%2Fv3%2F%2Ffnec6Q7AA8tbAiAsaqlhjr3eVU0E0QYFUBDKdBk5qXcVlJsH7R8rwnanziruAwjy%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDAwNjIwMTgxMTA3MiIMM4Kbn6IncgG2WVj6KsID1IRWirjgBMwEiEGWmp9cWWQJsvmCPiQ2yzznjX0hl2no0TVn9zKFmhrBBM6N5R9Cp3lSotHY9ud0JuXYTzDE%2FwYuo2x2va7QiSGY8LTXYOZX1bRWYUs3M6rr9p5i%2B0KoBBpVcIT0Pfi8tN4mrjaiGKQ9dB2HmXmDNvDliEGP%2B6SndHniGey6zQPJQelAW8ZlPHzcawcvldN3w4kGokx2AEjxMKrSe8g9%2FZKlM%2BzQMo6K1dYEKlEAJ9y2h7Snx0ebEnATwUz5WbSPnuoH0bpD4zRGJJZtG3RkRKYcVgbRfdIq7gjUEcBW2onfFK2OGcnRjJeCviARdXiJJ3l9tbjX1zeaKh3eBhkufktGYKc%2BYTVdbqrS5024q2e%2F06pRLeOL9pgTdeq3e8IQIWe%2FSQg5bVmA2WAMKKaduxXs5lHE9suHDd54Yhgc7k9YLRmZc4MvpaIZxq6ftYXJBekN2rRu7V7evK9cD8y0pKIupCG9XKSm%2Fzdq310KP9Q%2BJdFfFQUkg2b%2BYcbMXDiN95xlyMXnbYI2Tb4XRO5HfKdHsli1A%2B6kRLliIKBx8TTsadKirHohdajBFxDDW5eDZi7m42J7%2F431MPnfnL4GOqYBLppPJuE0MrcmeTTG0WwRpp1CjBhlwAfi5xnIfY%2FnGU6bz%2B%2BO02ukuNiLXZfWijRRgFkuCasAYPufa5JcATl52ME%2BiI2x9MM1qm9ci%2BdfzVZglEp9cjBU1oUGJm%2FOAgi7VnNY0ccnwfJYFTHwSsyXK7W8mQLHGiokVnK6M8G6HMG36kstTLkvADQ700nYYT2k97FdHPf9z3sGBCMX%2Fw7HH%2FOq6Medkg%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=f27d9811b9358d14a1f21498814a0617b7feb24f11795f8daadba1eaae65df1e",
+// "links": {
+// "website": "https://www.trytejas.ai/",
+// "linkedin": "https://www.linkedin.com/company/tejasai/",
+// "twitter": "https://twitter.com/ycombinator",
+// "github": null
+// },
+// "description": "Tejas AI eliminates uncertainty, allowing decision-makers to develop and evaluate credit rules more quickly and effectively.",
+// "tags": [
+// "fintech",
+// "finance",
+// "b2b",
+// "ai"
+// ],
+// "founders": [
+// {
+//   "name": "Gaurav Luhariwala & CEO",
+//   "title": "Founder",
+//   "bio": "Born and raised in India. Have previously built and scaled data-driven products for Indian banks and financial institutions -  founded Tejas AI with the mission of making financial services more inclusive worldwide.",
+//   "linkedin_url": "https://www.linkedin.com/in/gauravluhariwala/",
+//   "twitter_url": null
+// },
+// {
+//   "name": "Bhavesh Tolia",
+//   "title": "Founder",
+//   "bio": "Co-Founder and CTO @Tejas AI - AI Risk decisioning platform. Built and scaled Generative AI products for BFSI enterprises with notable clients like Allianz Insurance (USA), AngelOne (India) and Deutsche Bank (DBS Singapore). Also, worked with the Outlook team in Microsoft previously.",
+//   "linkedin_url": "https://www.linkedin.com/in/bhavesh-tolia-a17a37164/",
+//   "twitter_url": null
+// }
+// ]
+// }
+// }
+// ]
 
 const cbdata = {
 "total": 421,
@@ -2111,8 +2537,9 @@ let campaignSettings = {
 
 // Initialize the dashboard
 document.addEventListener('DOMContentLoaded', async () => {
+  setupDarkMode();
     setupEventListeners();
-    setupDarkMode();
+    
     loadUserUuid();
     await loadAllData();
     populateCampaignSettings();
@@ -2121,34 +2548,35 @@ document.addEventListener('DOMContentLoaded', async () => {
 // This ensures dark mode is applied before the page renders
 
 
-function setupDarkMode() {
-  // Apply dark mode setting
-  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const savedMode = localStorage.getItem('darkMode');
-  
-  if (savedMode === 'false') {
-      document.documentElement.classList.remove('dark');
-  } else {
-      // If no preference or preference is 'true', or user prefers dark, ensure dark mode is on
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('darkMode', 'true');
-  }
-  
-  // Dark mode toggle functionality - make sure this is set up only once
-  const darkModeToggle = document.getElementById('darkModeToggle');
-  if (darkModeToggle) {
-      // Remove any existing event listeners
-      const newToggle = darkModeToggle.cloneNode(true);
-      darkModeToggle.parentNode.replaceChild(newToggle, darkModeToggle);
-      
-      // Add new event listener
-      newToggle.addEventListener('click', () => {
-          const isDarkMode = document.documentElement.classList.toggle('dark');
-          localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
-      });
-  }
-}
 
+function setupDarkMode() {
+  // Always start in dark mode by default
+  document.documentElement.classList.add('dark');
+  
+  // If there's a saved preference, use that instead
+  const savedMode = localStorage.getItem('darkMode');
+  if (savedMode === 'false') {
+    document.documentElement.classList.remove('dark');
+  } else {
+    // If no preference or preference is 'true', ensure dark mode is on
+    localStorage.setItem('darkMode', 'true');
+  }
+  
+  // Setup toggle button functionality
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  // if (darkModeToggle) {
+    console.log("toggle")
+    // Remove any existing event listeners by cloning and replacing
+    const newToggle = darkModeToggle.cloneNode(true);
+    darkModeToggle.parentNode.replaceChild(newToggle, darkModeToggle);
+    
+    // Add new event listener
+    newToggle.addEventListener('click', () => {
+      const isDarkMode = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
+    });
+  // }
+}
 
 function setupEventListeners() {
     // Filter event listeners
