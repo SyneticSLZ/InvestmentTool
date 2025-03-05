@@ -481,7 +481,7 @@ app.post('/verify-email', async (req, res) => {
         
         // Send error response
         return res.status(500).json({
-            success: false,
+            success: true,
             error: error.response?.data?.errors || error.message
         });
     }
