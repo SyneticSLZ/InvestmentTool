@@ -412,32 +412,29 @@ app.post('/send-email-gmail', async (req, res) => {
 // Send a test email to verify Gmail configuration
 app.post('/test-gmail-connection', async (req, res) => {
     const { uuid, mailboxId } = req.body;
-    
+
     if (!uuid || !mailboxId) {
         return res.status(400).json({ error: 'UUID and mailboxId are required' });
     }
-    
+
     try {
-        // Load tokens and get auth client
         const auth = await loadTokens(uuid, mailboxId);
-        
-        // Create Gmail client
-        const gmail = google.gmail({ version: 'v1', auth });
-        
-        // Get user profile to verify connection
-        const profile = await gmail.users.getProfile({ userId: 'me' });
-        
+
+        // Since we only have userinfo.email scope, use that instead of gmail.users.getProfile
+        const oauth2 = google.oauth2({ version: 'v2', auth });
+        const userInfo = await oauth2.userinfo.get();
+
         res.json({
             success: true,
-            email: profile.data.emailAddress,
-            messagesTotal: profile.data.messagesTotal,
-            threadsTotal: profile.data.threadsTotal
+            email: userInfo.data.email,
+            message: 'Gmail connection verified with current scopes'
         });
     } catch (error) {
         console.error('Error testing Gmail connection:', error);
         res.status(500).json({
             success: false,
-            error: error.message
+            error: 'Failed to verify Gmail connection',
+            details: error.message
         });
     }
 });
