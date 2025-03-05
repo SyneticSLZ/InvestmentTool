@@ -520,16 +520,13 @@ app.post('/verify-domain', async (req, res) => {
 // Enhanced campaign scheduling endpoint
 app.post('/campaign/schedule', async (req, res) => {
     const { uuid, mailboxId, leads, campaignName, sendInterval, startDate, settings, followUps } = req.body;
-    
+
     if (!uuid || !mailboxId || !leads || !leads.length || !campaignName) {
         return res.status(400).json({ error: 'Missing required parameters' });
     }
-    
+
     try {
-        // Create campaign in database or store in a file for this example
         const campaignId = Date.now().toString();
-        
-        // Store campaign data
         const campaign = {
             id: campaignId,
             uuid,
@@ -538,38 +535,36 @@ app.post('/campaign/schedule', async (req, res) => {
             leadCount: leads.length,
             sendInterval: sendInterval || 60,
             startDate: startDate || new Date().toISOString(),
-            settings: settings || {
-                trackOpens: true,
-                trackClicks: true,
-                stopOnReply: true,
-                stopOnClick: false
-            },
+            settings: settings || { trackOpens: true, trackClicks: true, stopOnReply: true, stopOnClick: false },
             followUps: followUps || [],
             status: 'Scheduled',
             createdAt: new Date().toISOString()
         };
-        
-        // For this implementation, we're just logging the campaign info
-        // In a real app, you would save this to a database
+
+        // Simulate scheduling (in a real app, save to a database and use a job queue)
         console.log('Campaign scheduled:', campaign);
-        
-        // Return success response
+
+        // Start processing immediately for this example
+        processCampaignEmails(uuid, mailboxId, leads, campaignName, sendInterval);
+        followUps.forEach((followUp, index) => {
+            const delay = followUp.waitUnit === 'days' ? followUp.waitDuration * 24 * 60 * 60 * 1000 : followUp.waitDuration * 60 * 60 * 1000;
+            setTimeout(() => {
+                processCampaignEmails(uuid, mailboxId, leads.map(lead => ({
+                    to: lead.to,
+                    subject: followUp.subject,
+                    body: followUp.body
+                })), `${campaignName} - Follow-Up ${index + 1}`, sendInterval);
+            }, delay);
+        });
+
         res.json({
             success: true,
             message: `Campaign ${campaignName} scheduled successfully with ${leads.length} emails`,
             campaignId
         });
-        
-        // In a real app, you would schedule the campaign for the start date
-        // For this example, we'll just log that information
-        console.log(`Campaign will start at: ${new Date(campaign.startDate).toLocaleString()}`);
-        
     } catch (error) {
         console.error('Error scheduling campaign:', error);
-        res.status(500).json({ 
-            success: false,
-            error: error.message
-        });
+        res.status(500).json({ success: false, error: error.message });
     }
 });
 
