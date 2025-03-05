@@ -361,6 +361,7 @@ const campaignStatus = {};
 app.post('/send-email-gmail', async (req, res) => {
     const { uuid, mailboxId, to, subject, body } = req.body;
     try {
+        
         const auth = await loadTokens(uuid, mailboxId);
         const gmail = google.gmail({ version: 'v1', auth });
         const emailLines = [
@@ -383,6 +384,9 @@ app.post('/send-email-gmail', async (req, res) => {
 
         // Update campaign status
         const campaignId = req.headers['campaign-id'] || 'default';
+    // if (!campaignStatus[campaignId]) {
+    //     campaignStatus[campaignId] = { sentCount: 0, status: 'Active' };
+    // }
         if (!campaignStatus[campaignId]) campaignStatus[campaignId] = { sentCount: 0 };
         campaignStatus[campaignId].sentCount++;
         campaignStatus[campaignId].status = 'Active';
@@ -433,8 +437,8 @@ app.post('/campaign/send', async (req, res) => {
     if (!uuid || !mailboxId || !emails || !emails.length) {
         return res.status(400).json({ error: 'Missing required parameters' });
     }
-    const campaignId = Date.now().toString();
-    campaignStatus[campaignId] = { sentCount: 0, status: 'Active' };
+    const campaignId = Date.now().toString(); // Ensure unique ID
+    campaignStatus[campaignId] = { sentCount: 0, status: 'Active' }; // Initialize here
     res.json({
         success: true,
         message: `Campaign started. Sending ${emails.length} emails.`,
@@ -735,6 +739,9 @@ app.post('/campaign/delete', async (req, res) => {
 // }
 async function processCampaignEmails(uuid, mailboxId, emails, campaignName, sendInterval, campaignId) {
     console.log(`Starting campaign: ${campaignName} with ${emails.length} emails`);
+    if (!campaignStatus[campaignId]) {
+        campaignStatus[campaignId] = { sentCount: 0, status: 'Active' }; // Fallback initialization
+    }
     try {
         const auth = await loadTokens(uuid, mailboxId);
         const gmail = google.gmail({ version: 'v1', auth });
@@ -761,7 +768,7 @@ async function processCampaignEmails(uuid, mailboxId, emails, campaignName, send
                     requestBody: { raw: encodedMessage }
                 }, { headers: { 'campaign-id': campaignId } });
                 successCount++;
-                campaignStatus[campaignId].sentCount = successCount;
+                campaignStatus[campaignId].sentCount = successCount; // Update sent count
                 console.log(`Campaign ${campaignName}: Sent email ${successCount} to ${email.to}`);
                 await new Promise(resolve => setTimeout(resolve, sendInterval * 1000));
             } catch (error) {
@@ -773,6 +780,7 @@ async function processCampaignEmails(uuid, mailboxId, emails, campaignName, send
         console.log(`Campaign ${campaignName} completed. Success: ${successCount}, Failures: ${failureCount}`);
     } catch (error) {
         console.error(`Campaign ${campaignName} failed:`, error);
+        campaignStatus[campaignId] = { sentCount: successCount, status: 'Failed' }; // Update on failure
     }
 }
 
