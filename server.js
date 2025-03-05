@@ -356,59 +356,47 @@ async function loadTokens(uuid, mailboxId) {
 }
 
 // Send email with Gmail
+const campaignStatus = {};
+
 app.post('/send-email-gmail', async (req, res) => {
     const { uuid, mailboxId, to, subject, body } = req.body;
-    
-    if (!uuid || !mailboxId || !to || !subject || !body) {
-        return res.status(400).json({ error: 'Missing required parameters' });
-    }
-    
     try {
-        // Load tokens and get auth client
         const auth = await loadTokens(uuid, mailboxId);
-        
-        // Create Gmail client
         const gmail = google.gmail({ version: 'v1', auth });
-        
-        // Create email content
         const emailLines = [
             `To: ${to}`,
             'Content-Type: text/html; charset=utf-8',
             `Subject: ${subject}`,
             '',
-            body.replace(/\n/g, '<br>') // Convert newlines to HTML line breaks
+            body.replace(/\n/g, '<br>')
         ];
-        
-        const email = emailLines.join('\r\n');
-        
-        // Encode email in base64 format required by Gmail API
-        const encodedMessage = Buffer.from(email)
+        const emailContent = emailLines.join('\r\n');
+        const encodedMessage = Buffer.from(emailContent)
             .toString('base64')
             .replace(/\+/g, '-')
             .replace(/\//g, '_')
             .replace(/=+$/, '');
-        
-        // Send email
         const result = await gmail.users.messages.send({
             userId: 'me',
-            requestBody: {
-                raw: encodedMessage,
-            },
+            requestBody: { raw: encodedMessage }
         });
-        
-        res.json({ 
+
+        // Update campaign status
+        const campaignId = req.headers['campaign-id'] || 'default';
+        if (!campaignStatus[campaignId]) campaignStatus[campaignId] = { sentCount: 0 };
+        campaignStatus[campaignId].sentCount++;
+        campaignStatus[campaignId].status = 'Active';
+
+        res.json({
             message: 'Email sent successfully',
-            messageId: result.data.id
+            messageId: result.data.id,
+            sentCount: campaignStatus[campaignId].sentCount
         });
     } catch (error) {
         console.error('Error sending email:', error);
-        res.status(500).json({ 
-            error: 'Failed to send email',
-            details: error.message
-        });
+        res.status(500).json({ error: 'Failed to send email', details: error.message });
     }
 });
-
 // Send a test email to verify Gmail configuration
 app.post('/test-gmail-connection', async (req, res) => {
     const { uuid, mailboxId } = req.body;
@@ -442,21 +430,17 @@ app.post('/test-gmail-connection', async (req, res) => {
 // Bulk send emails for a campaign
 app.post('/campaign/send', async (req, res) => {
     const { uuid, mailboxId, emails, campaignName, sendInterval } = req.body;
-    
     if (!uuid || !mailboxId || !emails || !emails.length) {
         return res.status(400).json({ error: 'Missing required parameters' });
     }
-    console.log("Starting campaign...");
-    
-    // Start sending emails in the background
+    const campaignId = Date.now().toString();
+    campaignStatus[campaignId] = { sentCount: 0, status: 'Active' };
     res.json({
         success: true,
         message: `Campaign started. Sending ${emails.length} emails.`,
-        campaignId: Date.now().toString()
+        campaignId
     });
-    
-    // Process emails in the background
-    processCampaignEmails(uuid, mailboxId, emails, campaignName, sendInterval || 60);
+    processCampaignEmails(uuid, mailboxId, emails, campaignName, sendInterval, campaignId);
 });
 
 
@@ -693,21 +677,72 @@ app.post('/campaign/delete', async (req, res) => {
 
 
 // Process campaign emails in the background
-async function processCampaignEmails(uuid, mailboxId, emails, campaignName, sendInterval) {
-    console.log(`Starting campaign: ${campaignName} with ${emails.length} emails`);
+// async function processCampaignEmails(uuid, mailboxId, emails, campaignName, sendInterval) {
+//     console.log(`Starting campaign: ${campaignName} with ${emails.length} emails`);
     
+//     try {
+//         // Load tokens and get auth client
+//         const auth = await loadTokens(uuid, mailboxId);
+//         const gmail = google.gmail({ version: 'v1', auth });
+        
+//         // Process each email with delay between sends
+//         let successCount = 0;
+//         let failureCount = 0;
+        
+//         for (const email of emails) {
+//             try {
+//                 // Create email content
+//                 const emailLines = [
+//                     `To: ${email.to}`,
+//                     'Content-Type: text/html; charset=utf-8',
+//                     `Subject: ${email.subject}`,
+//                     '',
+//                     email.body.replace(/\n/g, '<br>')
+//                 ];
+                
+//                 const emailContent = emailLines.join('\r\n');
+                
+//                 // Encode email
+//                 const encodedMessage = Buffer.from(emailContent)
+//                     .toString('base64')
+//                     .replace(/\+/g, '-')
+//                     .replace(/\//g, '_')
+//                     .replace(/=+$/, '');
+                
+//                 // Send email
+//                 await gmail.users.messages.send({
+//                     userId: 'me',
+//                     requestBody: {
+//                         raw: encodedMessage,
+//                     },
+//                 });
+                
+//                 successCount++;
+//                 console.log(`Campaign ${campaignName}: Sent email ${successCount} to ${email.to}`);
+                
+//                 // Wait before sending the next email
+//                 await new Promise(resolve => setTimeout(resolve, sendInterval * 1000));
+//             } catch (error) {
+//                 failureCount++;
+//                 console.error(`Failed to send email to ${email.to}:`, error);
+//             }
+//         }
+        
+//         console.log(`Campaign ${campaignName} completed. Success: ${successCount}, Failures: ${failureCount}`);
+//     } catch (error) {
+//         console.error(`Campaign ${campaignName} failed:`, error);
+//     }
+// }
+async function processCampaignEmails(uuid, mailboxId, emails, campaignName, sendInterval, campaignId) {
+    console.log(`Starting campaign: ${campaignName} with ${emails.length} emails`);
     try {
-        // Load tokens and get auth client
         const auth = await loadTokens(uuid, mailboxId);
         const gmail = google.gmail({ version: 'v1', auth });
-        
-        // Process each email with delay between sends
         let successCount = 0;
         let failureCount = 0;
-        
+
         for (const email of emails) {
             try {
-                // Create email content
                 const emailLines = [
                     `To: ${email.to}`,
                     'Content-Type: text/html; charset=utf-8',
@@ -715,40 +750,42 @@ async function processCampaignEmails(uuid, mailboxId, emails, campaignName, send
                     '',
                     email.body.replace(/\n/g, '<br>')
                 ];
-                
                 const emailContent = emailLines.join('\r\n');
-                
-                // Encode email
                 const encodedMessage = Buffer.from(emailContent)
                     .toString('base64')
                     .replace(/\+/g, '-')
                     .replace(/\//g, '_')
                     .replace(/=+$/, '');
-                
-                // Send email
                 await gmail.users.messages.send({
                     userId: 'me',
-                    requestBody: {
-                        raw: encodedMessage,
-                    },
-                });
-                
+                    requestBody: { raw: encodedMessage }
+                }, { headers: { 'campaign-id': campaignId } });
                 successCount++;
+                campaignStatus[campaignId].sentCount = successCount;
                 console.log(`Campaign ${campaignName}: Sent email ${successCount} to ${email.to}`);
-                
-                // Wait before sending the next email
                 await new Promise(resolve => setTimeout(resolve, sendInterval * 1000));
             } catch (error) {
                 failureCount++;
                 console.error(`Failed to send email to ${email.to}:`, error);
             }
         }
-        
+        campaignStatus[campaignId].status = successCount === emails.length ? 'Completed' : 'Active';
         console.log(`Campaign ${campaignName} completed. Success: ${successCount}, Failures: ${failureCount}`);
     } catch (error) {
         console.error(`Campaign ${campaignName} failed:`, error);
     }
 }
+
+app.get('/campaigns/:uuid/:campaignId', async (req, res) => {
+    const { uuid, campaignId } = req.params;
+    if (!uuid || !campaignId) {
+        return res.status(400).json({ error: 'UUID and campaignId are required' });
+    }
+    res.json({
+        success: true,
+        campaigns: [{ id: campaignId, sentCount: campaignStatus[campaignId]?.sentCount || 0, status: campaignStatus[campaignId]?.status || 'Unknown' }]
+    });
+});
 
 // Initialize the application
 
