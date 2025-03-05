@@ -5,6 +5,7 @@ const fetch = require('node-fetch');
 const puppeteer = require('puppeteer');
 const { google } = require('googleapis')
 const nodemailer = require('nodemailer')
+const bodyParser = require('body-parser');
 const path = require('path')
 require('dotenv').config()
 const fs = require('fs').promises;
@@ -29,7 +30,8 @@ const corsOptions = {
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 };
-
+app.use(bodyParser.json({ limit: '17mb' })); // Increase to 10MB
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' })); // For form data
 app.use(cors({
     origin: ['http://localhost:3000', 'https://syneticslz.github.io', 'http://127.0.0.1:5501'],
     credentials: true
