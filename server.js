@@ -446,6 +446,7 @@ app.post('/campaign/send', async (req, res) => {
     if (!uuid || !mailboxId || !emails || !emails.length) {
         return res.status(400).json({ error: 'Missing required parameters' });
     }
+    console.log("Starting campaign...");
     
     // Start sending emails in the background
     res.json({
